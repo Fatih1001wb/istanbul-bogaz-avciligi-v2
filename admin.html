@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin Paneli — BalıkAvİstanbul</title>
+<script src="config.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -1103,8 +1104,9 @@ select.finp{cursor:pointer;appearance:none;background-image:url("data:image/svg+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 // ── SUPABASE BAĞLANTISI ──────────────────────────────
-const SUPABASE_URL  = 'https://rmgtsbsyvkabaendgdsy.supabase.co';
-const SUPABASE_ANON = 'sb_publishable_VwAov30o9GW5Rm8aSB6peA_mkG3AWzx';
+// Değerleri config.js'ten al (config.js'i doldurmayı unutma)
+const SUPABASE_URL  = window.ADMIN_SUPABASE_URL;
+const SUPABASE_ANON = window.ADMIN_SUPABASE_ANON;
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
 // ── DURUM MAP ────────────────────────────────────────
@@ -1532,6 +1534,25 @@ function openCouponModal(){
 document.addEventListener('keydown', e => {
   if (e.key==='Escape') document.querySelectorAll('.modal-overlay.open').forEach(m=>m.classList.remove('open'));
 });
+
+// ── SAYFA YÜKLENİNCE OTURUM KONTROLÜ ────────────────
+(async function checkSession() {
+  const { data: { session } } = await sb.auth.getSession();
+  if (!session?.user) return;
+
+  const { data: profile, error } = await sb
+    .from('profiles').select('role').eq('id', session.user.id).single();
+
+  if (error || !profile || profile.role !== 'admin') {
+    await sb.auth.signOut();
+    return;
+  }
+
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('adminApp').style.display = 'flex';
+  document.getElementById('adminInfo').textContent = '🔑 ' + session.user.email;
+  loadDashboard();
+})();
 </script>
 </body>
 </html>

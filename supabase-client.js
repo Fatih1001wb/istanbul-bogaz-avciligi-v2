@@ -4,9 +4,9 @@
 // ════════════════════════════════════════════════════════
 
 // ── SUPABASE BAĞLANTISI ──────────────────────────────────
-// 1. supabase.com → projen → Settings → API'den al
-const SUPABASE_URL  = 'https://twsfdkircmfnllypzokh.supabase.co';
-const SUPABASE_ANON = 'sb_publishable_G0dY-0XBYyNxE2fnse2fog_hFdRKvMs';
+// Değerleri config.js'ten al (config.js'i doldurmayı unutma)
+const SUPABASE_URL  = window.APP_SUPABASE_URL;
+const SUPABASE_ANON = window.APP_SUPABASE_ANON;
 
 // Supabase SDK'sı CDN'den yükleniyor (HTML'e ekle):
 // <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
