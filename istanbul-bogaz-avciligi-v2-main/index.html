@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BalıkAvİstanbul — İstanbul Boğazında Balık Avı | Anlık Koşullar & Ekipman</title>
+  <meta name="description" content="İstanbul Boğazı, Marmara ve Haliç hattındaki sahil ilçeleri için anlık hava ve deniz koşulları, avlanma uygunluk skoru ve profesyonel balıkçı ekipmanları. Sarıyer, Beşiktaş, Kadıköy, Üsküdar ve daha fazlası." />
+
+  <!-- Config (Supabase credentials) -->
+  <script src="config.js"></script>
+  <!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Stiller -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Supabase Entegrasyon -->
+  <script src="supabase-client.js"></script>
+
+
+  <meta name="theme-color" content="#0d1f35">
+
+  <!-- SEO Meta Tags -->
+  <meta name="keywords" content="istanbul balık avı, boğaz balıkçılık, istanbul sahil, lüfer, karagöz, palamut, balıkçı ekipmanları, olta, misina, kamış, istanbul avcılık">
+  <meta name="author" content="İstanbul Boğaz Avcılığı">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://istanbulbogazavciligi.com.tr">
+
+  <!-- Open Graph (Sosyal medya paylaşımı) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://istanbulbogazavciligi.com.tr">
+  <meta property="og:title" content="BalıkAvİstanbul — İstanbul Sahillerinde Balık Avı">
+  <meta property="og:description" content="İstanbul'un sahil hattı için anlık hava, deniz ve akıntı verisi. Koşula göre kurşun, misina ve olta önerileri; profesyonel ekipman mağazası.">
+  <meta property="og:image" content="https://istanbulbogazavciligi.com.tr/assets/logo.png">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:site_name" content="BalıkAvİstanbul">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BalıkAvİstanbul — İstanbul Sahillerinde Balık Avı">
+  <meta name="twitter:description" content="Boğaz, Marmara ve Haliç sahillerinde anlık avlanma koşulları, uygunluk skoru ve profesyonel ekipman.">
+  <meta name="twitter:image" content="https://istanbulbogazavciligi.com.tr/assets/logo.png">
+
+  <!-- Schema.org Yapısal Veri (Google için) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "BalıkAvİstanbul",
+    "description": "İstanbul sahillerinde balık avı rehberi, anlık hava koşulları ve ekipman mağazası",
+    "url": "https://istanbulbogazavciligi.com.tr",
+    "image": "https://istanbulbogazavciligi.com.tr/assets/logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "İstanbul",
+      "addressCountry": "TR"
+    },
+    "areaServed": "İstanbul",
+    "keywords": "balık avı, istanbul, boğaz, sahil, olta, ekipman"
+  }
+  </script>
+
+  <!-- Leaflet (Harita) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+          crossorigin="" defer></script>
+</head>
+<body>
+
+<!-- ══════════════ NAVBAR ══════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="goPage('home')">
+      <img src="assets/logo.png" alt="İstanbul Balık Avı" class="nav-logo-img">
+    </div>
+    <div class="nav-links">
+      <span class="nav-link active" id="nl-home"    onclick="goPage('home')">Ana Sayfa</span>
+      <span class="nav-link"        id="nl-forecast" onclick="goPage('forecast')">Hava & Deniz</span>
+      <span class="nav-link"        id="nl-shop"     onclick="goPage('shop')">Mağaza</span>
+      <span class="nav-link"        id="nl-community" onclick="goPage('community')">🤝 Topluluk</span>
+    </div>
+    <div class="nav-right">
+      <button class="nav-btn" onclick="goPage('favorites')" title="Favorilerim">
+        ♡ <span id="nb-fav">0</span>
+        <span class="nbadge" id="nb-fav-b">0</span>
+      </button>
+      <button class="nav-btn" onclick="goPage('cart')" title="Sepetim">
+        🛒 <span id="nb-cart">0</span>
+        <span class="nbadge" id="nb-cart-b">0</span>
+      </button>
+      <button class="nav-account" onclick="openAuthOrAccount()" id="nav-account-btn">
+        👤 <span id="nav-uname">Giriş Yap</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════ PAGES ══════════════ -->
+
+<!-- HOME -->
+<div class="page active" id="pg-home">
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag"><span class="hero-dot"></span>Canlı Hava & Deniz Verisi</div>
+        <h1>İstanbul'un<br><strong>Sahil Hattı,</strong><br>Avucunuzun İçinde.</h1>
+        <p class="hero-desc">Boğaz, Marmara ve Haliç boyunca anlık hava, deniz sıcaklığı ve akıntı verisi. Avlanma uygunluk skoru ve koşula göre ekipman önerileri.</p>
+        <div class="hero-btns">
+          <button class="hbtn-main" onclick="goPage('forecast')">Koşulları Gör <span class="arr">→</span></button>
+          <button class="hbtn-sec"  onclick="goPage('shop')">Mağazayı Keşfet</button>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat wide" style="padding:0;overflow:hidden;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)">
+          <!-- Topluluk Mini Sohbet -->
+          <div style="background:linear-gradient(135deg,rgba(26,143,209,.35),rgba(78,195,240,.15));padding:.7rem 1rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08)">
+            <div style="display:flex;align-items:center;gap:7px">
+              <span style="font-size:1rem">🤝</span>
+              <span style="font-weight:700;color:#fff;font-size:.88rem">Topluluk Sohbeti</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:5px">
+              <span style="width:7px;height:7px;border-radius:50%;background:#4ade80;display:inline-block;animation:pulse 2s infinite"></span>
+              <span style="font-size:.72rem;color:rgba(255,255,255,.65)" id="hero-online-count">5 çevrimiçi</span>
+            </div>
+          </div>
+          <div style="padding:.6rem .9rem;display:flex;flex-direction:column;gap:.45rem;max-height:140px;overflow-y:auto" id="hero-chat-preview">
+            <div style="display:flex;gap:7px;align-items:flex-start">
+              <div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#1a8fd1,#4ec3f0);display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;color:#fff;flex-shrink:0">A</div>
+              <div style="background:rgba(255,255,255,.08);border-radius:0 7px 7px 7px;padding:.35rem .6rem;font-size:.78rem;color:rgba(255,255,255,.8)">Bugün Sarıyer'de güzel lüfer var! 🎣</div>
+            </div>
+            <div style="display:flex;gap:7px;align-items:flex-start">
+              <div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#059669,#10b981);display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;color:#fff;flex-shrink:0">M</div>
+              <div style="background:rgba(255,255,255,.08);border-radius:0 7px 7px 7px;padding:.35rem .6rem;font-size:.78rem;color:rgba(255,255,255,.8)">Jig yem çok iyi çalışıyor 👍</div>
+            </div>
+            <div style="display:flex;gap:7px;align-items:flex-start">
+              <div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#a78bfa);display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;color:#fff;flex-shrink:0">H</div>
+              <div style="background:rgba(255,255,255,.08);border-radius:0 7px 7px 7px;padding:.35rem .6rem;font-size:.78rem;color:rgba(255,255,255,.8)">Kadıköy iskelesi harika, tavsiye ederim</div>
+            </div>
+          </div>
+          <div style="padding:.55rem .9rem;border-top:1px solid rgba(255,255,255,.08)">
+            <button onclick="goPage('community')" style="width:100%;padding:7px;background:linear-gradient(135deg,#1a8fd1,#2ba8e0);border:none;border-radius:6px;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:#fff;cursor:pointer;transition:all .2s" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter='none'">Sohbete Katıl →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="how-section">
+    <div class="wrap">
+      <div class="how-header"><span class="eyebrow">Nasıl çalışır</span><h2>4 Adımda Avlanmaya Hazır</h2></div>
+      <div class="how-grid">
+        <div class="how-step"><div class="how-icon">🗺️</div><div class="how-num">01</div><h3>Konumunu Seç</h3><p>Boğaz, Marmara ve Haliç hattındaki sahil ilçelerinden çıkacağın noktayı belirle.</p></div>
+        <div class="how-step"><div class="how-icon">📡</div><div class="how-num">02</div><h3>Anlık Veri</h3><p>Hava, deniz sıcaklığı, rüzgâr, akıntı ve dalga yüksekliği — tek panelde, gerçek zamanlı.</p></div>
+        <div class="how-step"><div class="how-icon">🎯</div><div class="how-num">03</div><h3>Uygunluk Skoru</h3><p>Tüm değişkenler 0–100 arası tek bir skora indirgenir. Koşula uygun kurşun ve misina otomatik önerilir.</p></div>
+        <div class="how-step"><div class="how-icon">🛒</div><div class="how-num">04</div><h3>Ekipmanı Tamamla</h3><p>Önerilen ekipmanı mağazadan sepete ekle, kapına gelsin.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ BALIK HARİTASI ════════════════ -->
+  <section class="fish-map-section">
+    <div class="wrap">
+      <div class="how-header">
+        <span class="eyebrow">Av Haritası</span>
+        <h2>Nerede Ne Avlanıyor?</h2>
+        <p class="fm-section-sub">İstanbul Boğazı, Marmara ve Adalar hattında bu mevsim hangi balığın peşine düşeceğini gör.</p>
+      </div>
+
+      <!-- Balık filtreleri -->
+      <div class="fm-filters">
+        <div class="fm-filter-label">🎣 Balık seç:</div>
+        <div class="fm-chips" id="fm-chips"></div>
+      </div>
+
+      <!-- Harita + Bilgi paneli -->
+      <div class="fm-layout">
+        <div class="fm-map-wrap">
+          <div id="fish-map"></div>
+          <div class="fm-legend">
+            <span class="fm-leg-item"><span class="fm-pin-dot fm-pin-hot"></span> Şu an aktif</span>
+            <span class="fm-leg-item"><span class="fm-pin-dot fm-pin-cold"></span> Sezon dışı</span>
+            <span class="fm-leg-item"><span class="fm-pin-dot fm-pin-selected"></span> Seçili balık burada</span>
+          </div>
+        </div>
+
+        <aside class="fm-info" id="fm-info">
+          <div class="fm-info-empty">
+            <div class="fm-info-emoji">🗺️</div>
+            <h4>Bir ilçe veya balık seç</h4>
+            <p>Haritadan bir sahil noktasına tıkla ya da yukarıdan balık seç. O bölgede şu an hangi balıkların avlandığını gör.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FORECAST -->
+<div class="page" id="pg-forecast">
+
+  <!-- Hero + İlçe Seçimi -->
+  <div class="fc-hero">
+    <div class="fc-hero-inner">
+      <div class="fc-hero-top">
+        <div>
+          <span style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(26, 143, 209,.6);display:block;margin-bottom:.5rem">Canlı Hava & Deniz</span>
+          <h1 class="fc-hero-title">İstanbul Sahil Koşulları</h1>
+          <p class="fc-hero-sub">İlçeni belirle · Anlık veriyi yükle · Avlanma skorunu gör</p>
+        </div>
+        <div class="fc-side-tabs">
+          <button class="side-tab active" data-side="all">Tümü</button>
+          <button class="side-tab" data-side="Boğaz">Boğaz</button>
+          <button class="side-tab" data-side="Marmara">Marmara</button>
+          <button class="side-tab" data-side="Adalar">Adalar</button>
+        </div>
+      </div>
+      <!-- Chip Grid -->
+      <div class="fc-chips-wrap" id="d-chips"></div>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="forecast-body">
+
+    <!-- Boş prompt -->
+    <div id="fc-empty" class="fc-select-hint">
+      <span>🗺️</span>
+      Bir sahil ilçesi seç, hava ve deniz koşulları anında yüklensin.
+    </div>
+
+    <!-- Yüklü içerik -->
+    <div id="fc-content" style="display:none">
+
+      <!-- Başlık bar -->
+      <div class="wx-header">
+        <div class="wx-title">
+          <h2 id="wx-district">—</h2>
+          <div class="upd" id="wx-upd">—</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap">
+          <span class="sim-badge" id="wx-sim" style="display:none">⚠️ Simüle veri</span>
+          <button class="refresh-btn" id="wx-refresh" onclick="wxRefresh()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.5 9A9 9 0 005.2 5.2L1 10M23 14l-4.2 4.8A9 9 0 013.5 15"/></svg>
+            Yenile
+          </button>
+        </div>
+      </div>
+
+      <!-- 4+4 stat kartlar -->
+      <div class="stats-grid" id="wx-stats"></div>
+
+      <!-- Skor (sol) + Tavsiyeler (sağ) -->
+      <div class="fc-main-grid">
+        <div class="score-card" id="score-card">
+          <div class="score-inner">
+            <span class="score-lbl">Avlanma Uygunluğu</span>
+            <div class="score-circle" id="sc-circle">
+              <span class="score-num" id="sc-num">—</span>
+              <span class="score-denom">/100</span>
+            </div>
+            <span class="score-pill sp-amber" id="sc-pill">—</span>
+            <div class="score-bar-track" style="width:100%;margin-bottom:.8rem">
+              <div class="score-bar-fill" id="sc-bar" style="width:0%"></div>
+            </div>
+            <div class="score-comment" id="sc-comment">Veri yükleniyor...</div>
+          </div>
+        </div>
+        <div class="recs-grid" id="wx-recs"></div>
+      </div>
+      
+      <!-- Topluluk Widget -->
+      <div class="community-widget" style="margin-top:1.5rem;background:var(--ivory);border:1.5px solid var(--linen);border-radius:var(--r);overflow:hidden">
+        <div style="background:linear-gradient(135deg,var(--caramel),var(--latte));padding:.9rem 1.2rem;display:flex;align-items:center;justify-content:space-between">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font-size:1.1rem">🤝</span>
+            <span style="font-weight:700;color:var(--ivory);font-size:.9rem">Topluluk</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:5px">
+            <span style="width:7px;height:7px;border-radius:50%;background:#4ade80;display:inline-block"></span>
+            <span style="font-size:.75rem;color:rgba(255,255,255,.8)" id="widget-online">5 çevrimiçi</span>
+          </div>
+        </div>
+        <div style="padding:.9rem;display:flex;flex-direction:column;gap:.6rem;max-height:220px;overflow-y:auto" id="widget-msgs">
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--caramel),var(--honey));display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:var(--espresso);flex-shrink:0">A</div>
+            <div style="background:var(--cream);border-radius:0 8px 8px 8px;padding:.45rem .7rem;font-size:.8rem;color:var(--espresso)">Bugün Sarıyer'de güzel lüfer tutuldu 🎣</div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#2ba8e0,#4ec3f0);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:#fff;flex-shrink:0">M</div>
+            <div style="background:var(--cream);border-radius:0 8px 8px 8px;padding:.45rem .7rem;font-size:.8rem;color:var(--espresso)">Kadıköy iskelesi harika, tavsiye ederim</div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#059669,#10b981);display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:#fff;flex-shrink:0">H</div>
+            <div style="background:var(--cream);border-radius:0 8px 8px 8px;padding:.45rem .7rem;font-size:.8rem;color:var(--espresso)">Jig yem çok iyi son günlerde 👍</div>
+          </div>
+        </div>
+        <div style="padding:.7rem 1rem;border-top:1px solid var(--linen)">
+          <button onclick="goPage('community')" style="width:100%;padding:8px;background:linear-gradient(135deg,var(--caramel),var(--honey));color:var(--espresso);border:none;border-radius:6px;font-family:inherit;font-size:.82rem;font-weight:700;cursor:pointer">Sohbete Katıl →</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SHOP -->
+<div class="page" id="pg-shop">
+  <div class="page-banner">
+    <div class="banner-inner">
+      <span class="banner-eyebrow">Ekipman Mağazası</span>
+      <h1 class="banner-title">Profesyonel Balıkçı Ekipmanları</h1>
+      <p class="banner-sub">20 ürün · 6 kategori · Koşullara göre akıllı öneri</p>
+    </div>
+  </div>
+  <div class="shop-wrap">
+    <aside class="shop-sidebar">
+      <div class="sdb">
+        <div class="sdb-head"><h4>Kategori</h4></div>
+        <div class="sdb-body"><ul class="cat-list" id="shop-cats"></ul></div>
+      </div>
+      <div class="sdb">
+        <div class="sdb-head"><h4>Fiyat</h4></div>
+        <div class="sdb-body">
+          <input type="range" class="range-input" min="0" max="3000" value="3000" id="shop-price" oninput="shopFilter()">
+          <div class="range-labels"><span>0₺</span><span id="shop-price-lbl">3.000₺</span></div>
+        </div>
+      </div>
+      <div class="sdb">
+        <div class="sdb-head"><h4>Min. Puan</h4></div>
+        <div class="sdb-body" style="display:flex;flex-direction:column;gap:6px">
+          <label style="display:flex;align-items:center;gap:7px;font-size:.84rem;color:var(--brown);cursor:pointer"><input type="radio" name="srating" value="0" checked onchange="shopFilter()"> Tümü</label>
+          <label style="display:flex;align-items:center;gap:7px;font-size:.84rem;color:var(--brown);cursor:pointer"><input type="radio" name="srating" value="4.5" onchange="shopFilter()"> ★ 4.5+</label>
+          <label style="display:flex;align-items:center;gap:7px;font-size:.84rem;color:var(--brown);cursor:pointer"><input type="radio" name="srating" value="4" onchange="shopFilter()"> ★ 4.0+</label>
+        </div>
+      </div>
+    </aside>
+    <main>
+      <div class="shop-toolbar">
+        <div class="search-wrap">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" class="inp search-inp" id="shop-search" placeholder="Ürün ara..." oninput="shopFilter()">
+        </div>
+        <select class="inp" id="shop-sort" onchange="shopFilter()" style="width:170px">
+          <option value="default">Önerilen</option>
+          <option value="price-asc">Fiyat ↑</option>
+          <option value="price-desc">Fiyat ↓</option>
+          <option value="rating">En Yüksek Puan</option>
+          <option value="popular">En Çok Yorumlanan</option>
+        </select>
+        <span class="result-count" id="shop-count"></span>
+      </div>
+      <div class="prod-grid" id="shop-grid"></div>
+    </main>
+  </div>
+</div>
+
+<!-- PRODUCT DETAIL -->
+<div class="page" id="pg-product">
+  <div class="product-page">
+    <button class="back-btn" id="pd-back">← Geri Dön</button>
+    <div id="pd-content"></div>
+  </div>
+</div>
+
+<!-- CART -->
+<div class="page" id="pg-cart">
+  <div class="page-banner">
+    <div class="banner-inner">
+      <span class="banner-eyebrow">Alışveriş</span>
+      <h1 class="banner-title">Sepetim</h1>
+    </div>
+  </div>
+  <div id="cart-empty" style="display:none;text-align:center;padding:4rem 2rem;max-width:500px;margin:0 auto">
+    <div style="font-size:3rem;margin-bottom:1rem;opacity:.4">🛒</div>
+    <h2 style="font-size:1.5rem;color:var(--brown);margin-bottom:.5rem">Sepetiniz Boş</h2>
+    <p style="color:var(--mist);margin-bottom:1.5rem;font-size:.9rem">Mağazamızdan ürün ekleyerek başlayın.</p>
+    <button class="btn btn-dark" onclick="goPage('shop')">Mağazaya Git →</button>
+  </div>
+  <div id="cart-wrap" class="cart-page">
+    <div class="cart-layout">
+      <div><div id="cart-items"></div></div>
+      <div class="order-box">
+        <div class="ob-inner">
+          <div class="ob-title">Sipariş Özeti</div>
+          <div id="ob-addr"></div>
+          <div class="coupon-row">
+            <input type="text" class="coupon-inp" id="coupon-inp" placeholder="Kupon kodu (BALIK10)">
+            <button class="coupon-apply" onclick="applyCoupon()">Uygula</button>
+          </div>
+          <div class="ob-rows" id="ob-rows"></div>
+          <button class="btn btn-copper btn-full btn-lg" onclick="placeOrder()">Siparişi Tamamla →</button>
+          <div class="trust-row"><span>🔒 SSL</span><span>↩️ 30 Gün İade</span><span>🚚 Hızlı Kargo</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAVORITES -->
+<div class="page" id="pg-favorites">
+  <div class="page-banner">
+    <div class="banner-inner">
+      <span class="banner-eyebrow">Listelerim</span>
+      <h1 class="banner-title">Favorilerim</h1>
+    </div>
+  </div>
+  <div class="favs-page">
+    <div id="fav-content"></div>
+  </div>
+</div>
+
+<!-- ACCOUNT -->
+<div class="page" id="pg-account">
+
+  <!-- Profil Hero -->
+  <div class="ac-hero">
+    <div class="ac-hero-inner">
+      <div class="ac-avatar-wrap">👤</div>
+      <div class="ac-hero-info">
+        <div class="ac-hero-name" id="ac-sidebar-name">—</div>
+        <div class="ac-hero-email" id="ac-sidebar-email">—</div>
+        <div class="ac-hero-stats">
+          <div class="ac-hstat">
+            <div class="ac-hstat-num" id="st-orders">0</div>
+            <div class="ac-hstat-lbl">Sipariş</div>
+          </div>
+          <div class="ac-hstat">
+            <div class="ac-hstat-num" id="st-favs">0</div>
+            <div class="ac-hstat-lbl">Favori</div>
+          </div>
+          <div class="ac-hstat">
+            <div class="ac-hstat-num" id="st-cart">0</div>
+            <div class="ac-hstat-lbl">Sepette</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tab Bar -->
+  <div class="ac-tab-bar">
+    <div class="ac-tab-bar-inner">
+      <button class="ac-tab active" onclick="showAcSec('profile')">👤 Profilim</button>
+      <button class="ac-tab" onclick="showAcSec('orders')">📦 Siparişlerim</button>
+      <button class="ac-tab" onclick="showAcSec('addresses')">📍 Adreslerim</button>
+      <button class="ac-tab" onclick="showAcSec('cards')">💳 Kartlarım</button>
+      <button class="ac-tab" onclick="showAcSec('settings')">⚙️ Ayarlar</button>
+      <button class="ac-tab" onclick="doLogout()" style="color:#8c2a1a;margin-left:auto">🚪 Çıkış</button>
+    </div>
+  </div>
+
+  <!-- İçerik -->
+  <div class="ac-body">
+
+    <!-- PROFİL -->
+    <div class="ac-sec active" id="ac-profile">
+      <div class="ac-sec-head">
+        <div><h2>Profil Bilgileri</h2><p>Hesap bilgilerinizi güncel tutun.</p></div>
+      </div>
+      <div class="profile-grid">
+        <div class="profile-card">
+          <h4>Kişisel Bilgiler</h4>
+          <div class="frow">
+            <div class="fgroup"><label class="flabel">Ad</label><input type="text" class="inp" id="pf-fn"></div>
+            <div class="fgroup"><label class="flabel">Soyad</label><input type="text" class="inp" id="pf-ln"></div>
+          </div>
+          <div class="fgroup"><label class="flabel">E-posta</label><input type="email" class="inp" id="pf-email"></div>
+          <div class="fgroup"><label class="flabel">Telefon</label><input type="tel" class="inp" id="pf-phone"></div>
+        </div>
+        <div class="profile-card">
+          <h4>Güvenlik</h4>
+          <div class="fgroup"><label class="flabel">Mevcut Şifre</label><input type="password" class="inp" placeholder="••••••••"></div>
+          <div class="fgroup"><label class="flabel">Yeni Şifre</label><input type="password" class="inp" placeholder="••••••••"></div>
+          <div class="fgroup"><label class="flabel">Şifre Tekrar</label><input type="password" class="inp" placeholder="••••••••"></div>
+          <button class="btn btn-outline btn-sm" onclick="toast('Şifre güncellendi','🔒')">Şifreyi Güncelle</button>
+        </div>
+      </div>
+      <div style="display:flex;gap:9px">
+        <button class="btn btn-dark" onclick="saveProfile()">Değişiklikleri Kaydet</button>
+        <button class="btn btn-outline" onclick="loadProfile()">İptal</button>
+      </div>
+    </div>
+
+    <!-- SİPARİŞLER -->
+    <div class="ac-sec" id="ac-orders">
+      <div class="ac-sec-head"><div><h2>Siparişlerim</h2><p>Tüm sipariş geçmişiniz ve durumları.</p></div></div>
+      <div id="ac-orders-list"></div>
+    </div>
+
+    <!-- ADRESLER -->
+    <div class="ac-sec" id="ac-addresses">
+      <div class="ac-sec-head"><div><h2>Adreslerim</h2><p>Teslimat adreslerinizi yönetin.</p></div></div>
+      <div class="item-grid" id="ac-addr-grid"></div>
+      <div class="add-form">
+        <button class="add-toggle" onclick="toggleForm('ac-addr-form')">+ Yeni Adres Ekle</button>
+        <div class="add-body" id="ac-addr-form">
+          <div class="frow">
+            <div class="fgroup"><label class="flabel">Başlık</label><input type="text" class="inp" id="af-title" placeholder="Ev, İş..."></div>
+            <div class="fgroup"><label class="flabel">İlçe</label><input type="text" class="inp" id="af-district"></div>
+          </div>
+          <div class="fgroup"><label class="flabel">Tam Adres</label><textarea class="inp" id="af-full" placeholder="Mahalle, cadde, bina no, daire..."></textarea></div>
+          <div class="frow">
+            <div class="fgroup"><label class="flabel">Şehir</label><input type="text" class="inp" id="af-city" value="İstanbul"></div>
+            <div class="fgroup"><label class="flabel">Posta Kodu</label><input type="text" class="inp" id="af-zip"></div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-dark btn-sm" onclick="saveAddress()">Kaydet</button>
+            <button class="btn btn-outline btn-sm" onclick="toggleForm('ac-addr-form')">Vazgeç</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KARTLAR -->
+    <div class="ac-sec" id="ac-cards">
+      <div class="ac-sec-head"><div><h2>Kartlarım</h2><p>Kayıtlı ödeme kartlarınız. Kart numarası şifreli saklanır.</p></div></div>
+      <div class="item-grid" id="ac-cards-grid"></div>
+      <div class="add-form">
+        <button class="add-toggle" onclick="toggleForm('ac-card-form')">+ Yeni Kart Ekle</button>
+        <div class="add-body" id="ac-card-form">
+          <div class="fgroup"><label class="flabel">Kart Üzerindeki İsim</label><input type="text" class="inp" id="cf-name"></div>
+          <div class="fgroup"><label class="flabel">Kart Numarası</label><input type="text" class="inp" id="cf-number" placeholder="1234 5678 9012 3456" maxlength="19" oninput="fmtCard(this)"></div>
+          <div class="frow">
+            <div class="fgroup"><label class="flabel">Son Kullanma</label><input type="text" class="inp" id="cf-exp" placeholder="AA/YY" maxlength="5" oninput="fmtExp(this)"></div>
+            <div class="fgroup"><label class="flabel">CVV</label><input type="text" class="inp" id="cf-cvv" placeholder="***" maxlength="3"></div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-dark btn-sm" onclick="saveCard()">Kaydet</button>
+            <button class="btn btn-outline btn-sm" onclick="toggleForm('ac-card-form')">Vazgeç</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AYARLAR -->
+    <div class="ac-sec" id="ac-settings">
+      <div class="ac-sec-head"><div><h2>Ayarlar</h2><p>Bildirim ve gizlilik tercihleriniz.</p></div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem">
+        <div style="background:var(--ivory);border-radius:11px;border:1px solid var(--linen);padding:1.5rem">
+          <div class="sg"><h4>Bildirimler</h4>
+            <div class="srow"><div class="srow-info"><h5>Push Bildirimleri</h5><p>Sipariş güncellemeleri</p></div><label class="tgl"><input type="checkbox" checked><span class="tgl-track"></span></label></div>
+            <div class="srow"><div class="srow-info"><h5>E-posta Bülteni</h5><p>Haftalık ipuçları</p></div><label class="tgl"><input type="checkbox"><span class="tgl-track"></span></label></div>
+            <div class="srow"><div class="srow-info"><h5>SMS Bildirimleri</h5><p>Kargo takip</p></div><label class="tgl"><input type="checkbox" checked><span class="tgl-track"></span></label></div>
+          </div>
+        </div>
+        <div style="background:var(--ivory);border-radius:11px;border:1px solid var(--linen);padding:1.5rem">
+          <div class="sg"><h4>Gizlilik</h4>
+            <div class="srow"><div class="srow-info"><h5>Konum Paylaşımı</h5><p>Yakın ilçe tahminleri</p></div><label class="tgl"><input type="checkbox" checked><span class="tgl-track"></span></label></div>
+            <div class="srow"><div class="srow-info"><h5>Analitik Veriler</h5><p>Anonim kullanım</p></div><label class="tgl"><input type="checkbox"><span class="tgl-track"></span></label></div>
+          </div>
+          <div class="sg"><h4>Hesap</h4>
+            <div style="display:flex;gap:9px;flex-wrap:wrap">
+              <button class="btn btn-outline btn-sm" onclick="toast('Link gönderildi','📧')">Şifremi Değiştir</button>
+              <button onclick="if(confirm('Hesabı silmek istiyor musunuz?'))toast('Talep alındı','⚠️')" style="font-family:inherit;font-size:.82rem;padding:7px 13px;border-radius:5px;border:1px solid #f5b0a0;background:#fde0de;color:#8c2a1a;cursor:pointer;font-weight:600">Hesabı Sil</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- TOPLULUK -->
+<div class="page" id="pg-community">
+  <div class="community-wrap">
+    <div class="community-header">
+      <h2>🎣 Balıkçı Topluluğu</h2>
+      <p>İstanbul'un dört bir yanından balıkçılarla sohbet et, deneyimlerini paylaş.</p>
+    </div>
+    <div class="chat-box">
+      <div class="chat-groups" id="chat-groups"></div>
+      <div class="online-count">
+        <span class="online-dot"></span>
+        <span id="online-count-txt">3 kişi çevrimiçi</span>
+        <span style="margin-left:auto;color:var(--caramel);font-weight:600">Canlı Sohbet</span>
+      </div>
+      <div class="chat-messages" id="chat-messages"></div>
+      <div class="chat-file-preview" id="chat-file-preview"></div>
+      <div class="chat-input-wrap">
+        <input type="file" id="chat-file-input" style="display:none"
+          accept="image/jpeg,image/jpg,image/png,image/webp,image/gif,application/pdf,application/zip,.zip,.doc,.docx,.xls,.xlsx,.csv,.txt"
+          onchange="onChatFilePick(event)">
+        <button class="chat-att-btn" type="button" onclick="document.getElementById('chat-file-input').click()" title="Dosya ekle" aria-label="Dosya ekle">📎</button>
+        <input type="text" class="chat-inp" id="chat-input"
+          placeholder="Mesajını yaz... (Enter ile gönder)"
+          onkeydown="if(event.key==='Enter')sendChatMsg()">
+        <button class="chat-send" onclick="sendChatMsg()">➤</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ AUTH MODAL ══════════════════════════════════════════ -->
+<div class="auth-overlay" id="authOverlay" onclick="if(event.target===this)closeAuth()">
+  <div class="auth-modal">
+
+    <!-- Kapat -->
+    <button class="auth-close" onclick="closeAuth()">✕</button>
+
+    <!-- SOL — Dekoratif panel -->
+    <div class="auth-deco">
+      <div class="auth-deco-texture"></div>
+      <div class="auth-deco-brand">
+        <div class="auth-deco-icon">⚓</div>
+        <div class="auth-deco-name">BalıkAv<em>İstanbul</em></div>
+      </div>
+      <div class="auth-deco-mid">
+        <h2>İstanbul'un<br><strong>Sahil Hattı,</strong><br>Tek Hesapta.</h2>
+        <p>Siparişlerini takip et, favorilerini kaydet, üyelere özel fırsatlardan yararlan.</p>
+      </div>
+      <div class="auth-deco-feats">
+        <div class="auth-feat"><span class="auth-feat-dot"></span>Boğaz, Marmara ve Haliç için canlı koşullar</div>
+        <div class="auth-feat"><span class="auth-feat-dot"></span>Sipariş ve teslimat takibi</div>
+        <div class="auth-feat"><span class="auth-feat-dot"></span>Favori ürün listesi</div>
+        <div class="auth-feat"><span class="auth-feat-dot"></span>Üyelere özel kupon ve kampanyalar</div>
+      </div>
+    </div>
+
+    <!-- SAĞ — Form -->
+    <div class="auth-form-panel">
+
+      <!-- Tab -->
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="atab-login"    onclick="switchTab('login')">Giriş Yap</button>
+        <button class="auth-tab"        id="atab-register" onclick="switchTab('register')">Kayıt Ol</button>
+      </div>
+
+      <!-- Hata / Başarı -->
+      <div class="auth-err" id="auth-err"><span>⚠</span><span id="auth-err-txt"></span></div>
+      <div class="auth-success" id="auth-success"><span>✓</span><span id="auth-success-txt"></span></div>
+
+      <!-- GİRİŞ FORMU -->
+      <div id="form-login">
+        <h3 class="auth-form-title">Tekrar hoş geldiniz</h3>
+        <p class="auth-form-sub">Hesabınıza giriş yapın.</p>
+        <div class="auth-fgroup">
+          <label class="auth-label">E-posta</label>
+          <input type="email" class="auth-inp" id="li-email" placeholder="ornek@email.com" autocomplete="email">
+        </div>
+        <div class="auth-fgroup">
+          <label class="auth-label">Şifre</label>
+          <input type="password" class="auth-inp" id="li-pass" placeholder="••••••••" autocomplete="current-password"
+            onkeydown="if(event.key==='Enter')doAuthLogin()">
+        </div>
+        <button class="auth-submit" id="btn-login" onclick="doAuthLogin()">
+          <div class="auth-spin"></div>
+          <span class="auth-btn-txt">Giriş Yap →</span>
+        </button>
+        <button class="auth-forgot" onclick="doForgot()">Şifremi unuttum</button>
+        <div class="auth-divider">veya</div>
+        <p style="font-size:.82rem;color:var(--mist);text-align:center">
+          Hesabın yok mu?
+          <button onclick="switchTab('register')" style="background:none;border:none;color:var(--caramel);font-family:inherit;font-size:.82rem;font-weight:700;cursor:pointer;padding:0">Kayıt ol →</button>
+        </p>
+        <div class="auth-security">
+          <span class="auth-security-icon">🔒</span>
+          Bilgileriniz güvenle saklanır. Üçüncü taraflarla paylaşılmaz.
+        </div>
+      </div>
+
+      <!-- KAYIT FORMU -->
+      <div id="form-register" style="display:none">
+        <h3 class="auth-form-title">Hesap oluşturun</h3>
+        <p class="auth-form-sub">Ücretsiz kayıt olun, hemen alışverişe başlayın.</p>
+        <div class="auth-frow">
+          <div class="auth-fgroup">
+            <label class="auth-label">Ad</label>
+            <input type="text" class="auth-inp" id="reg-fn" placeholder="Adınız" autocomplete="given-name">
+          </div>
+          <div class="auth-fgroup">
+            <label class="auth-label">Soyad</label>
+            <input type="text" class="auth-inp" id="reg-ln" placeholder="Soyadınız" autocomplete="family-name">
+          </div>
+        </div>
+        <div class="auth-fgroup">
+          <label class="auth-label">E-posta</label>
+          <input type="email" class="auth-inp" id="reg-email" placeholder="ornek@email.com" autocomplete="email">
+        </div>
+        <div class="auth-fgroup">
+          <label class="auth-label">Telefon <span style="font-weight:400;text-transform:none;letter-spacing:0">(isteğe bağlı)</span></label>
+          <input type="tel" class="auth-inp" id="reg-phone" placeholder="0532 000 00 00" autocomplete="tel">
+        </div>
+        <div class="auth-fgroup">
+          <label class="auth-label">Şifre</label>
+          <input type="password" class="auth-inp" id="reg-pass" placeholder="En az 6 karakter" autocomplete="new-password"
+            onkeydown="if(event.key==='Enter')doAuthRegister()">
+        </div>
+        <button class="auth-submit" id="btn-register" onclick="doAuthRegister()">
+          <div class="auth-spin"></div>
+          <span class="auth-btn-txt">Hesap Oluştur →</span>
+        </button>
+        <div style="margin-top:.8rem;font-size:.76rem;color:var(--mist);line-height:1.5">
+          Kayıt olarak
+          <span style="color:var(--caramel)">Kullanım Koşullarını</span> ve
+          <span style="color:var(--caramel)">Gizlilik Politikasını</span> kabul etmiş olursunuz.
+        </div>
+        <div class="auth-divider">veya</div>
+        <p style="font-size:.82rem;color:var(--mist);text-align:center">
+          Zaten hesabın var mı?
+          <button onclick="switchTab('login')" style="background:none;border:none;color:var(--caramel);font-family:inherit;font-size:.82rem;font-weight:700;cursor:pointer;padding:0">Giriş yap →</button>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ÖDEME MODAL -->
+<div class="payment-overlay" id="paymentOverlay" onclick="if(event.target===this)closePaymentModal()" style="position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:5000;display:none;align-items:center;justify-content:center">
+  <div style="background:#f8fbff;border-radius:14px;padding:2.5rem;width:min(480px,90vw);box-shadow:0 20px 60px rgba(0,0,0,.3)">
+    <div style="text-align:center;margin-bottom:2rem">
+      <div style="font-size:3.5rem;margin-bottom:1rem">💳</div>
+      <h3 style="font-size:1.3rem;color:#0d1f35;margin-bottom:.5rem">Ödemeyi Tamamla</h3>
+      <div id="paymentAmount" style="font-size:1.8rem;color:#1a8fd1;font-weight:700">—</div>
+      <p style="color:#5a7a96;font-size:.85rem;margin-top:.5rem">Test ödeme sistemi — Tüm veriler şifreli</p>
+    </div>
+
+    <div style="background:rgba(26, 143, 209,.08);border-left:4px solid #1a8fd1;padding:1rem;border-radius:6px;margin-bottom:1.5rem">
+      <div style="font-size:.8rem;color:#5a7a96;margin-bottom:.4rem"><strong>Sipariş Özeti:</strong></div>
+      <div id="paymentSummary" style="font-size:.85rem;color:#6b7060;line-height:1.6">—</div>
+    </div>
+
+    <div style="display:flex;gap:10px;margin-top:1.5rem">
+      <button onclick="closePaymentModal()" style="flex:1;padding:11px;border:1px solid #d0c0b0;background:#f8fbff;color:#5a7a96;border-radius:7px;font-family:inherit;font-size:.88rem;font-weight:600;cursor:pointer;transition:all .2s">İptal</button>
+      <button id="paymentConfirmBtn" onclick="confirmPayment()" style="flex:1;padding:11px;background:linear-gradient(135deg,#1a8fd1,#4ec3f0);color:#0d1f35;border:none;border-radius:7px;font-family:inherit;font-size:.88rem;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 4px 15px rgba(26, 143, 209,.3)" onmouseover="this.style.filter='brightness(1.08)';this.style.transform='translateY(-1px)'" onmouseout="this.style.filter='brightness(1)';this.style.transform='translateY(0)'">Ödemeyi Onayla</button>
+    </div>
+
+    <div style="font-size:.7rem;color:#5a7a96;text-align:center;margin-top:1rem">🔒 Bu test ortamıdır. Gerçek ödeme alınmaz.</div>
+  </div>
+</div>
+
+
+<!-- KAYAN İLETİŞİM BUTONU -->
+<div class="contact-float" id="contactFloat">
+  <div class="contact-float-menu" id="contactMenu">
+    <a href="mailto:info@istanbulbogazavciligi.com.tr" class="contact-float-item">📧 E-posta</a>
+    <a href="https://wa.me/905001234567" target="_blank" class="contact-float-item">💬 WhatsApp</a>
+    <span class="contact-float-item" onclick="goPage('community')">🤝 Topluluk</span>
+  </div>
+  <button class="contact-float-icon" onclick="toggleContactMenu()" title="İletişim">📡</button>
+</div>
+<!-- Yukarı Çık -->
+<button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Yukarı çık">↑</button>
+
+<div id="toast"></div>
+
+<!-- ══════════════════════════════════════════
+     DATA + LOGIC
+══════════════════════════════════════════ -->
+
+<!-- ════════════════ KURŞUN SEÇİCİ KALDIRILDI ════════════════ -->
+<!-- Bu özellik artık doğrudan mağaza ve ürün detay sayfasındaki gram seçici ile sunuluyor. -->
+
+  <!-- Uygulama Mantığı -->
+  <script src="app.js"></script>
+</body>
+</html>
