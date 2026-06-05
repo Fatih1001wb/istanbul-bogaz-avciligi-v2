@@ -1,7 +1,0 @@
-{
-  "name": "istanbul-bogaz-avciligi",
-  "version": "2.0.0",
-  "scripts": {
-    "start": "npx serve . -p 3000"
-  }
-}

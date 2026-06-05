@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://istanbulbogazavciligi.com.tr/sitemap.xml
