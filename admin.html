@@ -1102,12 +1102,9 @@ select.finp{cursor:pointer;appearance:none;background-image:url("data:image/svg+
 <div id="toast"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-client.js"></script>
 <script>
-// ── SUPABASE BAĞLANTISI ──────────────────────────────
-// Değerleri config.js'ten al (config.js'i doldurmayı unutma)
-const SUPABASE_URL  = window.ADMIN_SUPABASE_URL;
-const SUPABASE_ANON = window.ADMIN_SUPABASE_ANON;
-const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
 
 // ── DURUM MAP ────────────────────────────────────────
 const STATUS = {
@@ -1553,6 +1550,7 @@ document.addEventListener('keydown', e => {
   document.getElementById('adminInfo').textContent = '🔑 ' + session.user.email;
   loadDashboard();
 })();
+
 </script>
 </body>
 </html>
