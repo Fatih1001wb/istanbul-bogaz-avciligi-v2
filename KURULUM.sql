@@ -94,10 +94,13 @@ create table if not exists public.orders (
   address_snap    jsonb,
   payment_ref     text,
   payment_method  text,
+  cargo_code      text,
   notes           text,
   created_at      timestamptz default now(),
   updated_at      timestamptz default now()
 );
+
+alter table public.orders add column if not exists cargo_code text;
 
 -- ── SİPARİŞ KALEMLERİ (gram desteğiyle) ──
 create table if not exists public.order_items (

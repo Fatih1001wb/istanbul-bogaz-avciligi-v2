@@ -1526,8 +1526,10 @@ async function syncUserOrders() {
       })),
       total: Number(o.total || 0),
       date: new Date(o.created_at).toLocaleDateString('tr-TR'),
-      status: o.status || 'pending'
+      status: o.status || 'pending',
+      cargo_code: o.cargo_code || null
     }));
+    if (document.getElementById('pg-account')?.classList.contains('active')) renderOrders();
   } catch (e) {
     // Sipariş alanını yerel veride tutmaya devam et.
   }
@@ -1867,6 +1869,32 @@ function deleteCard(id) {
 
 /* ── AUTH MODAL ── */
 let currentUser = null;
+
+let orderStatusChannel = null;
+
+function stopOrderWatcher() {
+  if (orderStatusChannel && SupaDB?.sb) {
+    SupaDB.sb.removeChannel(orderStatusChannel);
+    orderStatusChannel = null;
+  }
+}
+
+function startOrderWatcher() {
+  if (!currentUser || !SupaDB?.sb) return;
+  stopOrderWatcher();
+  orderStatusChannel = SupaDB.sb
+    .channel('orders-user-' + currentUser.id)
+    .on('postgres_changes', {
+      event: 'UPDATE',
+      schema: 'public',
+      table: 'orders',
+      filter: `user_id=eq.${currentUser.id}`
+    }, async () => {
+      await syncUserOrders();
+      if (document.getElementById('pg-account')?.classList.contains('active')) renderOrders();
+    })
+    .subscribe();
+}
 
 function openAuthOrAccount() {
   if (currentUser) goPage('account');
@@ -2466,6 +2494,9 @@ async function initApp() {
         S.user = { id: session.user.id, name: session.user.email.split('@')[0], email: session.user.email, phone: '' };
       }
       updateBadges();
+      await syncUserOrders();
+      await syncUserAddresses();
+      startOrderWatcher();
     }
 
     // Oturum değişikliklerini dinle (giriş/çıkış/yenileme)
@@ -2484,8 +2515,12 @@ async function initApp() {
           S.user = { id: session.user.id, name: session.user.email.split('@')[0], email: session.user.email, phone: '' };
         }
         updateBadges();
+        await syncUserOrders();
+        await syncUserAddresses();
+        startOrderWatcher();
         if (document.getElementById('pg-account')?.classList.contains('active')) loadProfile();
       } else if (event === 'SIGNED_OUT') {
+        stopOrderWatcher();
         currentUser = null;
         S.user = { name: '', email: '', phone: '' };
         updateBadges();

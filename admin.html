@@ -1294,13 +1294,18 @@ async function openOrderModal(id) {
       <select class="finp" id="new-status">
         ${Object.entries(STATUS).map(([k,v])=>`<option value="${k}" ${o.status===k?'selected':''}>${v.label}</option>`).join('')}
       </select>
+    </div>
+    <div class="fgroup" style="margin-top:1rem">
+      <label class="flabel">Kargo Takip No</label>
+      <input class="finp" id="cargo-code" placeholder="Örn: ARS123456789" value="${o.cargo_code||''}">
     </div>`;
   openModal('orderModal');
 }
 
 async function updateOrderStatus() {
   const status = document.getElementById('new-status').value;
-  const { error } = await sb.from('orders').update({status}).eq('id', currentOrderId);
+  const cargoCode = document.getElementById('cargo-code')?.value.trim() || null;
+  const { error } = await sb.from('orders').update({status, cargo_code: cargoCode}).eq('id', currentOrderId);
   if (error) { toast('Hata: '+error.message, '❌'); return; }
   toast('Durum güncellendi', '✓');
   closeModal('orderModal');
