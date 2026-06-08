@@ -1295,17 +1295,22 @@ async function openOrderModal(id) {
         ${Object.entries(STATUS).map(([k,v])=>`<option value="${k}" ${o.status===k?'selected':''}>${v.label}</option>`).join('')}
       </select>
     </div>
-    <div class="fgroup" style="margin-top:1rem">
-      <label class="flabel">Kargo Takip No</label>
-      <input class="finp" id="cargo-code" placeholder="Örn: ARS123456789" value="${o.cargo_code||''}">
+    <div class="fgroup" style="margin-top:.6rem">
+      <label class="flabel">Kargo Takip Numarası <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(opsiyonel)</span></label>
+      <input type="text" class="finp" id="cargo-code" placeholder="örn. 1234567890" value="${o.cargo_code || ''}">
+    </div>
+    <div class="fgroup">
+      <label class="flabel">Notlar <span style="color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">(opsiyonel)</span></label>
+      <textarea class="finp" id="order-notes" rows="2" placeholder="Müşteri için not...">${o.notes || ''}</textarea>
     </div>`;
   openModal('orderModal');
 }
 
 async function updateOrderStatus() {
   const status = document.getElementById('new-status').value;
-  const cargoCode = document.getElementById('cargo-code')?.value.trim() || null;
-  const { error } = await sb.from('orders').update({status, cargo_code: cargoCode}).eq('id', currentOrderId);
+  const cargo_code = document.getElementById('cargo-code')?.value.trim() || null;
+  const notes = document.getElementById('order-notes')?.value.trim() || null;
+  const { error } = await sb.from('orders').update({status, cargo_code, notes}).eq('id', currentOrderId);
   if (error) { toast('Hata: '+error.message, '❌'); return; }
   toast('Durum güncellendi', '✓');
   closeModal('orderModal');

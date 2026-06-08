@@ -196,9 +196,18 @@ function goPage(id, extra) {
   if (id === 'favorites') renderFavorites();
   if (id === 'account') {
     loadProfile();
-    renderOrders();
+    renderOrders();    // Önce mevcut verilerle göster
     renderAddrs();
     renderAcCards();
+    // Sonra DB'den taze verileri çek ve yeniden çiz
+    if (currentUser) {
+      (async () => {
+        await syncUserOrders();
+        await syncUserAddresses();
+        renderOrders();
+        renderAddrs();
+      })();
+    }
   }
   prevPage = id;
 }
@@ -1455,6 +1464,10 @@ const STATUS_MAP = {
     l: 'Onaylandı',
     c: 'pill-blue'
   },
+  processing: {
+    l: 'Hazırlanıyor',
+    c: 'pill-amber'
+  },
   shipped: {
     l: 'Kargoda',
     c: 'pill-amber'
@@ -1464,7 +1477,11 @@ const STATUS_MAP = {
     c: 'pill-green'
   },
   cancelled: {
-    l: 'İptal',
+    l: 'İptal Edildi',
+    c: 'pill-red'
+  },
+  refunded: {
+    l: 'İade Edildi',
     c: 'pill-red'
   }
 };
@@ -1476,8 +1493,25 @@ function showAcSec(id) {
   if (sec) sec.classList.add('active');
   const btns = document.querySelectorAll('.ac-tab');
   if (AC_MAP[id] !== undefined) btns[AC_MAP[id]]?.classList.add('active');
-  if (id === 'orders') renderOrders();
-  if (id === 'addresses') renderAddrs();
+  if (id === 'orders') {
+    renderOrders();
+    // DB'den taze veri çek, geldikçe yeniden render et
+    if (currentUser) {
+      (async () => {
+        await syncUserOrders();
+        renderOrders();
+      })();
+    }
+  }
+  if (id === 'addresses') {
+    renderAddrs();
+    if (currentUser) {
+      (async () => {
+        await syncUserAddresses();
+        renderAddrs();
+      })();
+    }
+  }
   if (id === 'cards') renderAcCards();
 }
 
@@ -1527,9 +1561,9 @@ async function syncUserOrders() {
       total: Number(o.total || 0),
       date: new Date(o.created_at).toLocaleDateString('tr-TR'),
       status: o.status || 'pending',
-      cargo_code: o.cargo_code || null
+      cargo_code: o.cargo_code || null,
+      notes: o.notes || null
     }));
-    if (document.getElementById('pg-account')?.classList.contains('active')) renderOrders();
   } catch (e) {
     // Sipariş alanını yerel veride tutmaya devam et.
   }
@@ -1600,6 +1634,7 @@ function cargoTrackHTML(o) {
   const order_steps = ['pending','confirmed','processing','shipped','delivered'];
   const currentIdx = order_steps.indexOf(o.status);
   const isCancelled = o.status === 'cancelled';
+  const isRefunded  = o.status === 'refunded';
 
   if(isCancelled) return `
     <div style="margin-top:1rem;padding:.9rem 1rem;background:#fff5f5;border:1px solid #fecaca;border-radius:8px;display:flex;align-items:center;gap:9px">
@@ -1607,6 +1642,15 @@ function cargoTrackHTML(o) {
       <div>
         <div style="font-size:.85rem;font-weight:700;color:#dc2626">Sipariş İptal Edildi</div>
         <div style="font-size:.78rem;color:#ef4444">İade işleminiz başlatılmıştır.</div>
+      </div>
+    </div>`;
+
+  if(isRefunded) return `
+    <div style="margin-top:1rem;padding:.9rem 1rem;background:#fdf2f8;border:1px solid #fbcfe8;border-radius:8px;display:flex;align-items:center;gap:9px">
+      <span style="font-size:1.2rem">💸</span>
+      <div>
+        <div style="font-size:.85rem;font-weight:700;color:#9d174d">İade Tamamlandı</div>
+        <div style="font-size:.78rem;color:#be185d">Ödemeniz hesabınıza iade edildi.</div>
       </div>
     </div>`;
 
@@ -1869,32 +1913,6 @@ function deleteCard(id) {
 
 /* ── AUTH MODAL ── */
 let currentUser = null;
-
-let orderStatusChannel = null;
-
-function stopOrderWatcher() {
-  if (orderStatusChannel && SupaDB?.sb) {
-    SupaDB.sb.removeChannel(orderStatusChannel);
-    orderStatusChannel = null;
-  }
-}
-
-function startOrderWatcher() {
-  if (!currentUser || !SupaDB?.sb) return;
-  stopOrderWatcher();
-  orderStatusChannel = SupaDB.sb
-    .channel('orders-user-' + currentUser.id)
-    .on('postgres_changes', {
-      event: 'UPDATE',
-      schema: 'public',
-      table: 'orders',
-      filter: `user_id=eq.${currentUser.id}`
-    }, async () => {
-      await syncUserOrders();
-      if (document.getElementById('pg-account')?.classList.contains('active')) renderOrders();
-    })
-    .subscribe();
-}
 
 function openAuthOrAccount() {
   if (currentUser) goPage('account');
@@ -2494,9 +2512,6 @@ async function initApp() {
         S.user = { id: session.user.id, name: session.user.email.split('@')[0], email: session.user.email, phone: '' };
       }
       updateBadges();
-      await syncUserOrders();
-      await syncUserAddresses();
-      startOrderWatcher();
     }
 
     // Oturum değişikliklerini dinle (giriş/çıkış/yenileme)
@@ -2515,12 +2530,8 @@ async function initApp() {
           S.user = { id: session.user.id, name: session.user.email.split('@')[0], email: session.user.email, phone: '' };
         }
         updateBadges();
-        await syncUserOrders();
-        await syncUserAddresses();
-        startOrderWatcher();
         if (document.getElementById('pg-account')?.classList.contains('active')) loadProfile();
       } else if (event === 'SIGNED_OUT') {
-        stopOrderWatcher();
         currentUser = null;
         S.user = { name: '', email: '', phone: '' };
         updateBadges();

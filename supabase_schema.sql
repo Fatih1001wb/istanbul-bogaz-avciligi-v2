@@ -74,13 +74,10 @@ create table public.orders (
   address_snap    jsonb,        -- sipariş anındaki adres kopyası
   payment_ref     text,         -- ödeme sağlayıcı referansı
   payment_method  text,
-  cargo_code      text,
   notes           text,
   created_at      timestamptz default now(),
   updated_at      timestamptz default now()
 );
-
-alter table public.orders add column if not exists cargo_code text;
 
 -- ── 6. SİPARİŞ KALEMLERİ ─────────────────────────────────
 create table public.order_items (
