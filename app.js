@@ -41,14 +41,58 @@ const S = {
 /* ── PRODUCTS (dışarı taşındı: assets/products.json) ── */
 let PRODUCTS = [];
 
+// DB ürünlerini frontend formatına dönüştür
+function _mapDbProduct(p, jsonExtras = {}) {
+  return {
+    id: p.id,
+    name: p.name,
+    cat: p.category || jsonExtras.cat || '',
+    price: Number(p.price),
+    stock: p.stock,
+    desc: p.description || jsonExtras.desc || '',
+    img: p.image_url || jsonExtras.img || `assets/product_${p.id}.jpg`,
+    emoji: jsonExtras.emoji || '🎣',
+    rating: jsonExtras.rating || 0,
+    reviews: jsonExtras.reviews || 0,
+    // Kurşun ürünleri için JSON'dan gelen ek alanlar
+    weights: jsonExtras.weights || null,
+    weightType: jsonExtras.weightType || null,
+    type: jsonExtras.type || null,
+    forWeights: jsonExtras.forWeights || null
+  };
+}
+
 async function loadProductsLocal() {
+  // Önce JSON'u oku — kurşun/misina için ek metadata içeriyor (weights, weightType, vs.)
+  let jsonProducts = [];
   try {
     const res = await fetch('assets/products.json');
-    if (res.ok) PRODUCTS = await res.json();
-    else PRODUCTS = [];
+    if (res.ok) jsonProducts = await res.json();
+  } catch (e) {}
+
+  // Sonra DB'den canlı ürünleri çek
+  try {
+    if (window._sb) {
+      const { data, error } = await window._sb
+        .from('products')
+        .select('*')
+        .eq('is_active', true)
+        .order('id');
+      if (!error && data && data.length) {
+        // DB ürünlerini JSON metadata ile birleştir
+        PRODUCTS = data.map(p => {
+          const extras = jsonProducts.find(j => j.id === p.id) || {};
+          return _mapDbProduct(p, extras);
+        });
+        return;
+      }
+    }
   } catch (e) {
-    PRODUCTS = [];
+    console.warn('DB ürün yüklenemedi, JSON yedeğine geçildi:', e.message);
   }
+
+  // DB başarısız olursa JSON yedek
+  PRODUCTS = jsonProducts;
 }
 
 const DISTRICTS = [
@@ -190,6 +234,16 @@ function goPage(id, extra) {
   if (id === 'shop') {
     renderShopCats();
     shopFilter();
+    // Mağazayı her açışta DB'den taze ürünleri çek (admin yeni eklemiş olabilir)
+    (async () => {
+      const beforeIds = PRODUCTS.map(p => p.id).join(',');
+      await loadProductsLocal();
+      const afterIds = PRODUCTS.map(p => p.id).join(',');
+      if (beforeIds !== afterIds) {
+        renderShopCats();
+        shopFilter();
+      }
+    })();
   }
   if (id === 'product') renderProduct(extra);
   if (id === 'cart') renderCart();
@@ -988,13 +1042,58 @@ function renderCart() {
     <div class="ob-row total"><span>Toplam</span><span>${fp(grand)}</span></div>`;
 }
 
-function applyCoupon() {
-  const c = document.getElementById('coupon-inp')?.value.trim().toUpperCase();
-  if (c === 'BALIK10') {
-    _discount = Math.round(cartTotal() * .1);
+async function applyCoupon() {
+  const code = document.getElementById('coupon-inp')?.value.trim().toUpperCase();
+  if (!code) return;
+
+  // DB'den kupon ara
+  if (!window._sb) {
+    toast('Sunucu bağlantısı yok', '✕');
+    return;
+  }
+  try {
+    const { data, error } = await window._sb
+      .from('coupons')
+      .select('*')
+      .eq('code', code)
+      .eq('is_active', true)
+      .maybeSingle();
+    if (error || !data) {
+      toast('Geçersiz kupon', '✕');
+      return;
+    }
+
+    // Süre kontrolü
+    if (data.expires_at && new Date(data.expires_at) < new Date()) {
+      toast('Kuponun süresi dolmuş', '✕');
+      return;
+    }
+
+    // Min sepet tutarı
+    const subtotal = cartTotal();
+    if (data.min_order && subtotal < Number(data.min_order)) {
+      toast(`Minimum sepet tutarı: ${fp(Number(data.min_order))}`, '⚠️');
+      return;
+    }
+
+    // Kullanım limiti
+    if (data.max_uses && data.used_count >= data.max_uses) {
+      toast('Kuponun kullanım limiti dolmuş', '✕');
+      return;
+    }
+
+    // İndirimi hesapla
+    if (data.discount_type === 'percent') {
+      _discount = Math.round(subtotal * Number(data.discount_value) / 100);
+      toast(`Kupon uygulandı! %${data.discount_value} indirim`, '🎉');
+    } else {
+      _discount = Math.round(Number(data.discount_value));
+      toast(`Kupon uygulandı! ${fp(_discount)} indirim`, '🎉');
+    }
     renderCart();
-    toast('Kupon uygulandı! %10 indirim', '🎉');
-  } else toast('Geçersiz kupon', '✕');
+  } catch (e) {
+    toast('Kupon kontrolü başarısız', '✕');
+  }
 }
 
 function placeOrder() {

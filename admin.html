@@ -887,6 +887,7 @@ select.finp{cursor:pointer;appearance:none;background-image:url("data:image/svg+
       <div class="nav-divider"></div>
       <button class="nav-item" onclick="showPage('coupons')" data-page="coupons"><span class="ni">🏷️</span>Kuponlar</button>
       <button class="nav-item" onclick="showPage('reviews')" data-page="reviews"><span class="ni">⭐</span>Yorumlar</button>
+      <button class="nav-item" onclick="showPage('messages')" data-page="messages"><span class="ni">💬</span>Topluluk Mesajları</button>
     </nav>
     <div class="sidebar-footer" id="adminInfo">—</div>
   </div>
@@ -1004,6 +1005,42 @@ select.finp{cursor:pointer;appearance:none;background-image:url("data:image/svg+
           <table>
             <thead><tr><th>Kullanıcı</th><th>Ürün</th><th>Puan</th><th>Yorum</th><th>Tarih</th><th>İşlem</th></tr></thead>
           <tbody id="reviews-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ════════ TOPLULUK MESAJLARI ════════ -->
+      <div class="page" id="pg-messages">
+        <div class="table-wrap">
+          <div class="table-head">
+            <h3>Topluluk Mesajları</h3>
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+              <select class="filter-sel" id="msg-district-filter" onchange="loadMessages()">
+                <option value="">Tüm Gruplar</option>
+                <option value="general">🌊 Tüm İstanbul</option>
+                <option value="sariyer">Sarıyer</option>
+                <option value="besiktas">Beşiktaş</option>
+                <option value="beyoglu">Beyoğlu</option>
+                <option value="fatih">Fatih</option>
+                <option value="uskudar">Üsküdar</option>
+                <option value="kadikoy">Kadıköy</option>
+                <option value="bakirkoy">Bakırköy</option>
+                <option value="zeytinburnu">Zeytinburnu</option>
+                <option value="buyukcekmece">Büyükçekmece</option>
+                <option value="silivri">Silivri</option>
+                <option value="maltepe">Maltepe</option>
+                <option value="kartal">Kartal</option>
+                <option value="pendik">Pendik</option>
+                <option value="tuzla">Tuzla</option>
+                <option value="adalar">Adalar</option>
+              </select>
+              <input type="text" class="search-inp" id="msg-search" placeholder="Mesajda ara..." oninput="filterMessages()">
+              <button class="btn btn-ghost btn-sm" onclick="loadMessages()">🔄 Yenile</button>
+            </div>
+          </div>
+          <table>
+            <thead><tr><th>Kullanıcı</th><th>Grup</th><th>Mesaj / Ek</th><th>Tarih</th><th>İşlem</th></tr></thead>
+            <tbody id="messages-tbody"></tbody>
           </table>
         </div>
       </div>
@@ -1177,7 +1214,7 @@ async function doLogout() {
 }
 
 // ── SAYFA YÖNETİMİ ───────────────────────────────────
-const PAGE_TITLES = {dashboard:'Dashboard',orders:'Siparişler',products:'Ürünler',users:'Kullanıcılar',coupons:'Kuponlar',reviews:'Yorumlar'};
+const PAGE_TITLES = {dashboard:'Dashboard',orders:'Siparişler',products:'Ürünler',users:'Kullanıcılar',coupons:'Kuponlar',reviews:'Yorumlar',messages:'Topluluk Mesajları'};
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
@@ -1189,6 +1226,7 @@ function showPage(id) {
   if (id==='users')    loadUsers();
   if (id==='coupons')  loadCoupons();
   if (id==='reviews')  loadReviews();
+  if (id==='messages') loadMessages();
 }
 
 // ── DASHBOARD ────────────────────────────────────────
@@ -1349,7 +1387,8 @@ function renderProducts(list) {
       <td><span class="badge ${p.is_active?'badge-delivered':'badge-cancelled'}">${p.is_active?'Aktif':'Pasif'}</span></td>
       <td>
         <button class="action-btn" onclick="openProdModal(${p.id})">Düzenle</button>
-        <button class="action-btn danger" onclick="toggleProduct(${p.id},${!p.is_active})">${p.is_active?'Pasif Yap':'Aktif Yap'}</button>
+        <button class="action-btn" onclick="toggleProduct(${p.id},${!p.is_active})">${p.is_active?'Pasif Yap':'Aktif Yap'}</button>
+        <button class="action-btn danger" onclick="deleteProduct(${p.id})">🗑 Sil</button>
       </td>
     </tr>`).join('');
 }
@@ -1402,6 +1441,18 @@ async function toggleProduct(id, active) {
   loadProducts();
 }
 
+async function deleteProduct(id) {
+  const p = allProducts.find(x=>x.id===id);
+  if (!confirm(`"${p?.name || 'Ürün'}" kalıcı olarak silinecek.\n\nBu işlem geri alınamaz. Devam edilsin mi?`)) return;
+  const { error } = await sb.from('products').delete().eq('id',id);
+  if (error) {
+    toast('Silinemedi: '+(error.message.includes('foreign key')?'Bu ürün siparişlerde kullanılmış, pasif yapın':error.message), '❌');
+    return;
+  }
+  toast('Ürün silindi', '🗑');
+  loadProducts();
+}
+
 // ── KULLANICILAR ─────────────────────────────────────
 async function loadUsers() {
   const { data } = await sb.from('profiles').select(`*`).order('created_at',{ascending:false});
@@ -1450,7 +1501,8 @@ async function loadCoupons() {
       <td>${c.expires_at?new Date(c.expires_at).toLocaleDateString('tr-TR'):'—'}</td>
       <td><span class="badge ${c.is_active?'badge-delivered':'badge-cancelled'}">${c.is_active?'Aktif':'Pasif'}</span></td>
       <td>
-        <button class="action-btn danger" onclick="toggleCoupon('${c.id}',${!c.is_active})">${c.is_active?'Pasif':'Aktif'}</button>
+        <button class="action-btn" onclick="toggleCoupon('${c.id}',${!c.is_active})">${c.is_active?'Pasif Yap':'Aktif Yap'}</button>
+        <button class="action-btn danger" onclick="deleteCoupon('${c.id}','${c.code}')">🗑 Sil</button>
       </td>
     </tr>`).join('');
 }
@@ -1475,6 +1527,14 @@ async function saveCoupon() {
 async function toggleCoupon(id, active) {
   await sb.from('coupons').update({is_active:active}).eq('id',id);
   toast('Kupon güncellendi','✓');
+  loadCoupons();
+}
+
+async function deleteCoupon(id, code) {
+  if (!confirm(`"${code}" kuponu kalıcı olarak silinecek.\n\nDevam edilsin mi?`)) return;
+  const { error } = await sb.from('coupons').delete().eq('id', id);
+  if (error) { toast('Silinemedi: '+error.message, '❌'); return; }
+  toast('Kupon silindi', '🗑');
   loadCoupons();
 }
 
@@ -1517,6 +1577,88 @@ async function deleteReview(id) {
   if (!confirm('Yorumu silmek istiyor musunuz?')) return;
   await sb.from('reviews').delete().eq('id',id);
   toast('Yorum silindi','🗑️'); loadReviews();
+}
+
+// ── TOPLULUK MESAJLARI ────────────────────────────────
+let allMessages = [];
+const DISTRICT_LABELS = {
+  general:'🌊 Tüm İstanbul',
+  sariyer:'Sarıyer', besiktas:'Beşiktaş', beyoglu:'Beyoğlu', fatih:'Fatih',
+  uskudar:'Üsküdar', kadikoy:'Kadıköy', bakirkoy:'Bakırköy', zeytinburnu:'Zeytinburnu',
+  buyukcekmece:'Büyükçekmece', silivri:'Silivri', maltepe:'Maltepe', kartal:'Kartal',
+  pendik:'Pendik', tuzla:'Tuzla', adalar:'Adalar'
+};
+
+async function loadMessages() {
+  const district = document.getElementById('msg-district-filter')?.value || '';
+  let query = sb.from('messages')
+    .select('id, content, district_id, attachment_url, attachment_name, attachment_type, created_at, profiles(full_name)')
+    .order('created_at', { ascending: false })
+    .limit(300);
+  if (district) query = query.eq('district_id', district);
+
+  const { data, error } = await query;
+  if (error) {
+    document.getElementById('messages-tbody').innerHTML =
+      `<tr><td colspan="5" style="text-align:center;color:var(--red);padding:2rem">Yüklenemedi: ${error.message}</td></tr>`;
+    return;
+  }
+  allMessages = data || [];
+  renderMessages(allMessages);
+}
+
+function renderMessages(list) {
+  const tb = document.getElementById('messages-tbody');
+  if (!tb) return;
+  if (!list.length) {
+    tb.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--mist);padding:2rem">Bu grupta mesaj yok</td></tr>`;
+    return;
+  }
+  tb.innerHTML = list.map(m => {
+    const name = m.profiles?.full_name || 'Anonim';
+    const initial = name[0]?.toUpperCase() || '?';
+    const district = DISTRICT_LABELS[m.district_id] || m.district_id || '—';
+    let body = '';
+    if (m.content) {
+      const safe = m.content.replace(/[<>&]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]));
+      body = `<div style="max-width:480px;color:var(--espresso);font-size:.88rem;line-height:1.45">${safe}</div>`;
+    }
+    if (m.attachment_url) {
+      const isImg = (m.attachment_type||'').startsWith('image/');
+      const att = isImg
+        ? `<a href="${m.attachment_url}" target="_blank" style="display:inline-block;margin-top:6px"><img src="${m.attachment_url}" style="max-height:60px;border-radius:6px;border:1px solid var(--linen)"></a>`
+        : `<a href="${m.attachment_url}" target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:5px 10px;background:var(--cream);border:1px solid var(--linen);border-radius:6px;color:var(--caramel);font-size:.78rem;margin-top:6px">📎 ${m.attachment_name||'dosya'}</a>`;
+      body += att;
+    }
+    return `<tr>
+      <td><div style="display:flex;align-items:center;gap:9px"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--caramel),var(--latte));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.82rem">${initial}</div><span>${name}</span></div></td>
+      <td style="color:var(--mist);font-size:.84rem">${district}</td>
+      <td>${body || '<span style="color:var(--sand)">—</span>'}</td>
+      <td style="color:var(--mist);font-size:.8rem">${new Date(m.created_at).toLocaleString('tr-TR')}</td>
+      <td><button class="action-btn danger" onclick="deleteMessage('${m.id}')">🗑 Sil</button></td>
+    </tr>`;
+  }).join('');
+}
+
+function filterMessages() {
+  const q = (document.getElementById('msg-search')?.value || '').toLowerCase();
+  if (!q) { renderMessages(allMessages); return; }
+  const filtered = allMessages.filter(m =>
+    (m.content||'').toLowerCase().includes(q) ||
+    (m.profiles?.full_name||'').toLowerCase().includes(q) ||
+    (m.attachment_name||'').toLowerCase().includes(q)
+  );
+  renderMessages(filtered);
+}
+
+async function deleteMessage(id) {
+  if (!confirm('Bu mesaj kalıcı olarak silinecek.\n\nDevam edilsin mi?')) return;
+  const { error } = await sb.from('messages').delete().eq('id', id);
+  if (error) { toast('Silinemedi: '+error.message, '❌'); return; }
+  toast('Mesaj silindi', '🗑');
+  // Mesajı yerel listeden de kaldır ki tekrar yüklemeden anında gitsin
+  allMessages = allMessages.filter(m => m.id !== id);
+  renderMessages(allMessages);
 }
 
 // ── YARDIMCILAR ──────────────────────────────────────
