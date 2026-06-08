@@ -1153,7 +1153,14 @@ const STATUS = {
   cancelled:  {label:'İptal',         cls:'badge-cancelled'},
   refunded:   {label:'İade',          cls:'badge-refunded'},
 };
-const fp = n => Number(n).toLocaleString('tr-TR') + '₺';
+const fp = n => {
+  const num = Number(n) || 0;
+  const hasDecimals = num % 1 !== 0;
+  return num.toLocaleString('tr-TR', {
+    minimumFractionDigits: hasDecimals ? 2 : 0,
+    maximumFractionDigits: 2
+  }) + ' ₺';
+};
 let currentOrderId = null;
 let allOrders = [], allProducts = [], allUsers = [], allReviews = [], allCoupons = [];
 

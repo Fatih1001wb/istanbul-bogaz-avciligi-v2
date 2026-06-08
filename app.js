@@ -278,7 +278,14 @@ function toast(msg, icon = '✓') {
 }
 
 function fp(n) {
-  return n.toLocaleString('tr-TR') + '₺'
+  const num = Number(n) || 0;
+  // Tam sayı ise ondalık göstermez, kuruş varsa 2 hane gösterir
+  const hasDecimals = num % 1 !== 0;
+  const formatted = num.toLocaleString('tr-TR', {
+    minimumFractionDigits: hasDecimals ? 2 : 0,
+    maximumFractionDigits: 2
+  });
+  return formatted + ' ₺';
 }
 
 function stars(n) {
@@ -771,7 +778,7 @@ function shopFilter() {
   const sort = document.getElementById('shop-sort')?.value || 'default';
   const minR = parseFloat(document.querySelector('input[name="srating"]:checked')?.value || 0);
   const lbl = document.getElementById('shop-price-lbl');
-  if (lbl) lbl.textContent = maxP.toLocaleString('tr-TR') + '₺';
+  if (lbl) lbl.textContent = maxP.toLocaleString('tr-TR') + ' ₺';
   let items = PRODUCTS.filter(p =>
     (shopCat === 'all' || p.cat === shopCat) &&
     (p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q)) &&
@@ -844,7 +851,7 @@ function renderProduct(pid) {
           </button>
         </div>
         <div class="feat-list">
-          <div class="feat-row">500₺ üzeri ücretsiz kargo</div>
+          <div class="feat-row">500 ₺ üzeri ücretsiz kargo</div>
           <div class="feat-row">30 gün iade garantisi</div>
           <div class="feat-row">Orijinal ürün · Fatura ile</div>
           <div class="feat-row">1–3 iş günü teslimat</div>
@@ -2264,7 +2271,7 @@ async function initChat(){
   // Mevcut mesajları yükle (son 50, sadece bu gruba ait)
   const { data: msgs, error } = await window._sb
     .from('messages')
-    .select('id, content, created_at, district_id, attachment_url, attachment_name, attachment_type, attachment_size, profiles(full_name)')
+    .select('id, user_id, content, created_at, district_id, attachment_url, attachment_name, attachment_type, attachment_size, profiles(full_name)')
     .eq('district_id', currentGroupId)
     .order('created_at', { ascending: true })
     .limit(50);
@@ -2296,10 +2303,23 @@ async function initChat(){
       // Yeni mesajı profil bilgisiyle çek
       const { data: msg } = await window._sb
         .from('messages')
-        .select('id, content, created_at, district_id, attachment_url, attachment_name, attachment_type, attachment_size, profiles(full_name)')
+        .select('id, user_id, content, created_at, district_id, attachment_url, attachment_name, attachment_type, attachment_size, profiles(full_name)')
         .eq('id', payload.new.id)
         .single();
       if(msg && msg.district_id === currentGroupId) appendChatMsg(msg, true);
+    })
+    .on('postgres_changes', {
+      event: 'DELETE',
+      schema: 'public',
+      table: 'messages'
+    }, payload => {
+      // Bir mesaj silindi — UI'dan da kaldır
+      const el = document.querySelector(`.chat-msg[data-msg-id="${payload.old.id}"]`);
+      if(el){
+        el.style.opacity = '0';
+        el.style.transition = 'opacity .2s';
+        setTimeout(() => el.remove(), 200);
+      }
     })
     .subscribe();
 }
@@ -2379,16 +2399,23 @@ function appendChatMsg(msg, scroll=false){
   // boş placeholder varsa temizle
   const empty = box.querySelector('div[style*="henüz mesaj yok"]');
   if(empty) empty.remove();
-  const isOwn = currentUser && msg.profiles?.full_name === S.user?.name;
+  // Sahiplik kontrolü artık UUID üzerinden (güvenli)
+  const isOwn = currentUser && msg.user_id === currentUser.id;
   const name = msg.profiles?.full_name || 'Anonim';
   const time = new Date(msg.created_at).toLocaleTimeString('tr-TR', {hour:'2-digit',minute:'2-digit'});
   const el = document.createElement('div');
   el.className = 'chat-msg' + (isOwn ? ' own' : '');
+  el.dataset.msgId = msg.id;
   const textHTML = msg.content ? `<div class="chat-text">${escapeHtml(msg.content)}</div>` : '';
   const attHTML  = _attachmentHTML(msg);
+  // Sadece kendi mesajına sil butonu
+  const delBtn = isOwn
+    ? `<button class="chat-del-btn" onclick="deleteOwnChatMsg('${msg.id}')" title="Mesajı sil" aria-label="Sil">🗑</button>`
+    : '';
   el.innerHTML = `
     <div class="chat-avatar">${name[0].toUpperCase()}</div>
     <div class="chat-bubble">
+      ${delBtn}
       <div class="chat-name">${name}</div>
       ${attHTML}
       ${textHTML}
@@ -2397,6 +2424,32 @@ function appendChatMsg(msg, scroll=false){
   box.appendChild(el);
   if(scroll || box.scrollTop > box.scrollHeight - box.clientHeight - 100){
     box.scrollTop = box.scrollHeight;
+  }
+}
+
+async function deleteOwnChatMsg(messageId){
+  if(!currentUser){
+    toast('Giriş yapmalısın', '🔒');
+    return;
+  }
+  if(!confirm('Bu mesajı silmek istiyor musun?')) return;
+  try {
+    const { error } = await window._sb
+      .from('messages')
+      .delete()
+      .eq('id', messageId)
+      .eq('user_id', currentUser.id); // ekstra güvenlik: sadece kendi mesajını
+    if(error) throw error;
+    // UI'dan kaldır
+    const el = document.querySelector(`.chat-msg[data-msg-id="${messageId}"]`);
+    if(el){
+      el.style.opacity = '0';
+      el.style.transition = 'opacity .2s';
+      setTimeout(() => el.remove(), 200);
+    }
+    toast('Mesaj silindi', '🗑');
+  } catch(e) {
+    toast('Silinemedi: ' + (e.message || 'Bilinmeyen hata'), '❌');
   }
 }
 

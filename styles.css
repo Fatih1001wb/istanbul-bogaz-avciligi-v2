@@ -646,10 +646,15 @@ textarea.inp {
 }
 
 .prod-price {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.25rem;
   font-weight: 700;
-  color: var(--caramel)
+  color: var(--caramel);
+  letter-spacing: -.01em;
+  font-variant-numeric: tabular-nums;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
 }
 
 .prod-actions {
@@ -1763,6 +1768,52 @@ textarea.inp {
 
 .chat-bubble {
   max-width: 70%;
+  position: relative;
+}
+
+/* Sil butonu — sadece kendi mesajlarında görünür, hover'da daha belirgin */
+.chat-del-btn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid var(--linen);
+  color: var(--mist);
+  cursor: pointer;
+  font-size: .78rem;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+  box-shadow: 0 2px 6px rgba(13,31,53,.12);
+  transition: all .2s cubic-bezier(.4,0,.2,1);
+  z-index: 2;
+}
+
+.chat-msg.own .chat-bubble:hover .chat-del-btn,
+.chat-bubble:focus-within .chat-del-btn {
+  display: flex;
+}
+
+.chat-del-btn:hover {
+  background: #fee2e2;
+  color: #b91c1c;
+  border-color: #fca5a5;
+  transform: scale(1.08);
+}
+
+/* Mobilde her zaman görünsün (hover yok) */
+@media (max-width: 760px) {
+  .chat-msg.own .chat-del-btn {
+    display: flex;
+    width: 22px;
+    height: 22px;
+    font-size: .7rem;
+  }
 }
 
 .chat-name {
@@ -2250,12 +2301,17 @@ textarea.inp {
 }
 
 .pd-price {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 2.8rem;
-  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 800;
   color: var(--caramel);
+  letter-spacing: -.025em;
+  font-variant-numeric: tabular-nums;
   line-height: 1;
-  margin-bottom: 1.3rem
+  margin-bottom: 1.3rem;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
 }
 
 .pd-desc {
@@ -2448,10 +2504,12 @@ textarea.inp {
 }
 
 .ci-price {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.15rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
   font-weight: 700;
-  color: var(--caramel)
+  color: var(--caramel);
+  letter-spacing: -.01em;
+  font-variant-numeric: tabular-nums;
 }
 
 .ci-qty {
@@ -2620,8 +2678,14 @@ textarea.inp {
 .ob-row {
   display: flex;
   justify-content: space-between;
-  font-size: .86rem;
-  color: rgba(250, 244, 236, .45)
+  font-size: .88rem;
+  color: rgba(250, 244, 236, .65);
+  font-variant-numeric: tabular-nums;
+}
+
+.ob-row span:last-child {
+  font-weight: 600;
+  color: rgba(250, 244, 236, .85);
 }
 
 .ob-row.disc {
@@ -2637,9 +2701,12 @@ textarea.inp {
 }
 
 .ob-row.total span:last-child {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem;
-  color: var(--honey)
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--honey);
+  letter-spacing: -.015em;
+  font-variant-numeric: tabular-nums;
 }
 
 .trust-row {
@@ -2956,10 +3023,12 @@ textarea.inp {
 }
 
 .order-total {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--caramel)
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--caramel);
+  letter-spacing: -.01em;
+  font-variant-numeric: tabular-nums;
 }
 
 .order-body {
@@ -4203,9 +4272,11 @@ textarea.inp {
 }
 
 .gp-price {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 800;
-  color: var(--brown);
+  color: var(--caramel);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.01em;
 }
 
 .gp-body {
@@ -4408,8 +4479,10 @@ textarea.inp {
 .wxrp-price {
   font-size: .92rem;
   font-weight: 800;
-  color: var(--brown);
+  color: var(--caramel);
   white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.01em;
 }
 
 .wxrp-btn {
