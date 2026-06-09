@@ -647,10 +647,10 @@ textarea.inp {
 
 .prod-price {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: 600;
   color: var(--caramel);
-  letter-spacing: -.01em;
+  letter-spacing: -.005em;
   font-variant-numeric: tabular-nums;
   display: inline-flex;
   align-items: baseline;
@@ -2302,10 +2302,10 @@ textarea.inp {
 
 .pd-price {
   font-family: 'Outfit', sans-serif;
-  font-size: 2.4rem;
-  font-weight: 800;
+  font-size: 2rem;
+  font-weight: 600;
   color: var(--caramel);
-  letter-spacing: -.025em;
+  letter-spacing: -.015em;
   font-variant-numeric: tabular-nums;
   line-height: 1;
   margin-bottom: 1.3rem;
@@ -2505,10 +2505,10 @@ textarea.inp {
 
 .ci-price {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: 1.05rem;
+  font-weight: 600;
   color: var(--caramel);
-  letter-spacing: -.01em;
+  letter-spacing: -.005em;
   font-variant-numeric: tabular-nums;
 }
 
@@ -2702,10 +2702,10 @@ textarea.inp {
 
 .ob-row.total span:last-child {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 800;
+  font-size: 1.25rem;
+  font-weight: 700;
   color: var(--honey);
-  letter-spacing: -.015em;
+  letter-spacing: -.01em;
   font-variant-numeric: tabular-nums;
 }
 
@@ -3024,10 +3024,10 @@ textarea.inp {
 
 .order-total {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.05rem;
-  font-weight: 800;
+  font-size: 1rem;
+  font-weight: 600;
   color: var(--caramel);
-  letter-spacing: -.01em;
+  letter-spacing: -.005em;
   font-variant-numeric: tabular-nums;
 }
 
@@ -4272,11 +4272,11 @@ textarea.inp {
 }
 
 .gp-price {
-  font-size: 1.1rem;
-  font-weight: 800;
+  font-size: 1.05rem;
+  font-weight: 600;
   color: var(--caramel);
   font-variant-numeric: tabular-nums;
-  letter-spacing: -.01em;
+  letter-spacing: -.005em;
 }
 
 .gp-body {
@@ -4478,11 +4478,11 @@ textarea.inp {
 
 .wxrp-price {
   font-size: .92rem;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--caramel);
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
-  letter-spacing: -.01em;
+  letter-spacing: -.005em;
 }
 
 .wxrp-btn {
