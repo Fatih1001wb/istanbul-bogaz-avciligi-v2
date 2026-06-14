@@ -1,0 +1,2559 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sipariş Detayı | PB Store</title>
+<meta name="description" content="PB Store siparişinizin detayları, kargo takibi ve fatura bilgileri." />
+<meta name="keywords" content="sipariş detayı, kargo takip, fatura" />
+<meta name="author" content="PB Store" />
+<meta name="language" content="Turkish" />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="canonical" href="https://p-bstore.vercel.app/pages/siparis-detay.html" />
+
+<!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+<meta property="og:locale" content="tr_TR" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://p-bstore.vercel.app/pages/siparis-detay.html" />
+<meta property="og:title" content="Sipariş Detayı | PB Store" />
+<meta property="og:description" content="PB Store siparişinizin detayları, kargo takibi ve fatura bilgileri." />
+<meta property="og:image" content="https://p-bstore.vercel.app/assets/images/logo.png" />
+<meta property="og:image:width" content="768" />
+<meta property="og:image:height" content="768" />
+<meta property="og:site_name" content="PB Store" />
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://p-bstore.vercel.app/pages/siparis-detay.html" />
+<meta name="twitter:title" content="Sipariş Detayı | PB Store" />
+<meta name="twitter:description" content="PB Store siparişinizin detayları, kargo takibi ve fatura bilgileri." />
+<meta name="twitter:image" content="https://p-bstore.vercel.app/assets/images/logo.png" />
+<meta name="twitter:site" content="@pbstore" />
+<meta name="twitter:creator" content="@pbstore" />
+
+<!-- Theme Color -->
+<meta name="theme-color" content="#5C1320" />
+<meta name="msapplication-TileColor" content="#5C1320" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/jpeg" href="/../assets/images/logo.png" />
+<link rel="apple-touch-icon" href="../assets/images/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../assets/css/ads.css">
+<link rel="stylesheet" href="../assets/css/render.css">
+<link rel="stylesheet" href="../assets/css/responsive.css">
+<style>
+  :root {
+    --bordo-900: #3D0A14;
+    --bordo-800: #5C1320;
+    --bordo-700: #7B1E2B;
+    --bordo-600: #962535;
+    --altin-700: #9A7B1A;
+    --altin-600: #B8941F;
+    --altin-500: #D4AF37;
+    --altin-400: #E0BE52;
+    --altin-300: #E8C968;
+    --siyah:    #0A0A0A;
+    --beyaz:    #FFFFFF;
+    --krem:     #FAF7F2;
+    --krem-koyu: #F0EBE0;
+    --gri-suzme: #F5F2EE;
+    --gri-text: #6B655C;
+    --gri-border: #E5DFD3;
+    --basari:   #2D8F4F;
+    --basari-bg: #E8F5EC;
+    --uyari:    #D49B27;
+    --uyari-bg: #FBF3DC;
+    --tehlike:  #C44545;
+    --tehlike-bg: #FAEAEA;
+    --bilgi:    #4A6FA5;
+    --bilgi-bg: #E8EEF5;
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'Manrope', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--sans);
+    background: var(--krem);
+    color: var(--siyah);
+    line-height: 1.6;
+  }
+
+  /* NAVBAR */
+  .announce {
+    background: var(--siyah);
+    color: var(--krem);
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+  .announce span { color: var(--altin-500); }
+  .navbar {
+    background: var(--krem);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 16px 40px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 40px;
+  }
+  .nav-left { display: flex; gap: 36px; align-items: center; }
+  .nav-link {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--siyah);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .nav-link:hover { color: var(--bordo-700); }
+  .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+  }
+  .logo-circle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 4px 14px rgba(212, 175, 55, 0.3);
+  }
+  .logo-circle::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+  }
+  .logo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .logo-text {
+    font-family: var(--serif);
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--bordo-800);
+    margin-top: 4px;
+    font-weight: 500;
+  }
+  .logo-text em { color: var(--altin-600); font-style: italic; margin: 0 4px; }
+  .nav-right {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .nav-action {
+    background: none; border: none; cursor: pointer;
+    color: var(--siyah); font-size: 18px;
+    position: relative; padding: 8px;
+  }
+  .nav-action .badge {
+    position: absolute; top: 0; right: 0;
+    background: var(--bordo-700); color: var(--altin-300);
+    font-size: 10px; font-weight: 600;
+    min-width: 16px; height: 16px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    padding: 0 4px;
+  }
+  .user-chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bordo-800);
+    color: var(--altin-300);
+    padding: 8px 14px 8px 8px;
+    border-radius: 999px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 12px;
+  }
+  .user-chip-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--altin-500), var(--altin-300));
+    color: var(--bordo-900);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 11px;
+  }
+
+  /* BREADCRUMB */
+  .breadcrumb {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px 40px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gri-text);
+    flex-wrap: wrap;
+  }
+  .breadcrumb a {
+    color: var(--gri-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  .breadcrumb a:hover { color: var(--bordo-700); }
+  .breadcrumb .sep { color: var(--altin-500); }
+  .breadcrumb .current { color: var(--bordo-800); font-weight: 500; }
+  .breadcrumb .current.mono { font-family: var(--mono); letter-spacing: 0.5px; }
+
+  /* PAGE HEADER */
+  .page-header {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px 40px 24px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: end;
+  }
+  .page-header-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .back-btn {
+    width: 44px;
+    height: 44px;
+    background: var(--beyaz);
+    border: 1px solid var(--gri-border);
+    color: var(--bordo-800);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+  .back-btn:hover {
+    background: var(--bordo-800);
+    color: var(--altin-300);
+    border-color: var(--bordo-800);
+  }
+  .page-header h1 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 40px);
+    color: var(--bordo-800);
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .page-header h1 .order-no {
+    font-family: var(--mono);
+    font-size: 0.6em;
+    color: var(--altin-700);
+    background: var(--krem-koyu);
+    border: 1px solid var(--altin-500);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .page-header .subtitle {
+    font-size: 13px;
+    color: var(--gri-text);
+    letter-spacing: 0.3px;
+  }
+  .header-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .btn-action {
+    background: var(--beyaz);
+    border: 1px solid var(--gri-border);
+    color: var(--bordo-800);
+    padding: 11px 18px;
+    font-family: var(--sans);
+    font-size: 11.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-action:hover {
+    background: var(--bordo-800);
+    color: var(--altin-300);
+    border-color: var(--bordo-800);
+  }
+  .btn-action.danger { color: var(--tehlike); }
+  .btn-action.danger:hover {
+    background: var(--tehlike);
+    color: white;
+    border-color: var(--tehlike);
+  }
+  .btn-action.primary {
+    background: var(--bordo-800);
+    color: var(--altin-300);
+    border-color: var(--bordo-800);
+  }
+  .btn-action.primary:hover {
+    background: var(--bordo-900);
+    color: var(--altin-500);
+  }
+
+  /* ============ LAYOUT ============ */
+  .order-layout {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 8px 40px 80px;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 28px;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--beyaz);
+    border: 1px solid var(--gri-border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 18px;
+  }
+  .card-head {
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--gri-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: var(--gri-suzme);
+  }
+  .card-head h2 {
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--bordo-800);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .card-head h2 i { color: var(--altin-600); font-size: 16px; }
+  .card-head .meta {
+    font-size: 12px;
+    color: var(--gri-text);
+    letter-spacing: 0.5px;
+  }
+  .card-body { padding: 24px; }
+
+  /* ============ STATUS BANNER ============ */
+  .status-banner {
+    background: linear-gradient(135deg, var(--bordo-900), var(--bordo-700));
+    color: var(--krem);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 18px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 20px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .status-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 80% 30%, rgba(212, 175, 55, 0.15), transparent 50%);
+  }
+  .status-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--altin-500), var(--altin-300));
+    color: var(--bordo-900);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    position: relative;
+    z-index: 1;
+  }
+  .status-icon::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+  }
+  .status-icon i { animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+  .status-content { position: relative; z-index: 1; }
+  .status-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--altin-300);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .status-title {
+    font-family: var(--serif);
+    font-size: 26px;
+    color: var(--krem);
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .status-title em { color: var(--altin-400); font-style: italic; }
+  .status-desc {
+    font-size: 13px;
+    color: var(--krem);
+    opacity: 0.85;
+  }
+  .status-eta {
+    text-align: right;
+    position: relative;
+    z-index: 1;
+  }
+  .status-eta-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--altin-300);
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  .status-eta-date {
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--altin-300);
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  /* ============ TRACKING TIMELINE ============ */
+  .tracking-timeline {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding: 12px 0;
+  }
+  .tracking-timeline::before {
+    content: '';
+    position: absolute;
+    top: 26px;
+    left: 5%;
+    right: 5%;
+    height: 2px;
+    background: var(--gri-border);
+    z-index: 0;
+  }
+  .tracking-progress {
+    position: absolute;
+    top: 26px;
+    left: 5%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--altin-500), var(--altin-400));
+    z-index: 0;
+    width: 56%;
+    transition: width 0.6s ease;
+  }
+  .tl-step {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    flex: 1;
+    padding: 0 8px;
+  }
+  .tl-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--krem);
+    border: 2px solid var(--gri-border);
+    margin: 8px auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: var(--gri-text);
+    transition: all 0.3s ease;
+  }
+  .tl-step.done .tl-dot {
+    background: var(--altin-500);
+    border-color: var(--altin-500);
+    color: var(--bordo-900);
+  }
+  .tl-step.active .tl-dot {
+    background: var(--bordo-800);
+    border-color: var(--bordo-800);
+    color: var(--altin-300);
+    box-shadow: 0 0 0 6px rgba(123, 30, 43, 0.15);
+    animation: dotPulse 2s ease-in-out infinite;
+  }
+  @keyframes dotPulse {
+    0%, 100% { box-shadow: 0 0 0 6px rgba(123, 30, 43, 0.15); }
+    50% { box-shadow: 0 0 0 10px rgba(123, 30, 43, 0.08); }
+  }
+  .tl-label {
+    font-size: 11px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--gri-text);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .tl-step.done .tl-label,
+  .tl-step.active .tl-label {
+    color: var(--bordo-800);
+  }
+  .tl-date {
+    font-size: 10px;
+    color: var(--gri-text);
+    font-family: var(--mono);
+  }
+  .tl-step.active .tl-date { color: var(--bordo-700); font-weight: 600; }
+
+  .cargo-info-strip {
+    margin-top: 20px;
+    padding: 14px 18px;
+    background: var(--krem);
+    border-left: 3px solid var(--altin-500);
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 20px;
+    align-items: center;
+  }
+  .cargo-info-block .label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gri-text);
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+  .cargo-info-block .value {
+    font-size: 13px;
+    color: var(--bordo-800);
+    font-weight: 600;
+  }
+  .cargo-info-block .value.mono { font-family: var(--mono); letter-spacing: 0.5px; }
+  .track-btn {
+    background: var(--bordo-800);
+    color: var(--altin-300);
+    border: none;
+    padding: 9px 16px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .track-btn:hover { background: var(--bordo-900); }
+
+  /* ============ ORDER ITEMS ============ */
+  .order-item {
+    display: grid;
+    grid-template-columns: 96px 1fr auto;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--gri-border);
+    align-items: center;
+  }
+  .order-item:first-child { padding-top: 0; }
+  .order-item:last-child { padding-bottom: 0; border-bottom: none; }
+
+  .item-img {
+    width: 96px;
+    height: 96px;
+    background: var(--gri-suzme);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bordo-700);
+    opacity: 0.7;
+    font-size: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .item-img::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 3px;
+  }
+  .item-info { min-width: 0; }
+  .item-brand {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--altin-700);
+    margin-bottom: 2px;
+  }
+  .item-name {
+    font-family: var(--serif);
+    font-size: 19px;
+    color: var(--bordo-800);
+    font-weight: 600;
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+  .item-variants {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .item-variant {
+    font-size: 11px;
+    background: var(--gri-suzme);
+    color: var(--gri-text);
+    padding: 3px 9px;
+    border: 1px solid var(--gri-border);
+    border-radius: 3px;
+    letter-spacing: 0.3px;
+  }
+  .item-actions {
+    display: flex;
+    gap: 12px;
+  }
+  .item-action {
+    background: none;
+    border: none;
+    color: var(--gri-text);
+    font-size: 11px;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+    padding: 0;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.2s ease;
+  }
+  .item-action:hover { color: var(--bordo-700); }
+  .item-action i { color: var(--altin-600); font-size: 10px; }
+
+  .item-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+  .item-qty {
+    font-size: 11px;
+    color: var(--gri-text);
+    letter-spacing: 0.5px;
+  }
+  .item-qty strong { color: var(--bordo-800); font-weight: 600; }
+  .item-price {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--bordo-800);
+    font-weight: 600;
+  }
+  .item-unit-price {
+    font-size: 11px;
+    color: var(--gri-text);
+    font-family: var(--serif);
+  }
+  .item-unit-price s { color: var(--gri-text); opacity: 0.7; }
+
+  /* ============ ADDRESS / PAYMENT CARDS ============ */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  .info-row {
+    padding: 10px 0;
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 12px;
+    font-size: 13px;
+    border-bottom: 1px dashed rgba(123, 30, 43, 0.1);
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-row .label {
+    color: var(--gri-text);
+    font-weight: 500;
+  }
+  .info-row .value {
+    color: var(--bordo-800);
+    font-weight: 600;
+  }
+  .info-row .value.mono { font-family: var(--mono); font-size: 12px; }
+
+  .address-block {
+    padding: 4px 0;
+  }
+  .address-block .name {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--bordo-800);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .address-block .phone {
+    font-size: 12px;
+    color: var(--gri-text);
+    margin-bottom: 8px;
+  }
+  .address-block .text {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--siyah);
+  }
+  .address-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--altin-700);
+    background: var(--krem-koyu);
+    padding: 3px 9px;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .address-tag i { font-size: 10px; }
+
+  /* ============ SIDEBAR SUMMARY ============ */
+  .sidebar-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+  }
+  .summary-card {
+    background: var(--beyaz);
+    border: 1px solid var(--gri-border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .summary-card-head {
+    background: var(--bordo-800);
+    padding: 18px 22px;
+    color: var(--altin-300);
+    position: relative;
+  }
+  .summary-card-head::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 22px;
+    right: 22px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--altin-500), transparent);
+  }
+  .summary-card-head h3 {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 600;
+  }
+  .summary-rows { padding: 18px 22px; }
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 0;
+    font-size: 13px;
+  }
+  .summary-row .label { color: var(--gri-text); }
+  .summary-row .value { color: var(--bordo-800); font-weight: 500; }
+  .summary-row.discount .value { color: var(--altin-700); font-weight: 600; }
+  .summary-row.free .value {
+    color: var(--basari);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  .summary-divider {
+    height: 1px;
+    background: var(--gri-border);
+    margin: 12px 0;
+  }
+  .summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 0 6px;
+  }
+  .summary-total .label {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--bordo-800);
+    font-weight: 600;
+  }
+  .summary-total .value {
+    font-family: var(--serif);
+    font-size: 32px;
+    color: var(--bordo-800);
+    font-weight: 600;
+  }
+  .summary-total .currency {
+    font-size: 16px;
+    color: var(--altin-600);
+    margin-left: 4px;
+  }
+  .summary-paid {
+    text-align: center;
+    margin-top: 10px;
+    padding: 8px;
+    background: var(--basari-bg);
+    border-radius: 5px;
+    color: var(--basari);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .summary-paid i { margin-right: 6px; }
+
+  /* SIDEBAR ACTIONS */
+  .sidebar-actions {
+    background: var(--beyaz);
+    border: 1px solid var(--gri-border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .sidebar-actions h4 {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--bordo-800);
+    margin-bottom: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .sidebar-actions h4 i { color: var(--altin-600); font-size: 14px; }
+  .action-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .action-list .btn-action {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 11px 14px;
+    font-size: 11px;
+  }
+
+  /* HELP CARD */
+  .help-card {
+    background: linear-gradient(135deg, var(--krem-koyu), rgba(212, 175, 55, 0.08));
+    border: 1px solid var(--altin-500);
+    border-radius: 10px;
+    padding: 22px;
+    text-align: center;
+  }
+  .help-card .icon {
+    width: 44px;
+    height: 44px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    background: var(--altin-500);
+    color: var(--bordo-900);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+  .help-card h4 {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--bordo-800);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .help-card p {
+    font-size: 12px;
+    color: var(--gri-text);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .help-card-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .help-link {
+    background: var(--beyaz);
+    border: 1px solid var(--bordo-700);
+    color: var(--bordo-800);
+    padding: 7px 14px;
+    border-radius: 4px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.2s ease;
+  }
+  .help-link:hover {
+    background: var(--bordo-800);
+    color: var(--altin-300);
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    padding: 20px;
+  }
+  .modal-overlay.show { opacity: 1; visibility: visible; }
+  .modal {
+    background: var(--krem);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 14px;
+    padding: 36px 32px;
+    max-width: 480px;
+    width: 100%;
+    position: relative;
+    transform: translateY(20px) scale(0.95);
+    transition: transform 0.3s ease;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .modal-overlay.show .modal { transform: translateY(0) scale(1); }
+  .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: 1px solid var(--gri-border);
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--gri-text);
+    font-size: 13px;
+  }
+  .modal-close:hover {
+    background: var(--bordo-700);
+    color: var(--altin-300);
+    border-color: var(--bordo-700);
+  }
+  .modal h3 {
+    font-family: var(--serif);
+    font-size: 26px;
+    color: var(--bordo-800);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .modal h3 em { font-style: italic; color: var(--altin-600); }
+  .modal-sub {
+    font-size: 13px;
+    color: var(--gri-text);
+    margin-bottom: 20px;
+  }
+  .return-reasons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .return-reason {
+    background: var(--beyaz);
+    border: 1px solid var(--gri-border);
+    padding: 12px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .return-reason:hover { border-color: var(--altin-500); }
+  .return-reason.selected {
+    background: var(--krem-koyu);
+    border-color: var(--bordo-800);
+    color: var(--bordo-800);
+    font-weight: 600;
+  }
+  .return-reason input {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid var(--gri-border);
+    border-radius: 50%;
+    margin: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+  }
+  .return-reason.selected input {
+    border-color: var(--bordo-800);
+    border-width: 5px;
+  }
+  .return-textarea {
+    width: 100%;
+    background: var(--beyaz);
+    border: 1px solid var(--gri-border);
+    padding: 12px 14px;
+    font-family: var(--sans);
+    font-size: 13px;
+    border-radius: 5px;
+    resize: vertical;
+    min-height: 80px;
+    outline: none;
+    margin-bottom: 18px;
+  }
+  .return-textarea:focus { border-color: var(--altin-500); }
+  .modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+  .modal-actions button {
+    padding: 11px 22px;
+    font-family: var(--sans);
+    font-size: 11.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+  }
+  .modal-actions .btn-cancel {
+    background: var(--gri-suzme);
+    color: var(--siyah);
+  }
+  .modal-actions .btn-submit {
+    background: var(--bordo-800);
+    color: var(--altin-300);
+  }
+  .modal-actions .btn-submit:hover { background: var(--bordo-900); }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--siyah);
+    color: var(--altin-300);
+    padding: 16px 24px;
+    border-left: 3px solid var(--altin-500);
+    font-size: 13px;
+    z-index: 1100;
+    transform: translateX(420px);
+    transition: transform 0.4s ease;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .toast.show { transform: translateX(0); }
+  .toast i { color: var(--basari); }
+
+  /* FOOTER */
+  footer {
+    background: var(--siyah);
+    color: var(--krem);
+    padding: 30px 40px;
+    text-align: center;
+    font-size: 12px;
+    opacity: 0.7;
+    letter-spacing: 1px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .nav-container { grid-template-columns: auto 1fr auto; gap: 20px; padding: 14px 24px; }
+    .nav-left { display: none; }
+    .order-layout { grid-template-columns: 1fr; padding: 8px 24px 60px; gap: 18px; }
+    .sidebar-stack { position: static; }
+    .page-header { padding: 24px 24px 20px; grid-template-columns: 1fr; }
+    .breadcrumb { padding: 20px 24px 0; }
+    .status-banner { grid-template-columns: auto 1fr; }
+    .status-eta { grid-column: 1 / -1; text-align: left; padding-top: 10px; border-top: 1px solid rgba(212, 175, 55, 0.2); }
+    .info-grid { grid-template-columns: 1fr; }
+    .cargo-info-strip { grid-template-columns: 1fr 1fr; }
+    .tracking-timeline { gap: 6px; }
+    .tl-label { font-size: 9px; letter-spacing: 0.3px; }
+  }
+  @media (max-width: 600px) {
+    .nav-container { padding: 12px 16px; }
+    .breadcrumb { padding: 16px 16px 0; font-size: 10px; }
+    .page-header { padding: 20px 16px 16px; }
+    .order-layout { padding: 4px 16px 40px; }
+    .card-body { padding: 18px; }
+    .card-head { padding: 14px 18px; }
+    .status-banner { padding: 18px; }
+    .status-title { font-size: 20px; }
+    .status-icon { width: 52px; height: 52px; font-size: 20px; }
+    .order-item { grid-template-columns: 72px 1fr; padding: 14px 0; }
+    .item-img { width: 72px; height: 72px; font-size: 26px; }
+    .item-name { font-size: 16px; }
+    .item-right {
+      grid-column: 1 / -1;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 8px;
+      border-top: 1px dashed rgba(123, 30, 43, 0.1);
+    }
+    .cargo-info-strip { grid-template-columns: 1fr; gap: 12px; }
+    .tracking-timeline::before, .tracking-progress { left: 8%; right: 8%; }
+    .tl-label { font-size: 8px; }
+    .tl-date { font-size: 9px; }
+    .info-row { grid-template-columns: 110px 1fr; font-size: 12px; }
+    .summary-total .value { font-size: 28px; }
+    .header-actions { width: 100%; }
+    .btn-action { flex: 1; justify-content: center; }
+  }
+  /* ============ FOOTER (Standart) ============ */
+  footer {
+    background: var(--siyah);
+    color: var(--krem);
+    padding: 60px 40px 30px;
+  }
+  .footer-content {
+    max-width: 1400px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px; margin-bottom: 40px;
+  }
+  .footer-brand h3 {
+    font-family: var(--serif); font-size: 22px;
+    color: var(--altin-400); margin-bottom: 8px;
+  }
+  .footer-slogan {
+    font-size: 10px; color: var(--altin-500);
+    letter-spacing: 3px; margin-bottom: 16px;
+  }
+  .footer-slogan span { color: var(--altin-500); margin: 0 8px; }
+  .footer-brand p {
+    font-size: 13px; opacity: 0.7;
+    line-height: 1.7; margin-bottom: 20px;
+  }
+  .footer-social { display: flex; gap: 12px; }
+  .footer-social a {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--altin-300);
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; transition: all 0.3s ease;
+  }
+  .footer-social a:hover {
+    background: var(--altin-500); color: var(--bordo-900);
+  }
+  .footer-col h4 {
+    font-family: var(--serif); font-size: 16px;
+    color: var(--altin-400);
+    margin-bottom: 14px; font-weight: 600;
+  }
+  .footer-col a {
+    display: block; color: var(--krem);
+    text-decoration: none; padding: 5px 0;
+    font-size: 13px; opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+  .footer-col a:hover { opacity: 1; color: var(--altin-300); }
+  .footer-col a.coming-soon { position: relative; }
+  .footer-col a.coming-soon::after {
+    content: 'YAKINDA';
+    position: absolute;
+    right: 0; top: 50%;
+    transform: translateY(-50%);
+    background: rgba(212, 175, 55, 0.15);
+    color: var(--altin-400);
+    font-size: 8px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .footer-col a.coming-soon:hover::after { opacity: 1; }
+  .footer-bottom {
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 11px;
+    opacity: 0.5;
+    letter-spacing: 2px;
+  }
+  .footer-bottom .payment-methods {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .footer-bottom .payment-methods i { font-size: 22px; }
+  @media (max-width: 1024px) {
+    .footer-content { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .footer-content { grid-template-columns: 1fr; gap: 30px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+
+
+  /* ============ MOBİL HAMBURGER BUTONU ============ */
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+  .mobile-menu-btn:hover { background: rgba(212, 175, 55, 0.1); }
+  .mobile-menu-btn .bar {
+    width: 22px;
+    height: 2px;
+    background: var(--bordo-800);
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .mobile-menu-btn.open .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .mobile-menu-btn.open .bar:nth-child(2) { opacity: 0; }
+  .mobile-menu-btn.open .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ============ MOBİL DRAWER ============ */
+  .mobile-drawer {
+    position: fixed; top: 0; left: 0; bottom: 0;
+    width: 320px; max-width: 85vw;
+    background: var(--krem);
+    z-index: 999;
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex; flex-direction: column;
+    box-shadow: 4px 0 30px rgba(0, 0, 0, 0.15);
+  }
+  .mobile-drawer.open { transform: translateX(0); }
+  .mobile-drawer-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 998;
+    opacity: 0; visibility: hidden;
+    transition: all 0.3s ease;
+  }
+  .mobile-drawer-backdrop.show { opacity: 1; visibility: visible; }
+  .drawer-header {
+    background: linear-gradient(135deg, var(--bordo-900), var(--bordo-700));
+    padding: 20px 16px;
+    display: flex; align-items: center; gap: 14px;
+    color: white; position: relative; overflow: hidden;
+    flex-shrink: 0;
+  }
+  .drawer-header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(2px 2px at 20% 30%, rgba(212, 175, 55, 0.4), transparent),
+      radial-gradient(1.5px 1.5px at 80% 60%, rgba(212, 175, 55, 0.3), transparent),
+      radial-gradient(1px 1px at 50% 80%, rgba(212, 175, 55, 0.35), transparent);
+    background-size: 100px 100px;
+    opacity: 0.5; pointer-events: none;
+  }
+  .drawer-logo {
+    width: 54px; height: 54px;
+    border-radius: 50%; overflow: hidden;
+    position: relative; z-index: 1;
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.5);
+    flex-shrink: 0;
+  }
+  .drawer-logo::before {
+    content: ''; position: absolute; inset: -4px;
+    border-radius: 50%;
+    border: 1px dashed rgba(212, 175, 55, 0.4);
+  }
+  .drawer-logo img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .drawer-title {
+    flex: 1; min-width: 0;
+    position: relative; z-index: 1;
+  }
+  .drawer-title h3 {
+    font-family: var(--serif);
+    font-size: 22px; color: var(--altin-400);
+    font-weight: 600; line-height: 1;
+    margin-bottom: 4px;
+  }
+  .drawer-title .slogan {
+    font-size: 9px; letter-spacing: 2.5px;
+    color: var(--altin-300); font-weight: 500;
+    text-transform: uppercase;
+  }
+  .drawer-close {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: var(--altin-300);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    transition: all 0.3s ease;
+    position: relative; z-index: 1;
+    flex-shrink: 0;
+  }
+  .drawer-close:hover {
+    background: var(--altin-500); color: var(--bordo-900);
+    transform: rotate(90deg);
+  }
+  .drawer-user-section {
+    background: var(--beyaz);
+    padding: 16px;
+    border-bottom: 1px solid var(--gri-border);
+    flex-shrink: 0;
+  }
+  .drawer-user-msg {
+    font-family: var(--serif); font-style: italic;
+    font-size: 13px; color: var(--bordo-800);
+    margin-bottom: 10px;
+  }
+  .drawer-user-msg em { color: var(--altin-600); }
+  .drawer-auth-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .drawer-auth-btn {
+    padding: 11px 12px; text-align: center;
+    border-radius: 6px;
+    font-size: 11px; letter-spacing: 1.5px;
+    text-transform: uppercase; font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 6px;
+  }
+  .drawer-auth-btn.outline {
+    color: var(--bordo-800);
+    border: 1px solid var(--gri-border);
+    background: transparent;
+  }
+  .drawer-auth-btn.outline:hover {
+    border-color: var(--altin-500);
+    background: var(--krem);
+  }
+  .drawer-auth-btn.primary {
+    background: var(--bordo-800);
+    color: var(--altin-300);
+  }
+  .drawer-auth-btn.primary:hover {
+    background: var(--bordo-900);
+    color: var(--altin-500);
+  }
+  .drawer-auth-btn i { font-size: 10px; }
+  .drawer-nav {
+    flex: 1; overflow-y: auto;
+    padding: 8px 0;
+  }
+  .drawer-section { padding: 8px 0; }
+  .drawer-section + .drawer-section { border-top: 1px solid var(--gri-border); }
+  .drawer-section-label {
+    font-size: 9px; letter-spacing: 2.5px;
+    color: var(--gri-text);
+    padding: 8px 16px 6px;
+    font-weight: 600; text-transform: uppercase;
+  }
+  .drawer-link {
+    display: flex; align-items: center; gap: 14px;
+    padding: 12px 16px;
+    font-size: 13px; color: var(--bordo-800);
+    text-decoration: none; font-weight: 500;
+    transition: background 0.2s ease;
+  }
+  .drawer-link:hover { background: var(--krem-koyu); }
+  .drawer-link > i:first-child {
+    color: var(--altin-600); font-size: 14px;
+    width: 16px; text-align: center;
+  }
+  .drawer-link span { flex: 1; }
+  .drawer-link .arrow {
+    color: var(--gri-text); font-size: 10px; opacity: 0.6;
+  }
+  .drawer-link .badge-mini {
+    background: var(--bordo-700); color: var(--altin-300);
+    padding: 2px 8px; border-radius: 999px;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .drawer-accordion-head {
+    width: 100%;
+    background: none; border: none; cursor: pointer;
+    display: flex; align-items: center; gap: 14px;
+    padding: 12px 16px;
+    font-size: 13px; color: var(--bordo-800);
+    font-weight: 500; text-align: left;
+    font-family: var(--sans);
+    transition: background 0.2s ease;
+  }
+  .drawer-accordion-head:hover { background: var(--krem-koyu); }
+  .drawer-accordion-head > i:first-child {
+    color: var(--altin-600); font-size: 14px;
+    width: 16px; text-align: center;
+  }
+  .drawer-accordion-head span { flex: 1; }
+  .drawer-accordion-head .chev {
+    font-size: 10px; color: var(--gri-text);
+    transition: transform 0.3s ease;
+  }
+  .drawer-accordion.open .drawer-accordion-head .chev {
+    transform: rotate(180deg); color: var(--bordo-700);
+  }
+  .drawer-accordion-body {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: var(--krem-koyu);
+  }
+  .drawer-accordion.open .drawer-accordion-body { max-height: 300px; }
+  .drawer-accordion-body a {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 16px 9px 40px;
+    font-size: 12px; color: var(--bordo-800);
+    text-decoration: none; position: relative;
+    transition: background 0.2s ease;
+  }
+  .drawer-accordion-body a:hover { background: rgba(212, 175, 55, 0.1); }
+  .drawer-accordion-body a::before {
+    content: '◆'; position: absolute; left: 24px;
+    color: var(--altin-500); font-size: 6px;
+  }
+  .drawer-accordion-body a .count {
+    margin-left: auto;
+    font-size: 10px; color: var(--gri-text);
+    background: var(--beyaz);
+    padding: 2px 7px; border-radius: 999px;
+    font-weight: 600;
+  }
+  .drawer-footer {
+    background: var(--krem-koyu);
+    padding: 16px;
+    border-top: 1px solid var(--gri-border);
+    flex-shrink: 0;
+  }
+  .drawer-footer-row {
+    display: flex; align-items: center;
+    justify-content: space-between;
+    font-size: 11px; color: var(--gri-text);
+    margin-bottom: 12px; letter-spacing: 0.5px;
+  }
+  .drawer-footer-row strong {
+    color: var(--bordo-800); font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .drawer-social {
+    display: flex; gap: 8px; justify-content: center;
+  }
+  .drawer-social a {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--beyaz); color: var(--bordo-800);
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; font-size: 13px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--gri-border);
+  }
+  .drawer-social a:hover {
+    background: var(--altin-500); color: var(--bordo-900);
+    border-color: var(--altin-500);
+    transform: translateY(-2px);
+  }
+  @media (max-width: 1024px) {
+    .mobile-menu-btn { display: inline-flex; }
+  }
+  /* ============ GÜVEN BANDI (Trust Band) ============ */
+  .trust-band {
+    position: relative;
+    background: linear-gradient(135deg, #3D0A14 0%, #5C1320 50%, #3D0A14 100%);
+    padding: 50px 40px 46px;
+    overflow: hidden;
+  }
+  .trust-band-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.15), transparent 40%),
+      radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.12), transparent 40%),
+      radial-gradient(1.5px 1.5px at 25% 30%, rgba(212, 175, 55, 0.5), transparent),
+      radial-gradient(1px 1px at 75% 70%, rgba(212, 175, 55, 0.4), transparent),
+      radial-gradient(1.5px 1.5px at 50% 40%, rgba(212, 175, 55, 0.45), transparent);
+    background-size: 100% 100%, 100% 100%, 200px 200px, 200px 200px, 200px 200px;
+    pointer-events: none;
+    animation: trust-sparkle 5s ease-in-out infinite;
+  }
+  @keyframes trust-sparkle {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+  .trust-band-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .trust-band-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .trust-band-eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #E8C968;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .trust-band-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 30px;
+    color: #FAF7F2;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.1;
+  }
+  .trust-band-title em {
+    font-style: italic;
+    color: #D4AF37;
+  }
+  .trust-band-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .trust-band-card {
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.22);
+    border-radius: 14px;
+    padding: 22px 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  .trust-band-card:hover {
+    background: rgba(212, 175, 55, 0.14);
+    border-color: rgba(212, 175, 55, 0.4);
+    transform: translateY(-3px);
+  }
+  .trust-band-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 12px;
+    background: linear-gradient(135deg, #D4AF37, #B8941F);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3D0A14;
+    font-size: 20px;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
+  }
+  .trust-band-card-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 16px;
+    color: #FAF7F2;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .trust-band-card-desc {
+    font-size: 11px;
+    color: rgba(232, 201, 104, 0.85);
+    letter-spacing: 0.3px;
+  }
+  /* Ödeme yöntemleri */
+  .trust-band-payments {
+    padding-top: 24px;
+    border-top: 1px dashed rgba(212, 175, 55, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .trust-band-payments-label {
+    font-size: 11px;
+    color: rgba(232, 201, 104, 0.85);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .trust-band-payments-list {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .payment-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #FAF7F2;
+    padding: 7px 12px;
+    border-radius: 6px;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  .payment-badge.visa { color: #1A4ABC; }
+  .payment-badge.mastercard { color: #2B2B2B; }
+  .payment-badge.troy { color: #0066CC; }
+  .payment-badge.amex { color: #006FCF; }
+  .payment-badge.iyzico {
+    background: #1B9D4E;
+    color: white;
+    border: 1px solid #178A45;
+  }
+  .payment-badge.iyzico i { font-size: 10px; }
+  /* Mastercard circles */
+  .mc-circles {
+    position: relative;
+    width: 22px;
+    height: 14px;
+    display: inline-block;
+  }
+  .mc-circle {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    top: 0;
+  }
+  .mc-red {
+    background: #EB001B;
+    left: 0;
+  }
+  .mc-yellow {
+    background: #F79E1B;
+    right: 0;
+    mix-blend-mode: multiply;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 900px) {
+    .trust-band { padding: 40px 24px 36px; }
+    .trust-band-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .trust-band-title { font-size: 24px; }
+  }
+  @media (max-width: 500px) {
+    .trust-band-card { padding: 18px 12px; }
+    .trust-band-icon { width: 42px; height: 42px; font-size: 17px; }
+    .trust-band-card-title { font-size: 14px; }
+    .trust-band-card-desc { font-size: 10px; }
+    .trust-band-payments {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .payment-badge { padding: 6px 10px; font-size: 10px; }
+  }
+
+
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCE -->
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container">
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menü">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    <div class="nav-left">
+      <a href="kategori.html" class="nav-link">Kategoriler</a>
+      <a href="kategori.html?filtre=yeni" class="nav-link">Yeni Gelenler</a>
+      <a href="kategori.html?filtre=cok-satan" class="nav-link">Çok Satanlar</a>
+      <a href="kategori.html?filtre=indirimde" class="nav-link">İndirimde</a>
+      <a href="kategori.html?filtre=markalar" class="nav-link">Markalar</a>
+    </div>
+    <div>
+      <a href="../index.html" class="logo" title="PB Store · Anasayfa">
+        <div class="logo-circle"><img src="../assets/images/logo.png" alt="PB Store" /></div>
+        <div class="logo-text">KALİTE <em>·</em> STİL <em>·</em> GÜVEN</div>
+      </a>
+    </div>
+    <div class="nav-right">
+      <button class="nav-action" aria-label="Arama"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <a href="hesabim.html#favoriler" class="nav-action" aria-label="Favoriler">
+        <i class="fa-regular fa-heart"></i>
+        <span class="badge">12</span>
+      </a>
+      <a href="sepet.html" class="nav-action" aria-label="Sepet">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="badge">3</span>
+      </a>
+      <a href="hesabim.html" class="user-chip" title="Hesabım">
+        <div class="user-chip-avatar">AY</div>
+        <span>Ayşe</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="../index.html">Anasayfa</a>
+  <span class="sep">/</span>
+  <a href="hesabim.html">Hesabım</a>
+  <span class="sep">/</span>
+  <a href="hesabim.html#siparisler">Siparişlerim</a>
+  <span class="sep">/</span>
+  <span class="current mono">#PB-2026-3471</span>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-left">
+    <a href="hesabim.html#siparisler" class="back-btn" aria-label="Siparişlerime dön"><i class="fa-solid fa-arrow-left"></i></a>
+    <div>
+      <h1>
+        Sipariş Detayı
+        <span class="order-no">#PB-2026-3471</span>
+      </h1>
+      <div class="subtitle">23 Mayıs 2026, 14:32 · Ödendi · Kredi Kartı</div>
+    </div>
+  </div>
+  <div class="header-actions">
+    <button class="btn-action" id="print-btn">
+      <i class="fa-solid fa-print"></i> Yazdır
+    </button>
+    <button class="btn-action">
+      <i class="fa-solid fa-file-invoice"></i> Fatura İndir
+    </button>
+    <button class="btn-action primary" id="reorder-btn">
+      <i class="fa-solid fa-rotate-right"></i> Tekrar Sipariş
+    </button>
+  </div>
+</div>
+
+<!-- ORDER LAYOUT -->
+<div class="order-layout">
+
+  <!-- LEFT COLUMN -->
+  <div>
+
+    <!-- STATUS BANNER -->
+    <div class="status-banner">
+      <div class="status-icon">
+        <i class="fa-solid fa-truck-fast"></i>
+      </div>
+      <div class="status-content">
+        <div class="status-label">Sipariş Durumu</div>
+        <div class="status-title">Siparişiniz <em>yolda</em></div>
+        <div class="status-desc">Kargonuz şu an dağıtım merkezinden çıktı. Yarın teslim edilmesi bekleniyor.</div>
+      </div>
+      <div class="status-eta">
+        <div class="status-eta-label">Tahmini Teslimat</div>
+        <div class="status-eta-date">26 Mayıs</div>
+      </div>
+    </div>
+
+    <!-- TRACKING -->
+    <div class="card">
+      <div class="card-head">
+        <h2><i class="fa-solid fa-route"></i> Kargo Takibi</h2>
+        <span class="meta">Son güncelleme: Bugün 09:15</span>
+      </div>
+      <div class="card-body">
+        <div class="tracking-timeline">
+          <div class="tracking-progress"></div>
+          <div class="tl-step done">
+            <div class="tl-dot"><i class="fa-solid fa-check" style="font-size: 10px;"></i></div>
+            <div class="tl-label">Sipariş Alındı</div>
+            <div class="tl-date">23 May · 14:32</div>
+          </div>
+          <div class="tl-step done">
+            <div class="tl-dot"><i class="fa-solid fa-check" style="font-size: 10px;"></i></div>
+            <div class="tl-label">Onaylandı</div>
+            <div class="tl-date">23 May · 14:38</div>
+          </div>
+          <div class="tl-step done">
+            <div class="tl-dot"><i class="fa-solid fa-check" style="font-size: 10px;"></i></div>
+            <div class="tl-label">Hazırlandı</div>
+            <div class="tl-date">23 May · 16:45</div>
+          </div>
+          <div class="tl-step done">
+            <div class="tl-dot"><i class="fa-solid fa-check" style="font-size: 10px;"></i></div>
+            <div class="tl-label">Kargoda</div>
+            <div class="tl-date">24 May · 09:12</div>
+          </div>
+          <div class="tl-step active">
+            <div class="tl-dot"><i class="fa-solid fa-truck"></i></div>
+            <div class="tl-label">Yolda</div>
+            <div class="tl-date">Bugün</div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-dot"></div>
+            <div class="tl-label">Teslim Edildi</div>
+            <div class="tl-date">26 May</div>
+          </div>
+        </div>
+
+        <div class="cargo-info-strip">
+          <div class="cargo-info-block">
+            <div class="label">Kargo Firması</div>
+            <div class="value">MNG Kargo</div>
+          </div>
+          <div class="cargo-info-block">
+            <div class="label">Takip Numarası</div>
+            <div class="value mono">MNG987654321</div>
+          </div>
+          <div class="cargo-info-block">
+            <div class="label">Son Konum</div>
+            <div class="value">İstanbul Dağıtım</div>
+          </div>
+          <button class="track-btn" id="track-cargo">
+            <i class="fa-solid fa-up-right-from-square"></i> MNG'de Takip Et
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ORDER ITEMS -->
+    <div class="card">
+      <div class="card-head">
+        <h2><i class="fa-solid fa-box"></i> Sipariş İçeriği</h2>
+        <span class="meta">3 ürün</span>
+      </div>
+      <div class="card-body">
+        <div class="order-item">
+          <div class="item-img"><i class="fa-solid fa-droplet"></i></div>
+          <div class="item-info">
+            <div class="item-brand">PB Heritage</div>
+            <div class="item-name">Premium Çelik Usturad</div>
+            <div class="item-variants">
+              <span class="item-variant">30ml</span>
+              <span class="item-variant">Tüm Ciltler</span>
+              <span class="item-variant">SKU: PB-GES-30</span>
+            </div>
+            <div class="item-actions">
+              <button class="item-action review-btn"><i class="fa-solid fa-star"></i> Değerlendir</button>
+              <button class="item-action"><i class="fa-solid fa-rotate-right"></i> Tekrar Al</button>
+              <button class="item-action"><i class="fa-regular fa-heart"></i> Favorile</button>
+            </div>
+          </div>
+          <div class="item-right">
+            <div class="item-qty"><strong>1</strong> adet</div>
+            <div class="item-price">1.290 TL</div>
+            <div class="item-unit-price"><s>1.490 TL</s></div>
+          </div>
+        </div>
+
+        <div class="order-item">
+          <div class="item-img"><i class="fa-solid fa-moon"></i></div>
+          <div class="item-info">
+            <div class="item-brand">PB Heritage</div>
+            <div class="item-name">Argan Sakal Yağı</div>
+            <div class="item-variants">
+              <span class="item-variant">50ml</span>
+              <span class="item-variant">Olgun Cilt</span>
+              <span class="item-variant">SKU: PB-CNC-50</span>
+            </div>
+            <div class="item-actions">
+              <button class="item-action review-btn"><i class="fa-solid fa-star"></i> Değerlendir</button>
+              <button class="item-action"><i class="fa-solid fa-rotate-right"></i> Tekrar Al</button>
+              <button class="item-action"><i class="fa-regular fa-heart"></i> Favorile</button>
+            </div>
+          </div>
+          <div class="item-right">
+            <div class="item-qty"><strong>1</strong> adet</div>
+            <div class="item-price">1.850 TL</div>
+            <div class="item-unit-price"><s>2.200 TL</s></div>
+          </div>
+        </div>
+
+        <div class="order-item">
+          <div class="item-img"><i class="fa-solid fa-leaf"></i></div>
+          <div class="item-info">
+            <div class="item-brand">Aurelia London</div>
+            <div class="item-name">Erkek Bakım Hediye Seti</div>
+            <div class="item-variants">
+              <span class="item-variant">200ml</span>
+              <span class="item-variant">Yıpranmış Saç</span>
+              <span class="item-variant">SKU: PB-SHM-200</span>
+            </div>
+            <div class="item-actions">
+              <button class="item-action review-btn"><i class="fa-solid fa-star"></i> Değerlendir</button>
+              <button class="item-action"><i class="fa-solid fa-rotate-right"></i> Tekrar Al</button>
+              <button class="item-action"><i class="fa-regular fa-heart"></i> Favorile</button>
+            </div>
+          </div>
+          <div class="item-right">
+            <div class="item-qty"><strong>1</strong> adet</div>
+            <div class="item-price">480 TL</div>
+            <div class="item-unit-price"><s>580 TL</s></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADDRESS & PAYMENT -->
+    <div class="info-grid">
+      <!-- DELIVERY ADDRESS -->
+      <div class="card" style="margin-bottom: 0;">
+        <div class="card-head">
+          <h2><i class="fa-solid fa-location-dot"></i> Teslimat Adresi</h2>
+        </div>
+        <div class="card-body">
+          <div class="address-block">
+            <span class="address-tag">
+              <i class="fa-solid fa-house"></i> Ev
+            </span>
+            <div class="name">Ayşe Yılmaz</div>
+            <div class="phone">+90 532 *** ** 47</div>
+            <div class="text">
+              Kadıköy Mah. Bağdat Cad.<br>
+              No:127 Daire:5<br>
+              Kadıköy / İstanbul 34710<br>
+              Türkiye
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BILLING / PAYMENT -->
+      <div class="card" style="margin-bottom: 0;">
+        <div class="card-head">
+          <h2><i class="fa-solid fa-credit-card"></i> Ödeme Bilgileri</h2>
+        </div>
+        <div class="card-body">
+          <div class="info-row">
+            <span class="label">Ödeme Yöntemi</span>
+            <span class="value">Kredi Kartı</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Kart</span>
+            <span class="value mono">VISA •••• 4567</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Taksit</span>
+            <span class="value">Tek Çekim</span>
+          </div>
+          <div class="info-row">
+            <span class="label">İşlem No</span>
+            <span class="value mono">PMT-998247</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Fatura Tipi</span>
+            <span class="value">Bireysel (e-Arşiv)</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Fatura Tarihi</span>
+            <span class="value">23 Mayıs 2026</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DELIVERY METHOD -->
+    <div class="card" style="margin-top: 18px;">
+      <div class="card-head">
+        <h2><i class="fa-solid fa-truck"></i> Teslimat Yöntemi</h2>
+      </div>
+      <div class="card-body">
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+          <div class="info-row" style="grid-template-columns: 1fr; border-bottom: none;">
+            <div>
+              <div class="label" style="margin-bottom: 4px;">Kargo Türü</div>
+              <div class="value">Standart Kargo</div>
+            </div>
+          </div>
+          <div class="info-row" style="grid-template-columns: 1fr; border-bottom: none;">
+            <div>
+              <div class="label" style="margin-bottom: 4px;">Kargo Ücreti</div>
+              <div class="value" style="color: var(--basari);">Ücretsiz</div>
+            </div>
+          </div>
+          <div class="info-row" style="grid-template-columns: 1fr; border-bottom: none;">
+            <div>
+              <div class="label" style="margin-bottom: 4px;">Süre</div>
+              <div class="value">2-3 iş günü</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT COLUMN -->
+  <div class="sidebar-stack">
+
+    <!-- ORDER SUMMARY -->
+    <div class="summary-card">
+      <div class="summary-card-head">
+        <h3>Sipariş Özeti</h3>
+      </div>
+      <div class="summary-rows">
+        <div class="summary-row">
+          <span class="label">Ara Toplam (3 ürün)</span>
+          <span class="value">3.620,00 TL</span>
+        </div>
+        <div class="summary-row discount">
+          <span class="label">PB15 Kuponu (%15)</span>
+          <span class="value">−400,00 TL</span>
+        </div>
+        <div class="summary-row free">
+          <span class="label">Kargo</span>
+          <span class="value">Ücretsiz</span>
+        </div>
+        <div class="summary-row">
+          <span class="label">KDV (%18 dahil)</span>
+          <span class="value">491,29 TL</span>
+        </div>
+
+        <div class="summary-divider"></div>
+
+        <div class="summary-total">
+          <span class="label">Toplam</span>
+          <span>
+            <span class="value">3.220,00</span>
+            <span class="currency">TL</span>
+          </span>
+        </div>
+
+        <div class="summary-paid">
+          <i class="fa-solid fa-circle-check"></i> 23 May'da ödendi
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="sidebar-actions">
+      <h4><i class="fa-solid fa-bolt"></i> Hızlı İşlemler</h4>
+      <div class="action-list">
+        <button class="btn-action" id="track-detail">
+          <i class="fa-solid fa-route"></i> Kargo Detayı
+        </button>
+        <button class="btn-action" id="return-btn">
+          <i class="fa-solid fa-rotate-left"></i> İade Talep Et
+        </button>
+        <button class="btn-action" id="invoice-btn">
+          <i class="fa-solid fa-file-invoice"></i> Fatura Görüntüle
+        </button>
+        <button class="btn-action danger" id="cancel-btn">
+          <i class="fa-solid fa-ban"></i> Siparişi İptal Et
+        </button>
+      </div>
+    </div>
+
+    <!-- HELP -->
+    <div class="help-card">
+      <div class="icon"><i class="fa-solid fa-headset"></i></div>
+      <h4>Yardıma mı ihtiyacın var?</h4>
+      <p>Siparişinle ilgili sorularını müşteri hizmetlerimize iletebilirsin. 7/24 yanındayız.</p>
+      <div class="help-card-actions">
+        <a href="https://wa.me/905320000000" target="_blank" rel="noopener" class="help-link">
+          <i class="fa-brands fa-whatsapp"></i> WhatsApp
+        </a>
+        <a href="mailto:hello@pbstore.com" class="help-link">
+          <i class="fa-regular fa-envelope"></i> E-posta
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RETURN MODAL -->
+<div class="modal-overlay" id="return-modal">
+  <div class="modal">
+    <button class="modal-close" id="close-return"><i class="fa-solid fa-xmark"></i></button>
+    <h3>İade <em>Talebi</em></h3>
+    <p class="modal-sub">İade nedeninizi seçin. Açılmış kozmetik ürünler hijyen sebebiyle iade kabul edilmez.</p>
+
+    <div class="return-reasons">
+      <label class="return-reason"><input type="radio" name="return-reason"> Ürün beklediğim gibi değil</label>
+      <label class="return-reason"><input type="radio" name="return-reason"> Hatalı/Hasarlı geldi</label>
+      <label class="return-reason"><input type="radio" name="return-reason"> Yanlış ürün gönderildi</label>
+      <label class="return-reason"><input type="radio" name="return-reason"> Geç teslimat</label>
+      <label class="return-reason"><input type="radio" name="return-reason"> Diğer</label>
+    </div>
+
+    <textarea class="return-textarea" placeholder="İade nedeninizi detaylandırın (opsiyonel)"></textarea>
+
+    <div class="modal-actions">
+      <button class="btn-cancel" id="cancel-return">Vazgeç</button>
+      <button class="btn-submit" id="submit-return">İade Talebi Oluştur</button>
+    </div>
+  </div>
+</div>
+
+<!-- CANCEL MODAL -->
+<div class="modal-overlay" id="cancel-modal">
+  <div class="modal" style="max-width: 420px;">
+    <button class="modal-close" id="close-cancel"><i class="fa-solid fa-xmark"></i></button>
+    <div style="text-align: center;">
+      <div style="width: 60px; height: 60px; margin: 0 auto 16px; border-radius: 50%; background: var(--tehlike-bg); color: var(--tehlike); display: flex; align-items: center; justify-content: center; font-size: 24px;">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </div>
+      <h3 style="text-align: center; font-size: 22px;">Siparişi <em>İptal Et</em></h3>
+      <p class="modal-sub" style="text-align: center;">
+        Bu sipariş zaten <strong style="color: var(--bordo-800);">kargoya verildi</strong>. Şu aşamada iptal edilemez. Teslim aldıktan sonra <strong>14 gün içinde iade</strong> talebinde bulunabilirsin.
+      </p>
+    </div>
+    <div class="modal-actions" style="justify-content: center;">
+      <button class="btn-cancel" id="cancel-cancel">Anladım</button>
+      <button class="btn-submit" id="open-return-from-cancel">İade Talep Et</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============ GÜVEN BANDI (Trust Band) ============ -->
+<section class="trust-band">
+  <div class="trust-band-bg"></div>
+  <div class="trust-band-container">
+    <div class="trust-band-header">
+      <div class="trust-band-eyebrow">Güven Sertifikalarımız</div>
+      <h2 class="trust-band-title">Sizin için <em>güvenli alışveriş</em></h2>
+    </div>
+
+    <div class="trust-band-grid">
+      <div class="trust-band-card">
+        <div class="trust-band-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="trust-band-card-title">SSL Sertifikası</div>
+        <div class="trust-band-card-desc">256-bit şifreleme</div>
+      </div>
+
+      <div class="trust-band-card">
+        <div class="trust-band-icon"><i class="fa-solid fa-credit-card"></i></div>
+        <div class="trust-band-card-title">3D Secure Ödeme</div>
+        <div class="trust-band-card-desc">iyzico Sanal POS</div>
+      </div>
+
+      <div class="trust-band-card">
+        <div class="trust-band-icon"><i class="fa-solid fa-rotate-left"></i></div>
+        <div class="trust-band-card-title">14 Gün Koşulsuz İade</div>
+        <div class="trust-band-card-desc">Hızlı iade garantisi</div>
+      </div>
+
+      <div class="trust-band-card">
+        <div class="trust-band-icon"><i class="fa-solid fa-headset"></i></div>
+        <div class="trust-band-card-title">7/24 Canlı Destek</div>
+        <div class="trust-band-card-desc">WhatsApp &amp; Telefon</div>
+      </div>
+    </div>
+
+    <!-- Ödeme yöntemleri -->
+    <div class="trust-band-payments">
+      <span class="trust-band-payments-label">Güvenli ödeme yöntemleri:</span>
+      <div class="trust-band-payments-list">
+        <div class="payment-badge visa">
+          <span class="payment-badge-text">VISA</span>
+        </div>
+        <div class="payment-badge mastercard">
+          <span class="mc-circles">
+            <span class="mc-circle mc-red"></span>
+            <span class="mc-circle mc-yellow"></span>
+          </span>
+          <span class="payment-badge-text">Mastercard</span>
+        </div>
+        <div class="payment-badge troy">
+          <span class="payment-badge-text">Troy</span>
+        </div>
+        <div class="payment-badge amex">
+          <span class="payment-badge-text">AMEX</span>
+        </div>
+        <div class="payment-badge iyzico">
+          <i class="fa-solid fa-lock"></i>
+          <span class="payment-badge-text">iyzico</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <h3>PB Store</h3>
+      <div class="footer-slogan">KALİTE<span>◆</span>STİL<span>◆</span>GÜVEN</div>
+      <p>Premium kozmetik ve bakım ürünleri ile cildinize hakettiği değeri verin. Doğal, etkili, lüks — kalite, stil ve güvenin buluştuğu yer.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/pbstore" target="_blank" rel="noopener" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://facebook.com/pbstore" target="_blank" rel="noopener" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://twitter.com/pbstore" target="_blank" rel="noopener" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        <a href="https://tiktok.com/@pbstore" target="_blank" rel="noopener" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Kurumsal</h4>
+      <a href="hakkimizda.html">Hakkımızda</a>
+      <a href="iletisim.html">İletişim</a>
+      <a href="#" class="coming-soon">Kariyer</a>
+    </div>
+    <div class="footer-col">
+      <h4>Yardım</h4>
+      <a href="sss.html">Sıkça Sorulanlar</a>
+      <a href="kargo.html">Kargo & Teslimat</a>
+      <a href="iade.html">İade & Değişim</a>
+      <a href="giris-kayit.html?tab=signup">Üyelik</a>
+    </div>
+    <div class="footer-col">
+      <h4>Yasal</h4>
+      <a href="kvkk.html">Gizlilik Politikası</a>
+      <a href="#" class="coming-soon">Kullanım Koşulları</a>
+      <a href="kvkk.html">KVKK</a>
+      <a href="#" class="coming-soon">Mesafeli Satış</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 PB Store · KALİTE ◆ STİL ◆ GÜVEN · Tüm hakları saklıdır</div>
+    <div class="payment-methods">
+      <i class="fa-brands fa-cc-visa" title="Visa"></i>
+      <i class="fa-brands fa-cc-mastercard" title="Mastercard"></i>
+      <i class="fa-brands fa-cc-amex" title="American Express"></i>
+      <i class="fa-solid fa-shield-halved" title="SSL Güvenli"></i>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBİL MENÜ DRAWER -->
+<div class="mobile-drawer-backdrop" id="drawer-backdrop"></div>
+<aside class="mobile-drawer" id="mobile-drawer">
+
+  <div class="drawer-header">
+    <div class="drawer-logo">
+      <img src="../assets/images/logo.png" alt="PB Store" />
+    </div>
+    <div class="drawer-title">
+      <h3>PB Store</h3>
+      <div class="slogan">Kalite · Stil · Güven</div>
+    </div>
+    <button class="drawer-close" id="drawer-close" aria-label="Kapat">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
+  <div class="drawer-user-section">
+    <div class="drawer-user-msg">Hoşgeldin, <em>misafir</em>!</div>
+    <div class="drawer-auth-grid">
+      <a href="giris-kayit.html" class="drawer-auth-btn outline">
+        <i class="fa-solid fa-right-to-bracket"></i> Giriş
+      </a>
+      <a href="giris-kayit.html?tab=signup" class="drawer-auth-btn primary">
+        <i class="fa-solid fa-user-plus"></i> Kayıt Ol
+      </a>
+    </div>
+  </div>
+
+  <div class="drawer-nav">
+
+    <div class="drawer-section">
+      <div class="drawer-section-label">Keşfet</div>
+
+      <div class="drawer-accordion" id="cat-accordion">
+        <button class="drawer-accordion-head">
+          <i class="fa-solid fa-grid-2"></i>
+          <span>Kategoriler</span>
+          <i class="fa-solid fa-chevron-down chev"></i>
+        </button>
+        <div class="drawer-accordion-body">
+          <a href="kategori.html?kategori=erkek-bakim">
+            <i class="fa-solid fa-droplet" style="color:var(--altin-600);font-size:11px;width:14px;"></i>
+            Cilt Bakımı
+            <span class="count">28</span>
+          </a>
+          <a href="kategori.html?kategori=taki-aksesuar">
+            <i class="fa-solid fa-palette" style="color:var(--altin-600);font-size:11px;width:14px;"></i>
+            Makyaj
+            <span class="count">22</span>
+          </a>
+          <a href="kategori.html?kategori=ev-yasam">
+            <i class="fa-solid fa-spray-can" style="color:var(--altin-600);font-size:11px;width:14px;"></i>
+            Parfüm
+            <span class="count">16</span>
+          </a>
+          <a href="kategori.html?kategori=erkek-bakim">
+            <i class="fa-solid fa-leaf" style="color:var(--altin-600);font-size:11px;width:14px;"></i>
+            Saç & Vücut
+            <span class="count">19</span>
+          </a>
+        </div>
+      </div>
+
+      <a href="kategori.html?filtre=yeni" class="drawer-link">
+        <i class="fa-solid fa-sparkles"></i>
+        <span>Yeni Gelenler</span>
+        <i class="fa-solid fa-chevron-right arrow"></i>
+      </a>
+      <a href="kategori.html?filtre=cok-satan" class="drawer-link">
+        <i class="fa-solid fa-fire"></i>
+        <span>Çok Satanlar</span>
+        <i class="fa-solid fa-chevron-right arrow"></i>
+      </a>
+      <a href="kategori.html?filtre=indirimde" class="drawer-link">
+        <i class="fa-solid fa-tag"></i>
+        <span>İndirimde</span>
+        <span class="badge-mini">%50</span>
+      </a>
+      <a href="kategori.html?filtre=markalar" class="drawer-link">
+        <i class="fa-solid fa-award"></i>
+        <span>Markalar</span>
+        <i class="fa-solid fa-chevron-right arrow"></i>
+      </a>
+    </div>
+
+    <div class="drawer-section">
+      <div class="drawer-section-label">Hesabım</div>
+      <a href="hesabim.html" class="drawer-link">
+        <i class="fa-solid fa-user"></i>
+        <span>Profilim</span>
+        <i class="fa-solid fa-chevron-right arrow"></i>
+      </a>
+      <a href="hesabim.html#siparisler" class="drawer-link">
+        <i class="fa-solid fa-box"></i>
+        <span>Siparişlerim</span>
+        <i class="fa-solid fa-chevron-right arrow"></i>
+      </a>
+      <a href="hesabim.html#favoriler" class="drawer-link">
+        <i class="fa-regular fa-heart"></i>
+        <span>Favorilerim</span>
+        <span class="badge-mini">2</span>
+      </a>
+      <a href="sepet.html" class="drawer-link">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span>Sepetim</span>
+        <span class="badge-mini" id="drawer-cart-count">0</span>
+      </a>
+    </div>
+
+    <div class="drawer-section">
+      <div class="drawer-section-label">Destek</div>
+      <a href="iletisim.html" class="drawer-link">
+        <i class="fa-solid fa-headset"></i>
+        <span>Müşteri Hizmetleri</span>
+        <i class="fa-solid fa-chevron-right arrow"></i>
+      </a>
+      <a href="kargo.html" class="drawer-link">
+        <i class="fa-solid fa-truck"></i>
+        <span>Kargo & Teslimat</span>
+        <i class="fa-solid fa-chevron-right arrow"></i>
+      </a>
+      <a href="iade.html" class="drawer-link">
+        <i class="fa-solid fa-rotate-left"></i>
+        <span>İade & Değişim</span>
+        <i class="fa-solid fa-chevron-right arrow"></i>
+      </a>
+      <a href="hakkimizda.html" class="drawer-link">
+        <i class="fa-solid fa-circle-info"></i>
+        <span>Hakkımızda</span>
+        <i class="fa-solid fa-chevron-right arrow"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="drawer-footer">
+    <div class="drawer-footer-row">
+      <span>İletişim:</span>
+      <strong>0850 000 00 00</strong>
+    </div>
+    <div class="drawer-social">
+      <a href="https://instagram.com/pbstore" target="_blank" rel="noopener" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://facebook.com/pbstore" target="_blank" rel="noopener" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://twitter.com/pbstore" target="_blank" rel="noopener" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+      <a href="https://tiktok.com/@pbstore" target="_blank" rel="noopener" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+  </div>
+
+</aside>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <i class="fa-solid fa-circle-check"></i>
+  <span id="toast-text">İşlem başarılı</span>
+</div>
+
+<script>
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    document.getElementById('toast-text').textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
+  }
+
+  // RETURN MODAL
+  const returnModal = document.getElementById('return-modal');
+  document.getElementById('return-btn').addEventListener('click', () => returnModal.classList.add('show'));
+  document.getElementById('close-return').addEventListener('click', () => returnModal.classList.remove('show'));
+  document.getElementById('cancel-return').addEventListener('click', () => returnModal.classList.remove('show'));
+  returnModal.addEventListener('click', (e) => { if (e.target === returnModal) returnModal.classList.remove('show'); });
+
+  document.querySelectorAll('.return-reason').forEach(label => {
+    label.addEventListener('click', () => {
+      document.querySelectorAll('.return-reason').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+    });
+  });
+
+  document.getElementById('submit-return').addEventListener('click', () => {
+    const selected = document.querySelector('.return-reason.selected');
+    if (!selected) {
+      showToast('Lütfen bir iade nedeni seçin');
+      return;
+    }
+    returnModal.classList.remove('show');
+    showToast('İade talebiniz oluşturuldu. 1-2 iş günü içinde onaylanacak ✓');
+  });
+
+  // CANCEL MODAL
+  const cancelModal = document.getElementById('cancel-modal');
+  document.getElementById('cancel-btn').addEventListener('click', () => cancelModal.classList.add('show'));
+  document.getElementById('close-cancel').addEventListener('click', () => cancelModal.classList.remove('show'));
+  document.getElementById('cancel-cancel').addEventListener('click', () => cancelModal.classList.remove('show'));
+  document.getElementById('open-return-from-cancel').addEventListener('click', () => {
+    cancelModal.classList.remove('show');
+    returnModal.classList.add('show');
+  });
+  cancelModal.addEventListener('click', (e) => { if (e.target === cancelModal) cancelModal.classList.remove('show'); });
+
+  // OTHER ACTIONS
+  document.getElementById('print-btn').addEventListener('click', () => {
+    showToast('Yazdırma penceresi açılıyor...');
+    setTimeout(() => window.print(), 400);
+  });
+
+  document.getElementById('reorder-btn').addEventListener('click', () => {
+    showToast('3 ürün sepetinize eklendi ✓');
+  });
+
+  document.getElementById('track-cargo').addEventListener('click', () => {
+    showToast('MNG Kargo takip sayfası yeni sekmede açılıyor...');
+  });
+
+  document.querySelectorAll('.review-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.order-item').querySelector('.item-name').textContent;
+      showToast(`"${item}" değerlendirme formu açılıyor...`);
+    });
+  });
+</script>
+
+
+<script>
+  (function() {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const drawerBackdrop = document.getElementById('drawer-backdrop');
+    const drawerClose = document.getElementById('drawer-close');
+    const catAccordion = document.getElementById('cat-accordion');
+    if (!mobileMenuBtn || !mobileDrawer) return;
+    function openDrawer() {
+      mobileMenuBtn.classList.add('open');
+      mobileDrawer.classList.add('open');
+      drawerBackdrop.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+      mobileMenuBtn.classList.remove('open');
+      mobileDrawer.classList.remove('open');
+      drawerBackdrop.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+    mobileMenuBtn.addEventListener('click', () => {
+      if (mobileDrawer.classList.contains('open')) closeDrawer();
+      else openDrawer();
+    });
+    drawerClose?.addEventListener('click', closeDrawer);
+    drawerBackdrop?.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileDrawer.classList.contains('open')) closeDrawer();
+    });
+    catAccordion?.querySelector('.drawer-accordion-head')?.addEventListener('click', () => {
+      catAccordion.classList.toggle('open');
+    });
+  })();
+</script>
+
+
+<!-- PB Store Frontend Logic -->
+<script src="../assets/js/products.js" defer></script>
+<script src="../assets/js/cart.js" defer></script>
+<script src="../assets/js/render.js" defer></script>
+</body>
+</html>

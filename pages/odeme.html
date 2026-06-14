@@ -1,0 +1,2719 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ödeme | PB Store</title>
+<meta name="description" content="PB Store güvenli ödeme sayfası. 256-bit SSL şifreleme, taksit imkanları." />
+<meta name="keywords" content="güvenli ödeme, taksit, kredi kartı" />
+<meta name="author" content="PB Store" />
+<meta name="language" content="Turkish" />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="canonical" href="https://p-bstore.vercel.app/pages/odeme.html" />
+
+<!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+<meta property="og:locale" content="tr_TR" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://p-bstore.vercel.app/pages/odeme.html" />
+<meta property="og:title" content="Ödeme | PB Store" />
+<meta property="og:description" content="PB Store güvenli ödeme sayfası. 256-bit SSL şifreleme, taksit imkanları." />
+<meta property="og:image" content="https://p-bstore.vercel.app/assets/images/logo.png" />
+<meta property="og:image:width" content="768" />
+<meta property="og:image:height" content="768" />
+<meta property="og:site_name" content="PB Store" />
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://p-bstore.vercel.app/pages/odeme.html" />
+<meta name="twitter:title" content="Ödeme | PB Store" />
+<meta name="twitter:description" content="PB Store güvenli ödeme sayfası. 256-bit SSL şifreleme, taksit imkanları." />
+<meta name="twitter:image" content="https://p-bstore.vercel.app/assets/images/logo.png" />
+<meta name="twitter:site" content="@pbstore" />
+<meta name="twitter:creator" content="@pbstore" />
+
+<!-- Theme Color -->
+<meta name="theme-color" content="#5C1320" />
+<meta name="msapplication-TileColor" content="#5C1320" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/jpeg" href="/../assets/images/logo.png" />
+<link rel="apple-touch-icon" href="../assets/images/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../assets/css/ads.css">
+<link rel="stylesheet" href="../assets/css/render.css">
+<link rel="stylesheet" href="../assets/css/responsive.css">
+<style>
+  :root {
+    --bordo-900: #3D0A14;
+    --bordo-800: #5C1320;
+    --bordo-700: #7B1E2B;
+    --bordo-600: #962535;
+    --altin-700: #9A7B1A;
+    --altin-600: #B8941F;
+    --altin-500: #D4AF37;
+    --altin-400: #E0BE52;
+    --altin-300: #E8C968;
+    --siyah:    #0A0A0A;
+    --beyaz:    #FFFFFF;
+    --krem:     #FAF7F2;
+    --krem-koyu: #F0EBE0;
+    --gri-suzme: #F5F2EE;
+    --gri-text: #6B655C;
+    --gri-border: #E5DFD3;
+    --basari:   #2D8F4F;
+    --basari-bg: #E8F5EC;
+    --tehlike:  #C44545;
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'Manrope', system-ui, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--sans);
+    background: var(--krem);
+    color: var(--siyah);
+    line-height: 1.6;
+  }
+
+  /* ============ TOP NAV ============ */
+  .topnav {
+    background: var(--krem);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .nav-secure {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--basari);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .topnav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .topnav-logo-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(212, 175, 55, 0.25);
+    position: relative;
+  }
+  .topnav-logo-circle::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+  }
+  .topnav-logo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .topnav-logo-text {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--bordo-800);
+    font-weight: 600;
+    letter-spacing: 3px;
+  }
+  .nav-help {
+    color: var(--gri-text);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .nav-help i { color: var(--altin-600); }
+
+  /* ============ PAGE HEAD ============ */
+  .page-head {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 40px 20px;
+    text-align: center;
+  }
+  .page-eyebrow {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--bordo-700);
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  .page-eyebrow::before,
+  .page-eyebrow::after {
+    content: '◆';
+    color: var(--altin-500);
+    margin: 0 16px;
+    font-size: 8px;
+    vertical-align: 2px;
+  }
+  .page-title {
+    font-family: var(--serif);
+    font-size: clamp(34px, 5vw, 52px);
+    color: var(--bordo-800);
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .page-title em { font-style: italic; color: var(--altin-600); }
+  .page-sub {
+    font-size: 14px;
+    color: var(--gri-text);
+    letter-spacing: 0.5px;
+  }
+
+  /* ============ STEPPER ============ */
+  .stepper {
+    max-width: 800px;
+    margin: 30px auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 0 40px;
+  }
+  .stepper::before {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: var(--gri-border);
+    z-index: 0;
+  }
+  .stepper-progress {
+    position: absolute;
+    top: 16px;
+    left: 10%;
+    height: 1px;
+    background: var(--altin-500);
+    z-index: 0;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+    background: var(--krem);
+    padding: 0 16px;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
+  .step.done:hover {
+    transform: translateY(-2px);
+  }
+  .step.done:hover .step-num {
+    transform: scale(1.05);
+  }
+  .step-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--krem);
+    border: 1px solid var(--gri-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-weight: 600;
+    color: var(--gri-text);
+    font-size: 15px;
+    transition: all 0.3s ease;
+  }
+  .step.active .step-num {
+    background: var(--bordo-800);
+    color: var(--altin-300);
+    border-color: var(--bordo-800);
+    transform: scale(1.1);
+  }
+  .step.done .step-num {
+    background: var(--altin-500);
+    color: var(--bordo-900);
+    border-color: var(--altin-500);
+  }
+  .step.done .step-num::after {
+    content: '✓';
+    font-family: var(--sans);
+  }
+  .step.done .step-num { font-size: 0; }
+  .step.done .step-num::after { font-size: 16px; font-weight: 700; }
+  .step-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gri-text);
+    font-weight: 500;
+  }
+  .step.active .step-label { color: var(--bordo-800); font-weight: 600; }
+  .step.done .step-label { color: var(--altin-700); }
+
+  /* ============ LAYOUT ============ */
+  .checkout-layout {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 40px 80px;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 40px;
+  }
+
+  /* ============ STEP CONTENT ============ */
+  .step-content { display: none; }
+  .step-content.active { display: block; }
+
+  /* SECTION BLOCK */
+  .section-block {
+    background: var(--beyaz);
+    border: 1px solid var(--gri-border);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .section-head {
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--gri-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-soft, var(--gri-suzme));
+  }
+  .section-head-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .section-head-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--bordo-800);
+    color: var(--altin-300);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .section-head-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--bordo-800);
+    font-weight: 600;
+  }
+  .section-head-edit {
+    background: none;
+    border: 1px solid var(--gri-border);
+    color: var(--bordo-700);
+    padding: 7px 14px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .section-head-edit:hover {
+    background: var(--bordo-800);
+    color: var(--altin-300);
+    border-color: var(--bordo-800);
+  }
+  .section-body {
+    padding: 24px;
+  }
+
+  /* ============ ADDRESS SELECTOR ============ */
+  .address-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .address-card {
+    background: var(--krem);
+    border: 1px solid var(--gri-border);
+    border-radius: 8px;
+    padding: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .address-card:hover {
+    border-color: var(--altin-500);
+  }
+  .address-card.selected {
+    border-color: var(--bordo-800);
+    background: var(--beyaz);
+    box-shadow: 0 4px 16px rgba(123, 30, 43, 0.08);
+  }
+  .address-card.selected::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--altin-500);
+    border-radius: 8px 0 0 8px;
+  }
+  .address-radio {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--gri-border);
+    border-radius: 50%;
+    background: var(--beyaz);
+    transition: all 0.2s ease;
+  }
+  .address-card.selected .address-radio {
+    border-color: var(--bordo-800);
+    border-width: 5px;
+  }
+  .address-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--bordo-800);
+    font-weight: 600;
+  }
+  .address-top i { color: var(--altin-600); font-size: 12px; }
+  .address-default {
+    background: var(--altin-500);
+    color: var(--bordo-900);
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+  .address-name {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--bordo-800);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .address-phone {
+    font-size: 13px;
+    color: var(--gri-text);
+    margin-bottom: 8px;
+  }
+  .address-text {
+    font-size: 13px;
+    color: var(--siyah);
+    line-height: 1.5;
+  }
+
+  .add-address-card {
+    background: var(--krem);
+    border: 1.5px dashed var(--gri-border);
+    border-radius: 8px;
+    padding: 18px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--gri-text);
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    min-height: 140px;
+    transition: all 0.3s ease;
+  }
+  .add-address-card:hover {
+    border-color: var(--altin-500);
+    color: var(--bordo-700);
+  }
+  .add-address-card i { font-size: 24px; color: var(--altin-600); }
+
+  /* ============ FORM FIELDS ============ */
+  .form-row {
+    display: grid;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .form-row.two-col { grid-template-columns: 1fr 1fr; }
+  .form-row.three-col { grid-template-columns: 1.5fr 1fr 1fr; }
+
+  .form-group { position: relative; }
+  .form-label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bordo-800);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .form-label .required { color: var(--bordo-700); }
+  .form-input-wrap { position: relative; }
+  .form-input {
+    width: 100%;
+    background: var(--krem);
+    border: 1px solid var(--gri-border);
+    padding: 13px 16px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--siyah);
+    border-radius: 6px;
+    outline: none;
+    transition: all 0.25s ease;
+  }
+  .form-input::placeholder { color: var(--gri-text); }
+  .form-input:focus {
+    border-color: var(--altin-500);
+    background: var(--beyaz);
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+  }
+  .form-input.with-icon { padding-right: 44px; }
+  .form-input-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--altin-600);
+    font-size: 14px;
+    pointer-events: none;
+  }
+
+  select.form-input {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%239A7B1A' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+
+  textarea.form-input {
+    resize: vertical;
+    min-height: 80px;
+    font-family: var(--sans);
+  }
+
+  /* ============ DELIVERY OPTIONS ============ */
+  .delivery-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .delivery-card {
+    background: var(--krem);
+    border: 1px solid var(--gri-border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px;
+    align-items: center;
+  }
+  .delivery-card:hover { border-color: var(--altin-500); }
+  .delivery-card.selected {
+    border-color: var(--bordo-800);
+    background: var(--beyaz);
+    box-shadow: 0 4px 16px rgba(123, 30, 43, 0.08);
+  }
+  .delivery-radio {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--gri-border);
+    border-radius: 50%;
+    background: var(--beyaz);
+    transition: all 0.2s ease;
+  }
+  .delivery-card.selected .delivery-radio {
+    border-color: var(--bordo-800);
+    border-width: 5px;
+  }
+  .delivery-info { display: flex; flex-direction: column; gap: 3px; }
+  .delivery-name {
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--bordo-800);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .delivery-name i { color: var(--altin-600); font-size: 14px; }
+  .delivery-time {
+    font-size: 12px;
+    color: var(--gri-text);
+  }
+  .delivery-price {
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--bordo-800);
+    font-weight: 600;
+  }
+  .delivery-price.free {
+    color: var(--basari);
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: var(--basari-bg);
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+
+  /* ============ INVOICE OPTIONS ============ */
+  .invoice-toggle {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .invoice-btn {
+    flex: 1;
+    background: var(--krem);
+    border: 1px solid var(--gri-border);
+    padding: 14px;
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--siyah);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .invoice-btn:hover { border-color: var(--altin-500); }
+  .invoice-btn.selected {
+    background: var(--bordo-800);
+    color: var(--altin-300);
+    border-color: var(--bordo-800);
+  }
+  .invoice-btn i { font-size: 13px; }
+
+  /* ============ NAVIGATION BUTTONS ============ */
+  .step-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .btn-back {
+    background: var(--krem);
+    border: 1px solid var(--gri-border);
+    color: var(--bordo-800);
+    padding: 14px 24px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn-back:hover {
+    background: var(--bordo-800);
+    color: var(--altin-300);
+    border-color: var(--bordo-800);
+  }
+  .btn-next {
+    background: var(--bordo-800);
+    color: var(--altin-300);
+    border: none;
+    padding: 14px 28px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+  }
+  .btn-next:hover {
+    background: var(--bordo-900);
+    color: var(--altin-500);
+    box-shadow: 0 8px 20px rgba(123, 30, 43, 0.25);
+  }
+  .btn-next i { transition: transform 0.3s ease; }
+  .btn-next:hover i { transform: translateX(4px); }
+
+  /* ============ PAYMENT METHODS ============ */
+  .payment-methods-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .payment-method {
+    background: var(--krem);
+    border: 1px solid var(--gri-border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px;
+    align-items: center;
+  }
+  .payment-method:hover { border-color: var(--altin-500); }
+  .payment-method.selected {
+    border-color: var(--bordo-800);
+    background: var(--beyaz);
+  }
+  .payment-radio {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--gri-border);
+    border-radius: 50%;
+    transition: all 0.2s ease;
+  }
+  .payment-method.selected .payment-radio {
+    border-color: var(--bordo-800);
+    border-width: 5px;
+  }
+  .payment-name {
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--bordo-800);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .payment-name i {
+    color: var(--altin-600);
+    font-size: 18px;
+  }
+  .payment-name small {
+    font-family: var(--sans);
+    font-size: 11px;
+    color: var(--gri-text);
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    margin-left: 4px;
+  }
+  .payment-icons {
+    display: flex;
+    gap: 6px;
+  }
+  .pay-mini-icon {
+    width: 36px;
+    height: 24px;
+    background: var(--beyaz);
+    border: 1px solid var(--gri-border);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bordo-800);
+    font-size: 14px;
+  }
+
+  /* ============ CREDIT CARD ============ */
+  .card-preview {
+    background: linear-gradient(135deg, var(--bordo-900) 0%, var(--bordo-700) 60%, var(--bordo-800) 100%);
+    color: var(--krem);
+    padding: 26px;
+    border-radius: 14px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1.6 / 1;
+    max-width: 360px;
+    box-shadow: 0 12px 36px rgba(61, 10, 20, 0.25);
+  }
+  .card-preview::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.15), transparent 40%),
+      radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.08), transparent 50%);
+    pointer-events: none;
+  }
+  .card-preview::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 30% 40%, rgba(212, 175, 55, 0.3), transparent),
+      radial-gradient(1px 1px at 70% 60%, rgba(212, 175, 55, 0.2), transparent),
+      radial-gradient(1.5px 1.5px at 50% 30%, rgba(212, 175, 55, 0.3), transparent);
+    pointer-events: none;
+  }
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+  }
+  .card-brand {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--altin-400);
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+  .card-chip {
+    width: 40px;
+    height: 30px;
+    background: linear-gradient(135deg, var(--altin-500), var(--altin-700));
+    border-radius: 5px;
+    position: relative;
+  }
+  .card-chip::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 3px;
+  }
+  .card-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+    color: var(--krem);
+    position: relative;
+    z-index: 1;
+    font-weight: 500;
+  }
+  .card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    position: relative;
+    z-index: 1;
+  }
+  .card-info-label {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--altin-300);
+    opacity: 0.8;
+    margin-bottom: 4px;
+  }
+  .card-info-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: var(--krem);
+    letter-spacing: 1.5px;
+    font-weight: 500;
+  }
+  .card-network {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--altin-300);
+    font-style: italic;
+    letter-spacing: 1px;
+  }
+
+  /* ============ INSTALLMENT ============ */
+  .installment-info {
+    background: var(--krem-koyu);
+    padding: 14px 18px;
+    border-left: 3px solid var(--altin-500);
+    border-radius: 4px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: var(--bordo-800);
+  }
+  .installment-info i { color: var(--altin-600); margin-right: 8px; }
+  .installment-options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .installment-opt {
+    background: var(--krem);
+    border: 1px solid var(--gri-border);
+    padding: 14px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  .installment-opt:hover { border-color: var(--altin-500); }
+  .installment-opt.selected {
+    background: var(--beyaz);
+    border-color: var(--bordo-800);
+    box-shadow: 0 4px 12px rgba(123, 30, 43, 0.08);
+  }
+  .installment-opt-count {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--bordo-800);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .installment-opt-monthly {
+    font-size: 11px;
+    color: var(--gri-text);
+    letter-spacing: 0.3px;
+  }
+  .installment-opt-total {
+    font-size: 10px;
+    color: var(--altin-700);
+    margin-top: 4px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* ============ SECURITY ============ */
+  .security-box {
+    background: var(--basari-bg);
+    border: 1px solid rgba(45, 143, 79, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--basari);
+  }
+  .security-box i {
+    font-size: 16px;
+    color: var(--basari);
+  }
+  .security-box strong { font-weight: 600; }
+
+  /* ============ SUMMARY SIDEBAR ============ */
+  .summary-wrap {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+  }
+  .summary-card {
+    background: var(--beyaz);
+    border: 1px solid var(--gri-border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .summary-card-head {
+    background: var(--bordo-800);
+    padding: 18px 24px;
+    color: var(--altin-300);
+    position: relative;
+  }
+  .summary-card-head::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 24px;
+    right: 24px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--altin-500), transparent);
+  }
+  .summary-card-head h3 {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .summary-items {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--gri-border);
+  }
+  .summary-item {
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    gap: 12px;
+    padding: 10px 0;
+    align-items: center;
+  }
+  .summary-item:not(:last-child) {
+    border-bottom: 1px dashed rgba(123, 30, 43, 0.1);
+  }
+  .summary-item-img {
+    width: 48px;
+    height: 48px;
+    background: var(--gri-suzme);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bordo-700);
+    opacity: 0.6;
+    border-radius: 4px;
+    font-size: 18px;
+    position: relative;
+  }
+  .summary-item-qty {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: var(--bordo-800);
+    color: var(--altin-300);
+    font-size: 10px;
+    font-weight: 700;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+  }
+  .summary-item-info { min-width: 0; }
+  .summary-item-name {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--bordo-800);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .summary-item-variant {
+    font-size: 11px;
+    color: var(--gri-text);
+  }
+  .summary-item-price {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--bordo-800);
+    font-weight: 600;
+  }
+
+  .summary-rows { padding: 18px 24px; }
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 0;
+    font-size: 13px;
+  }
+  .summary-row .label { color: var(--gri-text); }
+  .summary-row .value { color: var(--bordo-800); font-weight: 500; }
+  .summary-row.discount .value { color: var(--altin-700); font-weight: 600; }
+  .summary-row.free .value {
+    color: var(--basari);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  .summary-divider {
+    height: 1px;
+    background: var(--gri-border);
+    margin: 10px 0;
+  }
+  .summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 0 4px;
+  }
+  .summary-total .label {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--bordo-800);
+    font-weight: 600;
+  }
+  .summary-total .value {
+    font-family: var(--serif);
+    font-size: 30px;
+    color: var(--bordo-800);
+    font-weight: 600;
+  }
+  .summary-total .currency {
+    font-size: 16px;
+    color: var(--altin-600);
+    margin-left: 4px;
+  }
+
+  .summary-badges {
+    padding: 14px 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: var(--gri-suzme);
+    border-top: 1px solid var(--gri-border);
+  }
+  .summary-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11.5px;
+    color: var(--gri-text);
+    letter-spacing: 0.3px;
+  }
+  .summary-badge i {
+    color: var(--altin-600);
+    width: 14px;
+    text-align: center;
+  }
+
+  /* ============ STEP 3 — CONFIRMATION ============ */
+  .confirmation-wrap {
+    text-align: center;
+    padding: 60px 40px;
+    background: var(--beyaz);
+    border: 1px solid var(--gri-border);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .confirmation-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--altin-500), var(--altin-300), var(--altin-500));
+  }
+  .confirm-icon-wrap {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--altin-500), var(--altin-300));
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: confirmPop 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  @keyframes confirmPop {
+    0% { transform: scale(0); opacity: 0; }
+    60% { transform: scale(1.15); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .confirm-icon-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+  }
+  .confirm-icon-wrap::after {
+    content: '';
+    position: absolute;
+    inset: -16px;
+    border-radius: 50%;
+    border: 1px dashed rgba(212, 175, 55, 0.25);
+  }
+  .confirm-icon-wrap i {
+    font-size: 40px;
+    color: var(--bordo-900);
+  }
+  .confirm-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 5vw, 52px);
+    color: var(--bordo-800);
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+  .confirm-title em { font-style: italic; color: var(--altin-600); }
+  .confirm-sub {
+    font-size: 16px;
+    color: var(--gri-text);
+    max-width: 480px;
+    margin: 0 auto 28px;
+    line-height: 1.7;
+  }
+  .confirm-order-info {
+    background: var(--krem);
+    border: 1px dashed var(--altin-600);
+    border-radius: 8px;
+    padding: 20px 28px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 32px;
+  }
+  .confirm-order-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gri-text);
+    font-weight: 600;
+  }
+  .confirm-order-no {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    color: var(--bordo-800);
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .confirm-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 720px;
+    margin: 0 auto 32px;
+    text-align: left;
+  }
+  .confirm-detail-card {
+    background: var(--gri-suzme);
+    padding: 18px;
+    border-radius: 8px;
+    border-left: 3px solid var(--altin-500);
+  }
+  .confirm-detail-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--beyaz);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--altin-600);
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .confirm-detail-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gri-text);
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  .confirm-detail-value {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--bordo-800);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .confirm-detail-sub {
+    font-size: 12px;
+    color: var(--gri-text);
+    margin-top: 2px;
+  }
+
+  .confirm-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-action {
+    background: var(--bordo-800);
+    color: var(--altin-300);
+    border: none;
+    padding: 14px 26px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+  }
+  .btn-action:hover {
+    background: var(--bordo-900);
+    color: var(--altin-500);
+  }
+  .btn-action.outline {
+    background: var(--krem);
+    color: var(--bordo-800);
+    border: 1px solid var(--gri-border);
+  }
+  .btn-action.outline:hover {
+    background: var(--bordo-800);
+    color: var(--altin-300);
+    border-color: var(--bordo-800);
+  }
+
+  /* RECEIPT */
+  .receipt-card {
+    background: var(--beyaz);
+    border: 1px solid var(--gri-border);
+    border-radius: 8px;
+    margin-top: 20px;
+    overflow: hidden;
+  }
+  .receipt-head {
+    background: var(--krem);
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--gri-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .receipt-head h3 {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--bordo-800);
+    font-weight: 600;
+  }
+  .receipt-print {
+    background: none;
+    border: 1px solid var(--gri-border);
+    padding: 7px 14px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--bordo-800);
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .receipt-print:hover {
+    background: var(--bordo-800);
+    color: var(--altin-300);
+    border-color: var(--bordo-800);
+  }
+  .receipt-body { padding: 20px 24px; }
+  .receipt-section { margin-bottom: 20px; }
+  .receipt-section:last-child { margin-bottom: 0; }
+  .receipt-section-title {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bordo-800);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .receipt-section-content {
+    font-size: 13px;
+    color: var(--siyah);
+    line-height: 1.6;
+  }
+  .receipt-section-content strong {
+    color: var(--bordo-800);
+    font-weight: 600;
+  }
+
+  /* ============ TOAST ============ */
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--siyah);
+    color: var(--altin-300);
+    padding: 16px 24px;
+    border-left: 3px solid var(--altin-500);
+    font-size: 13px;
+    z-index: 1000;
+    transform: translateX(420px);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .toast.show { transform: translateX(0); }
+  .toast i { color: var(--basari); }
+  .toast.error i { color: var(--tehlike); }
+
+  /* FOOTER */
+  footer {
+    background: var(--siyah);
+    color: var(--krem);
+    padding: 30px 40px;
+    text-align: center;
+    font-size: 12px;
+    opacity: 0.7;
+    letter-spacing: 1px;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1024px) {
+    .checkout-layout { grid-template-columns: 1fr; padding: 30px 24px 60px; gap: 30px; }
+    .summary-wrap { position: static; }
+    .topnav { padding: 14px 24px; }
+    .page-head { padding: 30px 24px 16px; }
+    .stepper { padding: 0 20px; }
+    .address-grid { grid-template-columns: 1fr; }
+    .form-row.two-col, .form-row.three-col { grid-template-columns: 1fr; }
+    .installment-options { grid-template-columns: 1fr 1fr; }
+    .confirm-details { grid-template-columns: 1fr; max-width: 400px; }
+  }
+  @media (max-width: 600px) {
+    .topnav { padding: 12px 16px; }
+    .nav-secure span { display: none; }
+    .topnav-logo-text { font-size: 14px; letter-spacing: 2px; }
+    .nav-help span { display: none; }
+    .checkout-layout { padding: 20px 16px 40px; }
+    .page-head { padding: 24px 16px 12px; }
+    .stepper { padding: 0 10px; }
+    .step-label { font-size: 9px; letter-spacing: 1px; }
+    .step { padding: 0 8px; }
+    .section-body { padding: 16px; }
+    .section-head { padding: 14px 16px; }
+    .card-preview { padding: 20px; }
+    .card-number { font-size: 18px; letter-spacing: 2px; }
+    .confirmation-wrap { padding: 40px 20px; }
+    .confirm-icon-wrap { width: 80px; height: 80px; }
+    .confirm-icon-wrap i { font-size: 32px; }
+    .confirm-actions { flex-direction: column; }
+    .btn-action { width: 100%; justify-content: center; }
+  }
+  /* ============ FOOTER (Standart) ============ */
+  footer {
+    background: var(--siyah);
+    color: var(--krem);
+    padding: 60px 40px 30px;
+  }
+  .footer-content {
+    max-width: 1400px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px; margin-bottom: 40px;
+  }
+  .footer-brand h3 {
+    font-family: var(--serif); font-size: 22px;
+    color: var(--altin-400); margin-bottom: 8px;
+  }
+  .footer-slogan {
+    font-size: 10px; color: var(--altin-500);
+    letter-spacing: 3px; margin-bottom: 16px;
+  }
+  .footer-slogan span { color: var(--altin-500); margin: 0 8px; }
+  .footer-brand p {
+    font-size: 13px; opacity: 0.7;
+    line-height: 1.7; margin-bottom: 20px;
+  }
+  .footer-social { display: flex; gap: 12px; }
+  .footer-social a {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--altin-300);
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; transition: all 0.3s ease;
+  }
+  .footer-social a:hover {
+    background: var(--altin-500); color: var(--bordo-900);
+  }
+  .footer-col h4 {
+    font-family: var(--serif); font-size: 16px;
+    color: var(--altin-400);
+    margin-bottom: 14px; font-weight: 600;
+  }
+  .footer-col a {
+    display: block; color: var(--krem);
+    text-decoration: none; padding: 5px 0;
+    font-size: 13px; opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+  .footer-col a:hover { opacity: 1; color: var(--altin-300); }
+  .footer-col a.coming-soon { position: relative; }
+  .footer-col a.coming-soon::after {
+    content: 'YAKINDA';
+    position: absolute;
+    right: 0; top: 50%;
+    transform: translateY(-50%);
+    background: rgba(212, 175, 55, 0.15);
+    color: var(--altin-400);
+    font-size: 8px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .footer-col a.coming-soon:hover::after { opacity: 1; }
+  .footer-bottom {
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 11px;
+    opacity: 0.5;
+    letter-spacing: 2px;
+  }
+  .footer-bottom .payment-methods {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .footer-bottom .payment-methods i { font-size: 22px; }
+  @media (max-width: 1024px) {
+    .footer-content { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .footer-content { grid-template-columns: 1fr; gap: 30px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+  /* ============ GÜVEN BANDI (Trust Band) ============ */
+  .trust-band {
+    position: relative;
+    background: linear-gradient(135deg, #3D0A14 0%, #5C1320 50%, #3D0A14 100%);
+    padding: 50px 40px 46px;
+    overflow: hidden;
+  }
+  .trust-band-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.15), transparent 40%),
+      radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.12), transparent 40%),
+      radial-gradient(1.5px 1.5px at 25% 30%, rgba(212, 175, 55, 0.5), transparent),
+      radial-gradient(1px 1px at 75% 70%, rgba(212, 175, 55, 0.4), transparent),
+      radial-gradient(1.5px 1.5px at 50% 40%, rgba(212, 175, 55, 0.45), transparent);
+    background-size: 100% 100%, 100% 100%, 200px 200px, 200px 200px, 200px 200px;
+    pointer-events: none;
+    animation: trust-sparkle 5s ease-in-out infinite;
+  }
+  @keyframes trust-sparkle {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+  .trust-band-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .trust-band-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .trust-band-eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #E8C968;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .trust-band-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 30px;
+    color: #FAF7F2;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.1;
+  }
+  .trust-band-title em {
+    font-style: italic;
+    color: #D4AF37;
+  }
+  .trust-band-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .trust-band-card {
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.22);
+    border-radius: 14px;
+    padding: 22px 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  .trust-band-card:hover {
+    background: rgba(212, 175, 55, 0.14);
+    border-color: rgba(212, 175, 55, 0.4);
+    transform: translateY(-3px);
+  }
+  .trust-band-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 12px;
+    background: linear-gradient(135deg, #D4AF37, #B8941F);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3D0A14;
+    font-size: 20px;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
+  }
+  .trust-band-card-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 16px;
+    color: #FAF7F2;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .trust-band-card-desc {
+    font-size: 11px;
+    color: rgba(232, 201, 104, 0.85);
+    letter-spacing: 0.3px;
+  }
+  /* Ödeme yöntemleri */
+  .trust-band-payments {
+    padding-top: 24px;
+    border-top: 1px dashed rgba(212, 175, 55, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .trust-band-payments-label {
+    font-size: 11px;
+    color: rgba(232, 201, 104, 0.85);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .trust-band-payments-list {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .payment-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #FAF7F2;
+    padding: 7px 12px;
+    border-radius: 6px;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  .payment-badge.visa { color: #1A4ABC; }
+  .payment-badge.mastercard { color: #2B2B2B; }
+  .payment-badge.troy { color: #0066CC; }
+  .payment-badge.amex { color: #006FCF; }
+  .payment-badge.iyzico {
+    background: #1B9D4E;
+    color: white;
+    border: 1px solid #178A45;
+  }
+  .payment-badge.iyzico i { font-size: 10px; }
+  /* Mastercard circles */
+  .mc-circles {
+    position: relative;
+    width: 22px;
+    height: 14px;
+    display: inline-block;
+  }
+  .mc-circle {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    top: 0;
+  }
+  .mc-red {
+    background: #EB001B;
+    left: 0;
+  }
+  .mc-yellow {
+    background: #F79E1B;
+    right: 0;
+    mix-blend-mode: multiply;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 900px) {
+    .trust-band { padding: 40px 24px 36px; }
+    .trust-band-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .trust-band-title { font-size: 24px; }
+  }
+  @media (max-width: 500px) {
+    .trust-band-card { padding: 18px 12px; }
+    .trust-band-icon { width: 42px; height: 42px; font-size: 17px; }
+    .trust-band-card-title { font-size: 14px; }
+    .trust-band-card-desc { font-size: 10px; }
+    .trust-band-payments {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .payment-badge { padding: 6px 10px; font-size: 10px; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="topnav">
+  <div class="nav-secure">
+    <i class="fa-solid fa-lock"></i>
+    <span>256-bit SSL ile güvenli ödeme</span>
+  </div>
+  <a href="../index.html" class="topnav-logo" title="PB Store · Anasayfa">
+    <div class="topnav-logo-circle"><img src="../assets/images/logo.png" alt="PB Store" /></div>
+    <span class="topnav-logo-text">PB STORE</span>
+  </a>
+  <a href="sss.html" class="nav-help">
+    <i class="fa-regular fa-circle-question"></i>
+    <span>Yardım</span>
+  </a>
+</nav>
+
+<!-- PAGE HEAD -->
+<div class="page-head">
+  <div class="page-eyebrow">Ödeme</div>
+  <h1 class="page-title">Siparişinizi <em>tamamlayın</em></h1>
+  <p class="page-sub" id="step-sub">Teslimat adresinizi seçin veya yeni adres ekleyin</p>
+
+  <!-- STEPPER -->
+  <div class="stepper" id="stepper">
+    <div class="stepper-progress" id="stepper-progress" style="width: 0%;"></div>
+    <a href="sepet.html" class="step done" data-step="0" title="Sepete dön">
+      <div class="step-num">1</div>
+      <div class="step-label">Sepet</div>
+    </a>
+    <div class="step active" data-step="1">
+      <div class="step-num">2</div>
+      <div class="step-label">Adres</div>
+    </div>
+    <div class="step" data-step="2">
+      <div class="step-num">3</div>
+      <div class="step-label">Ödeme</div>
+    </div>
+    <div class="step" data-step="3">
+      <div class="step-num">4</div>
+      <div class="step-label">Tamamlandı</div>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKOUT LAYOUT -->
+<div class="checkout-layout">
+
+  <!-- LEFT: STEP CONTENT -->
+  <div>
+
+    <!-- ============ STEP 1: ADDRESS ============ -->
+    <div class="step-content active" id="step-1">
+
+      <!-- TESLİMAT ADRESİ -->
+      <div class="section-block">
+        <div class="section-head">
+          <div class="section-head-left">
+            <div class="section-head-num">1</div>
+            <div class="section-head-title">Teslimat Adresi</div>
+          </div>
+        </div>
+        <div class="section-body">
+          <div class="address-grid">
+            <div class="address-card selected" data-addr="ev">
+              <div class="address-radio"></div>
+              <div class="address-top">
+                <i class="fa-solid fa-house"></i>
+                <span>Ev</span>
+                <span class="address-default">Varsayılan</span>
+              </div>
+              <div class="address-name">Ayşe Yılmaz</div>
+              <div class="address-phone">+90 532 XXX XX 47</div>
+              <div class="address-text">
+                Kadıköy Mah. Bağdat Cad. No:127 D:5<br>
+                Kadıköy / İstanbul 34710
+              </div>
+            </div>
+
+            <div class="address-card" data-addr="is">
+              <div class="address-radio"></div>
+              <div class="address-top">
+                <i class="fa-solid fa-briefcase"></i>
+                <span>İş</span>
+              </div>
+              <div class="address-name">Ayşe Yılmaz</div>
+              <div class="address-phone">+90 212 XXX XX 23</div>
+              <div class="address-text">
+                Maslak Mah. Eski Büyükdere Cad. No:255<br>
+                Sarıyer / İstanbul 34485
+              </div>
+            </div>
+
+            <div class="add-address-card">
+              <i class="fa-solid fa-plus"></i>
+              <span>Yeni Adres Ekle</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TESLİMAT YÖNTEMİ -->
+      <div class="section-block">
+        <div class="section-head">
+          <div class="section-head-left">
+            <div class="section-head-num">2</div>
+            <div class="section-head-title">Teslimat Yöntemi</div>
+          </div>
+        </div>
+        <div class="section-body">
+          <div class="delivery-options">
+            <div class="delivery-card selected" data-delivery="standard">
+              <div class="delivery-radio"></div>
+              <div class="delivery-info">
+                <div class="delivery-name">
+                  <i class="fa-solid fa-truck"></i>
+                  Standart Kargo
+                </div>
+                <div class="delivery-time">2-3 iş günü · MNG Kargo</div>
+              </div>
+              <div class="delivery-price free">Ücretsiz</div>
+            </div>
+
+            <div class="delivery-card" data-delivery="fast">
+              <div class="delivery-radio"></div>
+              <div class="delivery-info">
+                <div class="delivery-name">
+                  <i class="fa-solid fa-bolt"></i>
+                  Hızlı Kargo
+                </div>
+                <div class="delivery-time">Yarın teslim · Yurtiçi Kargo</div>
+              </div>
+              <div class="delivery-price">+25,00 TL</div>
+            </div>
+
+            <div class="delivery-card" data-delivery="sameday">
+              <div class="delivery-radio"></div>
+              <div class="delivery-info">
+                <div class="delivery-name">
+                  <i class="fa-solid fa-rocket"></i>
+                  Aynı Gün Teslimat
+                </div>
+                <div class="delivery-time">Bugün 18:00'a kadar · İstanbul içi</div>
+              </div>
+              <div class="delivery-price">+45,00 TL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FATURA TİPİ -->
+      <div class="section-block">
+        <div class="section-head">
+          <div class="section-head-left">
+            <div class="section-head-num">3</div>
+            <div class="section-head-title">Fatura Bilgileri</div>
+          </div>
+        </div>
+        <div class="section-body">
+          <div class="invoice-toggle">
+            <button class="invoice-btn selected" data-invoice="personal">
+              <i class="fa-solid fa-user"></i>
+              Bireysel
+            </button>
+            <button class="invoice-btn" data-invoice="company">
+              <i class="fa-solid fa-building"></i>
+              Kurumsal
+            </button>
+          </div>
+
+          <div id="company-fields" style="display: none;">
+            <div class="form-row two-col">
+              <div class="form-group">
+                <label class="form-label">Firma Adı <span class="required">*</span></label>
+                <input type="text" class="form-input" placeholder="ABC Kozmetik Ltd. Şti." />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Vergi Dairesi <span class="required">*</span></label>
+                <input type="text" class="form-input" placeholder="Kadıköy" />
+              </div>
+            </div>
+            <div class="form-row two-col">
+              <div class="form-group">
+                <label class="form-label">Vergi Numarası <span class="required">*</span></label>
+                <input type="text" class="form-input" placeholder="10 haneli vergi no" maxlength="10" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">E-Fatura</label>
+                <select class="form-input">
+                  <option>Hayır, e-Arşiv fatura kesilsin</option>
+                  <option>Evet, e-Fatura mükellefiyim</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div style="font-size: 13px; color: var(--gri-text); padding: 10px 0;" id="personal-info">
+            <i class="fa-solid fa-circle-info" style="color: var(--altin-600); margin-right: 6px;"></i>
+            Bireysel fatura teslimat adresine kesilecektir.
+          </div>
+        </div>
+      </div>
+
+      <div class="step-nav">
+        <button class="btn-back">
+          <i class="fa-solid fa-arrow-left"></i> Sepete Dön
+        </button>
+        <button class="btn-next" id="to-step-2">
+          Ödeme Adımına Geç <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- ============ STEP 2: PAYMENT ============ -->
+    <div class="step-content" id="step-2">
+
+      <!-- ÖDEME YÖNTEMİ -->
+      <div class="section-block">
+        <div class="section-head">
+          <div class="section-head-left">
+            <div class="section-head-num">1</div>
+            <div class="section-head-title">Ödeme Yöntemi</div>
+          </div>
+        </div>
+        <div class="section-body">
+          <div class="payment-methods-list">
+            <div class="payment-method selected" data-pay="card">
+              <div class="payment-radio"></div>
+              <div class="payment-name">
+                <i class="fa-regular fa-credit-card"></i>
+                Kredi / Banka Kartı
+                <small>Tek çekim veya taksitli</small>
+              </div>
+              <div class="payment-icons">
+                <div class="pay-mini-icon"><i class="fa-brands fa-cc-visa"></i></div>
+                <div class="pay-mini-icon"><i class="fa-brands fa-cc-mastercard"></i></div>
+                <div class="pay-mini-icon"><i class="fa-brands fa-cc-amex"></i></div>
+              </div>
+            </div>
+
+            <div class="payment-method" data-pay="transfer">
+              <div class="payment-radio"></div>
+              <div class="payment-name">
+                <i class="fa-solid fa-building-columns"></i>
+                Havale / EFT
+                <small>Banka transferi (%2 indirim)</small>
+              </div>
+              <div class="payment-icons">
+                <div class="pay-mini-icon"><i class="fa-solid fa-university"></i></div>
+              </div>
+            </div>
+
+            <div class="payment-method" data-pay="cod">
+              <div class="payment-radio"></div>
+              <div class="payment-name">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+                Kapıda Ödeme
+                <small>+15 TL hizmet ücreti</small>
+              </div>
+              <div class="payment-icons">
+                <div class="pay-mini-icon"><i class="fa-solid fa-money-bill"></i></div>
+              </div>
+            </div>
+
+            <div class="payment-method" data-pay="paypal">
+              <div class="payment-radio"></div>
+              <div class="payment-name">
+                <i class="fa-brands fa-paypal"></i>
+                PayPal
+                <small>Uluslararası ödeme</small>
+              </div>
+              <div class="payment-icons">
+                <div class="pay-mini-icon"><i class="fa-brands fa-paypal"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KART BİLGİLERİ -->
+      <div class="section-block" id="card-section">
+        <div class="section-head">
+          <div class="section-head-left">
+            <div class="section-head-num">2</div>
+            <div class="section-head-title">Kart Bilgileri</div>
+          </div>
+        </div>
+        <div class="section-body">
+
+          <!-- CARD PREVIEW -->
+          <div class="card-preview">
+            <div class="card-top">
+              <div class="card-brand">PB Pay</div>
+              <div class="card-chip"></div>
+            </div>
+            <div class="card-number" id="preview-number">•••• •••• •••• ••••</div>
+            <div class="card-bottom">
+              <div>
+                <div class="card-info-label">Kart Sahibi</div>
+                <div class="card-info-value" id="preview-name">AD SOYAD</div>
+              </div>
+              <div>
+                <div class="card-info-label">Son Kullanma</div>
+                <div class="card-info-value" id="preview-exp">MM / YY</div>
+              </div>
+              <div class="card-network" id="preview-network">VISA</div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Kart Numarası <span class="required">*</span></label>
+              <div class="form-input-wrap">
+                <input type="text" class="form-input with-icon" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19" inputmode="numeric" autocomplete="cc-number" />
+                <i class="fa-regular fa-credit-card form-input-icon"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Kart Üzerindeki İsim <span class="required">*</span></label>
+              <input type="text" class="form-input" id="card-name" placeholder="AD SOYAD" autocomplete="cc-name" />
+            </div>
+          </div>
+
+          <div class="form-row three-col">
+            <div class="form-group">
+              <label class="form-label">Son Kullanma <span class="required">*</span></label>
+              <input type="text" class="form-input" id="card-exp" placeholder="AA / YY" maxlength="7" inputmode="numeric" autocomplete="cc-exp" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">CVV <span class="required">*</span></label>
+              <div class="form-input-wrap">
+                <input type="text" class="form-input with-icon" id="card-cvv" placeholder="123" maxlength="4" inputmode="numeric" autocomplete="cc-csc" />
+                <i class="fa-solid fa-circle-question form-input-icon" title="Kartınızın arkasındaki 3 haneli kod"></i>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">&nbsp;</label>
+              <label class="invoice-btn selected" style="cursor: pointer; padding: 13px;">
+                <i class="fa-regular fa-bookmark"></i>
+                Kaydet
+              </label>
+            </div>
+          </div>
+
+          <div class="security-box">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Kart bilgileriniz <strong>iyzico</strong> üzerinden 3D Secure ile güvenli şekilde işlenir. Kartınız sunucularımızda saklanmaz.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAKSİT SEÇENEKLERİ -->
+      <div class="section-block" id="installment-section">
+        <div class="section-head">
+          <div class="section-head-left">
+            <div class="section-head-num">3</div>
+            <div class="section-head-title">Taksit Seçenekleri</div>
+          </div>
+        </div>
+        <div class="section-body">
+          <div class="installment-info">
+            <i class="fa-solid fa-circle-info"></i>
+            Tüm bankalara <strong>faizsiz taksit</strong> imkanı sunulmaktadır. Kart numaranızı girdikten sonra bankanıza özel seçenekler güncellenecektir.
+          </div>
+          <div class="installment-options">
+            <div class="installment-opt selected" data-inst="1">
+              <div class="installment-opt-count">Tek Çekim</div>
+              <div class="installment-opt-monthly">3.220,00 TL</div>
+            </div>
+            <div class="installment-opt" data-inst="3">
+              <div class="installment-opt-count">3 Taksit</div>
+              <div class="installment-opt-monthly">1.073,33 TL/ay</div>
+              <div class="installment-opt-total">Toplam: 3.220 TL</div>
+            </div>
+            <div class="installment-opt" data-inst="6">
+              <div class="installment-opt-count">6 Taksit</div>
+              <div class="installment-opt-monthly">536,67 TL/ay</div>
+              <div class="installment-opt-total">Toplam: 3.220 TL</div>
+            </div>
+            <div class="installment-opt" data-inst="9">
+              <div class="installment-opt-count">9 Taksit</div>
+              <div class="installment-opt-monthly">357,78 TL/ay</div>
+              <div class="installment-opt-total">Toplam: 3.220 TL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-nav">
+        <button class="btn-back" id="to-step-1-back">
+          <i class="fa-solid fa-arrow-left"></i> Geri
+        </button>
+        <button class="btn-next" id="to-step-3">
+          Siparişi Onayla <i class="fa-solid fa-lock"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- ============ STEP 3: CONFIRMATION ============ -->
+    <div class="step-content" id="step-3">
+      <div class="confirmation-wrap">
+        <div class="confirm-icon-wrap">
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <h2 class="confirm-title">Siparişiniz <em>alındı</em>!</h2>
+        <p class="confirm-sub">
+          Teşekkürler! Siparişiniz başarıyla oluşturuldu. Hazırlanır hazırlanmaz size haber vereceğiz. Sipariş detayları e-posta adresinize gönderildi.
+        </p>
+
+        <div class="confirm-order-info">
+          <div class="confirm-order-label">Sipariş Numarası</div>
+          <div class="confirm-order-no">#PB-2026-3472</div>
+        </div>
+
+        <div class="confirm-details">
+          <div class="confirm-detail-card">
+            <div class="confirm-detail-icon"><i class="fa-regular fa-envelope"></i></div>
+            <div class="confirm-detail-label">Onay E-postası</div>
+            <div class="confirm-detail-value">a***@mail.com</div>
+            <div class="confirm-detail-sub">Birkaç dakika içinde gönderilecek</div>
+          </div>
+          <div class="confirm-detail-card">
+            <div class="confirm-detail-icon"><i class="fa-solid fa-truck"></i></div>
+            <div class="confirm-detail-label">Tahmini Teslimat</div>
+            <div class="confirm-detail-value">26 - 28 Mayıs</div>
+            <div class="confirm-detail-sub">Standart Kargo · MNG</div>
+          </div>
+          <div class="confirm-detail-card">
+            <div class="confirm-detail-icon"><i class="fa-solid fa-credit-card"></i></div>
+            <div class="confirm-detail-label">Ödeme</div>
+            <div class="confirm-detail-value">3.220 TL</div>
+            <div class="confirm-detail-sub">Kredi Kartı · Tek Çekim</div>
+          </div>
+        </div>
+
+        <div class="confirm-actions">
+          <a href="siparis-detay.html?id=PB-2026-3472" class="btn-action">
+            <i class="fa-solid fa-receipt"></i>
+            Siparişi Görüntüle
+          </a>
+          <a href="kategori.html" class="btn-action outline">
+            <i class="fa-solid fa-bag-shopping"></i>
+            Alışverişe Devam Et
+          </a>
+        </div>
+      </div>
+
+      <!-- RECEIPT DETAILS -->
+      <div class="receipt-card">
+        <div class="receipt-head">
+          <h3>Sipariş Detayları</h3>
+          <button class="receipt-print">
+            <i class="fa-solid fa-print"></i> Yazdır
+          </button>
+        </div>
+        <div class="receipt-body">
+          <div class="receipt-section">
+            <div class="receipt-section-title">Teslimat Adresi</div>
+            <div class="receipt-section-content">
+              <strong>Ayşe Yılmaz</strong> · +90 532 XXX XX 47<br>
+              Kadıköy Mah. Bağdat Cad. No:127 D:5<br>
+              Kadıköy / İstanbul 34710
+            </div>
+          </div>
+
+          <div class="receipt-section">
+            <div class="receipt-section-title">Ödeme Bilgileri</div>
+            <div class="receipt-section-content">
+              Kredi Kartı · Tek Çekim<br>
+              <strong>VISA</strong> •••• •••• •••• 4567<br>
+              İşlem No: <strong>PMT-2026-998247</strong>
+            </div>
+          </div>
+
+          <div class="receipt-section">
+            <div class="receipt-section-title">Sipariş İçeriği (3 ürün)</div>
+            <div class="receipt-section-content" style="display: grid; gap: 8px;">
+              <div style="display: flex; justify-content: space-between;">
+                <span>Premium Çelik Usturad × 1</span>
+                <strong>1.290,00 TL</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span>Argan Sakal Yağı × 1</span>
+                <strong>1.850,00 TL</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span>Erkek Bakım Hediye Seti × 1</span>
+                <strong>480,00 TL</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="receipt-section">
+            <div class="receipt-section-title">Sonraki Adımlar</div>
+            <div class="receipt-section-content">
+              ✓ Siparişiniz hazırlığa alındı<br>
+              ⏱ 1-2 iş günü içinde kargoya verilecek<br>
+              📦 Kargo takip numarası SMS ile gönderilecek<br>
+              ⭐ Teslim sonrası ürünleri değerlendirmeyi unutmayın
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============ RIGHT: SUMMARY ============ -->
+  <div class="summary-wrap" id="summary-wrap">
+    <div class="summary-card">
+      <div class="summary-card-head">
+        <h3>Sipariş Özeti</h3>
+      </div>
+
+      <div class="summary-items" id="summary-items">
+        <!-- PB.cart.list() ile doldurulur -->
+      </div>
+
+      <div class="summary-rows" id="summary-rows">
+        <div class="summary-row">
+          <span class="label">Ara Toplam (<span id="sum-count">0</span> ürün)</span>
+          <span class="value" id="sum-subtotal">0,00 TL</span>
+        </div>
+        <div class="summary-row discount" id="sum-discount-row" style="display:none;">
+          <span class="label" id="sum-discount-label">Kupon İndirimi</span>
+          <span class="value" id="sum-discount">−0,00 TL</span>
+        </div>
+        <div class="summary-row" id="sum-shipping-row">
+          <span class="label">Kargo</span>
+          <span class="value" id="sum-shipping">Ücretsiz</span>
+        </div>
+
+        <div class="summary-divider"></div>
+
+        <div class="summary-total">
+          <span class="label">Toplam</span>
+          <span>
+            <span class="value" id="sum-total">0,00</span>
+            <span class="currency">TL</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="summary-badges">
+        <div class="summary-badge">
+          <i class="fa-solid fa-lock"></i>
+          <span>256-bit SSL şifreli güvenli ödeme</span>
+        </div>
+        <div class="summary-badge">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>3D Secure ile iki aşamalı doğrulama</span>
+        </div>
+        <div class="summary-badge">
+          <i class="fa-solid fa-rotate-left"></i>
+          <span>14 gün koşulsuz iade hakkı</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ============ GÜVEN BANDI (Trust Band) ============ -->
+<section class="trust-band">
+  <div class="trust-band-bg"></div>
+  <div class="trust-band-container">
+    <div class="trust-band-header">
+      <div class="trust-band-eyebrow">Güven Sertifikalarımız</div>
+      <h2 class="trust-band-title">Sizin için <em>güvenli alışveriş</em></h2>
+    </div>
+
+    <div class="trust-band-grid">
+      <div class="trust-band-card">
+        <div class="trust-band-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="trust-band-card-title">SSL Sertifikası</div>
+        <div class="trust-band-card-desc">256-bit şifreleme</div>
+      </div>
+
+      <div class="trust-band-card">
+        <div class="trust-band-icon"><i class="fa-solid fa-credit-card"></i></div>
+        <div class="trust-band-card-title">3D Secure Ödeme</div>
+        <div class="trust-band-card-desc">iyzico Sanal POS</div>
+      </div>
+
+      <div class="trust-band-card">
+        <div class="trust-band-icon"><i class="fa-solid fa-rotate-left"></i></div>
+        <div class="trust-band-card-title">14 Gün Koşulsuz İade</div>
+        <div class="trust-band-card-desc">Hızlı iade garantisi</div>
+      </div>
+
+      <div class="trust-band-card">
+        <div class="trust-band-icon"><i class="fa-solid fa-headset"></i></div>
+        <div class="trust-band-card-title">7/24 Canlı Destek</div>
+        <div class="trust-band-card-desc">WhatsApp &amp; Telefon</div>
+      </div>
+    </div>
+
+    <!-- Ödeme yöntemleri -->
+    <div class="trust-band-payments">
+      <span class="trust-band-payments-label">Güvenli ödeme yöntemleri:</span>
+      <div class="trust-band-payments-list">
+        <div class="payment-badge visa">
+          <span class="payment-badge-text">VISA</span>
+        </div>
+        <div class="payment-badge mastercard">
+          <span class="mc-circles">
+            <span class="mc-circle mc-red"></span>
+            <span class="mc-circle mc-yellow"></span>
+          </span>
+          <span class="payment-badge-text">Mastercard</span>
+        </div>
+        <div class="payment-badge troy">
+          <span class="payment-badge-text">Troy</span>
+        </div>
+        <div class="payment-badge amex">
+          <span class="payment-badge-text">AMEX</span>
+        </div>
+        <div class="payment-badge iyzico">
+          <i class="fa-solid fa-lock"></i>
+          <span class="payment-badge-text">iyzico</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <h3>PB Store</h3>
+      <div class="footer-slogan">KALİTE<span>◆</span>STİL<span>◆</span>GÜVEN</div>
+      <p>Premium kozmetik ve bakım ürünleri ile cildinize hakettiği değeri verin. Doğal, etkili, lüks — kalite, stil ve güvenin buluştuğu yer.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/pbstore" target="_blank" rel="noopener" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://facebook.com/pbstore" target="_blank" rel="noopener" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://twitter.com/pbstore" target="_blank" rel="noopener" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        <a href="https://tiktok.com/@pbstore" target="_blank" rel="noopener" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Kurumsal</h4>
+      <a href="hakkimizda.html">Hakkımızda</a>
+      <a href="iletisim.html">İletişim</a>
+      <a href="#" class="coming-soon">Kariyer</a>
+    </div>
+    <div class="footer-col">
+      <h4>Yardım</h4>
+      <a href="sss.html">Sıkça Sorulanlar</a>
+      <a href="kargo.html">Kargo & Teslimat</a>
+      <a href="iade.html">İade & Değişim</a>
+      <a href="giris-kayit.html?tab=signup">Üyelik</a>
+    </div>
+    <div class="footer-col">
+      <h4>Yasal</h4>
+      <a href="kvkk.html">Gizlilik Politikası</a>
+      <a href="#" class="coming-soon">Kullanım Koşulları</a>
+      <a href="kvkk.html">KVKK</a>
+      <a href="#" class="coming-soon">Mesafeli Satış</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 PB Store · KALİTE ◆ STİL ◆ GÜVEN · Tüm hakları saklıdır</div>
+    <div class="payment-methods">
+      <i class="fa-brands fa-cc-visa" title="Visa"></i>
+      <i class="fa-brands fa-cc-mastercard" title="Mastercard"></i>
+      <i class="fa-brands fa-cc-amex" title="American Express"></i>
+      <i class="fa-solid fa-shield-halved" title="SSL Güvenli"></i>
+    </div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <i class="fa-solid fa-circle-check"></i>
+  <span id="toast-text">İşlem başarılı</span>
+</div>
+
+<script>
+  // ============ PB SEPET ÖZETİ (ödeme sayfasında) ============
+  function formatPriceCheckout(n) {
+    return new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n) + ' TL';
+  }
+
+  function renderCheckoutSummary() {
+    if (!window.PB?.cart) return;
+    const items = PB.cart.list();
+    const totals = PB.cart.total();
+
+    const itemsWrap = document.getElementById('summary-items');
+    if (itemsWrap) {
+      if (items.length === 0) {
+        itemsWrap.innerHTML = `
+          <div style="padding: 20px; text-align: center; color: var(--gri-text);">
+            <i class="fa-solid fa-cart-shopping" style="font-size: 32px; opacity: 0.4; margin-bottom: 12px;"></i>
+            <p style="font-size: 13px; margin-bottom: 12px;">Sepetiniz boş</p>
+            <a href="sepet.html" style="color: var(--bordo-700); font-size: 12px; text-decoration: underline;">Sepete dön</a>
+          </div>`;
+      } else {
+        itemsWrap.innerHTML = items.map(item => {
+          const p = item.product;
+          if (!p) return '';
+          return `
+            <div class="summary-item">
+              <div class="summary-item-img">
+                <i class="fa-solid ${p.icon || 'fa-circle'}"></i>
+                <span class="summary-item-qty">${item.quantity}</span>
+              </div>
+              <div class="summary-item-info">
+                <div class="summary-item-name">${p.name}</div>
+                <div class="summary-item-variant">${p.brand || ''} · ${p.sku || ''}</div>
+              </div>
+              <div class="summary-item-price">${formatPriceCheckout(p.price * item.quantity)}</div>
+            </div>`;
+        }).join('');
+      }
+    }
+
+    // Özet satırları
+    document.getElementById('sum-count').textContent = totals.count;
+    document.getElementById('sum-subtotal').textContent = formatPriceCheckout(totals.subtotal);
+
+    // Kupon
+    const discountRow = document.getElementById('sum-discount-row');
+    if (totals.discount > 0 && totals.coupon) {
+      discountRow.style.display = '';
+      document.getElementById('sum-discount-label').textContent =
+        `${totals.coupon.code} Kuponu (${totals.coupon.type === 'percent' ? '%' + totals.coupon.value : 'İndirim'})`;
+      document.getElementById('sum-discount').textContent = '−' + formatPriceCheckout(totals.discount);
+    } else {
+      discountRow.style.display = 'none';
+    }
+
+    // Kargo
+    const shippingEl = document.getElementById('sum-shipping');
+    if (shippingEl) {
+      shippingEl.textContent = totals.shipping === 0 ? 'Ücretsiz' : formatPriceCheckout(totals.shipping);
+      const shippingRow = document.getElementById('sum-shipping-row');
+      if (shippingRow) shippingRow.classList.toggle('free', totals.shipping === 0);
+    }
+
+    // Toplam
+    document.getElementById('sum-total').textContent =
+      new Intl.NumberFormat('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(totals.total);
+  }
+
+  // Sipariş numarası üret (PB-2026-XXXXX)
+  function generateOrderNumber() {
+    const year = new Date().getFullYear();
+    const num = Math.floor(10000 + Math.random() * 90000);
+    return `PB-${year}-${num}`;
+  }
+
+  // Siparişi LocalStorage'a kaydet
+  function saveOrder() {
+    if (!window.PB?.cart) return null;
+    const items = PB.cart.list();
+    if (items.length === 0) return null;
+
+    const totals = PB.cart.total();
+    const orderNumber = generateOrderNumber();
+
+    const order = {
+      orderNumber: orderNumber,
+      createdAt: new Date().toISOString(),
+      status: 'pending',
+      items: items.map(item => ({
+        productId: item.product?.id,
+        productName: item.product?.name,
+        productSku: item.product?.sku,
+        productIcon: item.product?.icon,
+        brand: item.product?.brand,
+        unitPrice: item.product?.price || 0,
+        quantity: item.quantity,
+        subtotal: (item.product?.price || 0) * item.quantity
+      })),
+      subtotal: totals.subtotal,
+      discount: totals.discount,
+      coupon: totals.coupon?.code || null,
+      shipping: totals.shipping,
+      total: totals.total
+    };
+
+    // pb_orders'a ekle
+    try {
+      const orders = JSON.parse(localStorage.getItem('pb_orders') || '[]');
+      orders.unshift(order);
+      // En fazla 50 sipariş tut
+      localStorage.setItem('pb_orders', JSON.stringify(orders.slice(0, 50)));
+    } catch (e) {
+      console.error('Sipariş kaydedilemedi:', e);
+    }
+
+    // Sepeti temizle
+    PB.cart.clear();
+    if (window.PB?.coupon) PB.coupon.remove();
+
+    return order;
+  }
+
+  // PB hazır olunca render et
+  function initCheckoutSummary() {
+    if (!window.PB?.cart) {
+      setTimeout(initCheckoutSummary, 80);
+      return;
+    }
+    renderCheckoutSummary();
+    // Sepet değişince güncelle
+    window.addEventListener('pb:cart:changed', renderCheckoutSummary);
+  }
+  initCheckoutSummary();
+
+  // ============ STEPPER NAVIGATION ============
+  let currentStep = 1;
+  const totalSteps = 3;
+
+  function goToStep(step) {
+    if (step < 1 || step > totalSteps) return;
+    currentStep = step;
+
+    document.querySelectorAll('.step-content').forEach(c => c.classList.remove('active'));
+    document.getElementById('step-' + step).classList.add('active');
+
+    // Update stepper visual states
+    document.querySelectorAll('.stepper .step').forEach((s, i) => {
+      const sIdx = parseInt(s.dataset.step);
+      s.classList.remove('active', 'done');
+      if (sIdx < step) s.classList.add('done');
+      else if (sIdx === step) s.classList.add('active');
+    });
+
+    // Progress bar (between 1 and 4)
+    const progressMap = { 1: 26.67, 2: 53.33, 3: 80 };
+    document.getElementById('stepper-progress').style.width = (progressMap[step] || 0) + '%';
+
+    // Update subtitle
+    const subs = {
+      1: 'Teslimat adresinizi seçin veya yeni adres ekleyin',
+      2: 'Güvenli ödeme yönteminizi seçin ve siparişinizi tamamlayın',
+      3: 'Teşekkürler! Siparişiniz başarıyla alındı.'
+    };
+    document.getElementById('step-sub').textContent = subs[step];
+
+    // Hide summary on step 3
+    const summary = document.getElementById('summary-wrap');
+    if (step === 3) {
+      summary.style.display = 'none';
+      document.querySelector('.checkout-layout').style.gridTemplateColumns = '1fr';
+    } else {
+      summary.style.display = 'block';
+      document.querySelector('.checkout-layout').style.gridTemplateColumns = '';
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Step navigation buttons
+  document.getElementById('to-step-2').addEventListener('click', () => goToStep(2));
+  document.getElementById('to-step-1-back').addEventListener('click', () => goToStep(1));
+  document.getElementById('to-step-3').addEventListener('click', () => {
+    // Sepetin dolu olduğundan emin ol
+    if (!window.PB?.cart || PB.cart.count() === 0) {
+      alert('Sepetiniz boş. Lütfen önce bir ürün ekleyin.');
+      return;
+    }
+
+    // Simulate payment processing
+    const btn = document.getElementById('to-step-3');
+    const original = btn.innerHTML;
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+    btn.innerHTML = '<span>Ödeme alınıyor...</span><i class="fa-solid fa-spinner fa-spin"></i>';
+
+    setTimeout(() => {
+      // Siparişi kaydet
+      const order = saveOrder();
+
+      btn.innerHTML = original;
+      btn.disabled = false;
+      btn.style.opacity = '1';
+
+      // Sipariş no'sunu confirmation ekranına yaz
+      if (order) {
+        const confirmNumEls = document.querySelectorAll('.confirm-order-num, [data-order-number]');
+        confirmNumEls.forEach(el => el.textContent = order.orderNumber);
+        // Sipariş detayı linkini güncelle
+        const detailLinks = document.querySelectorAll('a[href*="siparis-detay.html"]');
+        detailLinks.forEach(a => {
+          a.href = `siparis-detay.html?id=${order.orderNumber}`;
+        });
+      }
+
+      goToStep(3);
+    }, 1800);
+  });
+
+  // Allow clicking stepper to navigate (demo only)
+  document.querySelectorAll('.stepper .step').forEach(s => {
+    s.addEventListener('click', () => {
+      const idx = parseInt(s.dataset.step);
+      if (idx >= 1 && idx <= 3) goToStep(idx);
+    });
+  });
+
+  // ============ STEP 1: ADDRESS SELECTION ============
+  document.querySelectorAll('.address-card[data-addr]').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.address-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+    });
+  });
+
+  // DELIVERY SELECTION
+  document.querySelectorAll('.delivery-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.delivery-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+    });
+  });
+
+  // INVOICE TYPE
+  document.querySelectorAll('.invoice-btn[data-invoice]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.invoice-btn[data-invoice]').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      const isCompany = btn.dataset.invoice === 'company';
+      document.getElementById('company-fields').style.display = isCompany ? 'block' : 'none';
+      document.getElementById('personal-info').style.display = isCompany ? 'none' : 'block';
+    });
+  });
+
+  // ============ STEP 2: PAYMENT METHOD ============
+  document.querySelectorAll('.payment-method').forEach(method => {
+    method.addEventListener('click', () => {
+      document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+      method.classList.add('selected');
+      const showCard = method.dataset.pay === 'card';
+      document.getElementById('card-section').style.display = showCard ? 'block' : 'none';
+      document.getElementById('installment-section').style.display = showCard ? 'block' : 'none';
+    });
+  });
+
+  // INSTALLMENT
+  document.querySelectorAll('.installment-opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+      document.querySelectorAll('.installment-opt').forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+    });
+  });
+
+  // ============ CARD FORMATTING & PREVIEW ============
+  const cardNumberInput = document.getElementById('card-number');
+  const cardNameInput = document.getElementById('card-name');
+  const cardExpInput = document.getElementById('card-exp');
+  const cardCvvInput = document.getElementById('card-cvv');
+
+  const previewNumber = document.getElementById('preview-number');
+  const previewName = document.getElementById('preview-name');
+  const previewExp = document.getElementById('preview-exp');
+  const previewNetwork = document.getElementById('preview-network');
+
+  cardNumberInput.addEventListener('input', (e) => {
+    let val = e.target.value.replace(/\D/g, '').slice(0, 16);
+    const formatted = val.match(/.{1,4}/g)?.join(' ') || '';
+    e.target.value = formatted;
+
+    // Preview
+    let display = (val + '••••••••••••••••').slice(0, 16);
+    display = display.match(/.{1,4}/g).join(' ');
+    previewNumber.textContent = display;
+
+    // Detect network
+    if (val.startsWith('4')) previewNetwork.textContent = 'VISA';
+    else if (val.startsWith('5') || val.startsWith('2')) previewNetwork.textContent = 'MASTERCARD';
+    else if (val.startsWith('3')) previewNetwork.textContent = 'AMEX';
+    else if (val.startsWith('6')) previewNetwork.textContent = 'DISCOVER';
+    else previewNetwork.textContent = 'CARD';
+  });
+
+  cardNameInput.addEventListener('input', (e) => {
+    e.target.value = e.target.value.toUpperCase();
+    previewName.textContent = e.target.value || 'AD SOYAD';
+  });
+
+  cardExpInput.addEventListener('input', (e) => {
+    let val = e.target.value.replace(/\D/g, '').slice(0, 4);
+    if (val.length >= 3) val = val.slice(0, 2) + ' / ' + val.slice(2);
+    e.target.value = val;
+    previewExp.textContent = val || 'MM / YY';
+  });
+
+  cardCvvInput.addEventListener('input', (e) => {
+    e.target.value = e.target.value.replace(/\D/g, '').slice(0, 4);
+  });
+
+  // ============ ADD ADDRESS PLACEHOLDER ============
+  document.querySelector('.add-address-card').addEventListener('click', () => {
+    showToast('Yeni adres ekleme formu açılıyor...');
+  });
+
+  // ============ RECEIPT PRINT ============
+  document.querySelector('.receipt-print')?.addEventListener('click', () => {
+    showToast('Sipariş özeti yazdırma hazırlanıyor...');
+  });
+
+  // ============ TOAST ============
+  function showToast(msg, isError = false) {
+    const toast = document.getElementById('toast');
+    document.getElementById('toast-text').textContent = msg;
+    toast.classList.toggle('error', isError);
+    toast.querySelector('i').className = isError ? 'fa-solid fa-circle-exclamation' : 'fa-solid fa-circle-check';
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
+  }
+
+  // Init progress
+  document.getElementById('stepper-progress').style.width = '26.67%';
+</script>
+<!-- PB Store Frontend Logic -->
+<script src="../assets/js/products.js" defer></script>
+<script src="../assets/js/cart.js" defer></script>
+<script src="../assets/js/render.js" defer></script>
+</body>
+</html>

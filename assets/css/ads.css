@@ -1,0 +1,223 @@
+/* ╔══════════════════════════════════════════════════════════╗
+   ║   PB STORE - GOOGLE ADS SLOTS CSS                        ║
+   ║   Hafif, responsive, profesyonel görünümlü               ║
+   ╚══════════════════════════════════════════════════════════╝
+
+   KULLANIM:
+   1. Bu dosyayı tüm HTML sayfalara ekle:
+      <link rel="stylesheet" href="assets/css/ads.css">
+
+   2. Reklam alanlarını yerleştir (örnekler aşağıda)
+
+   3. Google AdSense onayı geldiğinde:
+      - <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+              data-ad-client="ca-pub-XXXXX" crossorigin="anonymous"></script>
+      eklenecek
+      - "ad-placeholder" yerine gerçek <ins> blokları konur
+
+   ====================================================== */
+
+/* ============ ANA REKLAM SLOT KAPSAYICI ============ */
+.ad-slot {
+  position: relative;
+  margin: 24px auto;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.04), rgba(123, 30, 43, 0.03));
+  border: 1px dashed rgba(212, 175, 55, 0.25);
+  border-radius: 12px;
+  text-align: center;
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ad-slot::before {
+  content: 'Reklam · Sponsor';
+  position: absolute;
+  top: 6px;
+  right: 12px;
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  color: rgba(123, 30, 43, 0.5);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* ============ REKLAM TİPLERİ ============ */
+
+/* Yatay banner (728x90 / leaderboard) */
+.ad-leaderboard {
+  max-width: 728px;
+  min-height: 90px;
+  width: 100%;
+}
+
+/* Yarı yatay (468x60 / banner) */
+.ad-banner {
+  max-width: 468px;
+  min-height: 60px;
+  width: 100%;
+}
+
+/* Dikdörtgen (300x250 / medium rectangle) */
+.ad-rectangle {
+  max-width: 300px;
+  min-height: 250px;
+  width: 100%;
+}
+
+/* Geniş gökdelen (160x600 / wide skyscraper) */
+.ad-skyscraper {
+  max-width: 160px;
+  min-height: 600px;
+  width: 100%;
+}
+
+/* Mobile banner (320x50) */
+.ad-mobile {
+  max-width: 320px;
+  min-height: 50px;
+  width: 100%;
+}
+
+/* Responsive (otomatik boyut) */
+.ad-responsive {
+  width: 100%;
+  min-height: 90px;
+  max-width: 1200px;
+}
+
+/* ============ PLACEHOLDER (Geçici görsel) ============ */
+.ad-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: rgba(123, 30, 43, 0.4);
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.5px;
+}
+
+.ad-placeholder-icon {
+  font-size: 18px;
+  opacity: 0.4;
+  margin-bottom: 2px;
+}
+
+.ad-placeholder-text {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  opacity: 0.5;
+}
+
+.ad-placeholder-size {
+  font-size: 9px;
+  opacity: 0.4;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ============ GERÇEK ADSENSE STİLİ ============ */
+/* AdSense kodu eklendiğinde bu sınıf kullanılır */
+.adsbygoogle {
+  display: block;
+  margin: 0 auto;
+  background: transparent;
+  border: none;
+}
+
+/* ============ KONUMLAR ============ */
+
+/* Sayfa içi - paragraflar arası */
+.ad-inline {
+  margin: 32px auto;
+}
+
+/* Sticky - aşağıda sabit (mobile) */
+.ad-sticky-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: white;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  padding: 8px;
+  margin: 0;
+  border-radius: 0;
+  border-dashed: none;
+  border: none;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Sticky close button */
+.ad-sticky-close {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 22px;
+  height: 22px;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 12px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ad-sticky-close:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* Hidden sınıfı (kullanıcı kapatınca) */
+.ad-hidden {
+  display: none !important;
+}
+
+/* ============ RESPONSIVE ============ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .ad-skyscraper {
+    display: none; /* Dikey reklamlar mobilde gizlenir */
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .ad-slot {
+    margin: 16px auto;
+    padding: 10px 12px;
+    min-height: 60px;
+  }
+  .ad-leaderboard {
+    max-width: 320px;
+    min-height: 50px;
+  }
+  .ad-rectangle {
+    max-width: 280px;
+    min-height: 200px;
+  }
+  .ad-skyscraper, .ad-banner {
+    display: none;
+  }
+  .ad-mobile {
+    display: flex;
+  }
+}
+
+@media (min-width: 601px) {
+  .ad-mobile {
+    display: none; /* Mobile reklamlar masaüstünde gizlenir */
+  }
+}

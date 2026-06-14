@@ -1,0 +1,306 @@
+/* ╔══════════════════════════════════════════════════════════╗
+   ║   PB STORE - GLOBAL RESPONSIVE IYILEŞTIRMELER            ║
+   ║   Telefon · Tablet · Laptop · PC · TV ekran uyumu        ║
+   ╚══════════════════════════════════════════════════════════╝
+
+   Kullanım: Tüm HTML sayfalara ekle (en sonda)
+   <link rel="stylesheet" href="assets/css/responsive.css">
+
+   BREAKPOINT'ler:
+   - Mobile S:  < 360px  (iPhone SE)
+   - Mobile M:  360-480px (Telefonların çoğu)
+   - Mobile L:  481-600px (Büyük telefon)
+   - Tablet:    601-1024px (iPad, vs.)
+   - Laptop:    1025-1440px (Standart laptop)
+   - Desktop:   1441-1920px (Büyük monitör)
+   - 4K/UHD:    > 1920px
+*/
+
+/* ════════════════════════════════════════════════════════════
+   GLOBAL TEMEL DÜZELTMELER
+════════════════════════════════════════════════════════════ */
+
+/* Yatay scroll'u engelle (mobile'da en sık sorun) */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Tüm görseller responsive */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Tüm video/iframe responsive */
+video, iframe {
+  max-width: 100%;
+}
+
+/* Form elemanları min boyut (mobile usability) */
+input, select, textarea, button {
+  font-size: 16px; /* iOS zoom önler */
+}
+
+/* Touch için min hedef boyutu (44x44) */
+button, a {
+  min-height: 32px;
+}
+
+/* ════════════════════════════════════════════════════════════
+   MOBİL S (< 360px) - Çok Küçük Ekran
+════════════════════════════════════════════════════════════ */
+@media (max-width: 359px) {
+  /* Navbar küçült */
+  .nav-container {
+    padding: 10px 12px !important;
+  }
+  .logo-circle {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .logo-text {
+    font-size: 7px !important;
+    letter-spacing: 1.5px !important;
+  }
+  .nav-right {
+    gap: 8px !important;
+  }
+
+  /* Tablo/grid 1 sütun */
+  .product-grid,
+  .cat-grid,
+  .cat-grid-3 {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Padding küçült */
+  .categories,
+  .products-section,
+  .products,
+  section {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  /* Hero küçült */
+  .hero-banners-container {
+    gap: 12px !important;
+    padding: 16px 12px !important;
+  }
+  .hero-banner {
+    padding: 24px 16px !important;
+    min-height: 280px !important;
+  }
+  .hero-banner-title {
+    font-size: 24px !important;
+  }
+  .hero-side-discount {
+    font-size: 56px !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   MOBİL M (360-480px) - Çoğunluk Telefon
+════════════════════════════════════════════════════════════ */
+@media (min-width: 360px) and (max-width: 480px) {
+  .product-grid,
+  .cat-grid-3 {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .cat-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Trust Strip mobile */
+  .trust-strip-container {
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    justify-content: center !important;
+  }
+  .trust-strip-item {
+    flex: 1 1 calc(50% - 8px) !important;
+    min-width: 120px !important;
+    text-align: center !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   MOBİL L (481-600px) - Büyük Telefon
+════════════════════════════════════════════════════════════ */
+@media (min-width: 481px) and (max-width: 600px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .cat-grid-3 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   TABLET (601-1024px) - iPad, vs.
+════════════════════════════════════════════════════════════ */
+@media (min-width: 601px) and (max-width: 1024px) {
+  /* Hero 2 sütundan tek sütuna geçer */
+  .hero-banners-container {
+    grid-template-columns: 1fr !important;
+  }
+  .hero-banner-side {
+    min-height: 280px !important;
+  }
+
+  /* Kategori 2 sütun */
+  .cat-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .cat-grid-3 {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 16px !important;
+  }
+
+  /* Ürün grid 3 sütun */
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  /* Kategori sayfası: filtreler kapanır */
+  .listing-layout {
+    grid-template-columns: 1fr !important;
+  }
+  .filters-sidebar {
+    position: fixed !important;
+    left: -100% !important;
+    transition: left 0.3s !important;
+  }
+  .filters-sidebar.open {
+    left: 0 !important;
+  }
+
+  /* Trust band 2 sütun */
+  .trust-band-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Footer 2 sütun */
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 32px !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   LAPTOP (1025-1440px) - Standart bilgisayar
+════════════════════════════════════════════════════════════ */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  /* Sahanın sınırlı genişliği */
+  .nav-container,
+  .hero-banners-container,
+  .categories,
+  .products-section {
+    max-width: 1280px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Ürün grid 4 sütun */
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   DESKTOP (1441-1920px) - Büyük Monitör
+════════════════════════════════════════════════════════════ */
+@media (min-width: 1441px) and (max-width: 1920px) {
+  /* Genişletilmiş layout */
+  .nav-container,
+  .hero-banners-container,
+  .categories,
+  .products-section,
+  .trust-band-container,
+  .footer-content {
+    max-width: 1440px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   4K / UHD (> 1920px) - Çok büyük ekran
+════════════════════════════════════════════════════════════ */
+@media (min-width: 1921px) {
+  body {
+    font-size: 17px !important;
+  }
+  .nav-container,
+  .hero-banners-container,
+  .categories,
+  .products-section,
+  .trust-band-container,
+  .footer-content {
+    max-width: 1600px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   YAKLAŞIK / LANDSCAPE ORIENTATION (Yatay tutuş)
+════════════════════════════════════════════════════════════ */
+@media (orientation: landscape) and (max-height: 500px) {
+  .hero-banner {
+    min-height: 220px !important;
+  }
+  .hero-banner-title {
+    font-size: 22px !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   ACCESSIBILITY - DAHA İYİ ERIŞİM
+════════════════════════════════════════════════════════════ */
+
+/* Focus belirginleştir */
+*:focus-visible {
+  outline: 2px solid #D4AF37 !important;
+  outline-offset: 2px !important;
+}
+
+/* Hareket azaltma tercihi */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Dark mode (gelecekte) */
+@media (prefers-color-scheme: dark) {
+  /* İleride dark theme eklersek burası kullanılacak */
+}
+
+/* ════════════════════════════════════════════════════════════
+   PRINT (Yazdırma)
+════════════════════════════════════════════════════════════ */
+@media print {
+  .navbar,
+  .footer,
+  .trust-band,
+  .trust-strip,
+  .ad-slot,
+  .fab-container,
+  .mobile-menu-btn,
+  .filters-sidebar {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}

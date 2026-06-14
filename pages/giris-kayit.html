@@ -1,0 +1,2126 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Giriş Yap / Üye Ol | PB Store</title>
+<meta name="description" content="PB Store hesabınıza giriş yapın veya yeni üye olun. %15 hoşgeldin indirimi, özel kampanyalar, PB Beauty Club üyelik avantajları sizleri bekliyor." />
+<meta name="keywords" content="üye ol, giriş yap, hesap oluştur, beauty club, kozmetik üyelik" />
+<meta name="author" content="PB Store" />
+<meta name="language" content="Turkish" />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="canonical" href="https://p-bstore.vercel.app/pages/giris-kayit.html" />
+
+<!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+<meta property="og:locale" content="tr_TR" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://p-bstore.vercel.app/pages/giris-kayit.html" />
+<meta property="og:title" content="Giriş Yap / Üye Ol | PB Store" />
+<meta property="og:description" content="PB Store hesabınıza giriş yapın veya yeni üye olun. %15 hoşgeldin indirimi, özel kampanyalar, PB Beauty Club üyelik avantajları sizleri bekliyor." />
+<meta property="og:image" content="https://p-bstore.vercel.app/assets/images/logo.png" />
+<meta property="og:image:width" content="768" />
+<meta property="og:image:height" content="768" />
+<meta property="og:site_name" content="PB Store" />
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://p-bstore.vercel.app/pages/giris-kayit.html" />
+<meta name="twitter:title" content="Giriş Yap / Üye Ol | PB Store" />
+<meta name="twitter:description" content="PB Store hesabınıza giriş yapın veya yeni üye olun. %15 hoşgeldin indirimi, özel kampanyalar, PB Beauty Club üyelik avantajları sizleri bekliyor." />
+<meta name="twitter:image" content="https://p-bstore.vercel.app/assets/images/logo.png" />
+<meta name="twitter:site" content="@pbstore" />
+<meta name="twitter:creator" content="@pbstore" />
+
+<!-- Theme Color -->
+<meta name="theme-color" content="#5C1320" />
+<meta name="msapplication-TileColor" content="#5C1320" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/jpeg" href="/../assets/images/logo.png" />
+<link rel="apple-touch-icon" href="../assets/images/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../assets/css/ads.css">
+<link rel="stylesheet" href="../assets/css/render.css">
+<link rel="stylesheet" href="../assets/css/responsive.css">
+<style>
+  :root {
+    --bordo-900: #3D0A14;
+    --bordo-800: #5C1320;
+    --bordo-700: #7B1E2B;
+    --bordo-600: #962535;
+    --altin-700: #9A7B1A;
+    --altin-600: #B8941F;
+    --altin-500: #D4AF37;
+    --altin-400: #E0BE52;
+    --altin-300: #E8C968;
+    --siyah:    #0A0A0A;
+    --beyaz:    #FFFFFF;
+    --krem:     #FAF7F2;
+    --krem-koyu: #F0EBE0;
+    --gri-suzme: #F5F2EE;
+    --gri-text: #6B655C;
+    --gri-border: #E5DFD3;
+    --basari:   #2D8F4F;
+    --tehlike:  #C44545;
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'Manrope', system-ui, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--krem);
+    color: var(--siyah);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ============ TOP NAVBAR (minimal) ============ */
+  .topnav {
+    background: var(--krem);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--gri-text);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  .back-link:hover { color: var(--bordo-700); }
+  .back-link i { color: var(--altin-600); font-size: 11px; }
+
+  .topnav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .topnav-logo-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(212, 175, 55, 0.25);
+    position: relative;
+  }
+  .topnav-logo-circle::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+  }
+  .topnav-logo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .topnav-logo-text {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--bordo-800);
+    font-weight: 600;
+    letter-spacing: 3px;
+  }
+  .help-link {
+    color: var(--gri-text);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  .help-link:hover { color: var(--bordo-700); }
+
+  /* ============ LAYOUT ============ */
+  .auth-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    min-height: calc(100vh - 73px);
+  }
+
+  /* ============ LEFT SIDE — VISUAL ============ */
+  .auth-visual {
+    background: linear-gradient(135deg, var(--bordo-900) 0%, var(--bordo-700) 50%, var(--bordo-800) 100%);
+    color: var(--krem);
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .auth-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.15), transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.1), transparent 50%);
+    pointer-events: none;
+  }
+  .auth-visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(2px 2px at 20% 30%, rgba(212, 175, 55, 0.3), transparent),
+      radial-gradient(1px 1px at 60% 70%, rgba(212, 175, 55, 0.25), transparent),
+      radial-gradient(1.5px 1.5px at 80% 20%, rgba(212, 175, 55, 0.4), transparent),
+      radial-gradient(1px 1px at 30% 80%, rgba(212, 175, 55, 0.2), transparent),
+      radial-gradient(2px 2px at 70% 40%, rgba(212, 175, 55, 0.3), transparent);
+    background-size: 300px 300px;
+    animation: sparkle 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes sparkle {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.9; }
+  }
+
+  .visual-top {
+    position: relative;
+    z-index: 2;
+  }
+  .visual-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--altin-300);
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+  .visual-eyebrow::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--altin-500);
+  }
+
+  .visual-quote {
+    font-family: var(--serif);
+    font-size: clamp(36px, 4.2vw, 56px);
+    line-height: 1.15;
+    font-weight: 500;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+  }
+  .visual-quote em {
+    color: var(--altin-400);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .visual-desc {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--krem);
+    opacity: 0.85;
+    max-width: 440px;
+    font-weight: 300;
+  }
+
+  /* CENTER ORNAMENT */
+  .visual-ornament {
+    position: relative;
+    z-index: 2;
+    margin: 40px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ornament-circle {
+    width: 240px;
+    height: 240px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: rotate 40s linear infinite;
+  }
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .ornament-circle::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    border: 1px dashed rgba(212, 175, 55, 0.2);
+    border-radius: 50%;
+  }
+  .ornament-inner {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 60px rgba(212, 175, 55, 0.4);
+    animation: counterRotate 40s linear infinite;
+  }
+  @keyframes counterRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+  }
+  .ornament-inner i {
+    font-size: 56px;
+    color: var(--bordo-900);
+  }
+  .ornament-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--altin-500);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--altin-500);
+  }
+  .ornament-dot.top { top: -4px; left: 50%; transform: translateX(-50%); }
+  .ornament-dot.bottom { bottom: -4px; left: 50%; transform: translateX(-50%); }
+  .ornament-dot.left { left: -4px; top: 50%; transform: translateY(-50%); }
+  .ornament-dot.right { right: -4px; top: 50%; transform: translateY(-50%); }
+
+  /* BENEFITS */
+  .visual-benefits {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 13px;
+    color: var(--krem);
+    opacity: 0.9;
+    font-weight: 300;
+  }
+  .benefit-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--altin-400);
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .benefit-item strong {
+    color: var(--altin-300);
+    font-weight: 600;
+    margin-right: 4px;
+  }
+
+  /* ============ RIGHT SIDE — FORM ============ */
+  .auth-form-wrap {
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--krem);
+    position: relative;
+  }
+  .auth-form-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, var(--altin-500), transparent);
+    opacity: 0.3;
+  }
+  .auth-container {
+    max-width: 460px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* TAB SWITCHER */
+  .form-switcher {
+    display: flex;
+    gap: 0;
+    background: var(--krem-koyu);
+    padding: 4px;
+    border-radius: 999px;
+    margin-bottom: 36px;
+    position: relative;
+  }
+  .switcher-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 12px 20px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--gri-text);
+    cursor: pointer;
+    border-radius: 999px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+  }
+  .switcher-btn.active {
+    background: var(--bordo-800);
+    color: var(--altin-300);
+    box-shadow: 0 4px 12px rgba(123, 30, 43, 0.2);
+  }
+  .switcher-btn:hover:not(.active) { color: var(--bordo-800); }
+
+  /* FORM HEADER */
+  .form-eyebrow {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--altin-700);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .form-eyebrow::before {
+    content: '◆';
+    color: var(--altin-500);
+    margin-right: 10px;
+    font-size: 8px;
+    vertical-align: 2px;
+  }
+  .form-title {
+    font-family: var(--serif);
+    font-size: 44px;
+    color: var(--bordo-800);
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+  .form-title em { font-style: italic; color: var(--altin-600); }
+  .form-subtitle {
+    font-size: 14px;
+    color: var(--gri-text);
+    margin-bottom: 32px;
+  }
+  .form-subtitle a {
+    color: var(--bordo-700);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  .form-subtitle a:hover { color: var(--altin-600); }
+
+  /* SOCIAL BUTTONS */
+  .social-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .social-btn {
+    background: var(--beyaz);
+    border: 1px solid var(--gri-border);
+    padding: 13px 16px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--siyah);
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+  }
+  .social-btn:hover {
+    border-color: var(--altin-500);
+    background: var(--krem);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(123, 30, 43, 0.08);
+  }
+  .social-btn i { font-size: 16px; }
+  .social-btn.google i { color: #DB4437; }
+  .social-btn.facebook i { color: #1877F2; }
+
+  /* DIVIDER */
+  .form-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    color: var(--gri-text);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  .form-divider::before,
+  .form-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gri-border), transparent);
+  }
+
+  /* FORM FIELDS */
+  .form-row {
+    display: grid;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+  .form-row.two-col {
+    grid-template-columns: 1fr 1fr;
+  }
+  .form-group {
+    position: relative;
+  }
+  .form-label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bordo-800);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .form-label .required { color: var(--bordo-700); margin-left: 2px; }
+  .form-input-wrap {
+    position: relative;
+  }
+  .form-input {
+    width: 100%;
+    background: var(--beyaz);
+    border: 1px solid var(--gri-border);
+    padding: 14px 16px 14px 44px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--siyah);
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.25s ease;
+  }
+  .form-input::placeholder {
+    color: var(--gri-text);
+    font-weight: 400;
+  }
+  .form-input:focus {
+    border-color: var(--altin-500);
+    background: var(--krem);
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+  }
+  .form-input.error {
+    border-color: var(--tehlike);
+    background: #FAEAEA;
+  }
+  .form-input.valid {
+    border-color: var(--basari);
+  }
+  .form-input.valid + .field-icon-right { color: var(--basari); display: flex; }
+
+  .field-icon-left {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--altin-600);
+    font-size: 14px;
+    pointer-events: none;
+  }
+  .field-icon-right {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gri-text);
+    font-size: 14px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+    display: none;
+  }
+  .field-icon-right.show { display: flex; }
+  .field-icon-right:hover { color: var(--bordo-700); }
+
+  .field-hint {
+    font-size: 11px;
+    color: var(--gri-text);
+    margin-top: 6px;
+    letter-spacing: 0.3px;
+  }
+  .field-error {
+    font-size: 12px;
+    color: var(--tehlike);
+    margin-top: 6px;
+    display: none;
+    align-items: center;
+    gap: 5px;
+  }
+  .field-error.show { display: flex; }
+  .field-error i { font-size: 11px; }
+
+  /* PASSWORD STRENGTH */
+  .password-strength {
+    margin-top: 8px;
+    display: none;
+  }
+  .password-strength.show { display: block; }
+  .strength-bars {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+  .strength-bar {
+    height: 3px;
+    background: var(--gri-border);
+    border-radius: 2px;
+    transition: background 0.3s ease;
+  }
+  .strength-bar.weak { background: #c44; }
+  .strength-bar.fair { background: #d49b27; }
+  .strength-bar.good { background: #5fa83a; }
+  .strength-bar.strong { background: var(--basari); }
+  .strength-label {
+    font-size: 11px;
+    color: var(--gri-text);
+    letter-spacing: 0.3px;
+  }
+  .strength-label .level { font-weight: 600; }
+  .strength-label .level.weak { color: #c44; }
+  .strength-label .level.fair { color: #d49b27; }
+  .strength-label .level.good { color: #5fa83a; }
+  .strength-label .level.strong { color: var(--basari); }
+
+  /* CHECKBOX & EXTRAS */
+  .form-extras {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .checkbox-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--siyah);
+    user-select: none;
+  }
+  .checkbox-wrap input {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--gri-border);
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    background: var(--beyaz);
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+  }
+  .checkbox-wrap input:checked {
+    background: var(--bordo-800);
+    border-color: var(--bordo-800);
+  }
+  .checkbox-wrap input:checked::after {
+    content: '✓';
+    position: absolute;
+    color: var(--altin-300);
+    font-size: 12px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 700;
+  }
+  .checkbox-wrap a {
+    color: var(--bordo-700);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  .checkbox-wrap a:hover { color: var(--altin-600); }
+
+  .forgot-link {
+    font-size: 13px;
+    color: var(--bordo-700);
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: color 0.3s ease;
+  }
+  .forgot-link:hover { color: var(--altin-600); }
+
+  /* SUBMIT BUTTON */
+  .submit-btn {
+    width: 100%;
+    background: var(--bordo-800);
+    color: var(--altin-300);
+    border: none;
+    padding: 17px;
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .submit-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+  .submit-btn:hover {
+    background: var(--bordo-900);
+    color: var(--altin-500);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(61, 10, 20, 0.25);
+  }
+  .submit-btn:hover::before { transform: translateX(100%); }
+  .submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+  .submit-btn i { font-size: 12px; transition: transform 0.3s ease; }
+  .submit-btn:hover i { transform: translateX(4px); }
+
+  /* FOOTER LINKS */
+  .form-footer {
+    margin-top: 28px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--gri-text);
+    letter-spacing: 0.3px;
+    line-height: 1.8;
+  }
+  .form-footer a {
+    color: var(--bordo-700);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  .form-footer a:hover { color: var(--altin-600); }
+
+  /* ============ MODAL — FORGOT PASSWORD ============ */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    padding: 20px;
+  }
+  .modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  .modal {
+    background: var(--krem);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 16px;
+    padding: 48px 40px;
+    max-width: 460px;
+    width: 100%;
+    position: relative;
+    transform: translateY(20px) scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+  }
+  .modal-overlay.show .modal {
+    transform: translateY(0) scale(1);
+  }
+  .modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: 1px solid var(--gri-border);
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--gri-text);
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+  .modal-close:hover {
+    background: var(--bordo-700);
+    color: var(--altin-300);
+    border-color: var(--bordo-700);
+  }
+  .modal-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--altin-500), var(--altin-300));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: var(--bordo-900);
+    font-size: 24px;
+  }
+  .modal h3 {
+    font-family: var(--serif);
+    font-size: 30px;
+    color: var(--bordo-800);
+    text-align: center;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .modal p {
+    text-align: center;
+    color: var(--gri-text);
+    font-size: 14px;
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+
+  /* ============ ŞİFREMİ UNUTTUM MODAL ============ */
+  .forgot-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+  .forgot-modal.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  .forgot-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+  }
+  .forgot-modal-content {
+    position: relative;
+    z-index: 1;
+    background: var(--beyaz);
+    border-radius: 18px;
+    padding: 48px 42px 36px;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(61, 10, 20, 0.3);
+    transform: scale(0.92) translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+  }
+  .forgot-modal.show .forgot-modal-content {
+    transform: scale(1) translateY(0);
+  }
+  .forgot-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--krem);
+    border: 1px solid var(--gri-border);
+    color: var(--bordo-800);
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  .forgot-modal-close:hover {
+    background: var(--bordo-800);
+    color: var(--altin-300);
+    transform: rotate(90deg);
+  }
+  .forgot-modal-icon {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, var(--altin-500), var(--altin-600));
+    color: var(--bordo-900);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.35);
+  }
+  .forgot-modal-icon::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 2px dashed rgba(212, 175, 55, 0.3);
+    animation: rotate 8s linear infinite;
+  }
+  .forgot-success-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, #2D8F4F, #1F6638);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    box-shadow: 0 10px 30px rgba(45, 143, 79, 0.35);
+    animation: success-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes success-pop {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+  }
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .forgot-modal-title {
+    font-family: var(--serif);
+    font-size: 28px;
+    color: var(--bordo-800);
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .forgot-modal-title em {
+    font-style: italic;
+    color: var(--altin-600);
+  }
+  .forgot-modal-desc {
+    font-size: 14px;
+    color: var(--gri-text);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .forgot-modal-desc strong { color: var(--bordo-800); }
+  .forgot-success-meta {
+    background: var(--krem);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 22px;
+    text-align: left;
+    border: 1px solid var(--gri-border);
+  }
+  .forgot-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0;
+    font-size: 12px;
+    color: var(--gri-text);
+  }
+  .forgot-meta-row i {
+    color: var(--altin-700);
+    width: 14px;
+    flex-shrink: 0;
+    font-size: 12px;
+  }
+  .forgot-meta-row strong { color: var(--bordo-800); }
+  .forgot-modal-back-wrap {
+    margin-top: 18px;
+    text-align: center;
+  }
+  .forgot-back-btn {
+    background: none;
+    border: none;
+    color: var(--bordo-700);
+    font-size: 12px;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s ease;
+  }
+  .forgot-back-btn:hover { color: var(--altin-700); }
+
+  /* ============ SOSYAL KANIT KART ============ */
+  .social-proof-card {
+    margin-top: 28px;
+    padding: 18px 20px;
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 14px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+  .proof-avatars {
+    display: flex;
+    flex-shrink: 0;
+  }
+  .proof-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-family: var(--serif);
+    font-size: 12px;
+    border: 2px solid var(--krem);
+    margin-left: -8px;
+    box-shadow: 0 2px 6px rgba(61, 10, 20, 0.15);
+  }
+  .proof-avatar:first-child { margin-left: 0; }
+  .proof-avatar.more {
+    background: var(--bordo-800);
+    color: var(--altin-300);
+  }
+  .proof-content {
+    flex: 1;
+    min-width: 0;
+  }
+  .proof-stat {
+    font-size: 13px;
+    color: var(--krem);
+    line-height: 1.3;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .proof-stat i {
+    color: #FF6B35;
+    font-size: 12px;
+    animation: fire-flicker 1.2s ease-in-out infinite;
+  }
+  @keyframes fire-flicker {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.85; transform: scale(1.08); }
+  }
+  .proof-stat strong { color: var(--altin-300); font-weight: 700; }
+  .proof-rating {
+    font-size: 11px;
+    color: var(--krem);
+    opacity: 0.85;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .proof-stars { color: var(--altin-400); letter-spacing: 1.5px; font-size: 11px; }
+  .proof-rating strong { color: var(--altin-300); }
+
+  /* Mobile responsive forgot modal */
+  @media (max-width: 600px) {
+    .forgot-modal-content { padding: 36px 24px 28px; }
+    .forgot-modal-title { font-size: 24px; }
+    .forgot-modal-icon { width: 64px; height: 64px; font-size: 25px; }
+    .forgot-success-icon { width: 68px; height: 68px; font-size: 30px; }
+    .social-proof-card { padding: 14px 16px; gap: 10px; }
+    .proof-avatar { width: 28px; height: 28px; font-size: 10px; margin-left: -6px; }
+  }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--siyah);
+    color: var(--altin-300);
+    padding: 16px 24px;
+    border-left: 3px solid var(--altin-500);
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    z-index: 1100;
+    transform: translateX(420px);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .toast.show { transform: translateX(0); }
+  .toast i { color: var(--basari); }
+  .toast.error i { color: var(--tehlike); }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1024px) {
+    .auth-layout { grid-template-columns: 1fr; }
+    .auth-visual {
+      padding: 50px 40px;
+      min-height: 450px;
+    }
+    .auth-form-wrap { padding: 50px 40px; }
+    .ornament-circle { width: 180px; height: 180px; }
+    .ornament-inner { width: 120px; height: 120px; }
+    .ornament-inner i { font-size: 40px; }
+    .visual-quote { font-size: clamp(28px, 5vw, 40px); }
+    .form-title { font-size: 36px; }
+  }
+  @media (max-width: 600px) {
+    .topnav { padding: 14px 20px; }
+    .topnav-logo-text { font-size: 14px; letter-spacing: 2px; }
+    .help-link { display: none; }
+    .auth-visual {
+      padding: 40px 24px;
+      min-height: auto;
+    }
+    .auth-form-wrap { padding: 40px 24px; }
+    .visual-quote { font-size: 28px; }
+    .form-title { font-size: 30px; }
+    .form-row.two-col { grid-template-columns: 1fr; }
+    .social-buttons { grid-template-columns: 1fr; }
+    .visual-ornament { margin: 24px 0; }
+    .ornament-circle { width: 140px; height: 140px; }
+    .ornament-inner { width: 90px; height: 90px; }
+    .ornament-inner i { font-size: 32px; }
+    .modal { padding: 36px 24px; }
+    .modal h3 { font-size: 24px; }
+  }
+  /* ============ GÜVEN BANDI (Trust Band) ============ */
+  .trust-band {
+    position: relative;
+    background: linear-gradient(135deg, #3D0A14 0%, #5C1320 50%, #3D0A14 100%);
+    padding: 50px 40px 46px;
+    overflow: hidden;
+  }
+  .trust-band-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.15), transparent 40%),
+      radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.12), transparent 40%),
+      radial-gradient(1.5px 1.5px at 25% 30%, rgba(212, 175, 55, 0.5), transparent),
+      radial-gradient(1px 1px at 75% 70%, rgba(212, 175, 55, 0.4), transparent),
+      radial-gradient(1.5px 1.5px at 50% 40%, rgba(212, 175, 55, 0.45), transparent);
+    background-size: 100% 100%, 100% 100%, 200px 200px, 200px 200px, 200px 200px;
+    pointer-events: none;
+    animation: trust-sparkle 5s ease-in-out infinite;
+  }
+  @keyframes trust-sparkle {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+  .trust-band-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .trust-band-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .trust-band-eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #E8C968;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .trust-band-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 30px;
+    color: #FAF7F2;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.1;
+  }
+  .trust-band-title em {
+    font-style: italic;
+    color: #D4AF37;
+  }
+  .trust-band-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .trust-band-card {
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.22);
+    border-radius: 14px;
+    padding: 22px 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  .trust-band-card:hover {
+    background: rgba(212, 175, 55, 0.14);
+    border-color: rgba(212, 175, 55, 0.4);
+    transform: translateY(-3px);
+  }
+  .trust-band-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 12px;
+    background: linear-gradient(135deg, #D4AF37, #B8941F);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3D0A14;
+    font-size: 20px;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
+  }
+  .trust-band-card-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 16px;
+    color: #FAF7F2;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .trust-band-card-desc {
+    font-size: 11px;
+    color: rgba(232, 201, 104, 0.85);
+    letter-spacing: 0.3px;
+  }
+  /* Ödeme yöntemleri */
+  .trust-band-payments {
+    padding-top: 24px;
+    border-top: 1px dashed rgba(212, 175, 55, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .trust-band-payments-label {
+    font-size: 11px;
+    color: rgba(232, 201, 104, 0.85);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .trust-band-payments-list {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .payment-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #FAF7F2;
+    padding: 7px 12px;
+    border-radius: 6px;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  .payment-badge.visa { color: #1A4ABC; }
+  .payment-badge.mastercard { color: #2B2B2B; }
+  .payment-badge.troy { color: #0066CC; }
+  .payment-badge.amex { color: #006FCF; }
+  .payment-badge.iyzico {
+    background: #1B9D4E;
+    color: white;
+    border: 1px solid #178A45;
+  }
+  .payment-badge.iyzico i { font-size: 10px; }
+  /* Mastercard circles */
+  .mc-circles {
+    position: relative;
+    width: 22px;
+    height: 14px;
+    display: inline-block;
+  }
+  .mc-circle {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    top: 0;
+  }
+  .mc-red {
+    background: #EB001B;
+    left: 0;
+  }
+  .mc-yellow {
+    background: #F79E1B;
+    right: 0;
+    mix-blend-mode: multiply;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 900px) {
+    .trust-band { padding: 40px 24px 36px; }
+    .trust-band-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .trust-band-title { font-size: 24px; }
+  }
+  @media (max-width: 500px) {
+    .trust-band-card { padding: 18px 12px; }
+    .trust-band-icon { width: 42px; height: 42px; font-size: 17px; }
+    .trust-band-card-title { font-size: 14px; }
+    .trust-band-card-desc { font-size: 10px; }
+    .trust-band-payments {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .payment-badge { padding: 6px 10px; font-size: 10px; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="topnav">
+  <a href="../index.html" class="back-link">
+    <i class="fa-solid fa-arrow-left"></i>
+    Anasayfaya Dön
+  </a>
+  <a href="../index.html" class="topnav-logo" title="PB Store · Anasayfa">
+    <div class="topnav-logo-circle"><img src="../assets/images/logo.png" alt="PB Store" /></div>
+    <span class="topnav-logo-text">PB STORE</span>
+  </a>
+  <a href="sss.html" class="help-link">
+    <i class="fa-regular fa-circle-question"></i> Yardım
+  </a>
+</nav>
+
+<!-- LAYOUT -->
+<div class="auth-layout">
+
+  <!-- ============ LEFT: VISUAL ============ -->
+  <div class="auth-visual">
+    <div class="visual-top">
+      <div class="visual-eyebrow">Premium Bakım</div>
+      <h1 class="visual-quote" id="visual-quote">
+        Cildinizin <em>altın</em> sırrı, bir tık uzağınızda.
+      </h1>
+      <p class="visual-desc" id="visual-desc">
+        PB Store ailesine katılın, premium kozmetik dünyasının özel ayrıcalıklarından yararlanın.
+      </p>
+    </div>
+
+    <div class="visual-ornament">
+      <div class="ornament-circle">
+        <div class="ornament-dot top"></div>
+        <div class="ornament-dot bottom"></div>
+        <div class="ornament-dot left"></div>
+        <div class="ornament-dot right"></div>
+        <div class="ornament-inner">
+          <i class="fa-solid fa-gem"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="visual-benefits">
+      <div class="benefit-item">
+        <div class="benefit-icon"><i class="fa-solid fa-gift"></i></div>
+        <span><strong>%15 hoşgeldin indirimi</strong>ile ilk alışverişiniz avantajlı</span>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon"><i class="fa-solid fa-star"></i></div>
+        <span><strong>PB Beauty Club</strong>'a özel kampanya ve hediyeler</span>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon"><i class="fa-solid fa-truck-fast"></i></div>
+        <span><strong>Erken erişim</strong>yeni sezon koleksiyonlarına ilk siz ulaşın</span>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon"><i class="fa-solid fa-heart"></i></div>
+        <span><strong>Sipariş geçmişi & favoriler</strong> her zaman elinizin altında</span>
+      </div>
+    </div>
+
+    <!-- SOSYAL KANIT -->
+    <div class="social-proof-card">
+      <div class="proof-avatars">
+        <div class="proof-avatar" style="background: linear-gradient(135deg, #D4AF37, #B8941F);">ZK</div>
+        <div class="proof-avatar" style="background: linear-gradient(135deg, #7B1E2B, #5C1320); color: #E0BE52;">AY</div>
+        <div class="proof-avatar" style="background: linear-gradient(135deg, #2D8F4F, #1F6638);">MD</div>
+        <div class="proof-avatar" style="background: linear-gradient(135deg, #C44B6F, #8B2C46);">SK</div>
+        <div class="proof-avatar more">+</div>
+      </div>
+      <div class="proof-content">
+        <div class="proof-stat">
+          <i class="fa-solid fa-fire"></i>
+          <span><strong id="proof-counter">247</strong> kişi <strong>bu hafta</strong> üye oldu</span>
+        </div>
+        <div class="proof-rating">
+          <span class="proof-stars">★★★★★</span>
+          <span><strong>4.9/5</strong> · 2.840+ doğrulanmış yorum</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ RIGHT: FORM ============ -->
+  <div class="auth-form-wrap">
+    <div class="auth-container">
+
+      <!-- TAB SWITCHER -->
+      <div class="form-switcher">
+        <button class="switcher-btn active" data-form="login">Giriş Yap</button>
+        <button class="switcher-btn" data-form="signup">Kayıt Ol</button>
+      </div>
+
+      <!-- ============ LOGIN FORM ============ -->
+      <form class="form-content active" id="form-login" novalidate>
+        <div class="form-eyebrow">Hoşgeldiniz</div>
+        <h2 class="form-title">Tekrar <em>merhaba</em></h2>
+        <p class="form-subtitle">
+          Hesabınız yok mu? <a href="#" class="switch-to-signup">Hemen oluşturun</a>
+        </p>
+
+        <!-- SOCIAL -->
+        <div class="social-buttons">
+          <button type="button" class="social-btn google" data-social="Google">
+            <i class="fa-brands fa-google"></i> Google
+          </button>
+          <button type="button" class="social-btn facebook" data-social="Facebook">
+            <i class="fa-brands fa-facebook-f"></i> Facebook
+          </button>
+        </div>
+
+        <div class="form-divider">veya e-posta ile</div>
+
+        <!-- EMAIL -->
+        <div class="form-group" style="margin-bottom: 18px;">
+          <label class="form-label" for="login-email">E-posta Adresi</label>
+          <div class="form-input-wrap">
+            <i class="fa-regular fa-envelope field-icon-left"></i>
+            <input type="email" id="login-email" class="form-input" placeholder="ornek@email.com" autocomplete="email" />
+            <button type="button" class="field-icon-right" tabindex="-1">
+              <i class="fa-solid fa-check"></i>
+            </button>
+          </div>
+          <div class="field-error" id="login-email-error">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>Geçerli bir e-posta adresi girin</span>
+          </div>
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label class="form-label" for="login-password">Şifre</label>
+          <div class="form-input-wrap">
+            <i class="fa-solid fa-lock field-icon-left"></i>
+            <input type="password" id="login-password" class="form-input" placeholder="••••••••" autocomplete="current-password" />
+            <button type="button" class="field-icon-right show toggle-pw" data-target="login-password" tabindex="-1">
+              <i class="fa-regular fa-eye"></i>
+            </button>
+          </div>
+          <div class="field-error" id="login-password-error">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>Şifre en az 6 karakter olmalıdır</span>
+          </div>
+        </div>
+
+        <!-- EXTRAS -->
+        <div class="form-extras">
+          <label class="checkbox-wrap">
+            <input type="checkbox" checked />
+            <span>Beni hatırla</span>
+          </label>
+          <a href="#" class="forgot-link" id="forgot-link">Şifremi unuttum</a>
+        </div>
+
+        <!-- SUBMIT -->
+        <button type="submit" class="submit-btn">
+          <span>Giriş Yap</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+        
+<!-- ============ GÜVEN BANDI (Trust Band) ============ -->
+<section class="trust-band">
+  <div class="trust-band-bg"></div>
+  <div class="trust-band-container">
+    <div class="trust-band-header">
+      <div class="trust-band-eyebrow">Güven Sertifikalarımız</div>
+      <h2 class="trust-band-title">Sizin için <em>güvenli alışveriş</em></h2>
+    </div>
+
+    <div class="trust-band-grid">
+      <div class="trust-band-card">
+        <div class="trust-band-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="trust-band-card-title">SSL Sertifikası</div>
+        <div class="trust-band-card-desc">256-bit şifreleme</div>
+      </div>
+
+      <div class="trust-band-card">
+        <div class="trust-band-icon"><i class="fa-solid fa-credit-card"></i></div>
+        <div class="trust-band-card-title">3D Secure Ödeme</div>
+        <div class="trust-band-card-desc">iyzico Sanal POS</div>
+      </div>
+
+      <div class="trust-band-card">
+        <div class="trust-band-icon"><i class="fa-solid fa-rotate-left"></i></div>
+        <div class="trust-band-card-title">14 Gün Koşulsuz İade</div>
+        <div class="trust-band-card-desc">Hızlı iade garantisi</div>
+      </div>
+
+      <div class="trust-band-card">
+        <div class="trust-band-icon"><i class="fa-solid fa-headset"></i></div>
+        <div class="trust-band-card-title">7/24 Canlı Destek</div>
+        <div class="trust-band-card-desc">WhatsApp &amp; Telefon</div>
+      </div>
+    </div>
+
+    <!-- Ödeme yöntemleri -->
+    <div class="trust-band-payments">
+      <span class="trust-band-payments-label">Güvenli ödeme yöntemleri:</span>
+      <div class="trust-band-payments-list">
+        <div class="payment-badge visa">
+          <span class="payment-badge-text">VISA</span>
+        </div>
+        <div class="payment-badge mastercard">
+          <span class="mc-circles">
+            <span class="mc-circle mc-red"></span>
+            <span class="mc-circle mc-yellow"></span>
+          </span>
+          <span class="payment-badge-text">Mastercard</span>
+        </div>
+        <div class="payment-badge troy">
+          <span class="payment-badge-text">Troy</span>
+        </div>
+        <div class="payment-badge amex">
+          <span class="payment-badge-text">AMEX</span>
+        </div>
+        <div class="payment-badge iyzico">
+          <i class="fa-solid fa-lock"></i>
+          <span class="payment-badge-text">iyzico</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+        <div class="form-footer">
+          Devam ederek <a href="kvkk.html">Kullanım Koşulları</a> ve <a href="kvkk.html">Gizlilik Politikamızı</a> kabul etmiş sayılırsınız.
+        </div>
+      </form>
+
+      <!-- ============ SIGNUP FORM ============ -->
+      <form class="form-content" id="form-signup" style="display: none;" novalidate>
+        <div class="form-eyebrow">Aramıza Hoşgeldiniz</div>
+        <h2 class="form-title">Hesap <em>oluşturun</em></h2>
+        <p class="form-subtitle">
+          Zaten üye misiniz? <a href="#" class="switch-to-login">Giriş yapın</a>
+        </p>
+
+        <!-- SOCIAL -->
+        <div class="social-buttons">
+          <button type="button" class="social-btn google" data-social="Google">
+            <i class="fa-brands fa-google"></i> Google ile
+          </button>
+          <button type="button" class="social-btn facebook" data-social="Facebook">
+            <i class="fa-brands fa-facebook-f"></i> Facebook ile
+          </button>
+        </div>
+
+        <div class="form-divider">veya bilgilerinizle</div>
+
+        <!-- AD SOYAD -->
+        <div class="form-row two-col">
+          <div class="form-group">
+            <label class="form-label" for="signup-firstname">Ad <span class="required">*</span></label>
+            <div class="form-input-wrap">
+              <i class="fa-regular fa-user field-icon-left"></i>
+              <input type="text" id="signup-firstname" class="form-input" placeholder="Adınız" autocomplete="given-name" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="signup-lastname">Soyad <span class="required">*</span></label>
+            <div class="form-input-wrap">
+              <i class="fa-regular fa-user field-icon-left"></i>
+              <input type="text" id="signup-lastname" class="form-input" placeholder="Soyadınız" autocomplete="family-name" />
+            </div>
+          </div>
+        </div>
+
+        <!-- EMAIL -->
+        <div class="form-group" style="margin-bottom: 18px;">
+          <label class="form-label" for="signup-email">E-posta Adresi <span class="required">*</span></label>
+          <div class="form-input-wrap">
+            <i class="fa-regular fa-envelope field-icon-left"></i>
+            <input type="email" id="signup-email" class="form-input" placeholder="ornek@email.com" autocomplete="email" />
+            <button type="button" class="field-icon-right" tabindex="-1">
+              <i class="fa-solid fa-check"></i>
+            </button>
+          </div>
+          <div class="field-error" id="signup-email-error">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>Geçerli bir e-posta adresi girin</span>
+          </div>
+        </div>
+
+        <!-- TELEFON -->
+        <div class="form-group" style="margin-bottom: 18px;">
+          <label class="form-label" for="signup-phone">Telefon</label>
+          <div class="form-input-wrap">
+            <i class="fa-solid fa-phone field-icon-left"></i>
+            <input type="tel" id="signup-phone" class="form-input" placeholder="+90 5XX XXX XX XX" autocomplete="tel" />
+          </div>
+          <div class="field-hint">Sipariş bildirimleri ve özel kampanyalar için (isteğe bağlı)</div>
+        </div>
+
+        <!-- ŞİFRE -->
+        <div class="form-group" style="margin-bottom: 18px;">
+          <label class="form-label" for="signup-password">Şifre <span class="required">*</span></label>
+          <div class="form-input-wrap">
+            <i class="fa-solid fa-lock field-icon-left"></i>
+            <input type="password" id="signup-password" class="form-input" placeholder="En az 8 karakter" autocomplete="new-password" />
+            <button type="button" class="field-icon-right show toggle-pw" data-target="signup-password" tabindex="-1">
+              <i class="fa-regular fa-eye"></i>
+            </button>
+          </div>
+          <div class="password-strength" id="strength-block">
+            <div class="strength-bars">
+              <div class="strength-bar" id="bar-1"></div>
+              <div class="strength-bar" id="bar-2"></div>
+              <div class="strength-bar" id="bar-3"></div>
+              <div class="strength-bar" id="bar-4"></div>
+            </div>
+            <div class="strength-label">
+              Güvenlik: <span class="level" id="strength-level">Zayıf</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- KVKK & PAZARLAMA -->
+        <div style="margin-bottom: 24px;">
+          <label class="checkbox-wrap" style="margin-bottom: 12px;">
+            <input type="checkbox" id="terms-check" />
+            <span><a href="kvkk.html">Kullanım Koşulları</a>, <a href="kvkk.html">Gizlilik Politikası</a> ve <a href="kvkk.html">KVKK Aydınlatma Metni</a>'ni okudum, kabul ediyorum. <span class="required">*</span></span>
+          </label>
+          <label class="checkbox-wrap">
+            <input type="checkbox" />
+            <span>Kampanya, indirim ve yeni ürünlerden ilk ben haberdar olmak istiyorum</span>
+          </label>
+        </div>
+
+        <!-- SUBMIT -->
+        <button type="submit" class="submit-btn" id="signup-submit">
+          <span>Hesap Oluştur</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+        <!-- FOOTER -->
+        <div class="form-footer">
+          Üye olarak <strong style="color: var(--altin-700);">%15 hoşgeldin indirimi</strong>kazanırsınız!
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- ============ FORGOT PASSWORD MODAL ============ -->
+<div class="modal-overlay" id="forgot-modal">
+  <div class="modal">
+    <button class="modal-close" id="modal-close" aria-label="Kapat">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="modal-icon">
+      <i class="fa-solid fa-key"></i>
+    </div>
+    <h3>Şifremi <em style="font-style: italic; color: var(--altin-600);">Unuttum</em></h3>
+    <p>E-posta adresinizi girin, size şifre sıfırlama bağlantısı gönderelim.</p>
+
+    <form id="forgot-form" novalidate>
+      <div class="form-group" style="margin-bottom: 20px;">
+        <div class="form-input-wrap">
+          <i class="fa-regular fa-envelope field-icon-left"></i>
+          <input type="email" id="forgot-email" class="form-input" placeholder="ornek@email.com" />
+        </div>
+      </div>
+      <button type="submit" class="submit-btn">
+        <span>Sıfırlama Bağlantısı Gönder</span>
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- ŞİFREMİ UNUTTUM MODAL -->
+<div class="forgot-modal" id="forgot-modal" role="dialog" aria-modal="true" aria-labelledby="forgot-modal-title">
+  <div class="forgot-modal-backdrop" data-close-forgot></div>
+  <div class="forgot-modal-content">
+    <button class="forgot-modal-close" data-close-forgot aria-label="Kapat">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <!-- AŞAMA 1: E-POSTA GİRİŞ -->
+    <div class="forgot-stage forgot-stage-input" id="forgot-stage-input">
+      <div class="forgot-modal-icon">
+        <i class="fa-solid fa-key"></i>
+      </div>
+      <h3 class="forgot-modal-title" id="forgot-modal-title">Şifrenizi mi <em>unuttunuz</em>?</h3>
+      <p class="forgot-modal-desc">Endişelenmeyin. E-posta adresinizi girin, size sıfırlama bağlantısı gönderelim.</p>
+
+      <form id="forgot-form" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="forgot-email">E-posta Adresi</label>
+          <div class="form-input-wrap">
+            <i class="fa-regular fa-envelope field-icon-left"></i>
+            <input type="email" id="forgot-email" class="form-input" placeholder="ornek@email.com" autocomplete="email" required />
+          </div>
+          <div class="field-error" id="forgot-email-error">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>Geçerli bir e-posta adresi girin</span>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn" id="forgot-submit">
+          <span>Sıfırlama Bağlantısı Gönder</span>
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+
+        <div class="forgot-modal-back-wrap">
+          <button type="button" class="forgot-back-btn" data-close-forgot>
+            <i class="fa-solid fa-arrow-left"></i> Giriş ekranına dön
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- AŞAMA 2: BAŞARI -->
+    <div class="forgot-stage forgot-stage-success" id="forgot-stage-success" style="display: none;">
+      <div class="forgot-success-icon">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <h3 class="forgot-modal-title">Bağlantı <em>gönderildi</em>!</h3>
+      <p class="forgot-modal-desc">
+        <strong id="forgot-success-email">email@example.com</strong> adresine sıfırlama bağlantısı gönderdik.
+      </p>
+      <div class="forgot-success-meta">
+        <div class="forgot-meta-row">
+          <i class="fa-solid fa-clock"></i>
+          <span>Bağlantı <strong>30 dakika</strong> içinde geçerlidir</span>
+        </div>
+        <div class="forgot-meta-row">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>Güvenlik için tek kullanımlık link</span>
+        </div>
+        <div class="forgot-meta-row">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>E-posta gelmedi mi? <strong>Spam klasörünü</strong> kontrol edin</span>
+        </div>
+      </div>
+      <button type="button" class="submit-btn" data-close-forgot>
+        <span>Tamam, Anladım</span>
+        <i class="fa-solid fa-check"></i>
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <i class="fa-solid fa-circle-check"></i>
+  <span id="toast-text">İşlem başarılı</span>
+</div>
+
+<script>
+  // ============ TAB SWITCHER ============
+  const switcherBtns = document.querySelectorAll('.switcher-btn');
+  const loginForm = document.getElementById('form-login');
+  const signupForm = document.getElementById('form-signup');
+  const visualQuote = document.getElementById('visual-quote');
+  const visualDesc = document.getElementById('visual-desc');
+
+  function showForm(name) {
+    switcherBtns.forEach(b => b.classList.toggle('active', b.dataset.form === name));
+    if (name === 'login') {
+      loginForm.style.display = 'block';
+      signupForm.style.display = 'none';
+      visualQuote.innerHTML = 'Cildinizin <em>altın</em> sırrı, bir tık uzağınızda.';
+      visualDesc.textContent = 'Tekrar aramızda olmaktan mutluluk duyuyoruz. Hesabınıza giriş yapın ve alışverişe devam edin.';
+    } else {
+      loginForm.style.display = 'none';
+      signupForm.style.display = 'block';
+      visualQuote.innerHTML = 'Güzelliğin <em>sırrı</em> sizi bekliyor.';
+      visualDesc.textContent = 'PB Store ailesine katılın, premium kozmetik dünyasının özel ayrıcalıklarından yararlanın.';
+    }
+  }
+
+  switcherBtns.forEach(btn => {
+    btn.addEventListener('click', () => showForm(btn.dataset.form));
+  });
+
+  document.querySelectorAll('.switch-to-signup').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      showForm('signup');
+    });
+  });
+  document.querySelectorAll('.switch-to-login').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      showForm('login');
+    });
+  });
+
+  // ============ PASSWORD TOGGLE ============
+  document.querySelectorAll('.toggle-pw').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const input = document.getElementById(btn.dataset.target);
+      const icon = btn.querySelector('i');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'fa-regular fa-eye-slash';
+      } else {
+        input.type = 'password';
+        icon.className = 'fa-regular fa-eye';
+      }
+    });
+  });
+
+  // ============ EMAIL VALIDATION ============
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  ['login-email', 'signup-email'].forEach(id => {
+    const input = document.getElementById(id);
+    const errorEl = document.getElementById(id + '-error');
+    const checkIcon = input.parentElement.querySelector('.field-icon-right');
+
+    input.addEventListener('blur', () => {
+      if (!input.value) {
+        input.classList.remove('error', 'valid');
+        errorEl.classList.remove('show');
+        if (checkIcon) checkIcon.classList.remove('show');
+        return;
+      }
+      if (validateEmail(input.value)) {
+        input.classList.add('valid');
+        input.classList.remove('error');
+        errorEl.classList.remove('show');
+        if (checkIcon) checkIcon.classList.add('show');
+      } else {
+        input.classList.add('error');
+        input.classList.remove('valid');
+        errorEl.classList.add('show');
+        if (checkIcon) checkIcon.classList.remove('show');
+      }
+    });
+
+    input.addEventListener('input', () => {
+      if (input.classList.contains('error') && validateEmail(input.value)) {
+        input.classList.remove('error');
+        errorEl.classList.remove('show');
+      }
+    });
+  });
+
+  // ============ PASSWORD STRENGTH ============
+  const signupPw = document.getElementById('signup-password');
+  const strengthBlock = document.getElementById('strength-block');
+  const bars = [
+    document.getElementById('bar-1'),
+    document.getElementById('bar-2'),
+    document.getElementById('bar-3'),
+    document.getElementById('bar-4')
+  ];
+  const strengthLevel = document.getElementById('strength-level');
+
+  function calcStrength(pw) {
+    let score = 0;
+    if (pw.length >= 8) score++;
+    if (pw.length >= 12) score++;
+    if (/[A-Z]/.test(pw) && /[a-z]/.test(pw)) score++;
+    if (/\d/.test(pw)) score++;
+    if (/[^A-Za-z0-9]/.test(pw)) score++;
+    return Math.min(score, 4);
+  }
+
+  signupPw.addEventListener('input', () => {
+    if (!signupPw.value) {
+      strengthBlock.classList.remove('show');
+      bars.forEach(b => b.className = 'strength-bar');
+      return;
+    }
+    strengthBlock.classList.add('show');
+    const score = calcStrength(signupPw.value);
+    const levels = ['', 'weak', 'fair', 'good', 'strong'];
+    const labels = ['', 'Zayıf', 'Orta', 'İyi', 'Güçlü'];
+
+    bars.forEach((b, i) => {
+      b.className = 'strength-bar';
+      if (i < score) b.classList.add(levels[score]);
+    });
+    strengthLevel.className = 'level ' + levels[score];
+    strengthLevel.textContent = labels[score];
+  });
+
+  // ============ FORM SUBMITS ============
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('login-email').value.trim();
+    const pw = document.getElementById('login-password').value;
+    const emailErr = document.getElementById('login-email-error');
+    const pwErr = document.getElementById('login-password-error');
+
+    let ok = true;
+    if (!validateEmail(email)) {
+      document.getElementById('login-email').classList.add('error');
+      emailErr.classList.add('show');
+      ok = false;
+    }
+    if (pw.length < 6) {
+      document.getElementById('login-password').classList.add('error');
+      pwErr.classList.add('show');
+      ok = false;
+    }
+    if (!ok) {
+      showToast('Lütfen alanları kontrol edin', true);
+      return;
+    }
+
+    const btn = loginForm.querySelector('.submit-btn');
+    const original = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<span>Giriş yapılıyor...</span><i class="fa-solid fa-spinner fa-spin"></i>';
+
+    setTimeout(() => {
+      btn.innerHTML = original;
+      btn.disabled = false;
+      showToast('Hoşgeldiniz! Yönlendiriliyorsunuz...');
+    }, 1500);
+  });
+
+  signupForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const fields = {
+      firstname: document.getElementById('signup-firstname').value.trim(),
+      lastname: document.getElementById('signup-lastname').value.trim(),
+      email: document.getElementById('signup-email').value.trim(),
+      password: document.getElementById('signup-password').value,
+      terms: document.getElementById('terms-check').checked
+    };
+
+    if (!fields.firstname || !fields.lastname) {
+      showToast('Ad ve soyad alanlarını doldurun', true);
+      return;
+    }
+    if (!validateEmail(fields.email)) {
+      document.getElementById('signup-email').classList.add('error');
+      document.getElementById('signup-email-error').classList.add('show');
+      showToast('Geçerli bir e-posta girin', true);
+      return;
+    }
+    if (fields.password.length < 8) {
+      showToast('Şifre en az 8 karakter olmalı', true);
+      return;
+    }
+    if (!fields.terms) {
+      showToast('Kullanım koşullarını kabul edin', true);
+      return;
+    }
+
+    const btn = document.getElementById('signup-submit');
+    const original = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<span>Hesap oluşturuluyor...</span><i class="fa-solid fa-spinner fa-spin"></i>';
+
+    setTimeout(() => {
+      btn.innerHTML = original;
+      btn.disabled = false;
+      showToast(`Hoşgeldin ${fields.firstname}! %15 indirim kuponun e-postana gönderildi ✓`);
+    }, 1800);
+  });
+
+  // ============ FORGOT PASSWORD MODAL (Yeni 2 aşamalı) ============
+  const forgotModal = document.getElementById('forgot-modal');
+  const forgotStageInput = document.getElementById('forgot-stage-input');
+  const forgotStageSuccess = document.getElementById('forgot-stage-success');
+
+  function openForgotModal() {
+    // Her açılışta input aşamasına dön
+    forgotStageInput.style.display = '';
+    forgotStageSuccess.style.display = 'none';
+    forgotModal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => document.getElementById('forgot-email')?.focus(), 300);
+  }
+  function closeForgotModal() {
+    forgotModal.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('forgot-link')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    openForgotModal();
+  });
+  // Tüm kapatma butonları ve backdrop
+  forgotModal?.querySelectorAll('[data-close-forgot]').forEach(el => {
+    el.addEventListener('click', closeForgotModal);
+  });
+  // ESC tuşu
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && forgotModal?.classList.contains('show')) closeForgotModal();
+  });
+
+  // Forgot form submit
+  document.getElementById('forgot-form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('forgot-email').value.trim();
+    if (!validateEmail(email)) {
+      document.getElementById('forgot-email-error')?.classList.add('show');
+      document.getElementById('forgot-email')?.classList.add('error');
+      return;
+    }
+    document.getElementById('forgot-email-error')?.classList.remove('show');
+    document.getElementById('forgot-email')?.classList.remove('error');
+
+    const btn = document.getElementById('forgot-submit');
+    const original = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<span>Gönderiliyor...</span><i class="fa-solid fa-spinner fa-spin"></i>';
+
+    setTimeout(() => {
+      // Aşama 2'ye geç - başarı ekranı
+      forgotStageInput.style.display = 'none';
+      forgotStageSuccess.style.display = '';
+      document.getElementById('forgot-success-email').textContent = email;
+      btn.innerHTML = original;
+      btn.disabled = false;
+      // Input temizle
+      document.getElementById('forgot-email').value = '';
+    }, 1500);
+  });
+
+  // ============ TOAST ============
+  function showToast(msg, isError = false) {
+    const toast = document.getElementById('toast');
+    document.getElementById('toast-text').textContent = msg;
+    toast.classList.toggle('error', isError);
+    const icon = toast.querySelector('i');
+    icon.className = isError
+      ? 'fa-solid fa-circle-exclamation'
+      : 'fa-solid fa-circle-check';
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
+  }
+
+  // ============ SOCIAL BUTTONS (Google + Facebook) ============
+  document.querySelectorAll('.social-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const provider = btn.dataset.social || (btn.classList.contains('google') ? 'Google' : 'Facebook');
+      showToast(`✦ ${provider} ile giriş gerçek sürümde aktif olacak`);
+    });
+  });
+
+  // ============ TELEFON MASK (0 (5XX) XXX XX XX) ============
+  const phoneInput = document.getElementById('signup-phone');
+  if (phoneInput) {
+    phoneInput.addEventListener('input', (e) => {
+      let val = e.target.value.replace(/\D/g, ''); // sadece rakamlar
+
+      // Başında 0 yoksa ve 5 ile başlıyorsa otomatik 0 ekle
+      if (val.length > 0 && val[0] === '5') val = '0' + val;
+      // Başında 90 varsa kaldır
+      if (val.startsWith('90') && val.length > 11) val = val.substring(2);
+
+      val = val.substring(0, 11); // maks 11 hane
+
+      let formatted = '';
+      if (val.length > 0) formatted = val[0];
+      if (val.length >= 2) formatted += ' (' + val.substring(1, 4);
+      if (val.length >= 5) formatted += ') ' + val.substring(4, 7);
+      if (val.length >= 8) formatted += ' ' + val.substring(7, 9);
+      if (val.length >= 10) formatted += ' ' + val.substring(9, 11);
+
+      e.target.value = formatted;
+    });
+    phoneInput.placeholder = '0 (5XX) XXX XX XX';
+  }
+
+  // ============ SOSYAL KANIT COUNTER (live update) ============
+  (function() {
+    const counter = document.getElementById('proof-counter');
+    if (!counter) return;
+
+    let current = 247;
+    counter.textContent = current;
+
+    // Her 8 saniyede counter'ı artır (canlı hissi)
+    setInterval(() => {
+      current += Math.floor(Math.random() * 3) + 1; // 1-3 artış
+      counter.style.transition = 'color 0.3s ease';
+      counter.style.color = '#FFD700';
+      counter.textContent = current;
+      setTimeout(() => { counter.style.color = ''; }, 600);
+    }, 8000);
+  })();
+</script>
+
+
+<!-- PB Store Frontend Logic -->
+<script src="../assets/js/products.js" defer></script>
+<script src="../assets/js/cart.js" defer></script>
+<script src="../assets/js/render.js" defer></script>
+</body>
+</html>

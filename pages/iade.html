@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>İade & Değişim | PB Store - 14 Gün Koşulsuz İade</title>
+<meta name="description" content="PB Store 14 gün koşulsuz iade hakkı. İade süreçleri, koşulları ve adımları. Memnun kalmazsanız paranızı geri alın." />
+<meta name="keywords" content="iade, değişim, koşulsuz iade, garanti, para iadesi" />
+<meta name="author" content="PB Store" />
+<meta name="language" content="Turkish" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href="https://p-bstore.vercel.app/pages/iade.html" />
+
+<!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+<meta property="og:locale" content="tr_TR" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://p-bstore.vercel.app/pages/iade.html" />
+<meta property="og:title" content="İade & Değişim | PB Store - 14 Gün Koşulsuz İade" />
+<meta property="og:description" content="PB Store 14 gün koşulsuz iade hakkı. İade süreçleri, koşulları ve adımları. Memnun kalmazsanız paranızı geri alın." />
+<meta property="og:image" content="https://p-bstore.vercel.app/assets/images/logo.png" />
+<meta property="og:image:width" content="768" />
+<meta property="og:image:height" content="768" />
+<meta property="og:site_name" content="PB Store" />
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://p-bstore.vercel.app/pages/iade.html" />
+<meta name="twitter:title" content="İade & Değişim | PB Store - 14 Gün Koşulsuz İade" />
+<meta name="twitter:description" content="PB Store 14 gün koşulsuz iade hakkı. İade süreçleri, koşulları ve adımları. Memnun kalmazsanız paranızı geri alın." />
+<meta name="twitter:image" content="https://p-bstore.vercel.app/assets/images/logo.png" />
+<meta name="twitter:site" content="@pbstore" />
+<meta name="twitter:creator" content="@pbstore" />
+
+<!-- Theme Color -->
+<meta name="theme-color" content="#5C1320" />
+<meta name="msapplication-TileColor" content="#5C1320" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/jpeg" href="/../assets/images/logo.png" />
+<link rel="apple-touch-icon" href="../assets/images/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../assets/css/ads.css">
+<link rel="stylesheet" href="../assets/css/render.css">
+<link rel="stylesheet" href="../assets/css/responsive.css">
+<style>
+  :root {
+    --bordo-900: #3D0A14; --bordo-800: #5C1320; --bordo-700: #7B1E2B;
+    --altin-700: #9A7B1A; --altin-600: #B8941F; --altin-500: #D4AF37;
+    --altin-400: #E0BE52; --altin-300: #E8C968;
+    --siyah: #0A0A0A; --beyaz: #FFFFFF;
+    --krem: #FAF7F2; --krem-koyu: #F0EBE0; --gri-suzme: #F5F2EE;
+    --gri-text: #6B655C; --gri-border: #E5DFD3;
+    --basari: #2D8F4F; --uyari: #D49B27; --tehlike: #C44545;
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'Manrope', system-ui, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--sans); background: var(--krem); color: var(--siyah); line-height: 1.6; }
+
+  /* NAVBAR - tutarlı yapı */
+  .announce { background: var(--siyah); color: var(--krem); text-align: center; padding: 10px 20px; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; font-weight: 300; }
+  .announce span { color: var(--altin-500); }
+  .slogan-bar { background: linear-gradient(90deg, var(--bordo-900), var(--bordo-800), var(--bordo-700), var(--bordo-800), var(--bordo-900)); color: var(--altin-300); text-align: center; padding: 8px 20px; font-size: 11px; letter-spacing: 5px; text-transform: uppercase; font-weight: 500; }
+  .slogan-bar .diamond { color: var(--altin-500); margin: 0 16px; font-size: 8px; vertical-align: 2px; }
+  .navbar { background: var(--krem); border-bottom: 1px solid rgba(212, 175, 55, 0.2); position: sticky; top: 0; z-index: 50; }
+  .nav-container { max-width: 1400px; margin: 0 auto; padding: 18px 40px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 40px; }
+  .nav-left { display: flex; gap: 36px; align-items: center; }
+  .nav-link { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--siyah); text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
+  .nav-link:hover { color: var(--bordo-700); }
+  .logo { display: flex; flex-direction: column; align-items: center; text-decoration: none; color: inherit; }
+  .logo-circle { width: 64px; height: 64px; border-radius: 50%; overflow: hidden; position: relative; box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3); }
+  .logo-circle::before { content: ''; position: absolute; inset: -3px; border-radius: 50%; border: 1px solid rgba(212, 175, 55, 0.4); }
+  .logo-circle img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+  .logo-text { font-family: var(--serif); font-size: 10px; letter-spacing: 4px; color: var(--bordo-800); margin-top: 6px; font-weight: 500; }
+  .logo-text em { color: var(--altin-600); font-style: italic; margin: 0 4px; }
+  .nav-right { display: flex; gap: 20px; justify-content: flex-end; align-items: center; }
+  .nav-action { background: none; border: none; cursor: pointer; color: var(--siyah); font-size: 18px; position: relative; padding: 8px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+  .nav-action:hover { color: var(--bordo-700); }
+  .nav-action .badge { position: absolute; top: 0; right: 0; background: var(--bordo-700); color: var(--altin-300); font-size: 10px; font-weight: 600; min-width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; padding: 0 4px; }
+  .auth-buttons { display: flex; gap: 8px; align-items: center; margin-left: 12px; padding-left: 16px; border-left: 1px solid rgba(212, 175, 55, 0.3); }
+  .auth-btn { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding: 8px 14px; background: none; border: none; cursor: pointer; font-weight: 500; color: var(--siyah); text-decoration: none; display: inline-block; }
+  .auth-btn:hover { color: var(--bordo-700); }
+  .auth-btn.primary { border: 1px solid var(--altin-500); color: var(--bordo-800); }
+  .auth-btn.primary:hover { background: var(--bordo-700); color: var(--altin-300); border-color: var(--bordo-700); }
+
+  /* BREADCRUMB */
+  .breadcrumb { max-width: 1400px; margin: 0 auto; padding: 24px 40px 0; display: flex; align-items: center; gap: 10px; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--gri-text); }
+  .breadcrumb a { color: var(--gri-text); text-decoration: none; transition: color 0.3s ease; }
+  .breadcrumb a:hover { color: var(--bordo-700); }
+  .breadcrumb .sep { color: var(--altin-500); }
+  .breadcrumb .current { color: var(--bordo-800); font-weight: 500; }
+
+  /* HERO */
+  .page-hero { padding: 70px 40px 50px; background: linear-gradient(135deg, var(--krem) 0%, var(--krem-koyu) 100%); text-align: center; position: relative; overflow: hidden; }
+  .page-hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle at 15% 30%, rgba(212, 175, 55, 0.08), transparent 40%), radial-gradient(circle at 85% 70%, rgba(123, 30, 43, 0.05), transparent 50%); pointer-events: none; }
+  .page-hero-content { max-width: 800px; margin: 0 auto; position: relative; z-index: 1; }
+  .page-hero-icon { width: 80px; height: 80px; background: linear-gradient(135deg, var(--bordo-800), var(--bordo-700)); color: var(--altin-400); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; margin: 0 auto 24px; position: relative; }
+  .page-hero-icon::before { content: ''; position: absolute; inset: -6px; border-radius: 50%; border: 1px dashed rgba(212, 175, 55, 0.4); }
+  .page-eyebrow { font-size: 11px; letter-spacing: 5px; text-transform: uppercase; color: var(--bordo-700); font-weight: 600; margin-bottom: 16px; }
+  .page-eyebrow::before, .page-eyebrow::after { content: '◆'; color: var(--altin-500); margin: 0 14px; font-size: 7px; vertical-align: 2px; }
+  .page-hero h1 { font-family: var(--serif); font-size: clamp(36px, 5vw, 54px); color: var(--bordo-800); font-weight: 500; letter-spacing: -0.5px; line-height: 1.1; margin-bottom: 16px; }
+  .page-hero h1 em { color: var(--altin-600); font-style: italic; }
+  .page-hero p { font-size: 16px; color: var(--gri-text); line-height: 1.7; max-width: 640px; margin: 0 auto; }
+
+  /* PROMISE STRIP - 4 GARANTI */
+  .promise-strip {
+    padding: 50px 40px 0;
+    background: var(--krem);
+  }
+  .promise-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .promise-card {
+    background: var(--beyaz);
+    border: 1px solid var(--gri-border);
+    border-radius: 10px;
+    padding: 24px 18px;
+    display: flex; align-items: center; gap: 14px;
+    transition: all 0.3s ease;
+  }
+  .promise-card:hover {
+    border-color: var(--altin-500);
+    box-shadow: 0 6px 20px rgba(123, 30, 43, 0.06);
+  }
+  .promise-icon {
+    width: 48px; height: 48px;
+    background: linear-gradient(135deg, var(--bordo-800), var(--bordo-700));
+    color: var(--altin-400);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .promise-text strong {
+    display: block;
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--bordo-800);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .promise-text span {
+    font-size: 11px;
+    color: var(--gri-text);
+    letter-spacing: 0.5px;
+  }
+
+  /* MAIN */
+  .page-main { padding: 70px 40px; background: var(--krem); }
+  .page-container { max-width: 1200px; margin: 0 auto; }
+
+  .section-block { margin-bottom: 60px; }
+  .section-block:last-child { margin-bottom: 0; }
+  .section-head { text-align: center; margin-bottom: 40px; }
+  .section-head .eyebrow { font-size: 11px; letter-spacing: 5px; text-transform: uppercase; color: var(--bordo-700); font-weight: 600; margin-bottom: 12px; }
+  .section-head .eyebrow::before { content: '◆'; color: var(--altin-500); margin-right: 14px; font-size: 7px; vertical-align: 2px; }
+  .section-head h2 { font-family: var(--serif); font-size: clamp(28px, 4vw, 40px); color: var(--bordo-800); font-weight: 500; line-height: 1.1; margin-bottom: 12px; }
+  .section-head h2 em { color: var(--altin-600); font-style: italic; }
+  .section-head .sub { font-size: 14px; color: var(--gri-text); max-width: 600px; margin: 0 auto; }
+
+  /* ADIMLAR */
+  .iade-adimlar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    position: relative;
+  }
+  .iade-adim {
+    background: var(--beyaz);
+    border: 1px solid var(--gri-border);
+    border-radius: 12px;
+    padding: 30px 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .iade-adim:hover {
+    border-color: var(--altin-500);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(123, 30, 43, 0.08);
+  }
+  .iade-adim-num {
+    position: absolute;
+    top: -16px; left: 50%;
+    transform: translateX(-50%);
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, var(--altin-500), var(--altin-300));
+    color: var(--bordo-900);
+    font-family: var(--serif);
+    font-size: 18px; font-weight: 700;
+    font-style: italic;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+  }
+  .iade-adim-icon {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: var(--krem-koyu);
+    color: var(--bordo-700);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    margin: 14px auto 18px;
+  }
+  .iade-adim h3 {
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--bordo-800);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .iade-adim p {
+    font-size: 13px;
+    color: var(--gri-text);
+    line-height: 1.6;
+  }
+  .iade-adim p strong { color: var(--bordo-700); font-weight: 600; }
+
+  /* KOŞULLAR */
+  .kosul-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .kosul-card {
+    background: var(--beyaz);
+    border: 1px solid var(--gri-border);
+    border-radius: 12px;
+    padding: 32px;
+    transition: all 0.3s ease;
+  }
+  .kosul-card.yes {
+    border-color: rgba(45, 143, 79, 0.3);
+    background: linear-gradient(135deg, var(--beyaz), rgba(45, 143, 79, 0.02));
+  }
+  .kosul-card.no {
+    border-color: rgba(196, 69, 69, 0.3);
+    background: linear-gradient(135deg, var(--beyaz), rgba(196, 69, 69, 0.02));
+  }
+  .kosul-card h3 {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--bordo-800);
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .kosul-card .kosul-icon {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .kosul-card.yes .kosul-icon { background: var(--basari); color: white; }
+  .kosul-card.no .kosul-icon { background: var(--tehlike); color: white; }
+  .kosul-card .kosul-sub {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gri-text);
+    margin-bottom: 20px;
+    font-weight: 600;
+    padding-left: 48px;
+  }
+  .kosul-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .kosul-card ul li {
+    padding: 12px 0 12px 32px;
+    position: relative;
+    font-size: 13px;
+    color: var(--siyah);
+    line-height: 1.6;
+    border-bottom: 1px dashed var(--gri-border);
+  }
+  .kosul-card ul li:last-child { border-bottom: none; }
+  .kosul-card ul li::before {
+    position: absolute;
+    left: 4px;
+    top: 13px;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px;
+  }
+  .kosul-card.yes ul li::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    background: rgba(45, 143, 79, 0.15);
+    color: var(--basari);
+  }
+  .kosul-card.no ul li::before {
+    content: '\f00d';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    background: rgba(196, 69, 69, 0.15);
+    color: var(--tehlike);
+  }
+  .kosul-card ul li strong { color: var(--bordo-800); font-weight: 600; }
+
+  /* İADE TÜRLERİ - 3 KART */
+  .iade-tur-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .iade-tur-card {
+    background: var(--beyaz);
+    border: 1px solid var(--gri-border);
+    border-radius: 12px;
+    padding: 32px 28px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .iade-tur-card:hover {
+    border-color: var(--altin-500);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(123, 30, 43, 0.08);
+  }
+  .iade-tur-card.featured {
+    border-color: var(--altin-500);
+    background: linear-gradient(135deg, var(--beyaz), var(--krem-koyu));
+  }
+  .iade-tur-card.featured::before {
+    content: 'En Çok Tercih';
+    position: absolute;
+    top: -12px; right: 20px;
+    background: var(--bordo-800);
+    color: var(--altin-300);
+    padding: 4px 12px;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: 4px;
+  }
+  .iade-tur-icon {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--bordo-800), var(--bordo-700));
+    color: var(--altin-400);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+  .iade-tur-card h3 {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--bordo-800);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .iade-tur-card .tagline {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--altin-700);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .iade-tur-card p {
+    font-size: 13px;
+    color: var(--gri-text);
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+  .iade-tur-card .iade-meta {
+    padding-top: 14px;
+    border-top: 1px dashed var(--gri-border);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .iade-tur-card .meta-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+  }
+  .iade-tur-card .meta-line span { color: var(--gri-text); }
+  .iade-tur-card .meta-line strong { color: var(--bordo-800); font-weight: 600; }
+
+  /* BELGELER VE PAKET ÖNERİLER */
+  .belge-paket {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .belge-card {
+    background: var(--beyaz);
+    border: 1px solid var(--gri-border);
+    border-radius: 12px;
+    padding: 32px;
+  }
+  .belge-card h3 {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--bordo-800);
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .belge-card h3 i {
+    color: var(--altin-600);
+    font-size: 20px;
+  }
+  .belge-card .head-sub {
+    font-size: 12px;
+    color: var(--gri-text);
+    margin-bottom: 20px;
+  }
+  .belge-list {
+    list-style: none;
+    padding: 0;
+  }
+  .belge-list li {
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--gri-border);
+    font-size: 13px;
+    color: var(--siyah);
+    line-height: 1.7;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .belge-list li:last-child { border-bottom: none; }
+  .belge-list li i {
+    color: var(--altin-600);
+    font-size: 14px;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+  .belge-list li strong {
+    color: var(--bordo-800);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .belge-list li span {
+    color: var(--gri-text);
+    font-size: 12px;
+  }
+
+  /* WARN BOX */
+  .warn-box {
+    background: linear-gradient(135deg, rgba(212, 155, 39, 0.06), rgba(212, 155, 39, 0.02));
+    border: 1px solid rgba(212, 155, 39, 0.3);
+    border-left: 4px solid var(--uyari);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-top: 20px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .warn-box i {
+    color: var(--uyari);
+    font-size: 24px;
+    margin-top: 2px;
+  }
+  .warn-box .warn-text strong {
+    color: var(--bordo-800);
+    font-weight: 600;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .warn-box .warn-text p {
+    font-size: 13px;
+    color: var(--gri-text);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: linear-gradient(135deg, var(--bordo-900), var(--bordo-700));
+    color: var(--krem);
+    padding: 70px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.15), transparent 60%);
+  }
+  .cta-content { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
+  .cta-content h2 { font-family: var(--serif); font-size: clamp(32px, 4.5vw, 44px); color: var(--altin-400); font-weight: 500; margin-bottom: 16px; line-height: 1.1; }
+  .cta-content h2 em { color: var(--altin-300); font-style: italic; }
+  .cta-content p { font-size: 15px; opacity: 0.9; line-height: 1.7; margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto; }
+  .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .cta-btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; border-radius: 6px; text-decoration: none; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; transition: all 0.3s ease; }
+  .cta-btn.primary { background: var(--altin-500); color: var(--bordo-900); }
+  .cta-btn.primary:hover { background: var(--altin-300); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3); }
+  .cta-btn.outline { border: 1px solid var(--altin-500); color: var(--altin-300); }
+  .cta-btn.outline:hover { background: var(--altin-500); color: var(--bordo-900); }
+
+  /* FOOTER */
+  footer { background: var(--siyah); color: var(--krem); padding: 60px 40px 30px; }
+  .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+  .footer-brand h3 { font-family: var(--serif); font-size: 22px; color: var(--altin-400); margin-bottom: 8px; }
+  .footer-slogan { font-size: 10px; color: var(--altin-500); letter-spacing: 3px; margin-bottom: 16px; }
+  .footer-slogan span { color: var(--altin-500); margin: 0 8px; }
+  .footer-brand p { font-size: 13px; opacity: 0.7; line-height: 1.7; margin-bottom: 20px; }
+  .footer-social { display: flex; gap: 12px; }
+  .footer-social a { width: 36px; height: 36px; border-radius: 50%; background: rgba(212, 175, 55, 0.1); color: var(--altin-300); display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease; }
+  .footer-social a:hover { background: var(--altin-500); color: var(--bordo-900); }
+  .footer-col h4 { font-family: var(--serif); font-size: 16px; color: var(--altin-400); margin-bottom: 14px; font-weight: 600; }
+  .footer-col a { display: block; color: var(--krem); text-decoration: none; padding: 5px 0; font-size: 13px; opacity: 0.7; transition: opacity 0.3s ease; }
+  .footer-col a:hover { opacity: 1; color: var(--altin-300); }
+  .footer-bottom { border-top: 1px solid rgba(212, 175, 55, 0.15); padding-top: 20px; text-align: center; font-size: 11px; opacity: 0.5; letter-spacing: 2px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .nav-container { grid-template-columns: auto 1fr auto; gap: 20px; padding: 16px 24px; }
+    .nav-left, .auth-buttons { display: none; }
+    .promise-strip, .page-main, .cta-section { padding: 50px 24px; }
+    .promise-grid { grid-template-columns: 1fr 1fr; }
+    .iade-adimlar { grid-template-columns: 1fr 1fr; gap: 30px; }
+    .kosul-grid { grid-template-columns: 1fr; }
+    .iade-tur-grid { grid-template-columns: 1fr; }
+    .belge-paket { grid-template-columns: 1fr; }
+    .footer-content { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .promise-grid { grid-template-columns: 1fr; }
+    .iade-adimlar { grid-template-columns: 1fr; }
+    .footer-content { grid-template-columns: 1fr; gap: 30px; }
+  }
+
+  /* ============ MOBİL HAMBURGER BUTONU ============ */
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+  .mobile-menu-btn:hover { background: rgba(212, 175, 55, 0.1); }
+  .mobile-menu-btn .bar {
+    width: 22px;
+    height: 2px;
+    background: var(--bordo-800);
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .mobile-menu-btn.open .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .mobile-menu-btn.open .bar:nth-child(2) { opacity: 0; }
+  .mobile-menu-btn.open .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ============ MOBİL DRAWER ============ */
+  .mobile-drawer {
+    position: fixed; top: 0; left: 0; bottom: 0;
+    width: 320px; max-width: 85vw;
+    background: var(--krem);
+    z-index: 999;
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex; flex-direction: column;
+    box-shadow: 4px 0 30px rgba(0, 0, 0, 0.15);
+  }
+  .mobile-drawer.open { transform: translateX(0); }
+  .mobile-drawer-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 998;
+    opacity: 0; visibility: hidden;
+    transition: all 0.3s ease;
+  }
+  .mobile-drawer-backdrop.show { opacity: 1; visibility: visible; }
+  .drawer-header {
+    background: linear-gradient(135deg, var(--bordo-900), var(--bordo-700));
+    padding: 20px 16px;
+    display: flex; align-items: center; gap: 14px;
+    color: white; position: relative; overflow: hidden;
+    flex-shrink: 0;
+  }
+  .drawer-header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(2px 2px at 20% 30%, rgba(212, 175, 55, 0.4), transparent),
+      radial-gradient(1.5px 1.5px at 80% 60%, rgba(212, 175, 55, 0.3), transparent),
+      radial-gradient(1px 1px at 50% 80%, rgba(212, 175, 55, 0.35), transparent);
+    background-size: 100px 100px;
+    opacity: 0.5; pointer-events: none;
+  }
+  .drawer-logo {
+    width: 54px; height: 54px;
+    border-radius: 50%; overflow: hidden;
+    position: relative; z-index: 1;
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.5);
+    flex-shrink: 0;
+  }
+  .drawer-logo::before {
+    content: ''; position: absolute; inset: -4px;
+    border-radius: 50%;
+    border: 1px dashed rgba(212, 175, 55, 0.4);
+  }
+  .drawer-logo img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .drawer-title {
+    flex: 1; min-width: 0;
+    position: relative; z-index: 1;
+  }
+  .drawer-title h3 {
+    font-family: var(--serif);
+    font-size: 22px; color: var(--altin-400);
+    font-weight: 600; line-height: 1;
+    margin-bottom: 4px;
+  }
+  .drawer-title .slogan {
+    font-size: 9px; letter-spacing: 2.5px;
+    color: var(--altin-300); font-weight: 500;
+    text-transform: uppercase;
+  }
+  .drawer-close {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: var(--altin-300);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    transition: all 0.3s ease;
+    position: relative; z-index: 1;
+    flex-shrink: 0;
+  }
+  .drawer-close:hover {
+    background: var(--altin-500); color: var(--bordo-900);
+    transform: rotate(90deg);
+  }
+  .drawer-user-section {
+    background: var(--beyaz);
+    padding: 16px;
+    border-bottom: 1px solid var(--gri-border);
+    flex-shrink: 0;
+  }
+  .drawer-user-msg {
+    font-family: var(--serif); font-style: italic;
+    font-size: 13px; color: var(--bordo-800);
+    margin-bottom: 10px;
+  }
+  .drawer-user-msg em { color: var(--altin-600); }
+  .drawer-auth-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .drawer-auth-btn {
+    padding: 11px 12px; text-align: center;
+    border-radius: 6px;
+    font-size: 11px; letter-spacing: 1.5px;
+    text-transform: uppercase; font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 6px;
+  }
+  .drawer-auth-btn.outline {
+    color: var(--bordo-800);
+    border: 1px solid var(--gri-border);
+    background: transparent;
+  }
+  .drawer-auth-btn.outline:hover {
+    border-color: var(--altin-500);
+    background: var(--krem);
+  }
+  .drawer-auth-btn.primary {
+    background: var(--bordo-800);
+    color: var(--altin-300);
+  }
+  .drawer-auth-btn.primary:hover {
+    background: var(--bordo-900);
+    color: var(--altin-500);
+  }
+  .drawer-auth-btn i { font-size: 10px; }
+  .drawer-nav {
+    flex: 1; overflow-y: auto;
+    padding: 8px 0;
+  }
+  .drawer-section { padding: 8px 0; }
+  .drawer-section + .drawer-section { border-top: 1px solid var(--gri-border); }
+  .drawer-section-label {
+    font-size: 9px; letter-spacing: 2.5px;
+    color: var(--gri-text);
+    padding: 8px 16px 6px;
+    font-weight: 600; text-transform: uppercase;
+  }
+  .drawer-link {
+    display: flex; align-items: center; gap: 14px;
+    padding: 12px 16px;
+    font-size: 13px; color: var(--bordo-800);
+    text-decoration: none; font-weight: 500;
+    transition: background 0.2s ease;
+  }
+  .drawer-link:hover { background: var(--krem-koyu); }
+  .drawer-link > i:first-child {
+    color: var(--altin-600); font-size: 14px;
+    width: 16px; text-align: center;
+  }
+  .drawer-link span { flex: 1; }
+  .drawer-link .arrow {
+    color: var(--gri-text); font-size: 10px; opacity: 0.6;
+  }
+  .drawer-link .badge-mini {
+    background: var(--bordo-700); color: var(--altin-300);
+    padding: 2px 8px; border-radius: 999px;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .drawer-accordion-head {
+    width: 100%;
+    background: none; border: none; cursor: pointer;
+    display: flex; align-items: center; gap: 14px;
+    padding: 12px 16px;
+    font-size: 13px; color: var(--bordo-800);
+    font-weight: 500; text-align: left;
+    font-family: var(--sans);
+    transition: background 0.2s ease;
+  }
+  .drawer-accordion-head:hover { background: var(--krem-koyu); }
+  .drawer-accordion-head > i:first-child {
+    color: var(--altin-600); font-size: 14px;
+    width: 16px; text-align: center;
+  }
+  .drawer-accordion-head span { flex: 1; }
+  .drawer-accordion-head .chev {
+    font-size: 10px; color: var(--gri-text);
+    transition: transform 0.3s ease;
+  }
+  .drawer-accordion.open .drawer-accordion-head .chev {
+    transform: rotate(180deg); color: var(--bordo-700);
+  }
+  .drawer-accordion-body {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: var(--krem-koyu);
+  }
+  .drawer-accordion.open .drawer-accordion-body { max-height: 300px; }
+  .drawer-accordion-body a {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 16px 9px 40px;
+    font-size: 12px; color: var(--bordo-800);
+    text-decoration: none; position: relative;
+    transition: background 0.2s ease;
+  }
+  .drawer-accordion-body a:hover { background: rgba(212, 175, 55, 0.1); }
+  .drawer-accordion-body a::before {
+    content: '◆'; position: absolute; left: 24px;
+    color: var(--altin-500); font-size: 6px;
+  }
+  .drawer-accordion-body a .count {
+    margin-left: auto;
+    font-size: 10px; color: var(--gri-text);
+    background: var(--beyaz);
+    padding: 2px 7px; border-radius: 999px;
+    font-weight: 600;
+  }
+  .drawer-footer {
+    background: var(--krem-koyu);
+    padding: 16px;
+    border-top: 1px solid var(--gri-border);
+    flex-shrink: 0;
+  }
+  .drawer-footer-row {
+    display: flex; align-items: center;
+    justify-content: space-between;
+    font-size: 11px; color: var(--gri-text);
+    margin-bottom: 12px; letter-spacing: 0.5px;
+  }
+  .drawer-footer-row strong {
+    color: var(--bordo-800); font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .drawer-social {
+    display: flex; gap: 8px; justify-content: center;
+  }
+  .drawer-social a {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--beyaz); color: var(--bordo-800);
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; font-size: 13px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--gri-border);
+  }
+  .drawer-social a:hover {
+    background: var(--altin-500); color: var(--bordo-900);
+    border-color: var(--altin-500);
+    transform: translateY(-2px);
+  }
+  @media (max-width: 1024px) {
+    .mobile-menu-btn { display: inline-flex; }
+  }
+  /* ============ GÜVEN BANDI (Trust Band) ============ */
+  .trust-band {
+    position: relative;
+    background: linear-gradient(135deg, #3D0A14 0%, #5C1320 50%, #3D0A14 100%);
+    padding: 50px 40px 46px;
+    overflow: hidden;
+  }
+  .trust-band-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.15), transparent 40%),
+      radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.12), transparent 40%),
+      radial-gradient(1.5px 1.5px at 25% 30%, rgba(212, 175, 55, 0.5), transparent),
+      radial-gradient(1px 1px at 75% 70%, rgba(212, 175, 55, 0.4), transparent),
+      radial-gradient(1.5px 1.5px at 50% 40%, rgba(212, 175, 55, 0.45), transparent);
+    background-size: 100% 100%, 100% 100%, 200px 200px, 200px 200px, 200px 200px;
+    pointer-events: none;
+    animation: trust-sparkle 5s ease-in-out infinite;
+  }
+  @keyframes trust-sparkle {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+  .trust-band-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .trust-band-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .trust-band-eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #E8C968;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .trust-band-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 30px;
+    color: #FAF7F2;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.1;
+  }
+  .trust-band-title em {
+    font-style: italic;
+    color: #D4AF37;
+  }
+  .trust-band-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .trust-band-card {
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.22);
+    border-radius: 14px;
+    padding: 22px 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  .trust-band-card:hover {
+    background: rgba(212, 175, 55, 0.14);
+    border-color: rgba(212, 175, 55, 0.4);
+    transform: translateY(-3px);
+  }
+  .trust-band-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 12px;
+    background: linear-gradient(135deg, #D4AF37, #B8941F);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3D0A14;
+    font-size: 20px;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
+  }
+  .trust-band-card-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 16px;
+    color: #FAF7F2;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .trust-band-card-desc {
+    font-size: 11px;
+    color: rgba(232, 201, 104, 0.85);
+    letter-spacing: 0.3px;
+  }
+  /* Ödeme yöntemleri */
+  .trust-band-payments {
+    padding-top: 24px;
+    border-top: 1px dashed rgba(212, 175, 55, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .trust-band-payments-label {
+    font-size: 11px;
+    color: rgba(232, 201, 104, 0.85);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .trust-band-payments-list {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .payment-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #FAF7F2;
+    padding: 7px 12px;
+    border-radius: 6px;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  .payment-badge.visa { color: #1A4ABC; }
+  .payment-badge.mastercard { color: #2B2B2B; }
+  .payment-badge.troy { color: #0066CC; }
+  .payment-badge.amex { color: #006FCF; }
+  .payment-badge.iyzico {
+    background: #1B9D4E;
+    color: white;
+    border: 1px solid #178A45;
+  }
+  .payment-badge.iyzico i { font-size: 10px; }
+  /* Mastercard circles */
+  .mc-circles {
+    position: relative;
+    width: 22px;
+    height: 14px;
+    display: inline-block;
+  }
+  .mc-circle {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    top: 0;
+  }
+  .mc-red {
+    background: #EB001B;
+    left: 0;
+  }
+  .mc-yellow {
+    background: #F79E1B;
+    right: 0;
+    mix-blend-mode: multiply;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 900px) {
+    .trust-band { padding: 40px 24px 36px; }
+    .trust-band-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .trust-band-title { font-size: 24px; }
+  }
+  @media (max-width: 500px) {
+    .trust-band-card { padding: 18px 12px; }
+    .trust-band-icon { width: 42px; height: 42px; font-size: 17px; }
+    .trust-band-card-title { font-size: 14px; }
+    .trust-band-card-desc { font-size: 10px; }
+    .trust-band-payments {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .payment-badge { padding: 6px 10px; font-size: 10px; }
+  }
+
+
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCE -->
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container">
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menü">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    <div class="nav-left">
+      <a href="kategori.html" class="nav-link">Kategoriler</a>
+      <a href="kategori.html?filtre=yeni" class="nav-link">Yeni Gelenler</a>
+      <a href="kategori.html?filtre=cok-satan" class="nav-link">Çok Satanlar</a>
+      <a href="kategori.html?filtre=indirimde" class="nav-link">İndirimde</a>
+      <a href="hakkimizda.html" class="nav-link">Hikayemiz</a>
+    </div>
+    <div>
+      <a href="../index.html" class="logo" title="PB Store · Anasayfa">
+        <div class="logo-circle"><img src="../assets/images/logo.png" alt="PB Store" /></div>
+        <div class="logo-text">KALİTE <em>·</em> STİL <em>·</em> GÜVEN</div>
+      </a>
+    </div>
+    <div class="nav-right">
+      <a href="../index.html" class="nav-action" title="Ara"><i class="fa-solid fa-magnifying-glass"></i></a>
+      <a href="hesabim.html#favoriler" class="nav-action" title="Favorilerim">
+        <i class="fa-regular fa-heart"></i>
+        <span class="badge">2</span>
+      </a>
+      <a href="sepet.html" class="nav-action" title="Sepetim">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="badge">0</span>
+      </a>
+      <div class="auth-buttons">
+        <a href="giris-kayit.html" class="auth-btn">Giriş</a>
+        <a href="giris-kayit.html?tab=signup" class="auth-btn primary">Kayıt Ol</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="../index.html">Anasayfa</a>
+  <span class="sep">/</span>
+  <span class="current">İade & Değişim</span>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-content">
+    <div class="page-hero-icon">
+      <i class="fa-solid fa-rotate-left"></i>
+    </div>
+    <div class="page-eyebrow">İade & Değişim</div>
+    <h1>14 gün <em>koşulsuz</em> iade hakkı</h1>
+    <p>
+      <strong style="color: var(--bordo-800);">GÜVEN</strong> değerimizin temeli — beğenmediğiniz ürünleri sorgusuz sualsiz iade edebilir, değiştirebilirsiniz. İade kargo ücreti tarafımızdan karşılanır.
+    </p>
+  </div>
+</section>
+
+<!-- PROMISES -->
+<section class="promise-strip">
+  <div class="promise-grid">
+    <div class="promise-card">
+      <div class="promise-icon"><i class="fa-solid fa-calendar-day"></i></div>
+      <div class="promise-text">
+        <strong>14 gün</strong>
+        <span>Koşulsuz iade hakkı</span>
+      </div>
+    </div>
+    <div class="promise-card">
+      <div class="promise-icon"><i class="fa-solid fa-truck"></i></div>
+      <div class="promise-text">
+        <strong>Ücretsiz</strong>
+        <span>İade kargo ücreti</span>
+      </div>
+    </div>
+    <div class="promise-card">
+      <div class="promise-icon"><i class="fa-solid fa-piggy-bank"></i></div>
+      <div class="promise-text">
+        <strong>3 iş günü</strong>
+        <span>Para iadesi süresi</span>
+      </div>
+    </div>
+    <div class="promise-card">
+      <div class="promise-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <div class="promise-text">
+        <strong>%100</strong>
+        <span>Memnuniyet garantisi</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADIM ADIM REHBER -->
+<section class="page-main">
+  <div class="page-container">
+
+    <div class="section-block">
+      <div class="section-head">
+        <div class="eyebrow">Adım Adım</div>
+        <h2>İade <em>nasıl yapılır?</em></h2>
+        <p class="sub">4 basit adımda iade işleminizi tamamlayın — biz tüm süreci sizin için yönetiyoruz</p>
+      </div>
+
+      <div class="iade-adimlar">
+        <div class="iade-adim">
+          <div class="iade-adim-num">1</div>
+          <div class="iade-adim-icon"><i class="fa-solid fa-laptop"></i></div>
+          <h3>Talep oluştur</h3>
+          <p>
+            Hesabınızdan <strong>"Siparişlerim"</strong> bölümüne girin, iade etmek istediğiniz siparişin yanındaki <strong>"İade Et"</strong> butonuna tıklayın.
+          </p>
+        </div>
+        <div class="iade-adim">
+          <div class="iade-adim-num">2</div>
+          <div class="iade-adim-icon"><i class="fa-solid fa-box"></i></div>
+          <h3>Ürünü hazırla</h3>
+          <p>
+            Ürünü orijinal ambalajında, kullanılmamış halde paketleyin. <strong>Fatura</strong> ve <strong>iade kodu</strong> kutuda yer almalı.
+          </p>
+        </div>
+        <div class="iade-adim">
+          <div class="iade-adim-num">3</div>
+          <div class="iade-adim-icon"><i class="fa-solid fa-truck-fast"></i></div>
+          <h3>Kargoya ver</h3>
+          <p>
+            Size SMS ile gönderilen <strong>ücretsiz iade kodunu</strong> kullanarak en yakın <strong>Yurtiçi/Aras Kargo</strong> şubesine bırakın.
+          </p>
+        </div>
+        <div class="iade-adim">
+          <div class="iade-adim-num">4</div>
+          <div class="iade-adim-icon"><i class="fa-solid fa-circle-check"></i></div>
+          <h3>İade onaylanır</h3>
+          <p>
+            Ürün depomuza ulaştıktan sonra <strong>kontrol edilir</strong>. Onay sonrası <strong>3 iş günü</strong> içinde paranız iade edilir.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- KOŞULLAR -->
+    <div class="section-block">
+      <div class="section-head">
+        <div class="eyebrow">İade Şartları</div>
+        <h2>Neyi <em>iade edebilir,</em> neyi edemezsiniz?</h2>
+        <p class="sub">Şeffaf koşullar, sürpriz yok — kozmetik ürünlerin hijyenik özellikleri nedeniyle bazı sınırlamalar geçerlidir</p>
+      </div>
+
+      <div class="kosul-grid">
+
+        <div class="kosul-card yes">
+          <h3>
+            <span class="kosul-icon"><i class="fa-solid fa-check"></i></span>
+            İade edilebilir
+          </h3>
+          <div class="kosul-sub">Aşağıdaki durumlarda iade hakkınız vardır</div>
+          <ul>
+            <li><strong>Orijinal ambalajında ve etiketinde</strong> herhangi bir hasar/açılma olmayan ürünler</li>
+            <li><strong>Kullanılmamış</strong> ve hijyen koşulları bozulmamış ürünler (selefon ambalajlı)</li>
+            <li><strong>Yanlış ürün gönderilmiş</strong> siparişlerde tüm ürünler iade edilebilir</li>
+            <li><strong>Hasarlı/kırık/eksik</strong> teslim alınan ürünler (foto ile birlikte bildirim gerekli)</li>
+            <li><strong>Son kullanma tarihi yaklaşmış</strong> ürünler (3 aydan az kalan)</li>
+            <li><strong>Alerji/reaksiyon</strong> oluşan ürünler (dermatolog raporu ile)</li>
+          </ul>
+        </div>
+
+        <div class="kosul-card no">
+          <h3>
+            <span class="kosul-icon"><i class="fa-solid fa-xmark"></i></span>
+            İade edilemez
+          </h3>
+          <div class="kosul-sub">Hijyenik nedenlerle aşağıdakiler iade alınamaz</div>
+          <ul>
+            <li><strong>Hijyenik selefonu açılmış</strong> ürünler (selefon yırtılmış / koparılmış)</li>
+            <li><strong>Kullanılmış / denenmiş</strong> ürünler (krem, serum, parfüm, ruj)</li>
+            <li><strong>Kişiye özel hazırlanmış</strong> ürünler (kişiselleştirilmiş parfüm, oyma hediye paketleri)</li>
+            <li><strong>Hediye paketlerinde</strong> indirimli alınan, set ürünlerinin parçaları</li>
+            <li><strong>14 gün süresi dolmuş</strong> teslim tarihinden itibaren 14 günü geçen ürünler</li>
+            <li><strong>Tek kullanımlık</strong> ürünler (yüz maskesi, ampul, vb.)</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="warn-box">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <div class="warn-text">
+          <strong>Önemli Hatırlatma</strong>
+          <p>Hasarlı, eksik veya yanlış ürün aldıysanız <strong>teslim tarihinden itibaren 48 saat içinde</strong> bize ulaşın. Bu süre içinde bildirilen sorunlar daha hızlı çözüme kavuşturulur ve kargo firma tutanağı sürecimizi kolaylaştırır. Fotoğraflı bildirim için iletisim sayfamızdan veya WhatsApp üzerinden ulaşabilirsiniz.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- İADE TÜRLERİ -->
+    <div class="section-block">
+      <div class="section-head">
+        <div class="eyebrow">İade Seçenekleri</div>
+        <h2>Size <em>uygun</em> seçimi yapın</h2>
+        <p class="sub">3 farklı iade seçeneğimiz var — ihtiyacınıza göre tercih edin</p>
+      </div>
+
+      <div class="iade-tur-grid">
+
+        <div class="iade-tur-card featured">
+          <div class="iade-tur-icon"><i class="fa-solid fa-credit-card"></i></div>
+          <h3>Para iadesi</h3>
+          <div class="tagline">Kart / Hesap iadesi</div>
+          <p>Ödediğiniz kart veya banka hesabınıza ürün bedeli iade edilir. Ödeme yöntemine göre 1-3 iş günü içinde yansır.</p>
+          <div class="iade-meta">
+            <div class="meta-line">
+              <span>Süre</span>
+              <strong>3 iş günü</strong>
+            </div>
+            <div class="meta-line">
+              <span>Komisyon</span>
+              <strong style="color: var(--basari);">Ücretsiz</strong>
+            </div>
+            <div class="meta-line">
+              <span>Kargo</span>
+              <strong style="color: var(--basari);">Bedava</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="iade-tur-card">
+          <div class="iade-tur-icon"><i class="fa-solid fa-arrow-right-arrow-left"></i></div>
+          <h3>Ürün değişimi</h3>
+          <div class="tagline">Farklı renk/boy/model</div>
+          <p>Aynı ürünün farklı varyantını isteyebilirsiniz. Fiyat farkı varsa ek tahsilat/iade yapılır, yoksa kargolama anında değişim yapılır.</p>
+          <div class="iade-meta">
+            <div class="meta-line">
+              <span>Süre</span>
+              <strong>5 iş günü</strong>
+            </div>
+            <div class="meta-line">
+              <span>Komisyon</span>
+              <strong style="color: var(--basari);">Ücretsiz</strong>
+            </div>
+            <div class="meta-line">
+              <span>Kargo</span>
+              <strong style="color: var(--basari);">Bedava</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="iade-tur-card">
+          <div class="iade-tur-icon"><i class="fa-solid fa-gift"></i></div>
+          <h3>Hediye çeki</h3>
+          <div class="tagline">+%10 bonus avantaj</div>
+          <p>Para iadesi yerine hediye çeki tercih edenler için ürün bedelinin <strong style="color: var(--bordo-700);">%10 fazlası</strong> kadar PB Store hediye çeki tanımlanır. 1 yıl geçerlidir.</p>
+          <div class="iade-meta">
+            <div class="meta-line">
+              <span>Süre</span>
+              <strong>1 iş günü</strong>
+            </div>
+            <div class="meta-line">
+              <span>Bonus</span>
+              <strong style="color: var(--bordo-700);">+%10</strong>
+            </div>
+            <div class="meta-line">
+              <span>Geçerlilik</span>
+              <strong>1 yıl</strong>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- GEREKEN BELGELER + PAKET ÖNERİLER -->
+    <div class="section-block">
+      <div class="section-head">
+        <div class="eyebrow">Hazırlık</div>
+        <h2><em>İade öncesi</em> hazırlık rehberi</h2>
+        <p class="sub">Hızlı ve sorunsuz bir iade için bilmeniz gerekenler</p>
+      </div>
+
+      <div class="belge-paket">
+
+        <div class="belge-card">
+          <h3>
+            <i class="fa-solid fa-file-lines"></i>
+            Gerekli belgeler
+          </h3>
+          <p class="head-sub">İade kutusunun içine eklemeniz gereken belgeler</p>
+          <ul class="belge-list">
+            <li>
+              <i class="fa-solid fa-receipt"></i>
+              <div>
+                <strong>Fatura</strong>
+                <span>Sipariş ile birlikte gelen orijinal fatura (asıl veya fotokopi)</span>
+              </div>
+            </li>
+            <li>
+              <i class="fa-solid fa-barcode"></i>
+              <div>
+                <strong>İade kodu</strong>
+                <span>Hesabınızdan iade talebi oluşturduğunuzda size verilen 8 haneli kod</span>
+              </div>
+            </li>
+            <li>
+              <i class="fa-solid fa-pen-to-square"></i>
+              <div>
+                <strong>İade formu</strong>
+                <span>İade talebi sonrası PDF olarak e-postanıza gönderilen form (yazdırıp imzalayın)</span>
+              </div>
+            </li>
+            <li>
+              <i class="fa-solid fa-camera"></i>
+              <div>
+                <strong>Hasarlı ürün için foto</strong>
+                <span>Hasarlı/yanlış ürün durumunda fotoğraf kanıtı (e-posta ile gönderin)</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="belge-card">
+          <h3>
+            <i class="fa-solid fa-box"></i>
+            Paketleme önerileri
+          </h3>
+          <p class="head-sub">Ürünün depomuza güvenle ulaşması için ipuçları</p>
+          <ul class="belge-list">
+            <li>
+              <i class="fa-solid fa-shield-halved"></i>
+              <div>
+                <strong>Orijinal ambalajı kullanın</strong>
+                <span>Size gelen orijinal PB Store kutusunu mümkünse korumalı şekilde kullanın</span>
+              </div>
+            </li>
+            <li>
+              <i class="fa-solid fa-bubble"></i>
+              <div>
+                <strong>Cam ürünler için balonlu naylon</strong>
+                <span>Parfüm, cam şişe vb. kırılgan ürünler için balonlu naylon veya köpük</span>
+              </div>
+            </li>
+            <li>
+              <i class="fa-solid fa-tag"></i>
+              <div>
+                <strong>İade kodunu kutuya yazın</strong>
+                <span>Kutunun üstüne büyük harflerle iade kodunu yazın (kargo etiketi yanına)</span>
+              </div>
+            </li>
+            <li>
+              <i class="fa-solid fa-house-lock"></i>
+              <div>
+                <strong>Birden fazla ürün ayrı kutuda</strong>
+                <span>Farklı siparişlerden iade ediyorsanız her birini ayrı kutuda gönderin</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-content">
+    <h2>İade <em>başlatmaya</em> hazır mısınız?</h2>
+    <p>Hesabınızdan kolayca iade talebi oluşturabilir veya WhatsApp üzerinden ekibimizden yardım alabilirsiniz. 5 dakikadan kısa süren bir işlem.</p>
+    <div class="cta-buttons">
+      <a href="hesabim.html#siparislerim" class="cta-btn primary">
+        <i class="fa-solid fa-rotate-left"></i> İade Başlat
+      </a>
+      <a href="https://wa.me/905320000000?text=Merhaba%2C%20iade%20hakk%C4%B1nda%20yard%C4%B1m%20alabilir%20miyim%3F" target="_blank" rel="noopener" class="cta-btn outline">
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp Destek
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ GÜVEN BANDI (Trust Band) ============ -->
+<section class="trust-band">
+  <div class="trust-band-bg"></div>
+  <div class="trust-band-container">
+    <div class="trust-band-header">
+      <div class="trust-band-eyebrow">Güven Sertifikalarımız</div>
+      <h2 class="trust-band-title">Sizin için <em>güvenli alışveriş</em></h2>
+    </div>
+
+    <div class="trust-band-grid">
+      <div class="trust-band-card">
+        <div class="trust-band-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="trust-band-card-title">SSL Sertifikası</div>
+        <div class="trust-band-card-desc">256-bit şifreleme</div>
+      </div>
+
+      <div class="trust-band-card">
+        <div class="trust-band-icon"><i class="fa-solid fa-credit-card"></i></div>
+        <div class="trust-band-card-title">3D Secure Ödeme</div>
+        <div class="trust-band-card-desc">iyzico Sanal POS</div>
+      </div>
+
+      <div class="trust-band-card">
+        <div class="trust-band-icon"><i class="fa-solid fa-rotate-left"></i></div>
+        <div class="trust-band-card-title">14 Gün Koşulsuz İade</div>
+        <div class="trust-band-card-desc">Hızlı iade garantisi</div>
+      </div>
+
+      <div class="trust-band-card">
+        <div class="trust-band-icon"><i class="fa-solid fa-headset"></i></div>
+        <div class="trust-band-card-title">7/24 Canlı Destek</div>
+        <div class="trust-band-card-desc">WhatsApp &amp; Telefon</div>
+      </div>
+    </div>
+
+    <!-- Ödeme yöntemleri -->
+    <div class="trust-band-payments">
+      <span class="trust-band-payments-label">Güvenli ödeme yöntemleri:</span>
+      <div class="trust-band-payments-list">
+        <div class="payment-badge visa">
+          <span class="payment-badge-text">VISA</span>
+        </div>
+        <div class="payment-badge mastercard">
+          <span class="mc-circles">
+            <span class="mc-circle mc-red"></span>
+            <span class="mc-circle mc-yellow"></span>
+          </span>
+          <span class="payment-badge-text">Mastercard</span>
+        </div>
+        <div class="payment-badge troy">
+          <span class="payment-badge-text">Troy</span>
+        </div>
+        <div class="payment-badge amex">
+          <span class="payment-badge-text">AMEX</span>
+        </div>
+        <div class="payment-badge iyzico">
+          <i class="fa-solid fa-lock"></i>
+          <span class="payment-badge-text">iyzico</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <h3>PB Store</h3>
+      <div class="footer-slogan">KALİTE<span>◆</span>STİL<span>◆</span>GÜVEN</div>
+      <p>Premium kozmetik ve bakım ürünleri ile cildinize hakettiği değeri verin. Doğal, etkili, lüks — kalite, stil ve güvenin buluştuğu yer.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/pbstore" target="_blank" rel="noopener" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://facebook.com/pbstore" target="_blank" rel="noopener" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://twitter.com/pbstore" target="_blank" rel="noopener" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        <a href="https://tiktok.com/@pbstore" target="_blank" rel="noopener" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Kurumsal</h4>
+      <a href="hakkimizda.html">Hakkımızda</a>
+      <a href="iletisim.html">İletişim</a>
+      <a href="#" class="coming-soon">Kariyer</a>
+    </div>
+    <div class="footer-col">
+      <h4>Yardım</h4>
+      <a href="sss.html">Sıkça Sorulanlar</a>
+      <a href="kargo.html">Kargo & Teslimat</a>
+      <a href="iade.html">İade & Değişim</a>
+      <a href="giris-kayit.html?tab=signup">Üyelik</a>
+    </div>
+    <div class="footer-col">
+      <h4>Yasal</h4>
+      <a href="kvkk.html">Gizlilik Politikası</a>
+      <a href="#" class="coming-soon">Kullanım Koşulları</a>
+      <a href="kvkk.html">KVKK</a>
+      <a href="#" class="coming-soon">Mesafeli Satış</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 PB Store · KALİTE ◆ STİL ◆ GÜVEN · Tüm hakları saklıdır</div>
+    <div class="payment-methods">
+      <i class="fa-brands fa-cc-visa" title="Visa"></i>
+      <i class="fa-brands fa-cc-mastercard" title="Mastercard"></i>
+      <i class="fa-brands fa-cc-amex" title="American Express"></i>
+      <i class="fa-solid fa-shield-halved" title="SSL Güvenli"></i>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBİL MENÜ DRAWER -->
+<div class="mobile-drawer-backdrop" id="drawer-backdrop"></div>
+<aside class="mobile-drawer" id="mobile-drawer">
+
+  <div class="drawer-header">
+    <div class="drawer-logo">
+      <img src="../assets/images/logo.png" alt="PB Store" />
+    </div>
+    <div class="drawer-title">
+      <h3>PB Store</h3>
+      <div class="slogan">Kalite · Stil · Güven</div>
+    </div>
+    <button class="drawer-close" id="drawer-close" aria-label="Kapat">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
+  <div class="drawer-user-section">
+    <div class="drawer-user-msg">Hoşgeldin, <em>misafir</em>!</div>
+    <div class="drawer-auth-grid">
+      <a href="giris-kayit.html" class="drawer-auth-btn outline">
+        <i class="fa-solid fa-right-to-bracket"></i> Giriş
+      </a>
+      <a href="giris-kayit.html?tab=signup" class="drawer-auth-btn primary">
+        <i class="fa-solid fa-user-plus"></i> Kayıt Ol
+      </a>
+    </div>
+  </div>
+
+  <div class="drawer-nav">
+
+    <div class="drawer-section">
+      <div class="drawer-section-label">Keşfet</div>
+
+      <div class="drawer-accordion" id="cat-accordion">
+        <button class="drawer-accordion-head">
+          <i class="fa-solid fa-grid-2"></i>
+          <span>Kategoriler</span>
+          <i class="fa-solid fa-chevron-down chev"></i>
+        </button>
+        <div class="drawer-accordion-body">
+          <a href="kategori.html?kategori=erkek-bakim">
+            <i class="fa-solid fa-droplet" style="color:var(--altin-600);font-size:11px;width:14px;"></i>
+            Cilt Bakımı
+            <span class="count">28</span>
+          </a>
+          <a href="kategori.html?kategori=taki-aksesuar">
+            <i class="fa-solid fa-palette" style="color:var(--altin-600);font-size:11px;width:14px;"></i>
+            Makyaj
+            <span class="count">22</span>
+          </a>
+          <a href="kategori.html?kategori=ev-yasam">
+            <i class="fa-solid fa-spray-can" style="color:var(--altin-600);font-size:11px;width:14px;"></i>
+            Parfüm
+            <span class="count">16</span>
+          </a>
+          <a href="kategori.html?kategori=erkek-bakim">
+            <i class="fa-solid fa-leaf" style="color:var(--altin-600);font-size:11px;width:14px;"></i>
+            Saç & Vücut
+            <span class="count">19</span>
+          </a>
+        </div>
+      </div>
+
+      <a href="kategori.html?filtre=yeni" class="drawer-link">
+        <i class="fa-solid fa-sparkles"></i>
+        <span>Yeni Gelenler</span>
+        <i class="fa-solid fa-chevron-right arrow"></i>
+      </a>
+      <a href="kategori.html?filtre=cok-satan" class="drawer-link">
+        <i class="fa-solid fa-fire"></i>
+        <span>Çok Satanlar</span>
+        <i class="fa-solid fa-chevron-right arrow"></i>
+      </a>
+      <a href="kategori.html?filtre=indirimde" class="drawer-link">
+        <i class="fa-solid fa-tag"></i>
+        <span>İndirimde</span>
+        <span class="badge-mini">%50</span>
+      </a>
+      <a href="kategori.html?filtre=markalar" class="drawer-link">
+        <i class="fa-solid fa-award"></i>
+        <span>Markalar</span>
+        <i class="fa-solid fa-chevron-right arrow"></i>
+      </a>
+    </div>
+
+    <div class="drawer-section">
+      <div class="drawer-section-label">Hesabım</div>
+      <a href="hesabim.html" class="drawer-link">
+        <i class="fa-solid fa-user"></i>
+        <span>Profilim</span>
+        <i class="fa-solid fa-chevron-right arrow"></i>
+      </a>
+      <a href="hesabim.html#siparisler" class="drawer-link">
+        <i class="fa-solid fa-box"></i>
+        <span>Siparişlerim</span>
+        <i class="fa-solid fa-chevron-right arrow"></i>
+      </a>
+      <a href="hesabim.html#favoriler" class="drawer-link">
+        <i class="fa-regular fa-heart"></i>
+        <span>Favorilerim</span>
+        <span class="badge-mini">2</span>
+      </a>
+      <a href="sepet.html" class="drawer-link">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span>Sepetim</span>
+        <span class="badge-mini" id="drawer-cart-count">0</span>
+      </a>
+    </div>
+
+    <div class="drawer-section">
+      <div class="drawer-section-label">Destek</div>
+      <a href="iletisim.html" class="drawer-link">
+        <i class="fa-solid fa-headset"></i>
+        <span>Müşteri Hizmetleri</span>
+        <i class="fa-solid fa-chevron-right arrow"></i>
+      </a>
+      <a href="kargo.html" class="drawer-link">
+        <i class="fa-solid fa-truck"></i>
+        <span>Kargo & Teslimat</span>
+        <i class="fa-solid fa-chevron-right arrow"></i>
+      </a>
+      <a href="iade.html" class="drawer-link">
+        <i class="fa-solid fa-rotate-left"></i>
+        <span>İade & Değişim</span>
+        <i class="fa-solid fa-chevron-right arrow"></i>
+      </a>
+      <a href="hakkimizda.html" class="drawer-link">
+        <i class="fa-solid fa-circle-info"></i>
+        <span>Hakkımızda</span>
+        <i class="fa-solid fa-chevron-right arrow"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="drawer-footer">
+    <div class="drawer-footer-row">
+      <span>İletişim:</span>
+      <strong>0850 000 00 00</strong>
+    </div>
+    <div class="drawer-social">
+      <a href="https://instagram.com/pbstore" target="_blank" rel="noopener" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://facebook.com/pbstore" target="_blank" rel="noopener" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://twitter.com/pbstore" target="_blank" rel="noopener" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+      <a href="https://tiktok.com/@pbstore" target="_blank" rel="noopener" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+  </div>
+
+</aside>
+
+
+<script>
+  (function() {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const drawerBackdrop = document.getElementById('drawer-backdrop');
+    const drawerClose = document.getElementById('drawer-close');
+    const catAccordion = document.getElementById('cat-accordion');
+    if (!mobileMenuBtn || !mobileDrawer) return;
+    function openDrawer() {
+      mobileMenuBtn.classList.add('open');
+      mobileDrawer.classList.add('open');
+      drawerBackdrop.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+      mobileMenuBtn.classList.remove('open');
+      mobileDrawer.classList.remove('open');
+      drawerBackdrop.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+    mobileMenuBtn.addEventListener('click', () => {
+      if (mobileDrawer.classList.contains('open')) closeDrawer();
+      else openDrawer();
+    });
+    drawerClose?.addEventListener('click', closeDrawer);
+    drawerBackdrop?.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileDrawer.classList.contains('open')) closeDrawer();
+    });
+    catAccordion?.querySelector('.drawer-accordion-head')?.addEventListener('click', () => {
+      catAccordion.classList.toggle('open');
+    });
+  })();
+</script>
+
+
+<!-- PB Store Frontend Logic -->
+<script src="../assets/js/products.js" defer></script>
+<script src="../assets/js/cart.js" defer></script>
+<script src="../assets/js/render.js" defer></script>
+</body>
+</html>

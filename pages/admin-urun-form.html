@@ -1,0 +1,2728 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ürün Yönetimi | PB Store Admin</title>
+<meta name="description" content="Yönetim paneli." />
+<meta name="keywords" content="" />
+<meta name="author" content="PB Store" />
+<meta name="language" content="Turkish" />
+<meta name="robots" content="noindex, nofollow" />
+<link rel="canonical" href="https://p-bstore.vercel.app/pages/admin-urun-form.html" />
+
+<!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+<meta property="og:locale" content="tr_TR" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://p-bstore.vercel.app/pages/admin-urun-form.html" />
+<meta property="og:title" content="Ürün Yönetimi | PB Store Admin" />
+<meta property="og:description" content="Yönetim paneli." />
+<meta property="og:image" content="https://p-bstore.vercel.app/assets/images/logo.png" />
+<meta property="og:image:width" content="768" />
+<meta property="og:image:height" content="768" />
+<meta property="og:site_name" content="PB Store" />
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://p-bstore.vercel.app/pages/admin-urun-form.html" />
+<meta name="twitter:title" content="Ürün Yönetimi | PB Store Admin" />
+<meta name="twitter:description" content="Yönetim paneli." />
+<meta name="twitter:image" content="https://p-bstore.vercel.app/assets/images/logo.png" />
+<meta name="twitter:site" content="@pbstore" />
+<meta name="twitter:creator" content="@pbstore" />
+
+<!-- Theme Color -->
+<meta name="theme-color" content="#5C1320" />
+<meta name="msapplication-TileColor" content="#5C1320" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/jpeg" href="/../assets/images/logo.png" />
+<link rel="apple-touch-icon" href="../assets/images/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../assets/css/ads.css">
+<link rel="stylesheet" href="../assets/css/responsive.css">
+<style>
+  :root {
+    --bordo-900: #3D0A14;
+    --bordo-800: #5C1320;
+    --bordo-700: #7B1E2B;
+    --altin-700: #9A7B1A;
+    --altin-600: #B8941F;
+    --altin-500: #D4AF37;
+    --altin-400: #E0BE52;
+    --altin-300: #E8C968;
+    --siyah:     #0F0E0D;
+    --siyah-2:   #1A1816;
+    --siyah-3:   #252320;
+    --beyaz:     #FFFFFF;
+    --bg:        #F8F6F1;
+    --bg-card:   #FFFFFF;
+    --bg-soft:   #FAF8F3;
+    --text:      #1A1816;
+    --text-2:    #5C5851;
+    --text-3:    #9A958C;
+    --border:    #E8E3D8;
+    --border-2:  #D8D2C2;
+    --basari:    #2D8F4F;
+    --basari-bg: #E8F5EC;
+    --uyari:     #D49B27;
+    --uyari-bg:  #FBF3DC;
+    --tehlike:   #C44545;
+    --tehlike-bg: #FAEAEA;
+    --bilgi:     #4A6FA5;
+    --bilgi-bg:  #E8EEF5;
+    --serif:     'Cormorant Garamond', serif;
+    --sans:      'Inter', system-ui, sans-serif;
+    --mono:      'JetBrains Mono', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ============ LAYOUT ============ */
+  .admin-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: 100vh;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    background: var(--siyah);
+    color: #d0cbbf;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    border-right: 1px solid var(--siyah-3);
+  }
+  .sidebar-brand {
+    padding: 22px 24px;
+    border-bottom: 1px solid var(--siyah-3);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .sidebar-logo {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+  .sidebar-logo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    pointer-events: none;
+  }
+  .sidebar-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+  }
+  .sidebar-brand-text .name {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--altin-400);
+    font-weight: 600;
+    line-height: 1;
+  }
+  .sidebar-brand-text .sub {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #6a655a;
+    margin-top: 4px;
+  }
+  .nav-section { padding: 20px 12px 8px; }
+  .nav-section-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #6a655a;
+    padding: 0 12px 8px;
+    font-weight: 600;
+  }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 12px;
+    margin-bottom: 2px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #d0cbbf;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 500;
+    position: relative;
+    transition: all 0.15s ease;
+  }
+  .nav-item i {
+    width: 18px;
+    font-size: 14px;
+    color: #8a857a;
+  }
+  .nav-item:hover { background: var(--siyah-2); color: var(--beyaz); }
+  .nav-item.active {
+    background: var(--siyah-3);
+    color: var(--altin-300);
+  }
+  .nav-item.active i { color: var(--altin-500); }
+  .nav-item.active::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 8px;
+    bottom: 8px;
+    width: 3px;
+    background: var(--altin-500);
+  }
+  .nav-item .badge {
+    margin-left: auto;
+    background: var(--bordo-700);
+    color: var(--altin-300);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 10px;
+  }
+
+  /* MAIN */
+  .main-area {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  /* TOPBAR */
+  .topbar {
+    background: var(--beyaz);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 60;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-2);
+    text-decoration: none;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 7px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg-soft);
+    transition: all 0.2s ease;
+  }
+  .back-link:hover {
+    background: var(--bordo-800);
+    color: var(--altin-300);
+    border-color: var(--bordo-800);
+  }
+  .breadcrumb-admin {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-3);
+  }
+  .breadcrumb-admin a {
+    color: var(--text-2);
+    text-decoration: none;
+  }
+  .breadcrumb-admin .sep { color: var(--altin-600); }
+  .breadcrumb-admin .current { color: var(--bordo-800); font-weight: 600; }
+  .topbar-status {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text-2);
+  }
+  .save-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    background: var(--basari-bg);
+    color: var(--basari);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+  }
+  .save-indicator.unsaved {
+    background: var(--uyari-bg);
+    color: var(--uyari);
+  }
+  .save-indicator .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  /* PAGE HEAD */
+  .page-head {
+    padding: 24px 32px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .ph-left h1 {
+    font-family: var(--serif);
+    font-size: 32px;
+    color: var(--bordo-800);
+    font-weight: 600;
+    margin-bottom: 6px;
+    line-height: 1.1;
+  }
+  .ph-left h1 em { font-style: italic; color: var(--altin-600); }
+  .ph-left .ph-sub {
+    font-size: 13px;
+    color: var(--text-2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .ph-left .ph-sub .product-sku {
+    font-family: var(--mono);
+    background: var(--bg-soft);
+    padding: 2px 8px;
+    border-radius: 3px;
+    color: var(--text);
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .ph-left .ph-sub .product-status {
+    background: var(--basari-bg);
+    color: var(--basari);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .ph-right {
+    display: flex;
+    gap: 8px;
+  }
+  .btn {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    padding: 10px 16px;
+    font-family: var(--sans);
+    font-size: 12.5px;
+    color: var(--text);
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+  .btn:hover {
+    border-color: var(--bordo-700);
+    color: var(--bordo-800);
+  }
+  .btn.primary {
+    background: var(--bordo-800);
+    color: var(--altin-300);
+    border-color: var(--bordo-800);
+  }
+  .btn.primary:hover {
+    background: var(--bordo-900);
+    color: var(--altin-500);
+  }
+  .btn.danger {
+    color: var(--tehlike);
+  }
+  .btn.danger:hover {
+    background: var(--tehlike);
+    color: var(--beyaz);
+    border-color: var(--tehlike);
+  }
+  .btn-icon {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  /* TABS */
+  .tabs-bar {
+    padding: 0 32px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-top: 20px;
+    background: var(--bg);
+    position: sticky;
+    top: 65px;
+    z-index: 50;
+  }
+  .tabs-bar::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    background: none;
+    border: none;
+    padding: 14px 20px;
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--text-2);
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+  }
+  .tab-btn i { font-size: 12px; color: var(--text-3); }
+  .tab-btn:hover { color: var(--bordo-800); }
+  .tab-btn.active {
+    color: var(--bordo-800);
+    border-bottom-color: var(--altin-500);
+    font-weight: 600;
+  }
+  .tab-btn.active i { color: var(--altin-600); }
+  .tab-btn .badge-tab {
+    background: var(--bg-soft);
+    color: var(--text-2);
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+  .tab-btn.active .badge-tab { background: var(--bordo-800); color: var(--altin-300); }
+  .tab-btn .alert-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--tehlike);
+    border-radius: 50%;
+  }
+
+  /* CONTENT */
+  .content {
+    padding: 28px 32px 120px;
+  }
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 24px;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .card-head {
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .card-head h3 {
+    font-family: var(--serif);
+    font-size: 19px;
+    color: var(--bordo-800);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-head h3 i { color: var(--altin-600); font-size: 14px; }
+  .card-head .meta { font-size: 12px; color: var(--text-3); }
+  .card-body { padding: 22px; }
+
+  /* FORM */
+  .form-row {
+    display: grid;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .form-row.two-col { grid-template-columns: 1fr 1fr; }
+  .form-row.three-col { grid-template-columns: 1.5fr 1fr 1fr; }
+  .form-row.price-grid { grid-template-columns: 1fr 1fr 1fr; }
+  .form-group { position: relative; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: var(--text);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .form-label .required { color: var(--bordo-700); margin-left: 2px; }
+  .form-label .hint-tooltip {
+    color: var(--text-3);
+    font-size: 12px;
+    cursor: help;
+  }
+  .form-input, .form-textarea, .form-select {
+    width: 100%;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    font-family: var(--sans);
+    font-size: 13.5px;
+    color: var(--text);
+    border-radius: 6px;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+  .form-input:focus, .form-textarea:focus, .form-select:focus {
+    border-color: var(--altin-500);
+    background: var(--beyaz);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+  }
+  .form-input::placeholder, .form-textarea::placeholder {
+    color: var(--text-3);
+  }
+  .form-textarea {
+    min-height: 100px;
+    resize: vertical;
+    font-family: var(--sans);
+  }
+  .form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%239A7B1A' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+  .form-input.with-prefix { padding-left: 38px; }
+  .form-input.with-suffix { padding-right: 50px; }
+  .input-prefix, .input-suffix {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-3);
+    font-size: 13px;
+    pointer-events: none;
+    font-weight: 600;
+    margin-top: 13px;
+  }
+  .input-prefix {
+    left: 12px;
+    color: var(--altin-700);
+  }
+  .input-suffix {
+    right: 12px;
+    background: var(--bg-soft);
+    padding: 0 6px;
+    border-left: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--text-2);
+  }
+  .form-hint {
+    font-size: 11.5px;
+    color: var(--text-3);
+    margin-top: 5px;
+  }
+  .form-hint i { color: var(--altin-600); margin-right: 4px; font-size: 10px; }
+  .form-hint .char-count {
+    float: right;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-2);
+  }
+
+  /* RICH TEXT TOOLBAR */
+  .rt-toolbar {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    padding: 8px 12px;
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .rt-btn {
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: 1px solid transparent;
+    color: var(--text-2);
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+  }
+  .rt-btn:hover {
+    background: var(--bg-card);
+    border-color: var(--border);
+    color: var(--bordo-800);
+  }
+  .rt-btn.active { background: var(--bg-card); color: var(--bordo-800); border-color: var(--border); }
+  .rt-divider {
+    width: 1px;
+    background: var(--border);
+    margin: 0 4px;
+  }
+  .rt-content {
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    min-height: 180px;
+    padding: 14px 16px;
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .rt-content:focus {
+    background: var(--beyaz);
+  }
+  .rt-content h3 { font-family: var(--serif); color: var(--bordo-800); margin: 14px 0 8px; font-size: 18px; }
+  .rt-content p { margin-bottom: 10px; }
+  .rt-content strong { color: var(--bordo-800); }
+
+  /* ============ IMAGE UPLOAD ============ */
+  .images-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+  .image-card {
+    aspect-ratio: 1;
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    cursor: move;
+    transition: all 0.2s ease;
+  }
+  .image-card.dragging {
+    opacity: 0.4;
+  }
+  .image-card.main {
+    border: 2px solid var(--altin-500);
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
+  }
+  .image-card.main::before {
+    content: 'KAPAK';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: var(--altin-500);
+    color: var(--bordo-900);
+    padding: 3px 9px;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    border-radius: 3px;
+    z-index: 2;
+  }
+  .image-card-visual {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bordo-700);
+    opacity: 0.6;
+    font-size: 32px;
+    background: var(--gri-suzme, #F5F2EE);
+  }
+  .image-card-actions {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, transparent, rgba(15, 14, 13, 0.85));
+    padding: 16px 8px 8px;
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  .image-card:hover .image-card-actions { opacity: 1; }
+  .image-action {
+    width: 26px;
+    height: 26px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--bordo-800);
+    font-size: 11px;
+    transition: background 0.15s ease;
+  }
+  .image-action:hover { background: var(--beyaz); }
+  .image-action.delete { color: var(--tehlike); }
+  .image-card-grip {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-2);
+    font-size: 10px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    cursor: grab;
+  }
+  .image-card:hover .image-card-grip { opacity: 1; }
+
+  .image-upload-zone {
+    aspect-ratio: 1;
+    background: var(--bg-soft);
+    border: 1.5px dashed var(--border-2);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text-2);
+    text-align: center;
+    padding: 12px;
+  }
+  .image-upload-zone:hover {
+    border-color: var(--altin-500);
+    background: var(--bg-card);
+    color: var(--bordo-800);
+  }
+  .image-upload-zone i {
+    font-size: 22px;
+    color: var(--altin-600);
+  }
+  .image-upload-zone .ut {
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .image-upload-zone .us {
+    font-size: 10px;
+    color: var(--text-3);
+  }
+
+  .upload-info {
+    margin-top: 12px;
+    background: var(--bilgi-bg);
+    border: 1px solid rgba(74, 111, 165, 0.2);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: var(--text);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .upload-info i {
+    color: var(--bilgi);
+    font-size: 14px;
+    margin-top: 2px;
+  }
+
+  /* ============ VARIANT MATRIX ============ */
+  .variant-option-row {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .variant-option-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .variant-option-name {
+    font-weight: 600;
+    color: var(--bordo-800);
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .variant-option-name i { color: var(--altin-600); font-size: 12px; }
+  .variant-option-delete {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--tehlike);
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+    transition: all 0.15s ease;
+  }
+  .variant-option-delete:hover { background: var(--tehlike-bg); border-color: var(--tehlike); }
+  .variant-values {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+  }
+  .variant-value-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .variant-value-pill .remove {
+    background: none;
+    border: none;
+    color: var(--text-3);
+    cursor: pointer;
+    padding: 0;
+    font-size: 9px;
+    display: flex;
+  }
+  .variant-value-pill .remove:hover { color: var(--tehlike); }
+  .variant-value-input {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 6px 10px;
+    font-size: 12px;
+    color: var(--text);
+    border-radius: 4px;
+    width: 120px;
+    outline: none;
+  }
+  .variant-value-input:focus { border-color: var(--altin-500); }
+  .add-variant-btn {
+    background: var(--bg-card);
+    border: 1.5px dashed var(--border-2);
+    color: var(--bordo-800);
+    padding: 10px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 6px;
+    transition: all 0.2s ease;
+  }
+  .add-variant-btn:hover {
+    border-color: var(--altin-500);
+    background: var(--bg-soft);
+  }
+
+  /* VARIANT MATRIX TABLE */
+  .matrix-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    min-width: 700px;
+  }
+  .matrix-table thead {
+    background: var(--bg-soft);
+  }
+  .matrix-table th {
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 10.5px;
+    color: var(--text-2);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  .matrix-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  .matrix-table tr:last-child td { border-bottom: none; }
+  .matrix-input {
+    width: 100%;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 6px 10px;
+    font-size: 12.5px;
+    color: var(--text);
+    border-radius: 4px;
+    outline: none;
+    font-family: var(--sans);
+  }
+  .matrix-input:focus { border-color: var(--altin-500); }
+  .matrix-input.mono { font-family: var(--mono); font-size: 11px; }
+  .matrix-input.price { font-family: var(--mono); }
+  .matrix-variant-label {
+    font-family: var(--serif);
+    font-size: 15px;
+    color: var(--bordo-800);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .matrix-variant-sub {
+    font-size: 10px;
+    color: var(--text-3);
+    margin-top: 1px;
+    font-family: var(--sans);
+    font-weight: 400;
+  }
+  .matrix-stock-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+  }
+  .stock-dot.ok { background: var(--basari); }
+  .stock-dot.low { background: var(--uyari); }
+  .stock-dot.out { background: var(--tehlike); }
+  .matrix-action {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-3);
+    width: 26px;
+    height: 26px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 10px;
+    transition: all 0.15s ease;
+  }
+  .matrix-action:hover {
+    background: var(--bg-soft);
+    color: var(--bordo-800);
+  }
+  .matrix-toggle {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+  }
+  .matrix-toggle input { opacity: 0; width: 0; height: 0; }
+  .matrix-toggle-slider {
+    position: absolute;
+    inset: 0;
+    background: var(--border-2);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .matrix-toggle-slider::before {
+    content: '';
+    position: absolute;
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background: var(--beyaz);
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+  }
+  .matrix-toggle input:checked + .matrix-toggle-slider { background: var(--basari); }
+  .matrix-toggle input:checked + .matrix-toggle-slider::before { transform: translateX(14px); }
+
+  /* ============ TAB CONTENT ============ */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* ============ SEO SECTION ============ */
+  .seo-preview {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+    cursor: pointer;
+  }
+  .seo-preview-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .seo-preview-url {
+    font-size: 12px;
+    color: var(--basari);
+    margin-bottom: 4px;
+    font-family: var(--sans);
+  }
+  .seo-preview-title {
+    font-size: 18px;
+    color: #1a0dab;
+    margin-bottom: 4px;
+    font-weight: 400;
+    cursor: pointer;
+  }
+  .seo-preview-desc {
+    font-size: 13px;
+    color: var(--text-2);
+    line-height: 1.5;
+  }
+  .seo-meta {
+    background: var(--krem-koyu, #F0EBE0);
+    border-left: 3px solid var(--altin-500);
+    padding: 10px 14px;
+    border-radius: 4px;
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--bordo-800);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .seo-meta i { color: var(--altin-600); margin-top: 2px; font-size: 13px; }
+
+  /* ============ SIDEBAR CARD ============ */
+  .sb-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 18px;
+    overflow: hidden;
+  }
+  .sb-card-head {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-soft);
+  }
+  .sb-card-head h4 {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--bordo-800);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sb-card-head h4 i { color: var(--altin-600); font-size: 13px; }
+  .sb-card-body { padding: 18px; }
+
+  /* STATUS TOGGLE */
+  .status-toggle-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .status-toggle-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .status-toggle-row:first-child { padding-top: 0; }
+  .status-toggle-info {
+    flex: 1;
+    margin-right: 12px;
+  }
+  .status-toggle-name {
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .status-toggle-desc {
+    font-size: 11px;
+    color: var(--text-3);
+    line-height: 1.4;
+  }
+
+  /* CATEGORY TREE */
+  .category-tree {
+    font-size: 13px;
+  }
+  .cat-tree-item {
+    padding: 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: var(--text);
+  }
+  .cat-tree-item:hover { color: var(--bordo-800); }
+  .cat-tree-item input {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.15s ease;
+  }
+  .cat-tree-item input:checked {
+    background: var(--bordo-800);
+    border-color: var(--bordo-800);
+  }
+  .cat-tree-item input:checked::after {
+    content: '✓';
+    position: absolute;
+    color: var(--altin-300);
+    font-size: 9px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 700;
+  }
+  .cat-tree-item.child { padding-left: 20px; }
+  .cat-tree-item.child::before {
+    content: '└';
+    color: var(--text-3);
+    margin-right: 4px;
+  }
+  .cat-tree-item.subchild { padding-left: 40px; font-size: 12px; color: var(--text-2); }
+  .cat-tree-item.subchild::before {
+    content: '└';
+    color: var(--text-3);
+    margin-right: 4px;
+  }
+
+  /* TAGS */
+  .tags-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 8px;
+  }
+  .tag-pill {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11.5px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .tag-pill .remove {
+    background: none;
+    border: none;
+    color: var(--text-3);
+    cursor: pointer;
+    padding: 0;
+    font-size: 9px;
+  }
+  .tag-pill .remove:hover { color: var(--tehlike); }
+
+  /* ACTIVITY LOG */
+  .activity-list {
+    font-size: 12px;
+  }
+  .activity-row {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .activity-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .activity-row:first-child { padding-top: 0; }
+  .activity-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--bg-soft);
+    color: var(--altin-600);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .activity-text { color: var(--text); }
+  .activity-text strong { color: var(--bordo-800); font-weight: 600; }
+  .activity-time { color: var(--text-3); font-size: 11px; margin-top: 2px; font-family: var(--mono); }
+
+  /* ============ STICKY SAVE BAR ============ */
+  .save-bar {
+    position: fixed;
+    bottom: 0;
+    left: 240px;
+    right: 0;
+    background: var(--beyaz);
+    border-top: 1px solid var(--border);
+    padding: 14px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 70;
+    box-shadow: 0 -4px 20px rgba(15, 14, 13, 0.06);
+    transition: transform 0.3s ease;
+  }
+  .save-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 13px;
+    color: var(--text-2);
+  }
+  .save-bar-changes {
+    background: var(--uyari-bg);
+    color: var(--uyari);
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .save-bar-changes .dot {
+    width: 6px;
+    height: 6px;
+    background: var(--uyari);
+    border-radius: 50%;
+    animation: pulse-save 2s infinite;
+  }
+  @keyframes pulse-save {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .save-bar-actions {
+    display: flex;
+    gap: 10px;
+  }
+
+  /* "Yakında" badge */
+  .badge.soon {
+    background: linear-gradient(135deg, #C44545, #A03030);
+    color: white;
+    font-size: 9px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 2px 7px;
+  }
+  .coming-soon-item:hover {
+    background: rgba(212, 175, 55, 0.05);
+  }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 90px;
+    right: 24px;
+    background: var(--siyah);
+    color: var(--altin-300);
+    padding: 14px 20px;
+    border-left: 3px solid var(--altin-500);
+    font-size: 13px;
+    border-radius: 4px;
+    z-index: 1100;
+    transform: translateX(420px);
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .toast.show { transform: translateX(0); }
+  .toast i { color: var(--basari); }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1200px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .images-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  @media (max-width: 900px) {
+    .admin-layout { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .save-bar { left: 0; }
+    .topbar { padding: 12px 16px; gap: 10px; }
+    .topbar-status { display: none; }
+    .page-head { padding: 18px 16px 0; }
+    .ph-left h1 { font-size: 24px; }
+    .tabs-bar { padding: 0 16px; }
+    .tab-btn { padding: 12px 14px; font-size: 12px; }
+    .content { padding: 20px 16px 100px; }
+    .card-head { padding: 14px 16px; }
+    .card-body { padding: 16px; }
+    .form-row.two-col, .form-row.three-col, .form-row.price-grid { grid-template-columns: 1fr; }
+    .images-grid { grid-template-columns: repeat(3, 1fr); }
+    .save-bar { padding: 12px 16px; }
+    .save-bar-changes span { display: none; }
+    .save-bar .btn { padding: 9px 12px; font-size: 11px; }
+  }
+  @media (max-width: 600px) {
+    .images-grid { grid-template-columns: repeat(2, 1fr); }
+    .ph-right { width: 100%; }
+    .ph-right .btn { flex: 1; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="admin-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-logo"><img src="../assets/images/logo.png" alt="PB Store" /></div>
+      <div class="sidebar-brand-text">
+        <span class="name">PB Store</span>
+        <span class="sub">Yönetim</span>
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-section-label">Genel</div>
+      <a href="admin.html" class="nav-item">
+        <i class="fa-solid fa-house"></i> Dashboard
+      </a>
+      <a href="javascript:void(0)" class="nav-item coming-soon-item" data-feature="Analitik">
+        <i class="fa-solid fa-chart-line"></i> Analitik
+        <span class="badge soon">Yakında</span>
+      </a>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Katalog</div>
+      <a href="admin-urun-form.html" class="nav-item active">
+        <i class="fa-solid fa-box"></i> Ürünler
+        <span class="badge">87</span>
+      </a>
+      <a href="javascript:void(0)" class="nav-item coming-soon-item" data-feature="Kategoriler">
+        <i class="fa-solid fa-tags"></i> Kategoriler
+      </a>
+      <a href="javascript:void(0)" class="nav-item coming-soon-item" data-feature="Stok Takibi">
+        <i class="fa-solid fa-warehouse"></i> Stok Takibi
+      </a>
+      <a href="javascript:void(0)" class="nav-item coming-soon-item" data-feature="Markalar">
+        <i class="fa-solid fa-trademark"></i> Markalar
+      </a>
+    </div>
+    <div class="nav-section">
+      <div class="nav-section-label">Satış</div>
+      <a href="admin-siparis.html" class="nav-item">
+        <i class="fa-solid fa-cart-shopping"></i> Siparişler
+        <span class="badge">7</span>
+      </a>
+      <a href="javascript:void(0)" class="nav-item coming-soon-item" data-feature="Kargo">
+        <i class="fa-solid fa-truck"></i> Kargo
+      </a>
+      <a href="javascript:void(0)" class="nav-item coming-soon-item" data-feature="Kuponlar">
+        <i class="fa-solid fa-ticket"></i> Kuponlar
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-area">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <a href="admin.html" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i> Ürünlere Dön
+      </a>
+      <div class="breadcrumb-admin">
+        <a href="admin.html">Ürünler</a>
+        <span class="sep">/</span>
+        <span class="current">Premium Çelik Usturad'u Düzenle</span>
+      </div>
+      <div class="topbar-status">
+        <span>Son kayıt:</span>
+        <span class="save-indicator" id="save-indicator">
+          <span class="dot"></span>
+          Kaydedildi
+        </span>
+      </div>
+    </header>
+
+    <!-- PAGE HEAD -->
+    <div class="page-head">
+      <div class="ph-left">
+        <h1>Ürün <em>Düzenle</em></h1>
+        <div class="ph-sub">
+          <span class="product-sku">PB-GES-30</span>
+          <span class="product-status">Aktif</span>
+          <span>·</span>
+          <span>287 yorum · 24 stok</span>
+        </div>
+      </div>
+      <div class="ph-right">
+        <button class="btn btn-icon" title="Önizle"><i class="fa-solid fa-eye"></i></button>
+        <button class="btn btn-icon" title="Kopyala"><i class="fa-solid fa-copy"></i></button>
+        <button class="btn">
+          <i class="fa-solid fa-share-nodes"></i> Paylaş
+        </button>
+        <button class="btn danger">
+          <i class="fa-solid fa-trash"></i> Sil
+        </button>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs-bar">
+      <button class="tab-btn active" data-tab="general">
+        <i class="fa-solid fa-circle-info"></i> Genel
+      </button>
+      <button class="tab-btn" data-tab="images">
+        <i class="fa-regular fa-images"></i> Görseller
+        <span class="badge-tab">4</span>
+      </button>
+      <button class="tab-btn" data-tab="pricing">
+        <i class="fa-solid fa-tag"></i> Fiyat & Stok
+      </button>
+      <button class="tab-btn" data-tab="variants">
+        <i class="fa-solid fa-layer-group"></i> Varyantlar
+        <span class="badge-tab">12</span>
+      </button>
+      <button class="tab-btn" data-tab="content">
+        <i class="fa-solid fa-file-lines"></i> İçerik & Detay
+      </button>
+      <button class="tab-btn" data-tab="seo">
+        <i class="fa-solid fa-magnifying-glass-chart"></i> SEO
+        <span class="alert-dot" title="SEO açıklaması eksik"></span>
+      </button>
+      <button class="tab-btn" data-tab="shipping">
+        <i class="fa-solid fa-truck"></i> Kargo
+      </button>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+      <div class="form-grid">
+
+        <!-- ============ LEFT COLUMN ============ -->
+        <div>
+
+          <!-- ============ TAB: GENERAL ============ -->
+          <div class="tab-content active" id="tab-general">
+            <div class="card">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-circle-info"></i> Temel Bilgiler</h3>
+              </div>
+              <div class="card-body">
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label">
+                      Ürün Adı <span class="required">*</span>
+                      <i class="fa-regular fa-circle-question hint-tooltip" title="Müşterinin gördüğü ad. SEO için anahtar kelime içersin."></i>
+                    </label>
+                    <input type="text" class="form-input" id="product-name" value="Premium Çelik Usturad" />
+                    <div class="form-hint">
+                      <i class="fa-solid fa-lightbulb"></i> SEO için 50-60 karakter ideal
+                      <span class="char-count" id="name-count">18 / 80</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-row two-col">
+                  <div class="form-group">
+                    <label class="form-label">
+                      URL Slug
+                      <i class="fa-regular fa-circle-question hint-tooltip" title="Tarayıcı adres çubuğunda görünecek bölüm"></i>
+                    </label>
+                    <div style="position: relative;">
+                      <input type="text" class="form-input" value="gold-elixir-serum" style="padding-left: 200px; font-family: var(--mono); font-size: 12px;" />
+                      <span style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-3); font-family: var(--mono); font-size: 12px;">pbstore.com/urun/</span>
+                    </div>
+                    <div class="form-hint">
+                      <i class="fa-solid fa-link"></i> Sadece küçük harf, rakam ve tire
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">
+                      Marka <span class="required">*</span>
+                    </label>
+                    <select class="form-select">
+                      <option selected>PB Heritage</option>
+                      <option>Aurelia London</option>
+                      <option>Caudalie</option>
+                      <option>The Ordinary</option>
+                      <option>Drunk Elephant</option>
+                      <option>+ Yeni Marka Ekle</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label">
+                      Kısa Açıklama (Vitrin)
+                      <span style="font-size: 11px; color: var(--text-3); font-weight: 400;">Listeleme sayfalarında görünür</span>
+                    </label>
+                    <textarea class="form-textarea" style="min-height: 70px;" id="short-desc">24 ayar altın partikülleri ve hyalüronik asit ile cildinize ışıltı ve canlılık kazandıran lüks gece serumu.</textarea>
+                    <div class="form-hint">
+                      <i class="fa-solid fa-quote-left"></i> 140 karaktere kadar
+                      <span class="char-count" id="short-count">122 / 140</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-row three-col">
+                  <div class="form-group">
+                    <label class="form-label">
+                      SKU (Stok Kodu) <span class="required">*</span>
+                    </label>
+                    <input type="text" class="form-input" value="PB-GES-30" style="font-family: var(--mono);" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">
+                      Barkod (EAN/UPC)
+                    </label>
+                    <input type="text" class="form-input" placeholder="8690000000000" style="font-family: var(--mono);" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">
+                      Üretici Kodu
+                    </label>
+                    <input type="text" class="form-input" placeholder="MFR-12345" style="font-family: var(--mono);" />
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- ATTRIBUTES -->
+            <div class="card">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-list-check"></i> Ürün Özellikleri</h3>
+                <button class="btn" style="padding: 6px 12px; font-size: 11px;">
+                  <i class="fa-solid fa-plus"></i> Yeni Özellik
+                </button>
+              </div>
+              <div class="card-body">
+                <div class="form-row two-col">
+                  <div class="form-group">
+                    <label class="form-label">Cilt Tipi</label>
+                    <select class="form-select">
+                      <option>Tüm Ciltler</option>
+                      <option>Kuru Cilt</option>
+                      <option>Yağlı Cilt</option>
+                      <option>Karma Cilt</option>
+                      <option>Hassas Cilt</option>
+                      <option>Olgun Cilt</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Cinsiyet</label>
+                    <select class="form-select">
+                      <option>Unisex</option>
+                      <option>Kadın</option>
+                      <option>Erkek</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row two-col">
+                  <div class="form-group">
+                    <label class="form-label">Menşei</label>
+                    <input type="text" class="form-input" value="Fransa" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">PAO (Açıldıktan Sonra)</label>
+                    <input type="text" class="form-input" value="12 ay" />
+                  </div>
+                </div>
+                <div class="form-row two-col">
+                  <div class="form-group">
+                    <label class="form-label">Ürün Tipi</label>
+                    <select class="form-select">
+                      <option>Serum</option>
+                      <option>Krem</option>
+                      <option>Tonik</option>
+                      <option>Maske</option>
+                      <option>Temizleyici</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Konsantrasyon</label>
+                    <input type="text" class="form-input" value="24K Altın %0.5, HA %2, Niacinamide %5" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============ TAB: IMAGES ============ -->
+          <div class="tab-content" id="tab-images">
+            <div class="card">
+              <div class="card-head">
+                <h3><i class="fa-regular fa-images"></i> Ürün Görselleri</h3>
+                <div class="meta">4 görsel · İlk görsel kapak fotoğrafı olur</div>
+              </div>
+              <div class="card-body">
+                <div class="images-grid" id="images-grid">
+
+                  <div class="image-card main">
+                    <div class="image-card-grip"><i class="fa-solid fa-grip-vertical"></i></div>
+                    <div class="image-card-visual"><i class="fa-solid fa-droplet"></i></div>
+                    <div class="image-card-actions">
+                      <button class="image-action" title="Düzenle"><i class="fa-solid fa-pen"></i></button>
+                      <button class="image-action" title="Önizle"><i class="fa-solid fa-eye"></i></button>
+                      <button class="image-action delete" title="Sil"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="image-card">
+                    <div class="image-card-grip"><i class="fa-solid fa-grip-vertical"></i></div>
+                    <div class="image-card-visual"><i class="fa-solid fa-prescription-bottle"></i></div>
+                    <div class="image-card-actions">
+                      <button class="image-action" title="Kapak yap"><i class="fa-solid fa-star"></i></button>
+                      <button class="image-action" title="Düzenle"><i class="fa-solid fa-pen"></i></button>
+                      <button class="image-action delete" title="Sil"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="image-card">
+                    <div class="image-card-grip"><i class="fa-solid fa-grip-vertical"></i></div>
+                    <div class="image-card-visual"><i class="fa-solid fa-flask"></i></div>
+                    <div class="image-card-actions">
+                      <button class="image-action" title="Kapak yap"><i class="fa-solid fa-star"></i></button>
+                      <button class="image-action" title="Düzenle"><i class="fa-solid fa-pen"></i></button>
+                      <button class="image-action delete" title="Sil"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="image-card">
+                    <div class="image-card-grip"><i class="fa-solid fa-grip-vertical"></i></div>
+                    <div class="image-card-visual"><i class="fa-solid fa-leaf"></i></div>
+                    <div class="image-card-actions">
+                      <button class="image-action" title="Kapak yap"><i class="fa-solid fa-star"></i></button>
+                      <button class="image-action" title="Düzenle"><i class="fa-solid fa-pen"></i></button>
+                      <button class="image-action delete" title="Sil"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="image-upload-zone" id="upload-zone">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <div class="ut">+ Görsel Ekle</div>
+                    <div class="us">Sürükleyip bırakın</div>
+                  </div>
+
+                </div>
+
+                <div class="upload-info">
+                  <i class="fa-solid fa-circle-info"></i>
+                  <div>
+                    <strong>Öneriler:</strong> JPG, PNG, WebP formatı · Maks. 5 MB · İdeal boyut 1200x1200px (1:1 oran) · Ürün başına maks. 8 görsel.
+                    Sürükle-bırak ile sıralayabilirsiniz.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- VIDEO -->
+            <div class="card">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-video"></i> Ürün Videosu</h3>
+                <div class="meta">İsteğe bağlı</div>
+              </div>
+              <div class="card-body">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label">Video URL (YouTube veya Vimeo)</label>
+                    <input type="url" class="form-input" placeholder="https://www.youtube.com/watch?v=..." />
+                    <div class="form-hint">
+                      <i class="fa-brands fa-youtube" style="color: #FF0000;"></i> Ürün tanıtımı için tek video ekleyebilirsiniz
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============ TAB: PRICING & STOCK ============ -->
+          <div class="tab-content" id="tab-pricing">
+            <div class="card">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-tag"></i> Fiyatlama</h3>
+              </div>
+              <div class="card-body">
+                <div class="form-row price-grid">
+                  <div class="form-group">
+                    <label class="form-label">
+                      Satış Fiyatı <span class="required">*</span>
+                    </label>
+                    <div style="position: relative;">
+                      <span class="input-prefix">₺</span>
+                      <input type="number" class="form-input with-prefix with-suffix" value="1290" />
+                      <span class="input-suffix">KDV dahil</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">
+                      İndirimli Fiyat
+                    </label>
+                    <div style="position: relative;">
+                      <span class="input-prefix">₺</span>
+                      <input type="number" class="form-input with-prefix" placeholder="Boş bırakılabilir" />
+                    </div>
+                    <div class="form-hint">
+                      <i class="fa-solid fa-percent"></i> Aktif olursa eski fiyat çizili gösterilir
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">
+                      Alış Fiyatı (Maliyet)
+                      <span style="font-size: 10px; color: var(--text-3); font-weight: 400;">Dahili</span>
+                    </label>
+                    <div style="position: relative;">
+                      <span class="input-prefix">₺</span>
+                      <input type="number" class="form-input with-prefix" value="540" />
+                    </div>
+                    <div class="form-hint">
+                      <i class="fa-solid fa-chart-line"></i> Kâr marjı: <strong style="color: var(--basari);">+138.9%</strong>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-row two-col">
+                  <div class="form-group">
+                    <label class="form-label">KDV Oranı</label>
+                    <select class="form-select">
+                      <option>%18 (Standart)</option>
+                      <option>%8 (Gıda, eczacılık)</option>
+                      <option>%1 (Temel ürünler)</option>
+                      <option>%0 (KDV'siz)</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Para Birimi</label>
+                    <select class="form-select">
+                      <option>TRY (Türk Lirası ₺)</option>
+                      <option>USD (Amerikan Doları $)</option>
+                      <option>EUR (Euro €)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div style="background: var(--basari-bg); border-radius: 6px; padding: 14px 18px; display: flex; align-items: center; gap: 14px; margin-top: 8px;">
+                  <i class="fa-solid fa-chart-pie" style="color: var(--basari); font-size: 20px;"></i>
+                  <div style="flex: 1; font-size: 13px;">
+                    <strong style="color: var(--basari);">Fiyat Özeti:</strong>
+                    Satış fiyatı <strong>1.290 TL</strong> · KDV: <strong>196,78 TL</strong> · Net gelir: <strong>1.093,22 TL</strong> · Maliyet: <strong>540 TL</strong> · <strong style="color: var(--basari);">Kâr: 553,22 TL (%50.6)</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- STOK -->
+            <div class="card">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-warehouse"></i> Stok Yönetimi</h3>
+                <div class="meta">Stok takibi etkin</div>
+              </div>
+              <div class="card-body">
+
+                <div class="form-row two-col">
+                  <div class="form-group">
+                    <label class="form-label">
+                      Stok Miktarı <span class="required">*</span>
+                    </label>
+                    <div style="position: relative;">
+                      <input type="number" class="form-input with-suffix" value="24" />
+                      <span class="input-suffix">adet</span>
+                    </div>
+                    <div class="form-hint">
+                      <i class="fa-solid fa-circle-check" style="color: var(--basari);"></i> Stokta var (5 adetin üzerinde)
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">
+                      Kritik Stok Seviyesi
+                      <i class="fa-regular fa-circle-question hint-tooltip" title="Bu seviyenin altına düşünce uyarı verilir"></i>
+                    </label>
+                    <div style="position: relative;">
+                      <input type="number" class="form-input with-suffix" value="5" />
+                      <span class="input-suffix">adet</span>
+                    </div>
+                    <div class="form-hint">
+                      <i class="fa-solid fa-bell"></i> Otomatik düşük stok uyarısı
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-row two-col">
+                  <div class="form-group">
+                    <label class="form-label">Stok Durumu Politikası</label>
+                    <select class="form-select">
+                      <option selected>Stok bittiğinde "Stokta Yok" göster</option>
+                      <option>Stok bittiğinde ürünü gizle</option>
+                      <option>Stok takibi yapma (sınırsız)</option>
+                      <option>Ön sipariş kabul et</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Maks. Sipariş Adedi (Kişi başı)</label>
+                    <div style="position: relative;">
+                      <input type="number" class="form-input with-suffix" value="5" />
+                      <span class="input-suffix">adet</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="background: var(--uyari-bg); border-left: 3px solid var(--uyari); padding: 12px 16px; border-radius: 4px; font-size: 12.5px; color: var(--text); margin-top: 12px; display: flex; gap: 10px;">
+                  <i class="fa-solid fa-triangle-exclamation" style="color: var(--uyari); margin-top: 2px;"></i>
+                  <span>
+                    <strong>Çoklu depo aktif:</strong> Bu ürün İstanbul (16), Ankara (5), İzmir (3) depolarında bulunuyor.
+                    <a href="javascript:void(0)" onclick="showToast('✦ Depo yönetimi yakında eklenecek')" style="color: var(--bordo-700); text-decoration: underline; font-weight: 600;">Depo bazlı yönet →</a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============ TAB: VARIANTS ============ -->
+          <div class="tab-content" id="tab-variants">
+            <div class="card">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-layer-group"></i> Varyant Tanımları</h3>
+                <div class="meta">12 olası kombinasyon</div>
+              </div>
+              <div class="card-body">
+
+                <!-- VARIANT OPTION 1: HACIM -->
+                <div class="variant-option-row">
+                  <div class="variant-option-head">
+                    <div class="variant-option-name">
+                      <i class="fa-solid fa-flask"></i>
+                      Hacim
+                    </div>
+                    <button class="variant-option-delete"><i class="fa-solid fa-trash"></i></button>
+                  </div>
+                  <div class="variant-values">
+                    <span class="variant-value-pill">15ml <button class="remove"><i class="fa-solid fa-xmark"></i></button></span>
+                    <span class="variant-value-pill">30ml <button class="remove"><i class="fa-solid fa-xmark"></i></button></span>
+                    <span class="variant-value-pill">50ml <button class="remove"><i class="fa-solid fa-xmark"></i></button></span>
+                    <span class="variant-value-pill">100ml <button class="remove"><i class="fa-solid fa-xmark"></i></button></span>
+                    <input type="text" class="variant-value-input" placeholder="+ Değer ekle..." />
+                  </div>
+                </div>
+
+                <!-- VARIANT OPTION 2: CILT TIPI -->
+                <div class="variant-option-row">
+                  <div class="variant-option-head">
+                    <div class="variant-option-name">
+                      <i class="fa-solid fa-hand-sparkles"></i>
+                      Cilt Tipi
+                    </div>
+                    <button class="variant-option-delete"><i class="fa-solid fa-trash"></i></button>
+                  </div>
+                  <div class="variant-values">
+                    <span class="variant-value-pill">Tüm Ciltler <button class="remove"><i class="fa-solid fa-xmark"></i></button></span>
+                    <span class="variant-value-pill">Yağlı <button class="remove"><i class="fa-solid fa-xmark"></i></button></span>
+                    <span class="variant-value-pill">Kuru <button class="remove"><i class="fa-solid fa-xmark"></i></button></span>
+                    <input type="text" class="variant-value-input" placeholder="+ Değer ekle..." />
+                  </div>
+                </div>
+
+                <button class="add-variant-btn">
+                  <i class="fa-solid fa-plus"></i> Yeni Varyant Türü Ekle (Renk, Boyut, vb.)
+                </button>
+              </div>
+            </div>
+
+            <!-- VARIANT MATRIX -->
+            <div class="card">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-table-cells"></i> Varyant Matrisi</h3>
+                <div class="meta">Her kombinasyon için ayrı stok ve fiyat</div>
+              </div>
+              <div style="padding: 22px;">
+                <div class="matrix-wrap">
+                  <table class="matrix-table">
+                    <thead>
+                      <tr>
+                        <th>Varyant</th>
+                        <th>SKU</th>
+                        <th>Fiyat (TL)</th>
+                        <th>Stok</th>
+                        <th>Durum</th>
+                        <th>Aktif</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div class="matrix-variant-label">15ml × Tüm Ciltler</div>
+                          <div class="matrix-variant-sub">Mini boy</div>
+                        </td>
+                        <td><input type="text" class="matrix-input mono" value="PB-GES-15-ALL" /></td>
+                        <td><input type="number" class="matrix-input price" value="690" /></td>
+                        <td><input type="number" class="matrix-input" value="12" /></td>
+                        <td><span class="matrix-stock-dot stock-dot ok"></span> Stokta</td>
+                        <td><label class="matrix-toggle"><input type="checkbox" checked><span class="matrix-toggle-slider"></span></label></td>
+                        <td><button class="matrix-action"><i class="fa-solid fa-ellipsis-vertical"></i></button></td>
+                      </tr>
+                      <tr style="background: var(--bg-soft);">
+                        <td>
+                          <div class="matrix-variant-label">30ml × Tüm Ciltler</div>
+                          <div class="matrix-variant-sub">Varsayılan</div>
+                        </td>
+                        <td><input type="text" class="matrix-input mono" value="PB-GES-30-ALL" /></td>
+                        <td><input type="number" class="matrix-input price" value="1290" /></td>
+                        <td><input type="number" class="matrix-input" value="24" /></td>
+                        <td><span class="matrix-stock-dot stock-dot ok"></span> Stokta</td>
+                        <td><label class="matrix-toggle"><input type="checkbox" checked><span class="matrix-toggle-slider"></span></label></td>
+                        <td><button class="matrix-action"><i class="fa-solid fa-ellipsis-vertical"></i></button></td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="matrix-variant-label">50ml × Tüm Ciltler</div>
+                        </td>
+                        <td><input type="text" class="matrix-input mono" value="PB-GES-50-ALL" /></td>
+                        <td><input type="number" class="matrix-input price" value="1980" /></td>
+                        <td><input type="number" class="matrix-input" value="8" /></td>
+                        <td><span class="matrix-stock-dot stock-dot low"></span> Az</td>
+                        <td><label class="matrix-toggle"><input type="checkbox" checked><span class="matrix-toggle-slider"></span></label></td>
+                        <td><button class="matrix-action"><i class="fa-solid fa-ellipsis-vertical"></i></button></td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="matrix-variant-label">100ml × Tüm Ciltler</div>
+                          <div class="matrix-variant-sub">Büyük boy</div>
+                        </td>
+                        <td><input type="text" class="matrix-input mono" value="PB-GES-100-ALL" /></td>
+                        <td><input type="number" class="matrix-input price" value="3290" /></td>
+                        <td><input type="number" class="matrix-input" value="0" /></td>
+                        <td><span class="matrix-stock-dot stock-dot out"></span> Tükendi</td>
+                        <td><label class="matrix-toggle"><input type="checkbox"><span class="matrix-toggle-slider"></span></label></td>
+                        <td><button class="matrix-action"><i class="fa-solid fa-ellipsis-vertical"></i></button></td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="matrix-variant-label">15ml × Yağlı</div>
+                        </td>
+                        <td><input type="text" class="matrix-input mono" value="PB-GES-15-YG" /></td>
+                        <td><input type="number" class="matrix-input price" value="690" /></td>
+                        <td><input type="number" class="matrix-input" value="3" /></td>
+                        <td><span class="matrix-stock-dot stock-dot low"></span> Kritik</td>
+                        <td><label class="matrix-toggle"><input type="checkbox" checked><span class="matrix-toggle-slider"></span></label></td>
+                        <td><button class="matrix-action"><i class="fa-solid fa-ellipsis-vertical"></i></button></td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="matrix-variant-label">30ml × Yağlı</div>
+                        </td>
+                        <td><input type="text" class="matrix-input mono" value="PB-GES-30-YG" /></td>
+                        <td><input type="number" class="matrix-input price" value="1290" /></td>
+                        <td><input type="number" class="matrix-input" value="6" /></td>
+                        <td><span class="matrix-stock-dot stock-dot ok"></span> Stokta</td>
+                        <td><label class="matrix-toggle"><input type="checkbox" checked><span class="matrix-toggle-slider"></span></label></td>
+                        <td><button class="matrix-action"><i class="fa-solid fa-ellipsis-vertical"></i></button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; flex-wrap: wrap; gap: 10px;">
+                  <div style="font-size: 12px; color: var(--text-2);">
+                    6 varyant gösteriliyor · <a href="javascript:void(0)" onclick="showToast('✦ Tüm varyantlar yakında listelenecek')" style="color: var(--bordo-700); text-decoration: underline;">Tümünü görüntüle (12)</a>
+                  </div>
+                  <div style="display: flex; gap: 6px;">
+                    <button class="btn" style="padding: 7px 12px; font-size: 11px;">
+                      <i class="fa-solid fa-file-arrow-down"></i> CSV İndir
+                    </button>
+                    <button class="btn" style="padding: 7px 12px; font-size: 11px;">
+                      <i class="fa-solid fa-file-arrow-up"></i> CSV ile Toplu Güncelle
+                    </button>
+                    <button class="btn primary" style="padding: 7px 12px; font-size: 11px;">
+                      <i class="fa-solid fa-wand-magic-sparkles"></i> Tüm Kombinasyonları Oluştur
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============ TAB: CONTENT ============ -->
+          <div class="tab-content" id="tab-content-rich">
+            <div class="card">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-file-lines"></i> Detaylı Ürün Açıklaması</h3>
+                <div class="meta">Ürün detay sayfasında "Açıklama" sekmesinde gösterilir</div>
+              </div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label class="form-label">Açıklama Metni <span class="required">*</span></label>
+                  <div class="rt-toolbar">
+                    <button class="rt-btn" title="Kalın"><i class="fa-solid fa-bold"></i></button>
+                    <button class="rt-btn" title="İtalik"><i class="fa-solid fa-italic"></i></button>
+                    <button class="rt-btn" title="Altı çizili"><i class="fa-solid fa-underline"></i></button>
+                    <div class="rt-divider"></div>
+                    <button class="rt-btn" title="Başlık"><i class="fa-solid fa-heading"></i></button>
+                    <button class="rt-btn" title="Liste"><i class="fa-solid fa-list"></i></button>
+                    <button class="rt-btn" title="Numaralı liste"><i class="fa-solid fa-list-ol"></i></button>
+                    <button class="rt-btn" title="Alıntı"><i class="fa-solid fa-quote-right"></i></button>
+                    <div class="rt-divider"></div>
+                    <button class="rt-btn" title="Bağlantı"><i class="fa-solid fa-link"></i></button>
+                    <button class="rt-btn" title="Görsel"><i class="fa-regular fa-image"></i></button>
+                    <button class="rt-btn" title="Tablo"><i class="fa-solid fa-table"></i></button>
+                    <div class="rt-divider"></div>
+                    <button class="rt-btn" title="HTML Kaynak"><i class="fa-solid fa-code"></i></button>
+                  </div>
+                  <div class="rt-content form-input" contenteditable="true" style="border-radius: 0 0 6px 6px; min-height: 200px;">
+                    <h3>Cildinizin Lüks Bakım Sırrı</h3>
+                    <p>Premium Çelik Usturad, lüks bakımın en saf hâlini cildinize sunar. <strong>24 ayar altın partikülleri</strong> ile hyalüronik asit ve E vitamininin güçlü birleşimi, cildinizi gece boyunca yeniler.</p>
+                    <p>PB Heritage laboratuvarlarında dermatologlar tarafından geliştirilen formül, yaşlanma karşıtı etkisi klinik olarak kanıtlanmış ham maddeler içerir.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- INGREDIENTS -->
+            <div class="card">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-vials"></i> İçerik & Aktif Bileşenler</h3>
+                <button class="btn" style="padding: 6px 12px; font-size: 11px;">
+                  <i class="fa-solid fa-plus"></i> Bileşen Ekle
+                </button>
+              </div>
+              <div class="card-body">
+                <div style="display: grid; grid-template-columns: 2fr 80px 1fr 36px; gap: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--border); margin-bottom: 10px; font-size: 11px; color: var(--text-3); text-transform: uppercase; letter-spacing: 1px; font-weight: 700;">
+                  <div>Bileşen</div>
+                  <div>Yüzde</div>
+                  <div>Açıklama</div>
+                  <div></div>
+                </div>
+                <div style="display: grid; grid-template-columns: 2fr 80px 1fr 36px; gap: 10px; margin-bottom: 8px; align-items: center;">
+                  <input type="text" class="form-input" value="24K Altın Partikül" style="padding: 8px 12px;" />
+                  <input type="text" class="form-input" value="0.5%" style="padding: 8px 12px; text-align: center; font-family: var(--mono);" />
+                  <input type="text" class="form-input" value="Canlandırıcı" style="padding: 8px 12px;" />
+                  <button class="matrix-action"><i class="fa-solid fa-trash"></i></button>
+                </div>
+                <div style="display: grid; grid-template-columns: 2fr 80px 1fr 36px; gap: 10px; margin-bottom: 8px; align-items: center;">
+                  <input type="text" class="form-input" value="Hyalüronik Asit" style="padding: 8px 12px;" />
+                  <input type="text" class="form-input" value="2%" style="padding: 8px 12px; text-align: center; font-family: var(--mono);" />
+                  <input type="text" class="form-input" value="Nemlendirici" style="padding: 8px 12px;" />
+                  <button class="matrix-action"><i class="fa-solid fa-trash"></i></button>
+                </div>
+                <div style="display: grid; grid-template-columns: 2fr 80px 1fr 36px; gap: 10px; margin-bottom: 8px; align-items: center;">
+                  <input type="text" class="form-input" value="Niacinamide (B3)" style="padding: 8px 12px;" />
+                  <input type="text" class="form-input" value="5%" style="padding: 8px 12px; text-align: center; font-family: var(--mono);" />
+                  <input type="text" class="form-input" value="Gözenek dengeleyici" style="padding: 8px 12px;" />
+                  <button class="matrix-action"><i class="fa-solid fa-trash"></i></button>
+                </div>
+
+                <div class="form-row" style="margin-top: 18px;">
+                  <div class="form-group">
+                    <label class="form-label">Tam INCI Listesi (Yasal)</label>
+                    <textarea class="form-textarea" style="font-family: var(--mono); font-size: 11.5px;">Aqua, Glycerin, Niacinamide, Sodium Hyaluronate, Gold (CI 77480), Tocopheryl Acetate, Aloe Barbadensis Leaf Extract, Camellia Sinensis Leaf Extract, Pentylene Glycol, Phenoxyethanol, Ethylhexylglycerin</textarea>
+                    <div class="form-hint">
+                      <i class="fa-solid fa-circle-info"></i> Tüm bileşenler büyükten küçüğe sıralı, yasal zorunluluk
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- USAGE -->
+            <div class="card">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-hand-sparkles"></i> Kullanım Bilgileri</h3>
+              </div>
+              <div class="card-body">
+                <div class="form-row two-col">
+                  <div class="form-group">
+                    <label class="form-label">Kullanım Sıklığı</label>
+                    <input type="text" class="form-input" value="Sabah ve akşam, günde 2 kez" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Önerilen Saatler</label>
+                    <input type="text" class="form-input" value="07:00-09:00 ve 22:00-24:00" />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label">Adım Adım Kullanım</label>
+                    <textarea class="form-textarea">1. Cildinizi nazikçe temizleyin ve tonik ile dengeleyin.
+2. Avucunuza 3-4 damla serum alın.
+3. İçten dışa doğru dairesel hareketlerle yayın.
+4. Tamamen emildikten sonra nemlendirici uygulayın.
+5. Gündüz kullanımında SPF ile devam edin.</textarea>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label">Uyarılar</label>
+                    <textarea class="form-textarea" style="background: var(--tehlike-bg); border-color: rgba(196, 69, 69, 0.2);">Sadece haricen kullanım içindir. Göz çevresinden uzak tutun. Tahriş halinde kullanımı bırakın. 12 yaş altı kullanım önerilmez.</textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============ TAB: SEO ============ -->
+          <div class="tab-content" id="tab-seo">
+            <div class="card">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-magnifying-glass-chart"></i> Arama Motoru Optimizasyonu</h3>
+                <div class="meta" style="color: var(--uyari);">
+                  <i class="fa-solid fa-triangle-exclamation"></i> SEO açıklaması eksik
+                </div>
+              </div>
+              <div class="card-body">
+
+                <div class="seo-preview">
+                  <div class="seo-preview-label">Google Arama Önizlemesi</div>
+                  <div class="seo-preview-url">https://pbstore.com › urun › gold-elixir-serum</div>
+                  <div class="seo-preview-title" id="seo-title-preview">Premium Çelik Usturad - PB Heritage | PB Store</div>
+                  <div class="seo-preview-desc" id="seo-desc-preview">
+                    24 ayar altın partikülleri ve hyalüronik asit içeren lüks gece serumu. Cildinize ışıltı ve canlılık kazandırır. PB Store'da ücretsiz kargo.
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label">SEO Başlık (Meta Title)</label>
+                    <input type="text" class="form-input" id="seo-title" value="Premium Çelik Usturad - PB Heritage | PB Store" />
+                    <div class="form-hint">
+                      <i class="fa-solid fa-lightbulb"></i> 50-60 karakter ideal
+                      <span class="char-count" id="title-count">42 / 60</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label">SEO Açıklama (Meta Description)</label>
+                    <textarea class="form-textarea" id="seo-desc" style="min-height: 80px;">24 ayar altın partikülleri ve hyalüronik asit içeren lüks gece serumu. Cildinize ışıltı ve canlılık kazandırır. PB Store'da ücretsiz kargo.</textarea>
+                    <div class="form-hint">
+                      <i class="fa-solid fa-lightbulb"></i> 150-160 karakter ideal
+                      <span class="char-count" id="desc-count">141 / 160</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label">
+                      Anahtar Kelimeler (Tags)
+                      <span style="font-size: 11px; color: var(--text-3); font-weight: 400;">Virgülle ayırın</span>
+                    </label>
+                    <div class="tags-wrap">
+                      <span class="tag-pill">altın serum <button class="remove"><i class="fa-solid fa-xmark"></i></button></span>
+                      <span class="tag-pill">cilt bakım <button class="remove"><i class="fa-solid fa-xmark"></i></button></span>
+                      <span class="tag-pill">gece serumu <button class="remove"><i class="fa-solid fa-xmark"></i></button></span>
+                      <span class="tag-pill">hyalüronik asit <button class="remove"><i class="fa-solid fa-xmark"></i></button></span>
+                      <span class="tag-pill">niacinamide <button class="remove"><i class="fa-solid fa-xmark"></i></button></span>
+                      <span class="tag-pill">anti-aging <button class="remove"><i class="fa-solid fa-xmark"></i></button></span>
+                      <span class="tag-pill">premium kozmetik <button class="remove"><i class="fa-solid fa-xmark"></i></button></span>
+                    </div>
+                    <input type="text" class="form-input" placeholder="Yeni etiket yaz ve Enter'a bas..." />
+                  </div>
+                </div>
+
+                <div class="form-row two-col">
+                  <div class="form-group">
+                    <label class="form-label">
+                      Canonical URL
+                      <i class="fa-regular fa-circle-question hint-tooltip" title="Bu ürünün ana URL'i. Boş bırakılırsa otomatik atanır."></i>
+                    </label>
+                    <input type="url" class="form-input" placeholder="https://pbstore.com/urun/gold-elixir-serum" style="font-family: var(--mono); font-size: 12px;" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">İndekslenme</label>
+                    <select class="form-select">
+                      <option>Arama motorlarında listele (index, follow)</option>
+                      <option>Sadece listele (index, nofollow)</option>
+                      <option>Gizle (noindex, follow)</option>
+                      <option>Tamamen gizle (noindex, nofollow)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="seo-meta">
+                  <i class="fa-solid fa-star"></i>
+                  <div>
+                    <strong>SEO Skoru: 78 / 100</strong> · Başlık, açıklama ve URL slug optimize edilmiş.
+                    Geliştirilebilecekler: <strong>Görsel alt metni</strong> (2 görselde eksik), <strong>schema markup</strong> (otomatik eklendi).
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SCHEMA -->
+            <div class="card">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-code"></i> Schema Markup (JSON-LD)</h3>
+                <div class="meta">Otomatik üretildi</div>
+              </div>
+              <div class="card-body">
+                <textarea class="form-textarea" style="font-family: var(--mono); font-size: 11.5px; min-height: 140px; background: var(--siyah); color: var(--altin-300); border-color: var(--siyah-2);" readonly>{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "Premium Çelik Usturad",
+  "image": "https://pbstore.com/img/gold-elixir-serum.jpg",
+  "description": "24 ayar altın partikülleri ve hyalüronik asit içeren lüks gece serumu...",
+  "sku": "PB-GES-30",
+  "brand": { "@type": "Brand", "name": "PB Heritage" },
+  "offers": {
+    "@type": "Offer",
+    "price": "1290.00",
+    "priceCurrency": "TRY",
+    "availability": "https://schema.org/InStock"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "287"
+  }
+}</textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============ TAB: SHIPPING ============ -->
+          <div class="tab-content" id="tab-shipping">
+            <div class="card">
+              <div class="card-head">
+                <h3><i class="fa-solid fa-truck"></i> Kargo & Boyut Bilgileri</h3>
+              </div>
+              <div class="card-body">
+                <div class="form-row two-col">
+                  <div class="form-group">
+                    <label class="form-label">
+                      Ağırlık (Kargo Hesabı için)
+                    </label>
+                    <div style="position: relative;">
+                      <input type="number" class="form-input with-suffix" value="120" step="0.1" />
+                      <span class="input-suffix">gram</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Paketleme Tipi</label>
+                    <select class="form-select">
+                      <option>Standart Kutu (Küçük)</option>
+                      <option>Premium Kutu (Orta)</option>
+                      <option>Hediye Paketi</option>
+                      <option>Kırılgan Paket</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-row three-col">
+                  <div class="form-group">
+                    <label class="form-label">Uzunluk</label>
+                    <div style="position: relative;">
+                      <input type="number" class="form-input with-suffix" value="12" />
+                      <span class="input-suffix">cm</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Genişlik</label>
+                    <div style="position: relative;">
+                      <input type="number" class="form-input with-suffix" value="8" />
+                      <span class="input-suffix">cm</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Yükseklik</label>
+                    <div style="position: relative;">
+                      <input type="number" class="form-input with-suffix" value="15" />
+                      <span class="input-suffix">cm</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-row two-col">
+                  <div class="form-group">
+                    <label class="form-label">Kargo Sınıfı</label>
+                    <select class="form-select">
+                      <option>Standart</option>
+                      <option>Kırılgan</option>
+                      <option>Soğuk Zincir</option>
+                      <option>Sıvı / Likit</option>
+                      <option>Tehlikeli Madde</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">İşleme Süresi (Sevkiyat)</label>
+                    <select class="form-select">
+                      <option>Aynı gün (saat 14:00'a kadar)</option>
+                      <option>1 iş günü</option>
+                      <option>2-3 iş günü</option>
+                      <option>5+ iş günü (özel sipariş)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ============ RIGHT SIDEBAR ============ -->
+        <div>
+
+          <!-- STATUS -->
+          <div class="sb-card">
+            <div class="sb-card-head">
+              <h4><i class="fa-solid fa-eye"></i> Yayın Durumu</h4>
+            </div>
+            <div class="sb-card-body">
+              <div class="form-group">
+                <label class="form-label">Durum</label>
+                <select class="form-select">
+                  <option selected>✓ Aktif (Yayında)</option>
+                  <option>📝 Taslak (Gizli)</option>
+                  <option>⏸️ Pasif (Görünmez)</option>
+                  <option>📦 Tükendi (Stoksuz)</option>
+                  <option>🗓️ Zamanlanmış</option>
+                </select>
+              </div>
+
+              <div class="status-toggle-row">
+                <div class="status-toggle-info">
+                  <div class="status-toggle-name">Öne Çıkan</div>
+                  <div class="status-toggle-desc">Ana sayfada vitrinde göster</div>
+                </div>
+                <label class="matrix-toggle">
+                  <input type="checkbox" checked>
+                  <span class="matrix-toggle-slider"></span>
+                </label>
+              </div>
+
+              <div class="status-toggle-row">
+                <div class="status-toggle-info">
+                  <div class="status-toggle-name">Yeni Gelen</div>
+                  <div class="status-toggle-desc">"Yeni" rozeti gösterilsin</div>
+                </div>
+                <label class="matrix-toggle">
+                  <input type="checkbox">
+                  <span class="matrix-toggle-slider"></span>
+                </label>
+              </div>
+
+              <div class="status-toggle-row">
+                <div class="status-toggle-info">
+                  <div class="status-toggle-name">Çok Satan</div>
+                  <div class="status-toggle-desc">"Çok Satan" rozeti</div>
+                </div>
+                <label class="matrix-toggle">
+                  <input type="checkbox" checked>
+                  <span class="matrix-toggle-slider"></span>
+                </label>
+              </div>
+
+              <div class="status-toggle-row">
+                <div class="status-toggle-info">
+                  <div class="status-toggle-name">İndirimde</div>
+                  <div class="status-toggle-desc">İndirim filtresine eklensin</div>
+                </div>
+                <label class="matrix-toggle">
+                  <input type="checkbox" checked>
+                  <span class="matrix-toggle-slider"></span>
+                </label>
+              </div>
+
+              <div class="status-toggle-row">
+                <div class="status-toggle-info">
+                  <div class="status-toggle-name">Yorum Yapılabilir</div>
+                  <div class="status-toggle-desc">Müşteri değerlendirmesi</div>
+                </div>
+                <label class="matrix-toggle">
+                  <input type="checkbox" checked>
+                  <span class="matrix-toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- CATEGORIES -->
+          <div class="sb-card">
+            <div class="sb-card-head">
+              <h4><i class="fa-solid fa-tags"></i> Kategoriler</h4>
+            </div>
+            <div class="sb-card-body">
+              <div class="category-tree">
+                <label class="cat-tree-item">
+                  <input type="checkbox" checked>
+                  <span><strong>Cilt Bakımı</strong></span>
+                </label>
+                <label class="cat-tree-item child">
+                  <input type="checkbox" checked>
+                  <span>Serum</span>
+                </label>
+                <label class="cat-tree-item subchild">
+                  <input type="checkbox" checked>
+                  <span>Gece Serumu</span>
+                </label>
+                <label class="cat-tree-item subchild">
+                  <input type="checkbox">
+                  <span>Anti-Aging Serum</span>
+                </label>
+                <label class="cat-tree-item child">
+                  <input type="checkbox">
+                  <span>Krem</span>
+                </label>
+                <label class="cat-tree-item">
+                  <input type="checkbox">
+                  <span><strong>Makyaj</strong></span>
+                </label>
+                <label class="cat-tree-item">
+                  <input type="checkbox">
+                  <span><strong>Parfüm</strong></span>
+                </label>
+                <label class="cat-tree-item">
+                  <input type="checkbox" checked>
+                  <span><strong>Premium Koleksiyon</strong></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- ATTRIBUTES PILLS -->
+          <div class="sb-card">
+            <div class="sb-card-head">
+              <h4><i class="fa-solid fa-bookmark"></i> Özellik Etiketleri</h4>
+            </div>
+            <div class="sb-card-body">
+              <div class="tags-wrap" style="margin-bottom: 12px;">
+                <span class="tag-pill">✓ Vegan <button class="remove"><i class="fa-solid fa-xmark"></i></button></span>
+                <span class="tag-pill">✓ Paraben içermez <button class="remove"><i class="fa-solid fa-xmark"></i></button></span>
+                <span class="tag-pill">✓ Cruelty Free <button class="remove"><i class="fa-solid fa-xmark"></i></button></span>
+                <span class="tag-pill">✓ Dermatolog onaylı <button class="remove"><i class="fa-solid fa-xmark"></i></button></span>
+                <span class="tag-pill">✓ Hipoalerjenik <button class="remove"><i class="fa-solid fa-xmark"></i></button></span>
+              </div>
+              <input type="text" class="form-input" placeholder="+ Etiket ekle..." />
+            </div>
+          </div>
+
+          <!-- RELATED PRODUCTS -->
+          <div class="sb-card">
+            <div class="sb-card-head">
+              <h4><i class="fa-solid fa-link"></i> Bağlantılı Ürünler</h4>
+            </div>
+            <div class="sb-card-body">
+              <div class="form-group" style="margin-bottom: 12px;">
+                <label class="form-label">Birlikte Sıkça Satın Alınan</label>
+                <select class="form-select">
+                  <option>+ Argan Sakal Yağı</option>
+                  <option>+ Aloe Vera Tıraş Köpüğü</option>
+                  <option>+ Klasik Mekanik Kol Saati</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-bottom: 12px;">
+                <label class="form-label">Çapraz Satış</label>
+                <input type="text" class="form-input" placeholder="Ürün ara..." />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Set / Bundle Üyeliği</label>
+                <select class="form-select">
+                  <option>Hiçbiri</option>
+                  <option>Premium Bakım Seti</option>
+                  <option>Gece Rutini Seti</option>
+                  <option>Anti-Aging Seti</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- ACTIVITY LOG -->
+          <div class="sb-card">
+            <div class="sb-card-head">
+              <h4><i class="fa-solid fa-clock-rotate-left"></i> Aktivite Geçmişi</h4>
+            </div>
+            <div class="sb-card-body">
+              <div class="activity-list">
+                <div class="activity-row">
+                  <div class="activity-icon"><i class="fa-solid fa-pen"></i></div>
+                  <div>
+                    <div class="activity-text"><strong>Mehmet</strong> stok bilgisini güncelledi (28→24)</div>
+                    <div class="activity-time">23 May · 16:45</div>
+                  </div>
+                </div>
+                <div class="activity-row">
+                  <div class="activity-icon"><i class="fa-solid fa-image"></i></div>
+                  <div>
+                    <div class="activity-text"><strong>Elif</strong> 1 görsel ekledi</div>
+                    <div class="activity-time">22 May · 11:20</div>
+                  </div>
+                </div>
+                <div class="activity-row">
+                  <div class="activity-icon"><i class="fa-solid fa-tag"></i></div>
+                  <div>
+                    <div class="activity-text"><strong>Murat</strong> fiyatı değiştirdi (1.490→1.290 TL)</div>
+                    <div class="activity-time">20 May · 09:30</div>
+                  </div>
+                </div>
+                <div class="activity-row">
+                  <div class="activity-icon"><i class="fa-solid fa-plus"></i></div>
+                  <div>
+                    <div class="activity-text"><strong>Admin</strong> ürünü oluşturdu</div>
+                    <div class="activity-time">12 Oca · 14:00</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+</div>
+
+<!-- ============ STICKY SAVE BAR ============ -->
+<div class="save-bar" id="save-bar">
+  <div class="save-bar-left">
+    <span class="save-bar-changes" id="changes-indicator" style="display: none;">
+      <span class="dot"></span>
+      <span>Kaydedilmemiş değişiklikler</span>
+    </span>
+    <span id="last-saved">Son kayıt: 2 dakika önce · Mehmet (Operasyon)</span>
+  </div>
+  <div class="save-bar-actions">
+    <button class="btn" id="discard-btn">
+      <i class="fa-solid fa-arrow-rotate-left"></i> Vazgeç
+    </button>
+    <button class="btn" id="save-draft-btn">
+      <i class="fa-solid fa-floppy-disk"></i> Taslak Kaydet
+    </button>
+    <button class="btn primary" id="save-btn">
+      <i class="fa-solid fa-check"></i> Değişiklikleri Yayınla
+    </button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <i class="fa-solid fa-circle-check"></i>
+  <span id="toast-text">İşlem başarılı</span>
+</div>
+
+<script>
+  // ============ TABS ============
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      const tab = btn.dataset.tab;
+      const target = document.getElementById('tab-' + tab) || document.getElementById('tab-content-rich');
+      if (target) target.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // ============ CHARACTER COUNTERS ============
+  function updateCharCount(inputId, countId, max) {
+    const input = document.getElementById(inputId);
+    const count = document.getElementById(countId);
+    if (!input || !count) return;
+    const update = () => {
+      const len = input.value.length;
+      count.textContent = `${len} / ${max}`;
+      count.style.color = len > max ? 'var(--tehlike)' : len > max * 0.9 ? 'var(--uyari)' : 'var(--text-2)';
+    };
+    input.addEventListener('input', update);
+    update();
+  }
+  updateCharCount('product-name', 'name-count', 80);
+  updateCharCount('short-desc', 'short-count', 140);
+  updateCharCount('seo-title', 'title-count', 60);
+  updateCharCount('seo-desc', 'desc-count', 160);
+
+  // ============ SEO LIVE PREVIEW ============
+  const seoTitle = document.getElementById('seo-title');
+  const seoDesc = document.getElementById('seo-desc');
+  const seoTitlePreview = document.getElementById('seo-title-preview');
+  const seoDescPreview = document.getElementById('seo-desc-preview');
+
+  seoTitle?.addEventListener('input', () => {
+    seoTitlePreview.textContent = seoTitle.value || 'Sayfa Başlığı';
+    markUnsaved();
+  });
+  seoDesc?.addEventListener('input', () => {
+    seoDescPreview.textContent = seoDesc.value || 'Sayfa açıklaması...';
+    markUnsaved();
+  });
+
+  // ============ TAG REMOVE ============
+  document.querySelectorAll('.tag-pill .remove, .variant-value-pill .remove').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.parentElement.style.transition = 'all 0.3s ease';
+      btn.parentElement.style.transform = 'scale(0.8)';
+      btn.parentElement.style.opacity = '0';
+      setTimeout(() => btn.parentElement.remove(), 300);
+      markUnsaved();
+    });
+  });
+
+  // ============ UNSAVED STATE ============
+  let isDirty = false;
+  function markUnsaved() {
+    if (isDirty) return;
+    isDirty = true;
+    document.getElementById('changes-indicator').style.display = 'inline-flex';
+    document.getElementById('save-indicator').classList.add('unsaved');
+    document.getElementById('save-indicator').innerHTML = '<span class="dot"></span> Kaydedilmedi';
+  }
+  function markSaved() {
+    isDirty = false;
+    document.getElementById('changes-indicator').style.display = 'none';
+    document.getElementById('save-indicator').classList.remove('unsaved');
+    document.getElementById('save-indicator').innerHTML = '<span class="dot"></span> Kaydedildi';
+    document.getElementById('last-saved').textContent = 'Son kayıt: az önce · Sen';
+  }
+
+  // Track all form changes
+  document.querySelectorAll('input, textarea, select').forEach(el => {
+    el.addEventListener('change', markUnsaved);
+    if (el.tagName !== 'SELECT') {
+      el.addEventListener('input', markUnsaved);
+    }
+  });
+
+  // ============ SAVE ============
+  document.getElementById('save-btn').addEventListener('click', () => {
+    const btn = document.getElementById('save-btn');
+    const original = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Kaydediliyor...';
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.innerHTML = original;
+      markSaved();
+      showToast('Değişiklikler başarıyla kaydedildi ✓');
+    }, 1200);
+  });
+
+  document.getElementById('save-draft-btn').addEventListener('click', () => {
+    showToast('Taslak kaydedildi (yayınlanmadı)');
+    markSaved();
+  });
+
+  document.getElementById('discard-btn').addEventListener('click', () => {
+    if (isDirty && !confirm('Tüm değişiklikleriniz kaybolacak. Emin misiniz?')) return;
+    markSaved();
+    showToast('Değişiklikler atıldı');
+  });
+
+  // ============ IMAGE UPLOAD ZONE ============
+  document.getElementById('upload-zone').addEventListener('click', () => {
+    showToast('Görsel seçici açılıyor...');
+  });
+
+  // ============ IMAGE ACTIONS ============
+  document.querySelectorAll('.image-action').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const title = btn.title;
+      if (title === 'Sil') {
+        if (confirm('Bu görseli silmek istediğinize emin misiniz?')) {
+          btn.closest('.image-card').style.transition = 'all 0.3s ease';
+          btn.closest('.image-card').style.transform = 'scale(0)';
+          btn.closest('.image-card').style.opacity = '0';
+          setTimeout(() => btn.closest('.image-card').remove(), 300);
+          showToast('Görsel silindi');
+          markUnsaved();
+        }
+      } else if (title === 'Kapak yap') {
+        document.querySelectorAll('.image-card').forEach(c => c.classList.remove('main'));
+        btn.closest('.image-card').classList.add('main');
+        showToast('Kapak fotoğrafı güncellendi ✓');
+        markUnsaved();
+      } else {
+        showToast(`${title} işlemi...`);
+      }
+    });
+  });
+
+  // ============ TOAST ============
+  function showToast(msg, isError = false) {
+    const toast = document.getElementById('toast');
+    document.getElementById('toast-text').textContent = msg;
+    const icon = toast.querySelector('i');
+    icon.className = isError ? 'fa-solid fa-circle-exclamation' : 'fa-solid fa-circle-check';
+    icon.style.color = isError ? 'var(--tehlike)' : 'var(--basari)';
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
+  }
+
+  // ============ COMING SOON LINKS ============
+  document.querySelectorAll('.coming-soon-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      const feature = item.dataset.feature || 'Bu özellik';
+      showToast(`✦ ${feature} özelliği yakında eklenecek`);
+    });
+  });
+
+  // ============ RT TOOLBAR ============
+  document.querySelectorAll('.rt-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('active');
+    });
+  });
+
+  // ============ MATRIX INPUTS ============
+  document.querySelectorAll('.matrix-input, .matrix-toggle input').forEach(el => {
+    el.addEventListener('change', markUnsaved);
+  });
+
+  // ============ KEYBOARD SHORTCUTS ============
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+      e.preventDefault();
+      document.getElementById('save-btn').click();
+    }
+  });
+</script>
+
+</body>
+</html>
